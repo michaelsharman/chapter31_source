@@ -19,12 +19,12 @@ Whenever you secure a navigation branch the user is presented with the default F
 
 
 
-![FarCry login](http://www.chapter31.com/wp-content/uploads/2007/09/farcrylogin.jpg)
+![FarCry login](/images/uploads/2007/09/farcrylogin.jpg)
 
 
 
 
-Because this is a 'front end' page (seen by site visitors) you will often want to change the look and feel to mimick your client's design for branding purposes. As with a lot of things with FarCry this is a piece of cake! 
+Because this is a 'front end' page (seen by site visitors) you will often want to change the look and feel to mimick your client's design for branding purposes. As with a lot of things with FarCry this is a piece of cake!
 
 All you need to do is add your own login screen in /yourproject/customadmin/login/login.cfm
 
@@ -35,12 +35,12 @@ Here is an example of just that, a custom 'front end' login screen:
 
 
 
-![Custom login](http://www.chapter31.com/wp-content/uploads/2007/09/customlogin.jpg)
+![Custom login](/images/uploads/2007/09/customlogin.jpg)
 
 
 
 
-The only thing with this is that when a client administrator needs to login to FarCry administration area (or 'Webtop') they will also see this 'custom' template. 
+The only thing with this is that when a client administrator needs to login to FarCry administration area (or 'Webtop') they will also see this 'custom' template.
 
 If this meets client expectations then you have nothing to worry about, if however you want to have the default FarCry login screen visible when an administrator is logging in to the back-end (while retaining the custom login screen on the front-end) then you need to make this simple change at the top of your custom login.cfm:
 
@@ -49,7 +49,7 @@ If this meets client expectations then you have nothing to worry about, if howev
 Note that this needs to be at the top of the page (above your custom login code).
 
 ``` javascript
-<!--- 
+<!---
 	If a user is attempting to login to the FarCry webtop, load the default login screen.
 	Otherwise load the custom 'members' login screen for password protected site areas.
  --->

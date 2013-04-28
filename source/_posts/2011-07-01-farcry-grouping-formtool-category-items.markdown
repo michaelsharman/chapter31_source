@@ -22,7 +22,7 @@ Note that I've set the dropdown size to 1 and multiple select to false. Basicall
 
 Luckily FarCry makes this kind of thing simple to override. I added my own category.cfc inside my projects _packages/formtools_ directory and made sure to extend category.cfc from _farcry.core.packages.formtools.category_. In this I only used the edit() function to render an optgroup from a new custom property called ftAliasAsOptGroup (see above snippet). This gave me the following:
 
-![FarCry optgroup](http://www.chapter31.com/wp-content/uploads/2011/07/optgroup.png)
+![FarCry optgroup](/images/uploads/2011/07/optgroup.png)
 
 The full category.cfc is below if you're interested.
 
@@ -32,7 +32,7 @@ The full category.cfc is below if you're interested.
 
 	<cfproperty name="ftAliasAsOptGroup" default="" hint="If true, renders ftAlias as an optgroup">
 
-	
+
 	<cffunction name="edit" access="public" output="false" returntype="string" hint="his will return a string of formatted HTML text to enable the user to edit the data">
 		<cfargument name="typename" required="true" type="string" hint="The name of the type that this field is part of.">
 		<cfargument name="stObject" required="true" type="struct" hint="The object of the record that this field is part of.">
@@ -48,22 +48,22 @@ The full category.cfc is below if you're interested.
 		<cfset var i = "" />
 		<cfset var rootNodeText = "" />
 		<cfset var rootID = "" />
-				
+
 		<cfif structKeyExists(application.catid, arguments.stMetadata.ftAlias)>
 			<cfset rootID = application.catid[arguments.stMetadata.ftAlias] >
 		<cfelse>
 			<cfset rootID = application.catid['root'] >
 		</cfif>
-		
+
 		<cfset lSelectedCategoryID = oCategory.getCategories(objectid=arguments.stObject.ObjectID,bReturnCategoryIDs=true,alias=arguments.stMetadata.ftAlias) />
-		
+
 		<cfset rootNodeText = oCategory.getCategoryNamebyID(categoryid=rootID) />
-		
+
 		<cfswitch expression="#arguments.stMetadata.ftRenderType#">
-			
+
 			<cfcase value="dropdown">
 				<cfset lCategoryBranch = oCategory.getCategoryBranchAsList(lCategoryIDs=rootID) />
-							
+
 				<cfsavecontent variable="html">
 					<cfoutput><select id="#arguments.fieldname#" name="#arguments.fieldname#"  <cfif arguments.stMetadata.ftSelectMultiple>size="#arguments.stMetadata.ftSelectSize#" multiple="true"</cfif> class="selectInput #arguments.stMetadata.ftSelectSize# #arguments.stMetadata.ftClass#"></cfoutput>
 					<cfloop list="#lCategoryBranch#" index="i">
@@ -82,7 +82,7 @@ The full category.cfc is below if you're interested.
 						<cfelse>
 							<cfset CategoryName = oCategory.getCategoryNamebyID(categoryid=i,typename='dmCategory') />
 							<cfoutput><option value="#i#"<cfif listContainsNoCase(lSelectedCategoryID, i)> selected="selected"</cfif>>#CategoryName#</option></cfoutput>
-						</cfif>						
+						</cfif>
 					</cfloop>
 					<cfif arguments.stMetadata.ftAliasAsOptGroup EQ true>
 						<cfoutput></optgroup></cfoutput>
@@ -90,64 +90,64 @@ The full category.cfc is below if you're interested.
 					<cfoutput></select></cfoutput>
 				</cfsavecontent>
 			</cfcase>
-			
+
 			<cfcase value="prototype">
 				<cfsavecontent variable="html">
-				
+
 					<cfoutput><fieldset style="width: 300px;">
 						<cfif len(arguments.stMetadata.ftLegend)><legend>#arguments.stMetadata.ftLegend#</legend></cfif>
-					
+
 						<div class="fieldsection optional full">
-												
+
 							<div class="fieldwrap">
 							</cfoutput>
 
 								<ft:NTMPrototypeTree id="#arguments.fieldname#" navid="#rootID#" depth="99" bIncludeHome=1 lSelectedItems="#lSelectedCategoryID#" bSelectMultiple="#arguments.stMetadata.ftSelectMultiple#">
-							
+
 							<cfoutput>
 							</div>
-							
+
 							<br class="fieldsectionbreak" />
 						</div>
 						<input type="hidden" id="#arguments.fieldname#" name="#arguments.fieldname#" value="" />
 					</fieldset></cfoutput>
-							
-				</cfsavecontent>			
+
+				</cfsavecontent>
 			</cfcase>
 			<cfcase value="extjs">
 				<!--- <skin:htmlHead library="extjs" />
 				<skin:htmlHead library="farcryForm" /> --->
-				
+
 				<cfsavecontent variable="html">
-					
+
 					<cfoutput><fieldset style="width: 300px;">
 						<cfif len(arguments.stMetadata.ftLegend)><legend>#arguments.stMetadata.ftLegend#</legend></cfif>
-					
+
 						<!--- <div id="tree-div" style="border:1px solid #c3daf9;"></div> --->
 						<div class="fieldsection optional full">
-											
+
 							<div class="fieldwrap">
-								
-								<div id="#arguments.fieldname#-tree-div"></div>	
-								
+
+								<div id="#arguments.fieldname#-tree-div"></div>
+
 							</div>
-							
+
 							<br class="fieldsectionbreak" />
 						</div>
 						<input type="hidden" id="#arguments.fieldname#" name="#arguments.fieldname#" value="#lSelectedCategoryID#" />
 						<input type="hidden" name="#arguments.fieldname#" value="" />
 					</fieldset>
 					</cfoutput>
-												
+
 				</cfsavecontent>
-			
+
 				<skin:onReady>
 				<cfoutput>
-				    createFormtoolTree('#arguments.fieldname#','#rootID#', '#application.url.webtop#/facade/getCategoryNodes.cfm', '#rootNodeText#','#lSelectedCategoryID#', 'categoryIconCls');											
+				    createFormtoolTree('#arguments.fieldname#','#rootID#', '#application.url.webtop#/facade/getCategoryNodes.cfm', '#rootNodeText#','#lSelectedCategoryID#', 'categoryIconCls');
 				</cfoutput>
 				</skin:onReady>
 			</cfcase>
-			<cfcase value="jquery">			
+			<cfcase value="jquery">
 
 				<skin:onReady>
 				<cfoutput>
@@ -156,22 +156,22 @@ The full category.cfc is below if you're interested.
 					})
 				</cfoutput>
 				</skin:onReady>
-				
-				<cfsavecontent variable="html">				
+
+				<cfsavecontent variable="html">
 					<cfoutput>
 					<div class="multiField">
 						<ul id="#arguments.fieldname#_list" class="treeview"></ul>
 					</div>
-					<input type="hidden" name="#arguments.fieldname#" value="" />	
+					<input type="hidden" name="#arguments.fieldname#" value="" />
 					</cfoutput>
-				</cfsavecontent>			
-			</cfcase>			
+				</cfsavecontent>
+			</cfcase>
 			<cfdefaultcase>
-				
+
 				<skin:loadJS id="jquery" />
 				<skin:loadJS id="jquery-checkboxtree" basehref="#application.url.webtop#/thirdparty/checkboxtree/js" lFiles="jquery.checkboxtree.js" />
 				<skin:loadCSS id="jquery-checkboxtree" basehref="#application.url.webtop#/thirdparty/checkboxtree/css" lFiles="checkboxtree.css" />
-												
+
 				<skin:onReady>
 				<cfoutput>
 					$j.ajax({
@@ -179,7 +179,7 @@ The full category.cfc is below if you're interested.
 					   url: '#application.fapi.getLink(type="dmCategory", objectid="#rootID#", view="displayCheckboxTree", urlParameters="ajaxmode=1")#',
 					   data: {
 					   	fieldname: '#arguments.fieldname#',
-					   	rootNodeID:'#rootID#', 
+					   	rootNodeID:'#rootID#',
 					   	selectedObjectIDs: '#lSelectedCategoryID#'
 						},
 					   cache: false,
@@ -191,29 +191,29 @@ The full category.cfc is below if you're interested.
 									blankarrow: "#application.url.webtop#/thirdparty/checkboxtree/images/checkboxtree/img-arrow-blank.gif",
 									checkchildren: false,
 									checkparents: false
-							});	
-							$j("###arguments.fieldname#-checkboxDiv input:checked").addClass('mjb');	 
-							$j("###arguments.fieldname#-checkboxDiv input:checked").parent().addClass('mjb');	     	
+							});
+							$j("###arguments.fieldname#-checkboxDiv input:checked").addClass('mjb');
+							$j("###arguments.fieldname#-checkboxDiv input:checked").parent().addClass('mjb');
 					   }
 					 });
-					
+
 				</cfoutput>
 				</skin:onReady>
-				
+
 				<cfsavecontent variable="html">
 
 					<cfoutput>
 					<div class="multiField">
 						<div id="#arguments.fieldname#-checkboxDiv">loading...</div>
-						<input type="hidden" name="#arguments.fieldname#" value="" />			
+						<input type="hidden" name="#arguments.fieldname#" value="" />
 					</div>
 					</cfoutput>
-					
-				</cfsavecontent>			
-			</cfdefaultcase>			
-			
+
+				</cfsavecontent>
+			</cfdefaultcase>
+
 		</cfswitch>
-		
+
 		<cfreturn html>
 	</cffunction>
 

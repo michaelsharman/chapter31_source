@@ -10,7 +10,7 @@ categories:
 - Databases
 ---
 
-Scenario...I'm using ColdFusion 9 and MySQL 5. I already had my DSN setup but had a requirement to get the last inserted id from a MySQL INSERT statement (I'm using auto-incrementing integer's). 
+Scenario...I'm using ColdFusion 9 and MySQL 5. I already had my DSN setup but had a requirement to get the last inserted id from a MySQL INSERT statement (I'm using auto-incrementing integer's).
 
 As most people know, the best way to do this (in MySQL) is using the [last_insert_id()](http://dev.mysql.com/doc/refman/5.0/en/information-functions.html#function_last-insert-id) function. I wanted to attach this to the end of my INSERT statement for performance reasons, as I'd only be sending one query to the server instead of separate ones. Plus I'm not even sure if  I'd get the correct id back in a production environment if I sent it through as a separate query.
 
@@ -18,7 +18,7 @@ Anyway...for this to happen you need to add "allowMultiQueries=true" to your DSN
 
 Finally took a comment from [Will Tomlinson over on Ben Nadel's blog](http://www.bennadel.com/blog/1209-Turning-On-Multiple-Statements-In-ColdFusion-8-MySQL-4-5-Datasource.htm) to help me out. Delete and recreate the DSN, happy days!
 
-![](http://www.chapter31.com/wp-content/uploads/2010/09/cfadmin.png)
+![](/images/uploads/2010/09/cfadmin.png)
 
 Who want's some sample code?
 
@@ -26,9 +26,9 @@ Who want's some sample code?
 <cffunction name="addStuff" access="public" output="false" returnType="numeric">
 	<cfargument name="ref" type="string" required="true">
 	<cfargument name="stage" type="string" required="true">
-	
+
 	<cfset var q = "">
-	
+
 	<cfquery name="q" datasource="#variables.instance.config.dsn#">
 		INSERT INTO mytable
 			(
@@ -40,7 +40,7 @@ Who want's some sample code?
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.ref#">
 				, <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.stage#">
 			);SELECT LAST_INSERT_ID() AS newId
-	</cfquery>		
+	</cfquery>
 
 	<cfreturn q.newId>
 </cffunction>

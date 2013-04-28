@@ -13,11 +13,11 @@ Funny, but I've had this screen many many times when accessing [MXNA](http://web
 
 I wonder how many sites (let alone high profile sites) don't have a default error handler in place.
 
-![mxna error](http://www.chapter31.com/wp-content/uploads/2006/12/mxna_error.gif)
+![mxna error](/images/uploads/2006/12/mxna_error.gif)
 
 Exception handling (be it with cftry/cfcatch or cferror etc) is often the last thing on a developers mind. It's easy to assume that things won't go wrong or the user will enter the correct data in a form.
 
-One of the things I strive to do as a developer is to think of the worst case scenario, or to think like a hacker/malicious user. What would they do to break my site? 
+One of the things I strive to do as a developer is to think of the worst case scenario, or to think like a hacker/malicious user. What would they do to break my site?
 
 Would they turn off javascript? In that case I need to make sure I have server side validation to backup my client side validation.
 

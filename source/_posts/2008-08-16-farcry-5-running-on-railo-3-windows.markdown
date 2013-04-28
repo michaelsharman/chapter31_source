@@ -14,7 +14,7 @@ categories:
 The CFML market is hotting up with [Railo](http://www.railo-technologies.com/) going open source (in version 3.1) and joining forces with [JBoss](http://www.jboss.org/railo/) for an end of 2008 release! With that in mind I figured it was time to check out Railo with the latest version of FarCry.
 
 My environment:
-	
+
   * Windows XP
   * Railo 3.0.0.003
   * <del>FarCry 5.0.0 (although 5.0.2 is out, the latest distro from the site offers only 5.0.0)</del>
@@ -33,19 +33,19 @@ Next was starting Railo, on Windows open a command prompt (cmd) and run the star
 start.bat
 ```
 
-Now that Railo is running I needed to create a datasource to point to a fresh database created for my new FarCry app. To do this visit the admin area of Railo at http://localhost:8888/railo-context/. 
+Now that Railo is running I needed to create a datasource to point to a fresh database created for my new FarCry app. To do this visit the admin area of Railo at http://localhost:8888/railo-context/.
 
 The first time you do this you'll be asked to enter a password which will be used in the future to access the admin area.
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/08/newpassword2-300x173.png)](http://www.chapter31.com/wp-content/uploads/2008/08/newpassword2.png)
+[![](/images/uploads/2008/08/newpassword2-300x173.png)](/images/uploads/2008/08/newpassword2.png)
 
 Create and verify a datasource just as you would in ColdFusion Administrator and you're ready for the FarCry install.
 
 To install FarCry visit http://localhost:8888/farcry/ and follow the instructions. As mentioned above you first have to create an empty database for your FarCry site.
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/08/installingfarcry2-300x267.png)](http://www.chapter31.com/wp-content/uploads/2008/08/installingfarcry2.png)
+[![](/images/uploads/2008/08/installingfarcry2-300x267.png)](/images/uploads/2008/08/installingfarcry2.png)
 
-After FarCry installed (without a hitch!) it was time to look around my new site to see if everything is working as normal (well, as it would normally under ColdFusion). Upon initial inspection everything is working fine with just a few exceptions (pun intended!). 
+After FarCry installed (without a hitch!) it was time to look around my new site to see if everything is working as normal (well, as it would normally under ColdFusion). Upon initial inspection everything is working fine with just a few exceptions (pun intended!).
 
 Firstly it seems there is a reserved word conflict with the FarCry core codebase and Railo which prevented me from viewing one of the pages (support) in the mollio skeleton site FarCry installs by default (and also some pages from the webtop).
 

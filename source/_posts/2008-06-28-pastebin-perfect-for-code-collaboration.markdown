@@ -18,7 +18,7 @@ What that means is you can paste any code into a nice big textarea on the pasteb
 
 Then you are redirected to a URL which you can copy and send to anyone else so that they may view your code.
 
-![](http://www.chapter31.com/wp-content/uploads/2008/06/pastebin-300x221.png)
+![](/images/uploads/2008/06/pastebin-300x221.png)
 
 The cool thing is that the other person can see your original code, but can also add their own modifications in a separate box for you to see and collaborate on.
 

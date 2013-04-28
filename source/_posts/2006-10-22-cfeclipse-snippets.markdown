@@ -17,49 +17,49 @@ Whereas in Homesite you would assign a keyboard shortcut directly to a snippet, 
 
 For example I have a cfabort snippet with a trigger text of 'a'. Now in eclipse 3.2 the invoke/trigger combination is ctrl + j, so if I type the letter 'a', then press ctrl + j I get a lovely cfabort tag! Doing things this way allows me to have the same invoke key (ctrl + j) then simply remember my trigger text for each snippet. Nice :)
 
-In common with Homesite is the idea of snippet variables, most handy if your snippet text requires or relies upon a user defined parameter value. An example here is cfinclude where you must specify the 'template' attribute. 
+In common with Homesite is the idea of snippet variables, most handy if your snippet text requires or relies upon a user defined parameter value. An example here is cfinclude where you must specify the 'template' attribute.
 
 To setup snippet variables you use the $${variable:default} format. My trigger text is 'i' for cfinclude, so when I invoke the snippet I get asked to enter a parameter value as follows:
 
-![cfeclipse snippet variable](http://www.chapter31.com/wp-content/uploads/2006/10/snippet.jpg)
+![cfeclipse snippet variable](/images/uploads/2006/10/snippet.jpg)
 
 My entire snippet looks like this: <cfinclude template="$${template:.cfm}" />>
 
 There are a number of built in snippet variables:
 
-$${DATE}  
-$${MONTH}  
-$${TIME}  
-$${DATETIME}  
-$${DAYOFWEEK}  
-$${CURRENTFILE} - Current file name (just the file)  
-$${CURRENTFOLDER} - Current folder (The path to the containing folder)  
-$${CURRENTPATH} - Current path (full file name)  
-$${CURRENTPRJPATH} - Just the folder  
-$${USERNAME} - Current user  
-$${MONTHNUMBER} - Month as a number  
-$${DAYOFMONTH} - Day of month as a number  
-$${DAYOFWEEKNUMBER} - Day of week (the week starts on Sunday)  
-$${DATETIME24} - DateTime24 - a 24 hour clock version of datetime.  
-$${YEAR} - Current year.  
+$${DATE}
+$${MONTH}
+$${TIME}
+$${DATETIME}
+$${DAYOFWEEK}
+$${CURRENTFILE} - Current file name (just the file)
+$${CURRENTFOLDER} - Current folder (The path to the containing folder)
+$${CURRENTPATH} - Current path (full file name)
+$${CURRENTPRJPATH} - Just the folder
+$${USERNAME} - Current user
+$${MONTHNUMBER} - Month as a number
+$${DAYOFMONTH} - Day of month as a number
+$${DAYOFWEEKNUMBER} - Day of week (the week starts on Sunday)
+$${DATETIME24} - DateTime24 - a 24 hour clock version of datetime.
+$${YEAR} - Current year.
 $${YEAR2DIGIT} - Current two digit year.
 
 Other than those, you're free to name your variables as you wish.
 
-Another SUPER cool feature is the ability to choose a default value from a range. So for my cflocation snippet I have:  
+Another SUPER cool feature is the ability to choose a default value from a range. So for my cflocation snippet I have:
 
     <cflocation url="$${url:.cfm}" addToken="$${addToken:false|true}" />
 
 Note the use of the pipe (|). There is even more than this on the cfeclipse.org site so take a peek. Some of the snippets I use are:
 
-cfabort  
-cfcomment  
-cfdump  
-cfinclude  
-cflocation  
-cfoutput  
-cfquery  
-cfscript  
+cfabort
+cfcomment
+cfdump
+cfinclude
+cflocation
+cfoutput
+cfquery
+cfscript
 html comment (used with xml files)
 
 I also use tonnes of snippets for HTML, (strong, em etc). Using snippets is easy to learn and saves you a LOT of time when you're used to invoking them with ease!

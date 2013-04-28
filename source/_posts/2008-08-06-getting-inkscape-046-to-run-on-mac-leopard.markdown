@@ -12,7 +12,7 @@ categories:
 
 [Inscape](http://inkscape.org/) is a fantastic open source vector graphics tool which can be a nice alternative to Adobe's Illustrator.
 
-![](http://www.chapter31.com/wp-content/uploads/2008/08/header-logo.png)
+![](/images/uploads/2008/08/header-logo.png)
 
 Getting it to run on the Mac took a couple of extra steps though.
 
@@ -20,7 +20,7 @@ Firstly the [download page](http://inkscape.org/download/?lang=en) advises that 
 
 The next problem was that after a restart, Inkscape displays a message saying that the first time it runs it may take a while to load as it needs to caches fonts. The issue is however that it never loads :(
 
-A quick google later found the solution from [Kuneri Bloggy](http://bloggy.kuneri.net/2008/05/14/how-to-run-inkscape-on-mac-leopard/). 
+A quick google later found the solution from [Kuneri Bloggy](http://bloggy.kuneri.net/2008/05/14/how-to-run-inkscape-on-mac-leopard/).
 
 Simply open up a terminal window and create a _.fontconfig_ file in your home directory:
 

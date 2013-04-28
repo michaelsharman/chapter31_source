@@ -42,7 +42,7 @@ Sample code below:
 </script>
 ```
 
-[Javascript: trimString.js](http://www.chapter31.com/wp-content/uploads/2006/09/trimstring.js)
+[Javascript: trimString.js](/images/uploads/2006/09/trimstring.js)
 
 Update 25th March 2007:
 

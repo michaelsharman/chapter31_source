@@ -12,7 +12,7 @@ categories:
 Working on a ColdFusion project recently I had the need to generate a random key; the format of which was based on a specific set of business rules. I actually ended up writing a basic UDF to handle this but after the fact I went looking to see if I could find something which provided some of the features I was after.
 
 Although I found several through google and [cflib](http://cflib.org/) they weren't completely what I was after. Not finding exactly what I needed inspired me to write my own one based on the following requirements:
-	
+
   * Users can set the length of the returned key
   * Key can be UPPER, lower or MixEd case
   * Format can include numeric, string, alphanumeric (a-zA-Z0-9) and special characters
@@ -45,6 +45,6 @@ Some examples:
 	//fqr74mhb*cq&
 ```
 
-If anyone is interested you can [download the UDF here](http://www.chapter31.com/wp-content/uploads/2008/10/generaterandomkey1.txt).
+If anyone is interested you can [download the UDF here](/images/uploads/2008/10/generaterandomkey1.txt).
 
 As usual comments and critiques are always welcome :)

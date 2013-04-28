@@ -15,7 +15,7 @@ One of the things it can do is return variables that _are_ actually "var" scoped
 
 ``` javascript
 <cfscript>
-			
+
 	var column = 2;		//which column the pod is in
 	var row = 3;		//which row the pod is on
 	var newRow = 0;
@@ -25,13 +25,13 @@ One of the things it can do is return variables that _are_ actually "var" scoped
 
 In the above example Varscoper tells me that "newRow" is not var scoped when clearly it is.
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/04/varscoper-300x38.jpg)](http://www.chapter31.com/wp-content/uploads/2008/04/varscoper.jpg)
+[![](/images/uploads/2008/04/varscoper-300x38.jpg)](/images/uploads/2008/04/varscoper.jpg)
 
 This is usually fine, but if you start to get a lot of these false positives there is a quick little workaround. Place a semi-colon at the end of the last comment which effectively tells varscoper where the statement finishes and fixes the problem.
 
 ``` javascript
 <cfscript>
-			
+
 	var column = 2;		//which column the pod is in
 	var row = 3;		//which row the pod is on;
 	var newRow = 0;

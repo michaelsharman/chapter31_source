@@ -16,7 +16,7 @@ We all know that font sizes are different across browser and platform, but Firef
 
 Here is a screen grab of an example, certainly not to pick on this particular blog but just one of the few examples I come across on my daily travels thru [fullasagoog](http://www.fullasagoog.com/).
 
-![Fonts on mac](http://www.chapter31.com/wp-content/uploads/2007/06/mac.jpg)
+![Fonts on mac](/images/uploads/2007/06/mac.jpg)
 
 Of course I can easily bump up the text size (apple +), but that makes the rest of the page unviewable!
 

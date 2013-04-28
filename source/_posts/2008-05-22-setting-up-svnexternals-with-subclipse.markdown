@@ -15,7 +15,7 @@ You may have a JavaScript validation framework which you re-use amongst many pro
 
 Using subclipse (in the Eclipse IDE) you can link a separate svn repository in the middle of your project by adding an _svn:externals_ property. Right click the parent directory you want to import the external repository into and choose "Team -> Set Property"
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/05/cfeclipse-svnproperties-281x300.png)](http://www.chapter31.com/wp-content/uploads/2008/05/cfeclipse-svnproperties.png)
+[![](/images/uploads/2008/05/cfeclipse-svnproperties-281x300.png)](/images/uploads/2008/05/cfeclipse-svnproperties.png)
 
 Once you load the properties dialog window you need to add the following into the property field:
 
@@ -29,9 +29,9 @@ Then in the property content box add the following:
 e.g. jquery-validation -r98 https://myhome.com/svn/repos/jquery-validation/trunk
 ```
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/05/screenshot-set-a-svn-property-300x233.png)](http://www.chapter31.com/wp-content/uploads/2008/05/screenshot-set-a-svn-property.png)
+[![](/images/uploads/2008/05/screenshot-set-a-svn-property-300x233.png)](/images/uploads/2008/05/screenshot-set-a-svn-property.png)
 
-In the above example a directory called "jquery-validation" will be created with the contents of the repository located at "https://myhome.com/svn/repos/jquery-validation/trunk". 
+In the above example a directory called "jquery-validation" will be created with the contents of the repository located at "https://myhome.com/svn/repos/jquery-validation/trunk".
 
 The "-r98" is the revision number of the external library you want to add. This is important because it means you can link to a snapshot of the library and not simply the trunk (which would mean you couldn't control the updates to the library).
 

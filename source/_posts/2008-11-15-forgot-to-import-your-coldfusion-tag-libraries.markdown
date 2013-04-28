@@ -32,6 +32,6 @@ While this tip is fantastic and easily flexible for use in any ColdFusion projec
 
 Here is a screen shot of the css in action, as you can see it's hard to miss your mistake!
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/11/cfimport_css-300x92.jpg)](http://www.chapter31.com/wp-content/uploads/2008/11/cfimport_css.jpg)
+[![](/images/uploads/2008/11/cfimport_css-300x92.jpg)](/images/uploads/2008/11/cfimport_css.jpg)
 
 Many thanks to Rob for the tip, here is the [link to his css](http://robrohan.com/farcrystuff/missingTag.css).

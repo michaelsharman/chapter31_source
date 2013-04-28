@@ -10,7 +10,7 @@ categories:
 - Farcry
 ---
 
-I spent a couple of hours on a FarCry plugin for twitter yesterday based off their official API. 
+I spent a couple of hours on a FarCry plugin for twitter yesterday based off their official API.
 
 ## What?
 This plugin basically wraps up the options that the offical twitter API gives you including:
@@ -28,13 +28,13 @@ Although the twitter API is super simple to implement, it's always handy to have
 Plus it makes it simple for non techy people to get going with the goodness of twitter.
 
 ## Where?
-The project is currently hosted at GitHub...where else? 
+The project is currently hosted at GitHub...where else?
 [farcrytwitter project page](https://github.com/michaelsharman/farcrytwitter)
 
 ## Requirements?
-FarCry 6+ (although I think it'll work on 5+ I haven't tested)  
-Railo 3.x / ColdFusion 8+  
+FarCry 6+ (although I think it'll work on 5+ I haven't tested)
+Railo 3.x / ColdFusion 8+
 MySQL / MSSQL (or whatever database your version of FarCry supports)
 
-![](http://www.chapter31.com/wp-content/uploads/2011/04/publishingrule.png)
-![](http://www.chapter31.com/wp-content/uploads/2011/04/widgetsample-150x150.png)
+![](/images/uploads/2011/04/publishingrule.png)
+![](/images/uploads/2011/04/widgetsample-150x150.png)

@@ -9,7 +9,7 @@ categories:
 - Life
 ---
 
-![Richard Marx](http://www.chapter31.com/wp-content/uploads/2006/09/bottom_r2_c2.thumbnail.jpg)
+![Richard Marx](/images/uploads/2006/09/bottom_r2_c2.thumbnail.jpg)
 
 So last night we went to see [Richard Marx](http://www.richardmarx.com) at the Capitol. Yeah...I know what you're thinking but that's ok, I'm not afraid to say that I'm a fan and have been for a long time!
 

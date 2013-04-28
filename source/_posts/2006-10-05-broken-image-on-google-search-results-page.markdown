@@ -19,7 +19,7 @@ I noticed this today on the google.com.au search results page; a nice little bro
 
 
 
-![Google broken image](http://www.chapter31.com/wp-content/uploads/2006/10/google.jpg)
+![Google broken image](/images/uploads/2006/10/google.jpg)
 
 
 

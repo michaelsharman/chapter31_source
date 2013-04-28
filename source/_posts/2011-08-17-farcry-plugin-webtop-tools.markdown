@@ -22,34 +22,34 @@ The Content Object Meta assists in finding information about content of any "typ
 
 For example; if I wanted to know everything in FarCry that had a label LIKE 'credential' (wildcards are automatically added to your search term) I might get results like the following:
 
-![](http://www.chapter31.com/wp-content/uploads/2011/08/contenttitle.png)
+![](/images/uploads/2011/08/contenttitle.png)
 
 From that initial resultset, if I clicked on an objectid for dmNavigation:
 
-![](http://www.chapter31.com/wp-content/uploads/2011/08/objectid.png)
+![](/images/uploads/2011/08/objectid.png)
 
 Or if I clicked on an objectid for dmHTML:
 
-![](http://www.chapter31.com/wp-content/uploads/2011/08/objectid_dmhtml.png)
+![](/images/uploads/2011/08/objectid_dmhtml.png)
 
 Note that there is a collapsed cfdump that you can expand for further info.
 
 ## Requirements
 
-Railo 3.2+ or ColdFusion 7+  
-FarCry 6+  
-MySQL 5+  
+Railo 3.2+ or ColdFusion 7+
+FarCry 6+
+MySQL 5+
 
 ## Installation
 
 "Official" notes on installing FarCry plugins can be found here: [https://farcry.jira.com/wiki/pages/viewpage.action?pageId=12943398](https://farcry.jira.com/wiki/pages/viewpage.action?pageId=12943398)
 
 It's pretty simple though:
-	
+
 * add the "lcwebtoptools" directory from git into /farcry/plugins/
 * add "lcwebtoptools" to THIS.plugins in farcryConstructor.cfm (in your project webroot)
 
-e.g. 
+e.g.
 	<cfset THIS.plugins = "farcrycms,lcwebtoptools">
 
 Restart your app, that's it. No coapi changes need to be made. To access the current tools, go to the "Admin" tab and choose "Webtop Tools" from the drop down.

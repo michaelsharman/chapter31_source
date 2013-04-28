@@ -11,7 +11,7 @@ categories:
 
 Currently I'm building an app which will accept metadata from different sources, translate that into an API to dynamically build an HTML form from. Everything is going just dandy until my page stopped validating (I use tidy to validate my markup) when I got the following warning:
 
-![id_warning.gif](http://www.chapter31.com/wp-content/uploads/2006/11/id_warning.gif)
+![id_warning.gif](/images/uploads/2006/11/id_warning.gif)
 
 After some digging I discovered that the value of the 'id' attribute in not simply a string which you can put anything into. I found this on w3c:
 

@@ -23,7 +23,7 @@ Also reading [the docs](http://livedocs.adobe.com/coldfusion/8/htmldocs/help.htm
 
 Below are some examples of setting this up either in Administrator or in code, note the port number is **not 25** as is the default, instead you must use port 465:
 
-![ColdFusion Administrator - mail](http://www.chapter31.com/wp-content/uploads/2007/11/mail.png)
+![ColdFusion Administrator - mail](/images/uploads/2007/11/mail.png)
 
 And in CFML:
 

@@ -56,4 +56,4 @@ I've attached my full Utility.cfc which contains the following methods:
 * param
 * sleep
 
-[Click here to download Utility.cfc](http://www.chapter31.com/wp-content/uploads/2006/11/utility.zip)
+[Click here to download Utility.cfc](/images/uploads/2006/11/utility.zip)

@@ -15,14 +15,14 @@ You can now check the "regular expressions" checkbox while doing a file search i
 
 Eg replace line breaks with commas:
 
-![](http://www.chapter31.com/wp-content/uploads/2012/03/Screen-shot-2012-03-17-at-1.54.41-PM.png)
+![](/images/uploads/2012/03/Screen-shot-2012-03-17-at-1.54.41-PM.png)
 
 Other interesting and useful options are:
-	
-* \t - tabs	
-* \n - newline	
-* \R - platform indepedent line delimiter	
-* \r - carriage return	
+
+* \t - tabs
+* \n - newline
+* \R - platform indepedent line delimiter
+* \r - carriage return
 * ^ - line start
 
 This was introduced in Eclipse 3.4.x, [read more here](http://archive.eclipse.org/eclipse/downloads/drops/R-3.4-200806172000/whatsnew3.4/eclipse-news-part1.html).

@@ -25,7 +25,7 @@ ORDER BY sy.title
 
 Looks pretty standard, with something like that I'd get the following:
 
-![](http://www.chapter31.com/wp-content/uploads/2012/07/Screen-shot-2012-07-06-at-6.50.45-AM.png)
+![](/images/uploads/2012/07/Screen-shot-2012-07-06-at-6.50.45-AM.png)
 
 But now the application has to handle the grouping, not a huge problem by any means. Also don't get me wrong...this is where you normally would want to do this (sql is a data retrieval language and in most instances shouldn't be handling presentation aspects). However, if I just wanted to display a list of stages (categories), I can use [group_concat](http://dev.mysql.com/doc/refman/5.0/en/group-by-functions.html#function_group-concat) to make life a litte easier.
 
@@ -41,7 +41,7 @@ ORDER BY sy.title
 
 This gives me:
 
-![](http://www.chapter31.com/wp-content/uploads/2012/07/Screen-shot-2012-07-06-at-6.53.14-AM.png)
+![](/images/uploads/2012/07/Screen-shot-2012-07-06-at-6.53.14-AM.png)
 
 Pretty cool eh?
 
@@ -57,6 +57,6 @@ GROUP BY sy.title
 ORDER BY sy.title
 ```
 
-![](http://www.chapter31.com/wp-content/uploads/2012/07/Screen-shot-2012-07-06-at-7.12.02-AM.png)
+![](/images/uploads/2012/07/Screen-shot-2012-07-06-at-7.12.02-AM.png)
 
 [See the group_concat page](http://dev.mysql.com/doc/refman/5.0/en/group-by-functions.html#function_group-concat) for more details.

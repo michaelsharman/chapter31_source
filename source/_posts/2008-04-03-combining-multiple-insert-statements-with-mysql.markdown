@@ -16,11 +16,11 @@ Often you might have the need to perform multiple INSERT's against a database fr
 
 Let's say you had a form allowing a user to add their own web bookmarks (think a simple [del.icio.us](http://del.icio.us/)). To make things easier for the user they can add multiple 'bookmarks' at a time.
 
-[![multiple_entry_form](http://www.chapter31.com/wp-content/uploads/2008/04/multiple_entry_form-300x101.jpg)](http://www.chapter31.com/wp-content/uploads/2008/04/multiple_entry_form.jpg)
+[![multiple_entry_form](/images/uploads/2008/04/multiple_entry_form-300x101.jpg)](/images/uploads/2008/04/multiple_entry_form.jpg)
 
 For the sake of our argument when a user submits this form we transform the data into an array of structures (but it can really be anything you can loop over) so that each bookmark _row_ from the form is an element of the array.
 
-[![Structure](http://www.chapter31.com/wp-content/uploads/2008/04/multi_insert_struct.gif)](http://www.chapter31.com/wp-content/uploads/2008/04/multi_insert_struct.gif)
+[![Structure](/images/uploads/2008/04/multi_insert_struct.gif)](/images/uploads/2008/04/multi_insert_struct.gif)
 
 Normally you might INSERT the data with something like the following:
 
@@ -35,11 +35,11 @@ Normally you might INSERT the data with something like the following:
 				, Description
 			)
 		VALUES
-			(						
+			(
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#createUUID()#" />
 				, <cfqueryparam cfsqltype="cf_sql_varchar" value="#aBookmarks[i]['URL']#" />
 				, <cfqueryparam cfsqltype="cf_sql_varchar" value="#aBookmarks[i]['Title']#" />
-				, <cfqueryparam cfsqltype="cf_sql_varchar" value="#aBookmarks[i]['Description']#" />		
+				, <cfqueryparam cfsqltype="cf_sql_varchar" value="#aBookmarks[i]['Description']#" />
 			)
 	</cfquery>
 </cfloop>
@@ -60,12 +60,12 @@ Fortunately MySQL gives you a super cool way of handling these types of [INSERT]
 		)
 	VALUES
 		<cfloop from="1" to="#arrayLen(aBookmarks)#" index="i">
-			(						
+			(
 				<cfqueryparam cfsqltype="cf_sql_varchar" value="#createUUID()#" />
 				, <cfqueryparam cfsqltype="cf_sql_varchar" value="#aBookmarks[i]['URL']#" />
 				, <cfqueryparam cfsqltype="cf_sql_varchar" value="#aBookmarks[i]['Title']#" />
-				, <cfqueryparam cfsqltype="cf_sql_varchar" value="#aBookmarks[i]['Description']#" />		
-			)<cfif i LT arrayLen(aBookmarks)>,</cfif>				
+				, <cfqueryparam cfsqltype="cf_sql_varchar" value="#aBookmarks[i]['Description']#" />
+			)<cfif i LT arrayLen(aBookmarks)>,</cfif>
 		</cfloop>
 </cfquery>
 ```

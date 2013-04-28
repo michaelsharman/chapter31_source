@@ -14,7 +14,7 @@ This is cool, a [little Firefox addon](http://lifehacker.com/software/exclusive-
 It basically combines several Greasemonkey scripts together into a single package.
 
 Features include:
-	
+
   * smartly enlarges videos for better viewing
   * hides user comments
   * declutters the page
@@ -28,4 +28,4 @@ And choose 'preferences' for the "Better YouTube" extension.
 
 Some nice options there, I added a screenshot below of the "Theater View"
 
-[![Better YouTube Firefox Extension](http://www.chapter31.com/wp-content/uploads/2008/03/screenshot-youtube.thumbnail.jpg)](http://www.chapter31.com/wp-content/uploads/2008/03/screenshot-youtube.jpg)
+[![Better YouTube Firefox Extension](/images/uploads/2008/03/screenshot-youtube.thumbnail.jpg)](/images/uploads/2008/03/screenshot-youtube.jpg)

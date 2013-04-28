@@ -12,7 +12,7 @@ categories:
 
 
 
-![Dashboard Confessional](http://www.chapter31.com/wp-content/uploads/2006/09/6f6eeb2d165f4c7eae2ecfa494f3fd57.thumbnail.jpg)
+![Dashboard Confessional](/images/uploads/2006/09/6f6eeb2d165f4c7eae2ecfa494f3fd57.thumbnail.jpg)
 
 
 

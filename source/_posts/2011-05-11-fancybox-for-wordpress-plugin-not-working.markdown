@@ -18,4 +18,4 @@ Annoyingly if you set the option to "Image File", save and exit...the next time 
 
 Hope this helps some people :)
 
-![wordpress gallery settings](http://www.chapter31.com/wp-content/uploads/2011/05/gallery_settings.jpg)
+![wordpress gallery settings](/images/uploads/2011/05/gallery_settings.jpg)

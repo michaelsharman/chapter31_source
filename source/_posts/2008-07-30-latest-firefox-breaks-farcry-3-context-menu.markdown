@@ -18,7 +18,7 @@ If the following describes your environment, this a reminder to upgrade and use 
 
 The reason? Well the new upgrade of Firefox 3 has broken the webtop context menu. You can see the menu, but none of the options work.
 
-![](http://www.chapter31.com/wp-content/uploads/2008/07/context_menu.png)
+![](/images/uploads/2008/07/context_menu.png)
 
 Although you could use [Camino](http://caminobrowser.org/) which works well (and Safari isn't fully suported on FarCry 3), you really should be upgrading to the brand spanking new [FarCry 5](http://farcrycms.org/) :)
 

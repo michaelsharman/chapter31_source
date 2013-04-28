@@ -25,7 +25,7 @@ Just how popular is Apache? Have a look at Netcrafts [Web Server Survey](http://
 
 
 
-![Netcraft web server survey September 2006](http://www.chapter31.com/wp-content/uploads/2006/09/overallc.thumbnail.gif)
+![Netcraft web server survey September 2006](/images/uploads/2006/09/overallc.thumbnail.gif)
 
 
 

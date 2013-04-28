@@ -20,15 +20,15 @@ Anyway, I wrote a small test script to introspect the FarCry codebase for types 
 
 We already have a custom area under the "Admin" tab in the webtop, I added the file there.
 
-![webtop](http://www.chapter31.com/wp-content/uploads/2011/01/webtop.png)
+![webtop](/images/uploads/2011/01/webtop.png)
 
-If you're interesting in having a look, [download diff.cfm](http://www.chapter31.com/wp-content/uploads/2011/01/diff.cfm) and put inside your projects "customAdmin" folder and link to it from customadmin.xml e.g.
+If you're interesting in having a look, [download diff.cfm](/images/uploads/2011/01/diff.cfm) and put inside your projects "customAdmin" folder and link to it from customadmin.xml e.g.
 
 ``` javascript
 	<section mergeType="merge" id="admin" sequence="4100" permission="MainNavAdminTab" label="Admin" icon="config" description="administration/utility tasks">
 		<subsection id="learnosity" sequence="10000" label="Table Name Check" permission="AdminGeneralTab">
 			<menu sequence="10" id="intranetmenu" label="Utility Tasks" labelType="value">
-				<menuitem id="diff" sequence="1" label="FarCry/MySQL Diff" link="/admin/customadmin.cfm?module=diff.cfm" />				
+				<menuitem id="diff" sequence="1" label="FarCry/MySQL Diff" link="/admin/customadmin.cfm?module=diff.cfm" />
 			</menu>
 		</subsection>
 	</section>

@@ -12,7 +12,7 @@ categories:
 
 Today I was looking at [returning random records purely from MySQL](http://www.chapter31.com/2008/03/21/returning-random-results-with-mysql/) but was limited with large tables in getting all random results (not just a random starting seed).
 
-I tried a ColdFusion solution instead. 
+I tried a ColdFusion solution instead.
 
 First get all the primary keys from the table in question and create an array of the values (this works for numeric and non-numeric keys):
 
@@ -24,7 +24,7 @@ First get all the primary keys from the table in question and create an array of
 
 <cfset aIds = listToArray(valueList(qGetPKs.Id)) />
 ```
-	
+
 Next create a list of random primary keys from our array:
 
 ``` javascript
@@ -42,7 +42,7 @@ Finally we pass the list of random primary keys to the WHERE clause via cfqueryp
 
 ``` javascript
 <cfquery name="q" datasource="dsn">
-	SELECT 		* 
+	SELECT 		*
 	FROM 		myTable
 	WHERE		Id IN(<cfqueryparam cfsqltype="cf_sql_varchar" list="true" value="#ids#">)
 </cfquery>
@@ -52,10 +52,10 @@ Depending on your situation you can cache the array of primary keys (in session 
 
 Without caching the list array (and using a table with 56,000 rows) I got the following times from the entire block of code (including getting the Id list):
 
-![cftimer](http://www.chapter31.com/wp-content/uploads/2008/03/cftimer.jpg)
+![cftimer](/images/uploads/2008/03/cftimer.jpg)
 
 When I cached the array in application scope, cftimer was giving me 0ms :)
 
-![cftimer2](http://www.chapter31.com/wp-content/uploads/2008/03/cftimer_2.jpg)
+![cftimer2](/images/uploads/2008/03/cftimer_2.jpg)
 
 This was of course on my local machine. Although these results could be more accurate in a proper environment, they do show another solution in retrieving random query results.

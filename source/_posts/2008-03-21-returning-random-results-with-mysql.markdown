@@ -34,7 +34,7 @@ Another often used solution (where the primary key is an auto-incrementing integ
 SELECT	min(Id) as minId, max(Id) as maxId
 FROM	Users
 
-SELECT 	* 
+SELECT 	*
 FROM	Users
 WHERE 	Id >= #randRange(minId, maxId)#
 LIMIT 	0,	1
@@ -51,7 +51,7 @@ SELECT	floor(rand() * count(*)) AS theOffset
 FROM	Users
 
 //Then use that random 'seed'
-SELECT 	* 
+SELECT 	*
 FROM	Users
 LIMIT 	#theOffset#, 1
 ```
@@ -68,21 +68,21 @@ First with 56,000 rows:
 
 Solution 1 - average 4021ms
 
-![mysql_solution1](http://www.chapter31.com/wp-content/uploads/2008/03/solution1.jpg)
+![mysql_solution1](/images/uploads/2008/03/solution1.jpg)
 
 Solution 3 - average 32.1ms
 
-![mysql_solution3](http://www.chapter31.com/wp-content/uploads/2008/03/solution3.jpg)
+![mysql_solution3](/images/uploads/2008/03/solution3.jpg)
 
 Second with only 150 rows:
 
 Solution 1 - average 13.25ms
 
-![solution1_150_2](http://www.chapter31.com/wp-content/uploads/2008/03/solution1_1501.jpg)
+![solution1_150_2](/images/uploads/2008/03/solution1_1501.jpg)
 
 Solution 3 - average 1.55ms
 
-![solution3_150](http://www.chapter31.com/wp-content/uploads/2008/03/solution3_150.jpg)
+![solution3_150](/images/uploads/2008/03/solution3_150.jpg)
 
 So when you only want 1 random row returned the best bet by far is solution 3. I ran the same test returning 10 rows and got very similar results for all 4 tests, you just need to watch for the case where the OFFSET is too high (check that #recordCount# - #theOffset# > 10 etc) and that only the 'seed' row is random.
 

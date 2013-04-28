@@ -31,4 +31,4 @@ Rss feeds and search are available for the following content providers:
 
 I've been using mooFlair for a while now and it's fantastic. Check it out, there's even an [online demo](http://mooflair.com/demo/index.html) to try :)
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/09/screenshotnew.jpg)](http://mooflair.com/)
+[![](/images/uploads/2008/09/screenshotnew.jpg)](http://mooflair.com/)

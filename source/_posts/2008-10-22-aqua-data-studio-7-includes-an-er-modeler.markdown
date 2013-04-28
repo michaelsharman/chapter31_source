@@ -24,4 +24,4 @@ This will start filling a huge hole and help to close the gap in comparison to o
 
 ADS is a comercial product so hopefully diagramming will be added to the free MySQL Administrator soon.
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/10/adsmodeler-300x225.jpg)](http://www.chapter31.com/wp-content/uploads/2008/10/adsmodeler.jpg)
+[![](/images/uploads/2008/10/adsmodeler-300x225.jpg)](/images/uploads/2008/10/adsmodeler.jpg)

@@ -10,8 +10,8 @@ categories:
 ---
 
 > "Along the way Alexa has developed an installed based of millions of toolbars, one of the largest Web crawls and an infrastructure to process and serve massive amounts of data."
-> 
-> 
+>
+>
 
 
 
@@ -50,7 +50,7 @@ At the moment Alexa tells us that [Ray Camden](http://ray.camdenfamily.com/) is 
 
 
 
-[![ray.camdenfamily.com screen grab from Alexa](http://www.chapter31.com/wp-content/uploads/2006/11/ray.thumbnail.gif)](http://www.chapter31.com/wp-content/uploads/2006/11/ray.gif)
+[![ray.camdenfamily.com screen grab from Alexa](/images/uploads/2006/11/ray.thumbnail.gif)](/images/uploads/2006/11/ray.gif)
 
 
 

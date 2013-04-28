@@ -28,7 +28,7 @@ public string function getFullPageURI(required string pagename)
 
 And the link source:
 
-![](http://www.chapter31.com/wp-content/uploads/2012/09/Screen-shot-2012-09-20-at-5.24.32-PM.png)
+![](/images/uploads/2012/09/Screen-shot-2012-09-20-at-5.24.32-PM.png)
 
 Hmm, could that suck any more? Now what happens if I add output="false" (not particularly intuitive) to the end of the function, like this:
 
@@ -43,7 +43,7 @@ public string function getFullPageURI(required string pagename) output="false"
 
 Now I get:
 
-![](http://www.chapter31.com/wp-content/uploads/2012/09/Screen-shot-2012-09-20-at-5.25.54-PM.png)
+![](/images/uploads/2012/09/Screen-shot-2012-09-20-at-5.25.54-PM.png)
 
 Sorry but that's just insane. cfscript should behave like cfsilent all the time unless you specify a writeOutput();
 

@@ -21,6 +21,6 @@ Problem with this is that the god awful "voice over" starts yapping away. Well i
 
 Breathe a sigh of relief :)
 
-![mac system preferences](http://www.chapter31.com/wp-content/uploads/2012/03/sys_prefs.jpg)
+![mac system preferences](/images/uploads/2012/03/sys_prefs.jpg)
 
-![Mac voice over off](http://www.chapter31.com/wp-content/uploads/2012/03/voiceover_off.jpg)
+![Mac voice over off](/images/uploads/2012/03/voiceover_off.jpg)

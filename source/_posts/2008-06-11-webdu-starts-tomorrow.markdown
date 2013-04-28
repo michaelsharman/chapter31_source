@@ -19,6 +19,6 @@ I hope to see (and meet) some new faces and hopefully not be too worn out on Fri
 
 See you all tomorrow!
 
-![](http://www.chapter31.com/wp-content/uploads/2008/06/webdu-logo-2008.gif)
+![](/images/uploads/2008/06/webdu-logo-2008.gif)
 
 

@@ -69,48 +69,48 @@ Follow the following steps:
   6. Create a '/farcry/projects/myproject' ColdFusion mapping
     * mapping: /farcry/projects/myproject
     * path: /vhosts/myproject
- 
+
 *Note: You could get away with having a single ColdFusion mapping of /farcry/projects if all your projects existed under the same directory (i.e. /vhosts), otherwise create a projects mapping per project (e.g. /farcry/projects/myproject). I find it's a good idea anyway to have a separate mapping per project.
 
 ### Installation - Installing
 
-To install FarCry we visit the '/webtop/install' sub-directory off your project URL, e.g. http://myproject.local/webtop/install/. 
+To install FarCry we visit the '/webtop/install' sub-directory off your project URL, e.g. http://myproject.local/webtop/install/.
 
 You may be wondering how this works as we haven't setup our physical project diretory yet, it works because of the web mapping (alias/virtual directory) of '/webtop' which points directly to /farcry_5.0.2/core/webtop/install.
 
 Ok we're almost there! If everything is going well so far and the stars have aligned you'll see the FarCry installation screen.
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/11/screen-1-270x300.png)](http://www.chapter31.com/wp-content/uploads/2008/11/screen-1.png)
+[![](/images/uploads/2008/11/screen-1-270x300.png)](/images/uploads/2008/11/screen-1.png)
 
 The important value on this page is "Project Folder Name". This should be "myproject" (i.e. what will become the physical name of your project directory, the same name as we added in our vhost).
 
 The 2nd step allows you to enter your ColdFusion datasource and database type:
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/11/screen-2-300x196.png)](http://www.chapter31.com/wp-content/uploads/2008/11/screen-2.png)
+[![](/images/uploads/2008/11/screen-2-300x196.png)](/images/uploads/2008/11/screen-2.png)
 
 On the 3rd step you must choose a skeleton to install from. Just use the default 'mollio':
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/11/screen-3-300x174.png)](http://www.chapter31.com/wp-content/uploads/2008/11/screen-3.png)
+[![](/images/uploads/2008/11/screen-3-300x174.png)](/images/uploads/2008/11/screen-3.png)
 
 The 4th step is for plugins, for most cases leave the default which is probably 'farcry' and 'farcry greybox':
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/11/screen-4-282x300.png)](http://www.chapter31.com/wp-content/uploads/2008/11/screen-4.png)
+[![](/images/uploads/2008/11/screen-4-282x300.png)](/images/uploads/2008/11/screen-4.png)
 
 The 5th step is important as the default is "Sub-Directory". You have to change this to the last option "Advanced Configuration":
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/11/screen-5-229x300.png)](http://www.chapter31.com/wp-content/uploads/2008/11/screen-5.png)
+[![](/images/uploads/2008/11/screen-5-229x300.png)](/images/uploads/2008/11/screen-5.png)
 
 Step 6 is a confirmation step, nothing to do here except "INSTALL NOW":
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/11/screen-6-189x300.png)](http://www.chapter31.com/wp-content/uploads/2008/11/screen-6.png)
+[![](/images/uploads/2008/11/screen-6-189x300.png)](/images/uploads/2008/11/screen-6.png)
 
 After hitting "INSTALL NOW" FarCry will go off and do its magic:
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/11/installing-300x100.png)](http://www.chapter31.com/wp-content/uploads/2008/11/installing.png)
+[![](/images/uploads/2008/11/installing-300x100.png)](/images/uploads/2008/11/installing.png)
 
-When the installation is complete and you can see the final screen FarCry will have successfully installed your project under the /libs/farcry_5.0.2/projects/myproject directory. 
+When the installation is complete and you can see the final screen FarCry will have successfully installed your project under the /libs/farcry_5.0.2/projects/myproject directory.
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/11/complete-300x265.png)](http://www.chapter31.com/wp-content/uploads/2008/11/complete.png)
+[![](/images/uploads/2008/11/complete-300x265.png)](/images/uploads/2008/11/complete.png)
 
 ****Important**** BEFORE you click the "VIEW SITE" or "LOGIN TO FARCY WEBTOP" buttons you must _move the project directory_ to where you've specified in your vhost (i.e. move 'myproject' from 'farcry_5.0.2/projects/myproject' to '/vhosts/myproject').
 

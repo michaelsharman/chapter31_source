@@ -25,7 +25,7 @@ _**Note: Although the information below is Mac specific, I'm sure it is easily a
 Essentially all you need is a thumbdrive (or any external harddive you may have lying around) which is big enough to hold your codebase. Likely your codebase will be under 50MB so I doubt space will be an issue. Thumbdrives are so cheap they literally give them away in cereal boxes, so you shouldn't have a problem finding one.
 
 Now you need to format the drive to be case sensitive using Mac's "Disk Utility". Remember that formatting the drive will completely wipe any existing data. Make sure you backup any data you wish to keep on this volume! Complete the following steps:
-	
+
   * Connect your thumbdrive to your system
   * Open "Disk Utility"
   * Select the volume (thumbdrive) you want to format from the list on the left hand side
@@ -33,13 +33,13 @@ Now you need to format the drive to be case sensitive using Mac's "Disk Utility"
   * Enter a name for your volume (this can be anything, I named mine "farcry5" because that was the codebase I was testing
   * Click "Erase"
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/12/diskutil_complete-300x260.png)](http://www.chapter31.com/wp-content/uploads/2008/12/diskutil_complete.png)
+[![](/images/uploads/2008/12/diskutil_complete-300x260.png)](/images/uploads/2008/12/diskutil_complete.png)
 
 That's it, in just a moment you'll have a case-sensitive thumbdrive you can use to test any and all codebases on!
 
 All you need to do now is setup a new vhost (or change an existing one) in Apache to read files from your thumbdrive. The following is what you can do to have a local site called _farcry5.local_:
 
-	
+
   * Copy/move the project codebase to your thumbdrive
   * Make an entry in your hosts file for _farcry5.local_
   * Created a new vhost in Apache with the "DocumentRoot" pointing to your thumbdrive (obviously this means that the site will only work when the drive is attached!)

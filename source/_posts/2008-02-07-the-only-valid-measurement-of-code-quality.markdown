@@ -11,7 +11,7 @@ categories:
 
 A friend of mine [Don](http://www.daemon.com.au/) sent me this yesterday:
 
-![WTF Code Quality](http://www.chapter31.com/wp-content/uploads/2008/02/wtfm.jpg)
+![WTF Code Quality](/images/uploads/2008/02/wtfm.jpg)
 
 Gold!
 

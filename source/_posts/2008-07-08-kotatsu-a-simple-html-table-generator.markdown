@@ -18,4 +18,4 @@ About the only other thing you can do (apart from rows and columns) is add a css
 
 A basic tool which you might find useful, but would be better with some additions for customising like adding table id's or th's etc
 
-![](http://www.chapter31.com/wp-content/uploads/2008/07/kotsatsu.png)
+![](/images/uploads/2008/07/kotsatsu.png)

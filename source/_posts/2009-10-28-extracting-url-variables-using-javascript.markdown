@@ -15,7 +15,7 @@ I [came across a post](http://techfeed.net/blog/index.cfm/2007/2/6/JavaScript-UR
 
 So if you had a URL like http://www.mysite.com/?s=the first param&email;=someone@me.com you could get the following:
 
-![jsdump](http://www.chapter31.com/wp-content/uploads/2009/10/jsdump.gif)
+![jsdump](/images/uploads/2009/10/jsdump.gif)
 
 Here is the javascript function (note that we wrap all functions into objects to avoid any naming collisions, hence the "Learnosity." convention):
 
@@ -40,7 +40,7 @@ Learnosity.getURL = function()
 }
 ```
 
-To access the "email" key in the URL, simply call 
+To access the "email" key in the URL, simply call
 
 ``` javascript
 Learnosity.getURL().email;

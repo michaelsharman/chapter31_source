@@ -13,7 +13,7 @@ Looking to escape from a date or to get out of any sticky social situation?
 
 Try this free online automated callback service called [getmooh](http://www.getmooh.com/).
 
-[![](http://www.chapter31.com/wp-content/uploads/2008/08/getmooh.png)](http://www.getmooh.com/)
+[![](/images/uploads/2008/08/getmooh.png)](http://www.getmooh.com/)
 
 
 

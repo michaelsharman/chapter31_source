@@ -12,7 +12,7 @@ categories:
 
 I ran into an issue today while working on a FarCry project, basically when I opened up the "Related Content" popup from the WYSIWYG editor it was blank. Nothing. Not the usual tabs for Images, File, Flash etc.
 
-![](http://www.chapter31.com/wp-content/uploads/2011/07/relatedcontent.png)
+![](/images/uploads/2011/07/relatedcontent.png)
 
 The Railo logs were empty but Apache was throwing a strange error which I hadn't seen before: _"Couldn't initialize from remote server, JRun server(s) probably down."_. Funny as I'm not even using JRun!
 
@@ -35,4 +35,4 @@ Here is the config we now use, note we now pass requests for cfm and cfc to Rail
 
 And of course now the related content popup works :)
 
-![](http://www.chapter31.com/wp-content/uploads/2011/07/relatedcontent2.png)
+![](/images/uploads/2011/07/relatedcontent2.png)
