@@ -1,0 +1,42 @@
+---
+comments: true
+date: 2006-07-17 08:22:23
+layout: post
+slug: '33'
+title: Semantic named anchors
+wordpress_id: 33
+categories:
+- (X)HTML
+---
+
+[bitesizestandards](http://bitesizestandards.com/) have a nice article on 'semantic anchors' which are used to link to different areas of the current page you are viewing.
+
+The usual way we all do this is with a named anchor as follows, 'Name' a content area on your page:
+
+```
+<a name="myContent"></a>
+```
+
+Add the link to that content area
+
+```
+<a href="#myContent">Go to myContent</a>
+```
+
+The problem is that this isn't semantic and it's not ideal to have empty &lt;a href&gt; elements on your page (&lt;a name=""&gt;). A nice way around this? Use id's instead :)
+
+So now you can do this instead:
+
+```
+<div id="myContent">
+...
+</div>
+```
+
+Much nicer, cleaner and semantic as well! You can link to your content the normal way:
+    
+```
+<a href="#myContent">Go to myContent</a>
+```
+
+[View the full article here](http://bitesizestandards.com/bites/cleaning-up-code-with-semantic-anchors)

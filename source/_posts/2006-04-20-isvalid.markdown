@@ -1,0 +1,66 @@
+---
+comments: true
+date: 2006-04-20 03:28:30
+layout: post
+slug: isvalid
+title: isValid()
+wordpress_id: 20
+categories:
+- ColdFusion
+---
+
+New to ColdFusion MX7 the isValid() function tests whether a value meets a validation or data type rule and returns True if the value conforms to the rule; False, otherwise.
+
+Function syntax
+
+``` javascript
+isValid(type, value)
+isValid("range", value, min, max)
+isValid("regex" or "regular_expression", value, pattern)
+```
+
+Example:
+
+``` javascript
+<cfif IsValid("integer", url.value)>
+   Valid integer!
+<cfelse>
+   Invalid Integer!
+</cfif>
+
+<cfif IsValid("range", url.value, 1, 100)>
+   Value is between 1 and 100
+<cfelse>
+   Value is not between 1 and 100
+</cfif>
+
+<cfif IsValid("regex", url.value, "[A-Z][a-z]+")>
+   Word starts with a capital letter
+<cfelse>
+   Word does not match pattern.
+</cfif>
+```
+
+There are a lot of pre-existing functions that can already do a lot of what isValid() offers like:
+
+* isNumeric()
+* isBoolean()
+* isArray()
+* isQuery()
+* isStruct
+
+But with isValid() you can do those as well as things like:
+
+* creditcard (mod10 checks for credit cards)
+* email
+* eurodate
+* guid
+* range
+* regex
+* url
+* usdate
+* variablename (a string formatted according to ColdFusion variable naming conventions)
+
+There are also a few US specific test conditions as well like “ssn” and “telephone” etc.
+
+All in all this is an extremely versatile tag to use for validation and will save you oodles of time!

@@ -3,9 +3,9 @@
 # ----------------------- #
 
 url: http://michaelsharman.github.io/chapter31
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: chapter31 &raquo;
+#subtitle: A blogging framework for hackers.
+author: Michael Sharman
 simple_search: http://google.com/search
 description:
 
@@ -32,12 +32,12 @@ source: source
 destination: public
 plugins: plugins
 code_dir: downloads/code
-category_dir: /categories
+category_dir: categories
 markdown: rdiscount
 pygments: false # default python pygments have been replaced by pygments.rb
 
 paginate: 10          # Posts per page on the blog index
-pagination_dir: /  # Directory base for pagination URLs eg. /blog/page/2/
+pagination_dir:   # Directory base for pagination URLs eg. /blog/page/2/
 recent_posts: 5       # Posts in the sidebar Recent Posts section
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
 
@@ -58,14 +58,14 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user:
-github_repo_count: 0
+github_user: michaelsharman
+github_repo_count: 4
 github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
-twitter_tweet_button: true
+twitter_user: michaelsharman
+twitter_widget_id: 328306943087214592
 
 # Google +1
 google_plus_one: false
@@ -85,11 +85,11 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
-disqus_show_comment_count: false
+disqus_short_name: chapter31
+disqus_show_comment_count: true
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-306772-2
 
 # Facebook Like
 facebook_like: false
