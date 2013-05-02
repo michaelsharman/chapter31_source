@@ -6,7 +6,7 @@ slug: adding-a-global-ignore-file-for-git
 title: Adding a global ignore file for git
 wordpress_id: 1366
 categories:
-- ColdFusion
+- git
 ---
 
 Quick setup of ignore files for Git. You can of course set these up per repo, but that gets a little old. Instead you can setup a single ignore file and link to it so that every repo refers to it.
