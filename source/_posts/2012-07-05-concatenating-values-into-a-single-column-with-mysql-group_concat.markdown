@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2012-07-05 21:15:31
+date: 2012-07-05 21:15
 layout: post
 slug: concatenating-values-into-a-single-column-with-mysql-group_concat
-title: Concatenating values into a single column with MySQL group_concat
+title: "Concatenating values into a single column with MySQL group_concat"
 wordpress_id: 1126
 categories:
 - Databases

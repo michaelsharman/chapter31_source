@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2008-10-27 23:21:49
+date: 2008-10-27 23:21
 layout: post
 slug: fun-with-reserved-words-in-mysql-5
-title: Fun with reserved words in MySQL 5
+title: "Fun with reserved words in MySQL 5"
 wordpress_id: 476
 categories:
 - Databases
@@ -16,12 +16,12 @@ Today I needed to change an existing SQL query from a "SELECT *" to explicitly d
 The query (after modifications) was as follows:
 
 ``` javascript
-SELECT 
+SELECT
 	id
 	, date_format(dt_start, "%d/%m/%Y") as dt_start
 	, date_format(dt_end, "%d/%m/%Y") as dt_end
 	, repeat
-FROM 
+FROM
 	smsschedule
 ```
 
@@ -37,7 +37,7 @@ The reason is that "repeat" is a [MySQL reserved word](http://dev.mysql.com/doc/
 
 This was sent from ColdFusion but I also checked directly against the database (MySQL query browser) and had the same result.
 
-Might be best to [check the reserved list](http://dev.mysql.com/doc/mysqld-version-reference/en/mysqld-version-reference-reservedwords-5-0.html), most are obvious but a few could catch you out if you're not aware of them. 
+Might be best to [check the reserved list](http://dev.mysql.com/doc/mysqld-version-reference/en/mysqld-version-reference-reservedwords-5-0.html), most are obvious but a few could catch you out if you're not aware of them.
 
 Also interesting to note is that the table in question contained 2 column names which I thought would have failed. Those being "hour" and "minute".
 

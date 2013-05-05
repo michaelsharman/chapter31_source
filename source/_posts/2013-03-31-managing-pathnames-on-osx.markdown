@@ -3,7 +3,8 @@ layout: post
 title: "Managing pathnames on OSX"
 date: 2013-03-31 20:37
 comments: true
-categories: 
+published: false
+categories:
 ---
 You can set environment variables on your Mac in several different ways.
 

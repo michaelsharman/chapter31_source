@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2012-07-04 23:05:02
+date: 2012-07-04 23:05
 layout: post
 slug: jquery-tinymce-issue-with-attr
-title: jQuery tinyMCE issue with $.attr();
+title: "jQuery tinyMCE issue with $.attr();"
 wordpress_id: 1120
 categories:
 - Javascript

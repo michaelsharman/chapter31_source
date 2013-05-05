@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2011-05-29 23:00:27
+date: 2011-05-29 23:00
 layout: post
 slug: farcry-to-mura-migrating-data-from-farcry-to-mura-cms
-title: FarCry to Mura - migrating data from FarCry to Mura CMS
+title: "FarCry to Mura - migrating data from FarCry to Mura CMS"
 wordpress_id: 922
 categories:
 - ColdFusion

@@ -1,15 +1,15 @@
 ---
 comments: true
-date: 2006-11-06 23:03:57
+date: 2006-11-06 23:03
 layout: post
 slug: adobe-alternatives-to-coldfusion-server
-title: Alternatives to Adobe ColdFusion server?
+title: "Alternatives to Adobe ColdFusion server?"
 wordpress_id: 69
 categories:
 - ColdFusion
 ---
 
-For as long as I can remember there has been heated discussions regarding the cost of ColdFusion server (both Standard and Enterprise). Because that topic has been beaten to death I won't go into the particulars or the perceived pros and cons of the cost element with ColdFusion. 
+For as long as I can remember there has been heated discussions regarding the cost of ColdFusion server (both Standard and Enterprise). Because that topic has been beaten to death I won't go into the particulars or the perceived pros and cons of the cost element with ColdFusion.
 
 
 
@@ -45,8 +45,8 @@ From SmithProject:
 
 
 > "Smith is a freeware, cross-platform ColdFusion engine, written entirely in Java. Running on the top of Java Runtime Environment and Java Servlet Container, it can be virtually deployed on any operating system and work with any web server. Smith represents lightweight, yet reliable alternative to the existing ColdFusion servers. It supports most important CF features and already drives several large ColdFusion applications."
-> 
-> 
+>
+>
 
 
 
@@ -58,8 +58,8 @@ From IgniteFusion:
 
 
 > "IgniteFusion can run ColdFusion scripts without any third-party software. It can also run on any MS Windows platform and only needs 2 MBytes of diskspace."
-> 
-> 
+>
+>
 
 
 

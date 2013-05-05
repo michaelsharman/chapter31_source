@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2011-08-17 23:07:35
+date: 2011-08-17 23:07
 layout: post
 slug: customising-search-results-from-google-cse
-title: Customising search results from google cse
+title: "Customising search results from google cse"
 wordpress_id: 1005
 categories:
 - ColdFusion
@@ -14,7 +14,7 @@ Google custom search engine (cse) is pretty cool, in fact it's very cool. Within
 We use google cse for most of our sites but the other day we ran into a slight problem. The site in question has both public and private access, the public site is delivered over _http_ and has plenty of indexable content. This is what we use google cse for. The issue came about once a user was logged in, their session is maintained via _secure cookies over https_. But the problem was that if they performed a search, all the results that cse returned directed users to _http_ which effectively logged them out of the site (i.e. the user was no longer on https, as we don't send cookies over http no session existed).
 
 Even changing the site to index as _https_ inside the cse control panel didn't fix the issue, so we started to look for solutions to customise the results. Here are a few immediate options:
-	
+
 * Use the JSON API
 * Return the results as XML
 * Use custom templates
@@ -65,12 +65,12 @@ This is where google will look render the search results. A full example:
 	  return i < 1 ? visibleUrl : unescapedUrl.substring(i);}}">
 		<table>
 			<tr>
-				<td valign="top">					
-					<div class="gs-title">		
+				<td valign="top">
+					<div class="gs-title">
 						<a class="gs-title" data-attr="{href:unescapedUrl.replace('http://', 'https://'),target:target}" data-body="html(title.replace('Our site tite :: ', ''))"></a>
 					</div>
 					<div class="gs-snippet" data-body="html(content)"></div>
-					<div class="gs-visibleUrl gs-visibleUrl-long" data-body="longUrl()"></div>					
+					<div class="gs-visibleUrl gs-visibleUrl-long" data-body="longUrl()"></div>
 				</td>
 			</tr>
 		</table>

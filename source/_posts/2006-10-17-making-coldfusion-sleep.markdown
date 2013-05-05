@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2006-10-17 23:29:25
+date: 2006-10-17 23:29
 layout: post
 slug: making-coldfusion-sleep
-title: Making ColdFusion sleep
+title: "Making ColdFusion sleep"
 wordpress_id: 59
 categories:
 - ColdFusion
@@ -17,7 +17,7 @@ You can do achieve this in the following fashion:
 <cfset createObject('java', 'java.lang.Thread').sleep(5000) />
 ```
 
-The example above makes the server call "sleep" for 5 seconds. 
+The example above makes the server call "sleep" for 5 seconds.
 
 Ryan Duckworth states:
 

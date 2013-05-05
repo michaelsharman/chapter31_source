@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2012-08-13 21:24:05
+date: 2012-08-13 21:24
 layout: post
 slug: timing-synchronous-javascript-operations
-title: Timing synchronous JavaScript operations
+title: "Timing synchronous JavaScript operations"
 wordpress_id: 1158
 categories:
 - Javascript

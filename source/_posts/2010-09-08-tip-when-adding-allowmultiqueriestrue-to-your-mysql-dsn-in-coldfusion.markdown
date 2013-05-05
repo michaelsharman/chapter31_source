@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2010-09-08 22:47:46
+date: 2010-09-08 22:47
 layout: post
 slug: tip-when-adding-allowmultiqueriestrue-to-your-mysql-dsn-in-coldfusion
-title: Tip when adding "allowMultiQueries=true" to your MySQL DSN in ColdFusion
+title: 'Tip when adding "allowMultiQueries=true" to your MySQL DSN in ColdFusion'
 wordpress_id: 842
 categories:
 - ColdFusion

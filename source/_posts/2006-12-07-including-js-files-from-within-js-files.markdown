@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2006-12-07 23:05:24
+date: 2006-12-07 23:05
 layout: post
 slug: including-js-files-from-within-js-files
-title: Including js files from within js files
+title: "Including js files from within js files"
 wordpress_id: 87
 categories:
 - (X)HTML
@@ -28,7 +28,7 @@ I now have a master js file to add to the <head> section of my document:
 ```
 
 
-From within this master.js file I can 'include' any js files I want. 
+From within this master.js file I can 'include' any js files I want.
 
 
 

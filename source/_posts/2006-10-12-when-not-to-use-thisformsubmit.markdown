@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2006-10-12 23:51:13
+date: 2006-10-12 23:51
 layout: post
 slug: when-not-to-use-thisformsubmit
-title: When not to use this.form.submit()
+title: "When not to use this.form.submit()"
 wordpress_id: 56
 categories:
 - Javascript

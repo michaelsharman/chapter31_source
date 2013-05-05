@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2012-08-09 23:40:00
+date: 2012-08-09 23:40
 layout: post
 slug: setting-font-mime-types-in-apache
-title: Setting font MIME types in apache
+title: "Setting font MIME types in apache"
 wordpress_id: 1153
 categories:
 - Apache/IIS

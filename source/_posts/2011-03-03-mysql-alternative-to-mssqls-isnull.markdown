@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2011-03-03 23:22:53
+date: 2011-03-03 23:22
 layout: post
 slug: mysql-alternative-to-mssqls-isnull
-title: 'MySQL alternative to MSSQL''s isNull() '
+title: "MySQL alternative to MSSQL''s isNull()"
 wordpress_id: 892
 categories:
 - Databases

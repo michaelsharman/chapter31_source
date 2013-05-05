@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2012-09-26 22:04:33
+date: 2012-09-26 22:04
 layout: post
 slug: adding-a-mail-server-to-a-railo-instance
-title: Adding a mail server to a Railo instance
+title: "Adding a mail server to a Railo instance"
 wordpress_id: 1199
 categories:
 - ColdFusion
@@ -31,7 +31,7 @@ At the end of the day your config entry should look something like:
 ```
 <mail log="{railo-web}/logs/mail.log">
   <server port="25" smtp="127.0.0.1"/>
-</mail> 
+</mail>
 ```
 
 ## Update - January 2013
@@ -43,7 +43,7 @@ However, you can turn on _info_ logging as well to presumably track whenever mai
 ```
 <mail log-level="info" log="{railo-web}/logs/mail.log">
   <server port="25" smtp="127.0.0.1"/>
-</mail> 
+</mail>
 ```
 
 This is really handy for us as we disallow access to the Railo admin GUI.

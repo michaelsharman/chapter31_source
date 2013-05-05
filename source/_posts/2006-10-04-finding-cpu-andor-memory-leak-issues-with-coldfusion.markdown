@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2006-10-04 23:29:10
+date: 2006-10-04 23:29
 layout: post
 slug: finding-cpu-andor-memory-leak-issues-with-coldfusion
-title: High CPU and memory usage in ColdFusion
+title: "High CPU and memory usage in ColdFusion"
 wordpress_id: 47
 categories:
 - ColdFusion

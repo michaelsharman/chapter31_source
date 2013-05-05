@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2008-03-10 22:41:02
+date: 2008-03-10 22:41
 layout: post
 slug: showing-and-hiding-elements-with-css-and-javascript
-title: Showing and hiding elements with CSS and JavaScript
+title: "Showing and hiding elements with CSS and JavaScript"
 wordpress_id: 202
 categories:
 - Javascript
@@ -48,7 +48,7 @@ A user on the Prototype google group [sent me this link](http://tobielangel.com/
 The solution I used? Well something that I've been doing with Prototype and jQuery for a while (it's just that I wanted to know if there was a cleaner solution in this case) is the [dom:loaded observer function](http://www.chapter31.com/2008/01/23/taking-advantage-of-dom-on-ready-and-event-observers-using-prototypejs/) which will run as soon as the Dom is loaded (and before all 'assets' are loaded so it's super quick).
 
 Basically I use JavaScript to hide the element(s) I want hidden instead of CSS. This has the following benefits:
-	
+
   * Clean markup (no inline CSS)
   * Being able to modify the 'display' state from a user event
   * Works if the user has no JavaScript enabled (the elements will simply always be there which is better than them not!)
@@ -58,8 +58,8 @@ Example of the dom:loaded function:
 ``` javascript
 	Event.observe(document, 'dom:loaded', function() {
 		//uses Prototype to hide the element
-		$('myEl').hide();	
-		
+		$('myEl').hide();
+
 		//Alternative to the above example - attach a CSS class called 'hide' (with has {display:none;}) to the element
 		$('myEl').addClassName('hide');
 	});

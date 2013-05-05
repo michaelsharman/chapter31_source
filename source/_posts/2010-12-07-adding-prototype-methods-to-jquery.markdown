@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2010-12-07 22:41:50
+date: 2010-12-07 22:41
 layout: post
 slug: adding-prototype-methods-to-jquery
-title: Adding Prototype methods to jQuery
+title: "Adding Prototype methods to jQuery"
 wordpress_id: 874
 categories:
 - Javascript
@@ -22,7 +22,7 @@ function utilityInit()
 	String.prototype.endsWith = function (suffix) {
 	  return (this.substr(this.length - suffix.length) === suffix);
 	}
-	
+
 	String.prototype.startsWith = function(prefix) {
 	  return (this.substr(0, prefix.length) === prefix);
 	}

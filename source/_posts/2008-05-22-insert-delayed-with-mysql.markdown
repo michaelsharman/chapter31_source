@@ -1,15 +1,15 @@
 ---
 comments: true
-date: 2008-05-22 23:27:02
+date: 2008-05-22 23:27
 layout: post
 slug: insert-delayed-with-mysql
-title: INSERT DELAYED with MySQL
+title: "INSERT DELAYED with MySQL"
 wordpress_id: 235
 categories:
 - Databases
 ---
 
-Yet another tip for MySQL users, [INSERT DELAYED](http://dev.mysql.com/doc/refman/5.0/en/insert-delayed.html). 
+Yet another tip for MySQL users, [INSERT DELAYED](http://dev.mysql.com/doc/refman/5.0/en/insert-delayed.html).
 
 What does it do? Well when you execute your query MySQL will return an ok immediately to your application, and the request then gets queued to be INSERTED when the table in question is not being used by any other thread. This obviously means your application doesn't have to sit around waiting for the INSERT to be completed which can have a positive impact on performance under load.
 
@@ -20,20 +20,20 @@ This sounds pretty cool but there are certainly some points to consider, more fr
 
 
 
-	
+
   * Note that INSERT DELAYED is slower than a normal INSERT if the table is not otherwise in use. There is also the additional overhead for the server to handle a separate thread for each table for which there are delayed rows. This means that you should use INSERT DELAYED only when you are really sure that you need it.
 
 
-	
+
   * INSERT DELAYED works only with MyISAM, MEMORY, and ARCHIVE tables.
 
 
-	
+
   * Because the INSERT DELAYED statement returns immediately, before the rows are inserted, you cannot use LAST_INSERT_ID() to get the AUTO_INCREMENT value that the statement might generate.
 
 
-	
-  * DELAYED rows are not visible to SELECT statements until they actually have been inserted. 
+
+  * DELAYED rows are not visible to SELECT statements until they actually have been inserted.
 
 
 
@@ -51,7 +51,7 @@ Syntax is simple:
 			, DateTimeCreated
 			, IPAddress
 		)
-	VALUES	
+	VALUES
 		(
 			<cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.status#" />
 			, now()

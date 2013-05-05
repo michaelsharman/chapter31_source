@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2007-08-12 22:45:05
+date: 2007-08-12 22:45
 layout: post
 slug: facebook-homepage-source-code-found
-title: Facebook homepage source code found!
+title: "Facebook homepage source code found!"
 wordpress_id: 132
 categories:
 - ColdFusion

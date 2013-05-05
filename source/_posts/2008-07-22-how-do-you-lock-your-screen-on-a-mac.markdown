@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2008-07-22 23:01:51
+date: 2008-07-22 23:01
 layout: post
 slug: how-do-you-lock-your-screen-on-a-mac
-title: How do you lock your screen on a Mac?
+title: "How do you lock your screen on a Mac?"
 wordpress_id: 283
 categories:
 - Mac

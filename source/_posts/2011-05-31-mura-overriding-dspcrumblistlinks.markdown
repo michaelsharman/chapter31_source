@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2011-05-31 22:31:03
+date: 2011-05-31 22:31
 layout: post
 slug: mura-overriding-dspcrumblistlinks
-title: Mura - overriding dspCrumblistLinks
+title: "Mura - overriding dspCrumblistLinks"
 wordpress_id: 963
 categories:
 - ColdFusion
@@ -20,15 +20,15 @@ First up was a super simple one for breadcrumbs. By default, Mura will put an "a
 Mura makes this nice and easy by extending the contentRenderer.cfc inside your /[siteid]/includes folder. Here is the function which includes my custom argument _linkLastItem [bool]_ to determine whether or not to link the last item:
 
 ``` javascript
-<cffunction name="dspCrumblistLinks"  output="false" returntype="string"> 
+<cffunction name="dspCrumblistLinks"  output="false" returntype="string">
 	<cfargument name="id" type="string" default="crumblist">
 	<cfargument name="separator" type="string" default="">
 	<cfargument name="linkLastItem" type="boolean" required="false" default="true" hint="Whether to generate an 'a href' for the last crumb item">
-	
+
 	<cfset var thenav="" />
 	<cfset var theOffset=arrayLen(this.crumbdata)- this.navOffSet />
 	<cfset var I = 0 />
-	
+
 	<cfif arrayLen(this.crumbdata) gt (1 + this.navOffSet)>
 		<cfsavecontent variable="theNav">
 			<cfoutput><ul id="#arguments.id#">

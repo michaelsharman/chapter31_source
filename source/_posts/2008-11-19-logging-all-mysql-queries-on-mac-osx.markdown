@@ -1,9 +1,9 @@
 ---
 comments: true
-date: 2008-11-19 23:19:48
+date: 2008-11-19 23:19
 layout: post
 slug: logging-all-mysql-queries-on-mac-osx
-title: Logging all MySQL queries on Mac OSX
+title: "Logging all MySQL queries on Mac OSX"
 wordpress_id: 518
 categories:
 - Databases
