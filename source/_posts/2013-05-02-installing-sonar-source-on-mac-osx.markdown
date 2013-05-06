@@ -130,3 +130,31 @@ This is the step that's actually examining your code, it only took about 10 seco
 There's a tonne of information there. You'll find generic things like number of lines of code, percentage of comments in the codebase etc. But you'll also potentially get a lot of violations. Think of linting etc, style of coding conventions and the like. The JavaScript quality control plugin in particular is pretty opinionated so your mileage may vary as to the usefulness of sonar.
 
 It's a fantastic tool, so keep exploring :)
+
+## Update 6th May 2013
+### Excluding files
+If you want to exclude certain files that are included in your _sonar.sources_ property you can use wildcard matches. Note that although you _can_ do this in the web console, that would be persisted in the local datastore but not in any project version control. I recommend putting this exclusion property in your sonar-project.properties file.
+
+So, if you wanted to include everything in the _scripts_ directory except the _vendor_ folder:
+
+```bash
+sonar.sources=www/scripts
+sonar.exclusions=www/scripts/vendor/**/*.js
+```
+
+### Out of memory errors
+If _sonar-runner_ is parsing a large codebase you might get an error like the following:
+
+	Caused by: java.util.concurrent.ExecutionException: java.lang.OutOfMemoryError: Java heap space
+
+Note: you can get more verbose output from the runner by adding the _e_ flag:
+
+```bash
+sonar-runner -e
+```
+
+You can increase the Java heap size by running the following:
+
+```bash
+export SONAR_RUNNER_OPTS="-Xmx512m -XX:MaxPermSize=512m"
+```
