@@ -6,7 +6,6 @@ slug: twitter-bootstrap-modal-not-working-in-firefox
 title: Twitter bootstrap - modal not working in firefox
 wordpress_id: 1015
 categories:
-- ColdFusion
 tags:
 - bootstrap
 ---

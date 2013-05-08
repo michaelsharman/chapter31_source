@@ -6,7 +6,6 @@ slug: showing-hidden-files-in-finder-on-mac-osx
 title: Showing hidden files in Finder on mac osx
 wordpress_id: 1362
 categories:
-- ColdFusion
 ---
 
 Short and sweet, MAC OSX has this annoying trait where hidden files (dotfiles) are not visible by default in Finder. No probs, I'll just go to the "View" menu and turn them on. Nope...nada, zip.

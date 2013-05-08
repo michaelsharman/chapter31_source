@@ -6,7 +6,6 @@ slug: downloading-youtube-videos
 title: Downloading youtube videos
 wordpress_id: 1346
 categories:
-- ColdFusion
 ---
 
 I wanted to grab some youtube videos for the kids and found this cool [CLI utility called youtube-dl](http://rg3.github.com/youtube-dl/) to handle it. I downloaded it from the website (you may need to chmod 755):
