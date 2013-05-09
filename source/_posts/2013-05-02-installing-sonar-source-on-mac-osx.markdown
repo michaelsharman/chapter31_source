@@ -145,7 +145,7 @@ sonar.exclusions=www/scripts/vendor/**/*.js
 ### Out of memory errors
 If _sonar-runner_ is parsing a large codebase you might get an error like the following:
 
-	Caused by: java.util.concurrent.ExecutionException: java.lang.OutOfMemoryError: Java heap space
+> Caused by: java.util.concurrent.ExecutionException: java.lang.OutOfMemoryError: Java heap space
 
 Note: you can get more verbose output from the runner by adding the _e_ flag:
 

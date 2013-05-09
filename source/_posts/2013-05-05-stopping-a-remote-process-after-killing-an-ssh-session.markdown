@@ -17,9 +17,7 @@ The problem here, is when you ctrl-c out of this command to kill the _tail_, the
 
 From [superuser.com](http://superuser.com/a/20708):
 
-	This behaviour stems from the lack of a controlling terminal for the running process.
-	When the remote process does not have a controlling terminal, the remote ssh process handling your session
-	is unable to kill the command, which is left hanging in a zombie state to be eventually cleaned up by init.
+> This behaviour stems from the lack of a controlling terminal for the running process. When the remote process does not have a controlling terminal, the remote ssh process handling your session is unable to kill the command, which is left hanging in a zombie state to be eventually cleaned up by init.
 
 So although the process on the remote server(s) will eventually be cleaned up, it's not great to leave a lot of zombie processes lying around. And you certainly don't want to logon to every server and _ps ax_ to kill them. Crazy.
 
