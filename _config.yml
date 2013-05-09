@@ -67,6 +67,9 @@ github_skip_forks: true
 twitter_user: michaelsharman
 twitter_widget_id: 328306943087214592
 
+# Override for the 'addthis' toolbar (individual options below)
+show_addthis: false
+
 # Google +1
 google_plus_one: false
 google_plus_one_size: medium
