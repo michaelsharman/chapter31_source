@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Testing in Javascript - Session 3</title>
+
+		<meta name="description" content="A gentle introduction to testing in Javascript">
+		<meta name="author" content="Patrick Roumanoff">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="http://www.developer-training.com.au/javascript/css/print/'&#32;+&#32;(&#32;window.location.search.match(&#32;/print-pdf/gi&#32;)&#32;?&#32;'pdf'&#32;:&#32;'paper'&#32;)&#32;+&#32;'.css" type="text/css" media="print">' );
+		</script>
+
+<style>
+.reveal pre {
+	font-size: inherit;
+}
+.reveal pre code {
+	max-height: 80%;
+}
+
+</style>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Testing in Javascript</h1>
+					<h3>Session 3</h3>
+					<p>
+						<small>by Patrick Roumanoff<br> <a href="http://www.developer-training.com">http://www.developer-training.com</a></small>
+					</p>
+				</section>
+				<section>
+					<h2>Planning</h2>
+					<ul>
+						<li>Qunit</li>
+						<li>Coverage</li>
+						<li>Release Management 101</li>
+						<li>Automation</li>
+						<li>Promise/A+</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h2>Qunit</h2>
+						<ul>
+							<li>Assert</li>
+							<li>Async</li>
+							<li>Callback</li>
+							<li>Configuration</li>
+							<li>Test</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Assert</h2>
+						<ul>
+							<li>xEqual(actual, expected, message)</li>
+							<li>equal, notEqual</li>
+							<li>strictEqual, notStrictEqual</li>
+							<li>deepEqual, notDeepEqual</li>
+							<li>ok</li>
+							<li>throws</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Callbacks</h2>
+							<li>For integration and reporting</li>
+							<li>begin, done</li>
+							<li>moduleStart, moduleDone</li>
+							<li>testStart, testDone</li>
+							<li>log for assertion</li>
+					</section>
+					<section>
+						<h2>test</h2>
+							<li>module</li>
+						<pre><code>module( "module A", {
+  setup: function() { // prepare before each test
+  },
+  teardown: function() { // clean up after each test
+  }
+});							
+</code></pre>
+							<li>test(title [, expected ], test)</li>
+							<li>asyncTest</li>
+							<li>expect(n)</li>
+					</section>
+					<section>
+						<h2>Async</h2>
+							<li>asyncTest</li>
+							<li>stop() or stop(n)</li>
+							<li>start() or start()</li>
+					</section>
+					<section>
+						<h2>Qunit.Config</h2>
+							<li>altertitle</li>
+							<li>autostart</li>
+							<li>reorder</li>
+							<li>requireExpects</li>
+							<li>testTimeout ms</li>
+							<li>urlConfig</li>
+					</section>
+					<section>
+						<h2>Qunit.Config</h2>
+<pre><code>QUnit.config.autostart = false;
+require(
+  [ "tests/testModule1", "tests/testModule2" ],
+  function() {
+    QUnit.start();
+  }
+);</code></pre>
+					</section>
+				<section data-state="soothe">
+					<h2>Lab Work</h2>
+						<p>Write qunit tests for the functionnal list</p>
+				</section>
+				</section>
+				<section>
+					<section>
+					<h1>Coverage</h1>
+					</section>
+					<section>
+						<h2>Line</h2>
+						<p>is the line covered by execution?</p>
+						<p>What if there is only one line?</p>
+					</section>
+					<section>
+						<h2>Branch</h2>
+						<p>is the branch covered by execution?</p>
+<pre class="fragment"><code>ns.module = ns.module || {};</code></pre>
+<pre class="fragment"><code>if(a &amp;&amp; b) doIt();
+doItAnyway();
+</code></pre>
+<pre class="fragment"><code>function f (a,b) {
+	if(a) {
+		return "ok";
+	}
+	if(b) {
+		return "ko";
+	}
+}</code></pre>
+					</section>
+				</section>
+				<section><section>
+					<h1>Release Management 101</h1>
+				</section>
+					<section><h2>one build process, one tag per release</h2></section>
+<section><h2>Repeatable Release</h2></section>
+<section><h2>Release</h2>
+<ul><li class="fragment">build + test</li>
+<li class="fragment">tag</li>
+<li class="fragment">checkout tag</li>
+<li class="fragment">build + test</li>
+<li class="fragment">push to binary repository</li>
+</ul></section>
+<section><h2>Repeatable</h2>
+	<ul><li>trust the process</li>
+		<li>trust the tests</li>
+		<li>trust the repository</li>
+		<li>trust the source control</li>
+	</ul>
+</section>
+<section><h2>Direct repeatable link from tag to binary artefact</h2>
+	<p>binary repository is disposable, but source of truth for deployment</p>
+</section>
+<section><h2>Environment Configuration</h2>
+	<ul><li>No environment configuration in the build</li>
+		<li class="fragment">never</li>
+		<li class="fragment">ever</li>
+		<li class="fragment">if not, do it again until it is.</li>
+		<li class="fragment">allows same deployment automation for every environment at no cost</li>
+		<li class="fragment">requirejs now support sourcemap - always minify: 1 deployable</li>
+	</ul>
+</section>
+<section><h2>Project Layout</h2></section>
+<section><h2>Maven layout</h2>
+	<ul><li>src/main/js</li>
+		<li>src/test/js</li>
+		<li>target</li>
+	</ul>
+</section>
+<section><h2>split import for own src</h2></section>
+
+</section>
+				<section><section>
+					<h1>Automation</h1></section>
+					<section><h2>Tooling</h2>
+						<ul><li>Plethora of tools</li>
+							<li>Hard to choose from</li>
+							<li>jsTestDriver</li>
+							<li>Selenium</li>
+							<li>Karma</li>
+							<li>Istanbul</li>
+							<li>Sonar</li>
+							<li>Jenkins</li>
+						</ul>
+					</section>
+					<section><h2>Karma</h2>
+						<ul><li>100% js</li>
+							<li>Simple</li>
+							<li>npm i karma -g</li>
+							<li>karma.conf.js</li>
+						</ul>
+					</section>
+					<section>
+<pre><code>
+basePath = 'src/main';
+files = [ QUNIT, QUNIT_ADAPTER,
+	'./vendor/*.js',
+	'../test/js/*.js',
+	'./js/*.js'];
+reporters = ['progress', 'coverage'];
+port = 9876;
+runnerPort = 9100;
+autoWatch = true;
+browsers = ['Chrome', 'Firefox'];
+</code></pre>
+					</section>
+<section><h2>Karma</h2>
+	<ul><li>include code coverage</li>
+		<li>open for plugins</li>
+		<li>capture browsers (even the one on your phone/tablet)</li>
+		<li>run tests, report on coverage, results</li>
+		<li>integrate with sonar, CI</li>
+		<li>as a watch mode, run the test on save</li>
+	</ul>
+</section>
+				</section>
+				<section><section>
+					<h1>Promise/A+</h1></section>
+						<section><h2>Differences from jQuery</h2>
+							<ul><li>when failing and chaining</li>
+								<li>jQuery will call all failing callbacks</li>
+								<li>Promise/A+ will only call first</li>
+							</ul>
+						</section>
+						<section>
+<pre><code>var d1 = new $.Deferred();
+d1.then(null, function (value) {
+	console.log("1:" + value);
+}).then(null, function (value) {
+	console.log("2:" + value);
+});
+d1.reject("borken");
+>> 1:borken
+>> 2:undefined
+</code></pre>
+				</section>
+			</section>
+			<section><section><h1>Jasmine</h1></section>
+			<section><h2>BDD</h2><ul><li></li></ul></section>
+			<section><h2>Suite</h2>
+				<ul>
+					<li>Grouping Test or Suite</li>
+					<li><code>describe(string, func)</code></li>
+					<li>The function is the suite context</li>
+					<li><code>beforeEach(func)</code></li>
+					<li><code>afterEach(func)</code></li>
+				</ul></section>
+			<section><h2>Test</h2>
+				<ul>
+					<li>It's not a test, it's a spec</li>
+					<li>Belongs to a suite</li>
+					<li><code>it(string, func)</code></li>
+					<li>asset is called <code>expect</code></li>
+				</ul></section>
+			<section><h2>Large set of matchers</h2>
+<pre><code>expect(a).toBe(b);
+expect(c).not.toBe(d);
+expect(a).toEqual(b);
+expect(e).toMatch(f);
+expect(g).toBeDefined() / toBeNull();
+expect(h).toBeTruthy() / toBeFalsy();
+expect([i]).toContain(i);
+expect(j).toBeLessThan(k) / toBeGreaterThan(k);
+expect(m).toThrow();
+</code></pre>					
+</section>
+			<section><h2>Disable</h2>
+				<ul>
+					<li><code>xdescribe</code></li>
+					<li><code>xtest</code></ul></section>
+			<section><h2>Spies</h2>
+				<ul>
+					<li><code>spyOn(myObject, 'myFunction');</code></li>
+					<li><code>expect(myObject.myFunction).toHaveBeenCalled();</code></li>
+					<li><code>expect(myObject.myFunction.calls.length).toEqual(2);</code></li>
+					<li><code>expect(myObject.myFunction).toHaveBeenCalledWith(42);</code></li>
+					<li><code>expect(myObject.myFunction.mostRecentCall.args[0]).toEqual(42);</code></li>
+					<li><code>expect(myObject.myFunction.calls[0].args[0]).toEqual(42);</code></li>
+				</ul></section>
+			<section><h2>Spies</h2>
+				<ul>
+					<li>andCallThrough: Allow the real method to be called</li>
+					<li>andReturn: Allow to return stuff</li>
+					<li>andCallFake: wire a fake function</li>
+					<li>jasmine.createSpy: annymous spy</li>
+					<li>jasmine.createSpyObj: multi spy</li>
+				</ul></section>
+			<section><h2>Extra</h2>
+				<ul>
+					<li>timer</li>
+					<li>async: waitsFor() and run()</li>
+					<li>reporter</li>
+				</ul></section>
+		</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				overview: true,
+				keyboard: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Testing in Javascript - Session 1</title>
+
+		<meta name="description" content="A gentle introduction to testing in Javascript">
+		<meta name="author" content="Patrick Roumanoff">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="http://www.developer-training.com.au/javascript/css/print/'&#32;+&#32;(&#32;window.location.search.match(&#32;/print-pdf/gi&#32;)&#32;?&#32;'pdf'&#32;:&#32;'paper'&#32;)&#32;+&#32;'.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Testing in Javascript</h1>
+					<h3>Session 1</h3>
+					<p>
+						<small>by Patrick Roumanoff<br> <a href="http://www.developer-training.com">http://www.developer-training.com</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Planning</h2>
+						<ul>
+							<li>Javascript Core</li>
+							<li>Javascript as a Functionnal Programming Language</li>
+							<li>Static Analysis</li>
+							<li>Testing Concepts</li>
+							<li>Javascript as an Object Oriented Language</li>
+						</ul>
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+				<section>
+					<h2>Patrick Roumanoff</h2>
+					<ul>
+						<li>1983: wrote first BASIC program on Apple ][e</li>
+						<li>1993: taught first class in Pascal</li>
+						<li>2000: first dedicated web host</li>
+						<li>2002: taught first uni course</li>
+						<li>2004: land in Australia</li>
+					</ul>
+					<p><br>Technical Architect for Macquarie Bank</p>
+				</section>
+				<section>
+					<section>
+						<h1>Questionnaire</h1>
+						<h2>5 primitives types</h2>
+							<ul><li>undefined</li>
+							<li>null</li>
+							<li>boolean</li>
+							<li>number</li>
+							<li>string</li>
+					</section>
+					<section>
+						<h2>Are [], Object, new Function() objects?</h2>
+						<ul><li>No
+							<li>[] is an object</li>
+							<li>Object is a function</li>
+							<li><code>typeof Object => function</code></li>
+							<li class="fragment">but... <span class="fragment">a function is an object</span></li>
+					</section>
+					<section>
+						<h2>== and ===</h2>
+						<ul><li>== and != use type coercion
+							<li>=== and !== don't
+							<li>Always use ===
+							<li class="fragment">It's not that it's evil, it's harder to read</li>
+						</ul>
+						<pre class="fragment"><code>
+var why = {
+  valueOf: function () {
+    return 1;
+  },
+  toString: function () {
+    return "2";
+  }
+};
+
+alert(why == 1); // true
+alert(why == "2"); // false</code></pre>
+					</section>
+					<section>
+						<h2>A() and new A()</h2>
+						<ul><li>A() is a function call</li>
+							<li>new A() is a constructor call</li>
+						</ul>
+						<pre><code>
+function A(){
+    if (!(this instanceof A))
+        return new A();
+}							
+						</code></pre>
+					</section>
+					<section data-state="alert">
+						<h2>Puzzler #1</h2>
+						<pre><code>
+a = {};
+a.b = [];
+a.createB = function(bId) {
+  this.b[bId] = new B(...);
+}
+
+a.createB('join');							
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Javascript Core</h2>
+						<img src="images/goodparts.jpg">
+					</section>
+					<section>
+						<h2>Javascript Core</h2>
+						<ul>
+							<li>Language of the web
+							<li>Introduced in Netscape 2
+							<li>Syntax from java, functions from Scheme
+							<li>Prototype from Self and regexp from Perl
+							<li>Implemented in all browsers
+							<li>Standalone implementation: Rhino, v8
+							<li>Good parts and bad parts
+							<li>But Published specs @ 
+<a target="_blank" href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf">ecma-262.pdf</a>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Basics</h2>
+						<ul>
+							<li>Functions as first class objects
+							<li>Loose typing
+							<li>Dynamic objects
+							<li>Expressive object literal notation
+
+							<li>But global variables						
+					</section>
+					<section>
+						<h2>Falsy</h2>
+							<ul>
+							<li>false
+							<li>null
+							<li>undefined
+							<li>The empty string '' or ""
+							<li>The number 0
+							<li>The number NaN
+							<li>Anything else is "truthy"
+					</section>
+					<section>
+						<h2>String</h2>
+						<ul>
+							<li>String are UTF-16 encoded
+							<li>Unicode escape sequence is \uXXXX eg \u0022 is "
+							<li>Watch out for source with another encoding	
+						</p>
+					</section>
+					<section>
+						<h2>Number</h2>
+						<ul>
+							<li>Full IEEE Standard for Binary Floating-Point Arithmetic
+							<li>2^64-2^53+3 distinct values
+							<li>2^53-2 is NaN, but use isNan()
+							<li>2^32 Integer values
+							<li>There is no distinction by subtype (Int, long, Float, double)
+							<li>Watch out for ParseInt()
+						</p>
+					</section>
+					<section>
+						<h2>Operators</h2>
+						<table>
+							<tr><td>. [ ] ( ) <td>Refinement and invocation
+							<tr><td> delete new typeof<br> + - !<td> Unary operators
+							<tr><td>* / % 	 <td>Multiplication, division, remainder
+							<tr><td>+ -  <td>Addition/concatenation,  subtraction
+							<tr><td>&gt;= &lt;= > &lt; <td>Inequality
+							<tr><td>=== !== <td>Equality
+							<tr><td>&amp;&amp;  <td>Logical and
+							<tr><td>|| <td>Logical or
+							<tr><td>? : <td>Ternary
+						</table>
+				</section>
+				<section>
+					<h2>"use strict"</h2>
+					<ul>
+						<li>Enables EcmaScript 5 strict mode</li>
+						<li>Forbids global variable</li>
+						<li>Forbids with</li>
+						<li>Add a few reserved keywords</li>
+						<li>Forbids eval reassignement</li>
+						<li>Forbids delete on var, function, arguments</li>
+						<li>Stops this being coerced to an object</li>
+						<li>see page 235/236 in the specs</li>
+					</ul>
+				</section>
+				<section>
+					<h2>try/catch</h2>
+					<ul><li>Exception handling</li>
+						<li>Same as C++/java/C#/PHP</li>
+					</ul>
+					<pre><code>
+var a = function () { 
+	throw {name: "an Exception", message: "don't do that"};
+};
+var b = function () { 
+	return "all is good";
+};
+
+try{
+	console.log(Math.random() &lt; 0.5 ? a() : b());
+} catch (e) {
+	console.log("There is an error:" + e.name + ":" + e.message);
+} finally {
+	console.log("This will always be executed");
+}
+					</code></pre>
+				</section>
+				<section>
+					<h2>Hoisting</h2>
+					<ul>
+						<li>Rule for variable scoping</li>
+						<li>var statement moved to scope opening</li>
+						<li>but assignement is not</li>
+					</ul>
+<pre class="fragment"><code>var a="Hello";
+function b () {
+	alert(a);
+	var a = "Goodbye";
+}</code></pre>
+<div class="fragment"> <p>is actually interpreted as</p>
+<pre><code>var a="Hello";
+function b () {
+	var a;
+	alert(a);
+	a = "Goodbye";
+}</code></pre></div>
+				</section>
+				<section>
+					<h2>Namespace Pattern</h2>
+					<ul>
+						<li>No built-in namespace in javascript</li>
+					</ul>
+					<pre><code>var ns = {};</code></pre>
+					<pre class="fragment"><code>var ns = (function () {
+  function namespace(string) {
+    var object = this;
+    var levels = string.split(".");
+    for (var i = 0, l = levels.length; i &lt; l; i++) {
+      if (typeof object[levels[i]] === "undefined") {
+        object[levels[i]] = {};
+      }
+      object = object[levels[i]];
+    }
+    return object;
+  }
+  return {
+    namespace: namespace
+  };
+}());
+</code></pre>
+				</section>
+				<section>
+					<h2>call and apply</h2>
+					<ul>
+						<li>Programmatically invoke a function</li>
+						<li>call(thisArg[, arg1[, arg2[, ... ]]])</li>
+						<li>apply(thisArg[, argsArray])</li>
+					</ul>
+					<pre class="fragment"><code>var numbers = [5, 6, 2, 3, 7];
+for(var i = 0; i &lt; numbers.length; i++) {
+	(function (i){console.log(i);}).call(null, numbers[i]);
+}
+<div  class="fragment">
+var max = Math.max.apply(null, numbers);</div>
+</code></pre>
+				</section>
+				<section data-state="alert">
+					<h2>Puzzler #2</h2>
+<pre><code>
+[] + []
+<span class="fragment">> ''</span>
+<span class="fragment">{} + []</span>
+<span class="fragment">> "[object Object]"</span>
+<span class="fragment">[] + {}</span>
+<span class="fragment">> 0</span>
+<span class="fragment">{} + {}</span>
+<span class="fragment">> NaN</span>
+<span class="fragment">Array(16).join("wat" - 1) <span class="fragment">+ " Batman!"</span></span>
+<span class="fragment">> 'NaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaN Batman!'</span>
+</code></pre>
+					</section>
+			</section>
+			<section>
+				<section>
+					<h2>Functionnal Programming</h2>
+					<ul><li>It's the next Big Thing</li>
+						<li>It's not new</li>
+						<li>Scala, F#, Clojure, Haskell, ML
+						<li>At the core, it's programming without assignement</li>
+						<li>Referential Transparency</li>
+						<li>No side effects</li>
+						<li>Fundamental for multicore</li>
+					</p>
+				</section>
+				<section>
+					<h2>Trivial Example</h2>
+						<pre><code>
+function x2 (x) {return x*x;}
+var x2 = function (x) {return x*x;};
+var x2 = function x2 (x) {return x*x;};
+						</code></pre>
+						<pre><code>
+var fibonacci = function (n) {
+  if(n<2) {
+    return n;
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2);
+};
+</code></pre>
+					</section>
+					<section>
+						<h2>Memoizer</h2>
+						<pre><code contenteditable>
+var memoizer = function (memo, formula) {
+    var recur = function (n) {
+        var result = memo[n] ;
+        if (typeof result !== 'number' ) {
+            result = formula(recur, n) ;
+            memo[n] = result;
+        }
+        return result;
+    };
+    return recur;
+};</code></pre>
+<pre class="fragment"><code>
+var fibonacci= memoizer([0, 1], function (recur,n) {
+    return recur(n - 1) + recur(n - 2) ;
+});
+</code></pre>
+					</section>
+					<section data-state="alert">
+						<h2>Puzzler #3</h2>
+						<pre><code contenteditable>var empty_list = null;
+var prepend = function (el, list) {
+	return function (command) {
+		if (command === "head") {
+			return el;
+		} else if (command === "tail") {
+			return list;
+		}
+	};
+};	
+var head = function (list) { return list("head");};
+var tail = function (list) { return list("tail");};
+var is_empty = function (list) { return list === null;};
+</code></pre>
+					</section>
+					<section>
+						<h2>Underscore.js</h2>
+						<ul><li><a target="_blank" href="http://underscorejs.org/">underscorejs.org</a>
+							<li>Collections
+							<li>Arrays
+							<li>Functions
+							<li>Objects
+					</section>
+					<section>
+						<h2>Native javascript</h2>
+						<ul><li>array.forEach(callback[, thisArg])</li>
+							<li>array.map(callback[, thisArg])</li>
+						</ul>
+						<pre><code>
+var numbers = [5, 6, 2, 3, 7];
+numbers.forEach(function(e, i, a){console.log(i + "=>" + e);});
+numbers.map(x2);
+> [25, 36, 4, 9, 49]
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Static Analysis</h1>
+					</section>
+					<section>
+						<h2>Definitions</h2>
+						<ul>
+							<li>is an analysis without running the code</li>
+							<li>(not an analysis of statics in your code)</li>
+							<li>This is an automated analysis</li>
+							<li>Manual analysis is called code review</li>
+							<li>Try to figure out if the code is correct</li>
+						</ul>
+						<p>&nbsp;</p>
+						<ul>
+							<li>This problem is undecidable</li>
+							<li>Which mean we are always approximating</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Definitions</h2>
+						<ul><li>Looking at the code tells you about</li>
+<ul><li>Good &amp; bad patterns</li>
+<li>Known errors</li>
+<li>Bad practices</li></ul>
+<li>Unexpected execution path</li>
+<li>Bad initialisation of variable</li>
+<li>What a basic code review should point out</li></ul>
+					</section>
+					<section>
+						<h2>Runtime Analysis</h2>
+						<ul>
+							<li>Code coverage</li>
+							<li>Runtime Exceptions</li>
+							<li>Errors
+							<li>Performance
+							<li>Call stack
+							<li>Memory usage
+						</ul>
+					</section>
+					<section>
+						<h2>jslint</h2>
+						<ul>
+							<li>by Douglas Crockford</li>
+							<li>it will hurt your feelings</li>
+							<li>opinionated checkstyle</li>
+							<li>Stricter than "use strict"</li>
+						</ul>
+						<br><br>
+						<p>eg: JSLint will throw the "Unexpected '++'" error when it encounters the use of the increment operator ++.</p>
+						<pre><code>/*jslint evil: true, stupid: true, sloppy: true  */
+/*global $*/</code></pre>
+					</section>
+					<section>
+						<h2>jsHint</h2>
+						<ul>
+							<li>jsLint fork, initially to be gentler</li>
+							<li>recent versions are not so gentle</li>
+							<li>more configurable than jslint</li>
+						</ul>
+						<p>eg: Missing name in function declaration</p>
+					</section>
+					<section>
+						<h2>Sonar</h2>
+						<ul>
+							<li>Dashboard for code metrics</li>
+							<li>Java and many other languages</li>
+							<li>Including javascript &amp; PHP</li>
+							<li>eg: <a target="_blank" href="http://nemo.sonarsource.org/dashboard/index/jquery">jQuery Dashboard</a></li>
+							<li>Aggregates metrics</li>
+							<li>Provides Time analysis</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>TDD</h1>
+					</section>
+					<section>
+						<h2>Unit Test</h2>
+						<blockquote>A test that exercises and asserts 
+							a unit of code in isolation</blockquote>
+							<br><br>
+							<ul><li>A unit is the smallest testable part of an application</li>
+								<li>Isolation means that only the unit is being exercised</li></ul>
+					</section>
+					<section>
+						<h2>Retrofitting unit tests</h2>
+						<ul><li>Writing tests after the fact is harder</li>
+							<li>Private / protected methods/fields</li>
+							<li>Unreachable code</li>
+							<li>Static references</li>
+						</ul>
+					</section>
+					<section>
+						<h2>The Three Laws of TDD</h2>
+							<p class="fragment"><b>First Law</b>: 
+								You may not write production code until you have written a failing unit test.</p>
+							<p class="fragment"><b>Second Law</b>: You may not write more of a unit test than is sufficient to fail, and not compiling is failing.</p>
+							<p class="fragment"><b>Third Law</b>: You may not write more production code than is sufficient to pass the currently failing test.</p>
+					</section>
+					<section>
+						<h2>F.I.R.S.T.</h2>
+						<ul>
+							<li>F<span class="fragment">ast: run quickly</span></li>
+							<li>I<span class="fragment">ndependent: no ordering or prerequisite</span></li>
+							<li>R<span class="fragment">epeatable: not environment dependant</span></li>
+							<li>S<span class="fragment">elf-validating: asserts! Either true or false</span></li>
+							<li>T<span class="fragment">imely: before writing prod code</span></li>
+					</section>
+					<section>
+						<h2>Practices</h2>
+						<ul>
+							<li>Before fixing a bug, write a failing test</li>
+							<li>F in FIRST means:</li>
+							<ul><li>No I/O</li>
+								<li>No Databases</li>
+								<li>No Network</li>
+								<li>No File access</li>
+							</ul>
+							<li>They are not system tests</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Clean Tests</h2>
+						<ul><li>Coding Rules also apply to test code
+<li>Dirty test == not maintainable
+<li>Better having no test than dirty tests
+<li>Only exception: Don't need to be optimized</li>
+						</ul>
+					</section>
+					<section>
+						<h2>What about legacy code</h2>
+						<ul>
+							<li>Legacy code is code without unit tests</li>
+							<li>(you know, the one you wrote this morning)</li>
+							<li>May require some refactoring before being testable</li>
+							<li>But before refactoring, you need some tests!</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Test Automation</h2>
+						<img src="images/test.png" style="border:inherit;background:inherit;box-shadow:inherit;width:70%">
+						<p><small>&copy;Robert Martin: A Code of Conduct for Professional Programmers</small></p>
+					</section>
+					<section>
+						<h2>jUnit</h2>
+						<blockquote style="max-width:60%;">
+						 Never in the field of software
+						 development was so much owed by
+						 so many to so few lines of code.</blockquote>
+						<p>—Martin Fowler</p>
+					</section>
+					<section>
+						<h2>Unit testing in JS</h2>
+						<ul><li>qUnit</li>
+							<li>jasmine</li>
+							<li>karma</li>
+							<li>jsTestDriver</li>
+						</ul>
+					</section>			
+					<section>
+						<h2>qUnit</h2>
+						<ul><li>Spin-off from jQuery</li>
+							<li>Not going away</li>
+							<li>simple enough, complete enough</li>
+							<li><a href="http://patrickroumanoff.github.io/try-qunit/">try it online!</a></li>
+							<li><a href="http://qunitjs.com/">qunitjs.com</a></li>
+							<li>two files: js + css</li>
+							<li>runner in html</li>
+						</ul>
+					</section>
+				<section data-state="soothe">
+					<h2>Lab work #1: FizzBuzz</h2>
+						<ul>
+							<li>A math game</li>
+							<li>Count from 1 to max</li>
+							<li>if n is a multiple of 3, say Fizz</li>
+							<li>if n is a multiple of 5, say Buzz</li>
+							<li>if n is a multiple of 3 and 5, say FizzBuzz</li>
+						</ul><p>&nbsp;</p>
+							<p>Implement FizzBuzz using TDD</p>
+				</section>
+				<section data-state="soothe">
+					<h2>Lab work #1.5: FizzBuzz+</h2>
+							<div style="width:100%;text-align:left;">Add the following rules:</div>
+						<ul>
+							<li>if n contains 3, say Fizz</li>
+							<li>if n contains 5, say Buzz</li>
+							<li>if n contains 3 and 5, say FizzBuzz</li>
+						</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				overview: true,
+				keyboard: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>

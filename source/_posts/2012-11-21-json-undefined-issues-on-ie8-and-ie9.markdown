@@ -33,7 +33,7 @@ BrowserMatch MSIE ie
 Header set X-UA-Compatible "IE=edge,chrome=1" env=ie
 ```
 
-To be safe, if you can't use the Apache header above (which we found to always work as opposed to the meta tag) you might want to load [json2.js](https://github.com/douglascrockford/JSON-js/blob/master/json2.js) for IE8 and 9 because you can't control if a user is in compatibility view. If they are, then JSON will be undefined. The cool thing about json2 is that if it detects that JSON is defined alread, it won't do anything at all. But it's there if the older browsers need it (IE7) or you somehow have visitors in compatibility view.
+To be safe, if you can't use the Apache header above (which we found to always work as opposed to the meta tag) you might want to load [json2.js](https://github.com/douglascrockford/JSON-js/blob/master/json2.js) for IE8 and 9 because you can't control if a user is in compatibility view. If they are, then JSON will be undefined. The cool thing about json2 is that if it detects that JSON is already defined, it won't do anything at all. But it's there if the older browsers need it (IE7) or you somehow have visitors in compatibility view.
 
 You can also load json2.js from a CDN:
 
