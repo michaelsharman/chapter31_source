@@ -15,11 +15,6 @@ title: Shell commands
 			<th>Notes</th>
 		</tr>
 		<tr>
-			<td>/bin/pwd</td>
-			<td>/bin/pwd</td>
-			<td>Prints the absolute working directory when you&#8217;re in a symlinked directory</td>
-		</tr>
-		<tr>
 			<td>#!/bin/bash -ex</td>
 			<td></td>
 			<td>e == stop on error, x == print an execution trace</td>
@@ -30,7 +25,7 @@ title: Shell commands
 			<td>Prints contents of a file to the screen (shell)</td>
 		</tr>
 		<tr>
-			<td>cat /dev/null &gt; myfilename</td>
+			<td>cat /dev/null &gt; myfilename<p>Or even easier:</br>&gt; myfilename</p></td>
 			<td>Deletes the contents of <em>myfilename</em> without having to delete and recreate the actual file</td>
 		</tr>
 		<tr>
@@ -118,9 +113,17 @@ title: Shell commands
 			<td>Copies all files and directories recurrsively in the current directory INTO newdir</td>
 		</tr>
 		<tr>
-			<td>du</td>
-			<td>du -hs ./path</td>
-			<td>Size of directory with all sub-directories in a human readable format</td>
+			<td rowspan="3">du</td>
+			<td>du -sh ./path</td>
+			<td>Size of directory (including all sub-directories) in a human readable format</td>
+		</tr>
+		<tr>
+			<td>du -sh ./path/*</td>
+			<td>Size of a directory, grouped by sub-directories</td>
+		</tr>
+		<tr>
+			<td>du -Sh ./path</td>
+			<td>Size of a directory, grouped recursively by sub-directories</td>
 		</tr>
 		<tr>
 			<td rowspan="3">echo</td>
@@ -332,16 +335,18 @@ title: Shell commands
 		</tr>
 		<tr>
 			<td>ssh</td>
-			<td colspan="2">create a new key, specifying the name (good if you already have default keys):</p>
-		<div class="codecolorer-container text railscasts" style="overflow:auto;white-space:nowrap;"><div class="text codecolorer">ssh-keygen -f ~/.ssh/mykey_rsa</div></div>
-		<p>See if the ssh-agent is running:</p>
-		<div class="codecolorer-container text railscasts" style="overflow:auto;white-space:nowrap;"><div class="text codecolorer">ps aux | grep [s]sh-agent</div></div>
-		<p>See which keys are loaded:</p>
-		<div class="codecolorer-container text railscasts" style="overflow:auto;white-space:nowrap;"><div class="text codecolorer">ssh-add -l</div></div>
-		<p>If your key isn&#8217;t there, load it:</p>
-		<div class="codecolorer-container text railscasts" style="overflow:auto;white-space:nowrap;"><div class="text codecolorer">ssh-add ~/.ssh/mykey_rsa</div></div>
-		<p>Set the correct identity file (if you use more than 1) in your .ssh/config:</p>
-		<div class="codecolorer-container text railscasts" style="overflow:auto;white-space:nowrap;"><div class="text codecolorer">Host myhostname<br/>
+			<td colspan="2"><p>create a new key, specifying the name (good if you already have default keys):</p>
+				<p>ssh-keygen -f ~/.ssh/mykey_rsa</p>
+				<p>See if the ssh-agent is running:</p>
+				<p>ps aux | grep [s]sh-agent</p>
+				<p>See which keys are loaded:</p>
+				<p>ssh-add -l</p>
+				<p>Remove a key from the ssh agent</p>
+				<p>ssh-add -d ~/.ssh/mykey_rsa</p>
+				<p>If your key isn&#8217;t there, load it:</p>
+				<p>ssh-add ~/.ssh/mykey_rsa</p>
+				<p>Set the correct identity file (if you use more than 1) in your .ssh/config:</p>
+				<p>Host myhostname<br/>
 		HostName domain.com<br/>
 		PreferredAuthentications publickey<br/>
 		IdentityFile ~/.ssh/mykey_rsa</div></div>
