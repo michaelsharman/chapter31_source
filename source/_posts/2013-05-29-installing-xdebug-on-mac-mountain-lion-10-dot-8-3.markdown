@@ -32,4 +32,6 @@ Essentially the steps are as follows:
 ```zend_extension = /usr/lib/php/extensions/no-debug-non-zts-20100525/xdebug.so```
 9. Restart the webserver
 
-Now if you check the output of phpinfo() you should see Xdebug
+Now if you check the output of phpinfo() you should see Xdebug.
+
+To make sure your debug output is being styled properly, make sure you have ```html_errors = On``` in php.ini (it defaults to _Off_).
