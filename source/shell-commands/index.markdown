@@ -335,7 +335,8 @@ title: Shell commands
 		</tr>
 		<tr>
 			<td>ssh</td>
-			<td colspan="2"><p>create a new key, specifying the name (good if you already have default keys):</p>
+			<td colspan="2">
+				<p>create a new key, specifying the name (good if you already have default keys):</p>
 				<p>ssh-keygen -f ~/.ssh/mykey_rsa</p>
 				<p>See if the ssh-agent is running:</p>
 				<p>ps aux | grep [s]sh-agent</p>
@@ -346,15 +347,16 @@ title: Shell commands
 				<p>If your key isn&#8217;t there, load it:</p>
 				<p>ssh-add ~/.ssh/mykey_rsa</p>
 				<p>Set the correct identity file (if you use more than 1) in your .ssh/config:</p>
-				<p>Host myhostname<br/>
-		HostName domain.com<br/>
-		PreferredAuthentications publickey<br/>
-		IdentityFile ~/.ssh/mykey_rsa</div></div>
-		<p>Also note above to set <em>PreferredAuthentications</em> to only accept publickey.</p>
-		<p>Permissions:</p>
-		<p>755 on ~/.ssh<br/>
-		600 on your public and private keys<br/>
-		644 on known_hosts and config</td>
+				<p>Host myhostname</p>
+				<p>HostName domain.com</p>
+				<p>PreferredAuthentications publickey</p>
+				<p>IdentityFile ~/.ssh/mykey_rsa</p>
+				<p>Also note above to set <em>PreferredAuthentications</em> to only accept publickey.</p>
+				<p>Permissions:</p>
+				<p>755 on ~/.ssh</p>
+				<p>600 on your public and private keys</p>
+				<p>644 on known_hosts and config</p>
+			</td>
 		</tr>
 		<tr>
 			<td rowspan="11">svn</td>
