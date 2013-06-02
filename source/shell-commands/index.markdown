@@ -336,26 +336,27 @@ title: Shell commands
 		<tr>
 			<td>ssh</td>
 			<td colspan="2">
-				<p>create a new key, specifying the name (good if you already have default keys):</p>
-				<p>ssh-keygen -f ~/.ssh/mykey_rsa</p>
-				<p>See if the ssh-agent is running:</p>
-				<p>ps aux | grep [s]sh-agent</p>
-				<p>See which keys are loaded:</p>
-				<p>ssh-add -l</p>
-				<p>Remove a key from the ssh agent</p>
-				<p>ssh-add -d ~/.ssh/mykey_rsa</p>
-				<p>If your key isn&#8217;t there, load it:</p>
-				<p>ssh-add ~/.ssh/mykey_rsa</p>
-				<p>Set the correct identity file (if you use more than 1) in your .ssh/config:</p>
-				<p>Host myhostname</p>
-				<p>HostName domain.com</p>
-				<p>PreferredAuthentications publickey</p>
-				<p>IdentityFile ~/.ssh/mykey_rsa</p>
+				<p>create a new key, specifying the name (good if you already have default keys):
+				<br>ssh-keygen -f ~/.ssh/mykey_rsa</p>
+				<p>See if the ssh-agent is running:
+				<br>ps aux | grep [s]sh-agent</p>
+				<p>See which keys are loaded:
+				<br>ssh-add -l</p>
+				<p>Remove a key from the ssh agent
+				<br>ssh-add -d ~/.ssh/mykey_rsa</p>
+				<p>If your key isn&#8217;t there, load it:
+				<br>ssh-add ~/.ssh/mykey_rsa</p>
+				<p>Set the correct identity file (if you use more than 1) in your .ssh/config:
+				<br>Host myhostname
+				<br>HostName domain.com
+				<br>PreferredAuthentications publickey
+				<br>IdentityFile ~/.ssh/mykey_rsa
+				</p>
 				<p>Also note above to set <em>PreferredAuthentications</em> to only accept publickey.</p>
-				<p>Permissions:</p>
-				<p>755 on ~/.ssh</p>
-				<p>600 on your public and private keys</p>
-				<p>644 on known_hosts and config</p>
+				<p>Permissions:
+				<br>755 on ~/.ssh
+				<br>600 on your public and private keys
+				<br>644 on known_hosts and config</p>
 			</td>
 		</tr>
 		<tr>
