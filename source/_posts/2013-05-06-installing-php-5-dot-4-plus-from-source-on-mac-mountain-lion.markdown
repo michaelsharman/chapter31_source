@@ -43,7 +43,7 @@ cd ~/Desktop/php/ext/imap
 phpize
 ```
 
-Now run configure:
+Now run configure (I installed with pear):
 
 ```bash
 ./configure  \
@@ -76,7 +76,7 @@ Now run configure:
 --enable-mbregex  \
 --with-mysql=mysqlnd  \
 --with-mysqli=mysqlnd  \
---without-pear  \
+--with-pear  \
 --with-pdo-mysql=mysqlnd  \
 --with-mysql-sock=/var/mysql/mysql.sock  \
 --with-readline=/usr  \
@@ -127,4 +127,18 @@ PS If you're getting strange errors during _configure_ make sure you have these 
 brew install libpng
 brew install freetype
 brew install openssl
+```
+
+## Change install path
+The notes above install in the default /usr folder. If you want to install in /opt instead (which is often cleaner), add this to the configure script:
+
+```
+--prefix=/opt/php-5.4.14
+```
+
+Here's a cutdown configure script I just used to install 5.4.15
+
+```bash
+
+'./configure'  '--prefix=/opt/php-5.4.15' '--with-libxml-dir=/usr' '--with-openssl=/usr' '--with-zlib=/usr' '--enable-bcmath' '--with-bz2=/usr' '--enable-calendar' '--with-curl=/usr' '--enable-dba' '--enable-exif' '--enable-ftp' '--with-gd' '--enable-gd-native-ttf' '--enable-mbstring' '--enable-mbregex' '--with-mysql=mysqlnd' '--with-mysqli=mysqlnd' '--with-pear' '--with-pdo-mysql=mysqlnd' '--with-mysql-sock=/var/mysql/mysql.sock' '--enable-sockets' '--enable-sysvmsg' '--enable-sysvsem' '--enable-sysvshm' '--with-tidy' '--with-xmlrpc' '--with-iconv-dir=/usr' '--with-xsl=/usr' '--enable-zip' '--enable-intl' '--with-pcre-regex' '--with-pgsql=/usr' '--with-pdo-pgsql=/usr' '--with-freetype-dir=/usr/X11' '--with-jpeg-dir=/usr' '--with-png-dir=/usr/X11' '--with-apxs2=/usr/sbin/apxs'
 ```
