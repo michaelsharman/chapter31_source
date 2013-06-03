@@ -27,7 +27,7 @@ Essentially the steps are as follows:
 5. Run: ```./configure```
 6. Run: ```make```
 7. Run: ```sudo mkdir -p /usr/lib/php/extensions/no-debug-non-zts-20100525```
-7. Run: ```cp modules/xdebug.so /usr/lib/php/extensions/no-debug-non-zts-20100525```
+7. Run: ```sudo cp modules/xdebug.so /usr/lib/php/extensions/no-debug-non-zts-20100525```
 8. Update your /etc/php.ini and uncomment/add the line
 ```zend_extension = /usr/lib/php/extensions/no-debug-non-zts-20100525/xdebug.so```
 9. Restart the webserver
