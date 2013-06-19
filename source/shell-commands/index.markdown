@@ -338,6 +338,8 @@ title: Shell commands
 			<td colspan="2">
 				<p>create a new key, specifying the name (good if you already have default keys):
 				<br>ssh-keygen -f ~/.ssh/mykey_rsa</p>
+				<p>Remove a previously generated known host
+				<br>ssh-keygen -R</p>
 				<p>See if the ssh-agent is running:
 				<br>ps aux | grep [s]sh-agent</p>
 				<p>See which keys are loaded:
