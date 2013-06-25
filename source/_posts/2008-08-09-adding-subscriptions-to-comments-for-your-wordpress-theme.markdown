@@ -6,13 +6,13 @@ slug: adding-subscriptions-to-comments-for-your-wordpress-theme
 title: Adding subscriptions to comments for your Wordpress theme
 wordpress_id: 332
 categories:
-- PHP
+- php
 ---
 
 If you are using a Wordpress theme which doesn't support users subscribing to comments (crazy I know) you can add the plugin [Subscribe to comments](http://txfx.net/code/wordpress/subscribe-to-comments/) which is currently at version 2.1
 
 A summary of the features this plugin provides:
-	
+
   * Rudimentary security
   * Recognition of subscription status
   * Themeable subscription manager

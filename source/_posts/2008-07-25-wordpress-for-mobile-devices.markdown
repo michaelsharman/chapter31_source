@@ -6,7 +6,7 @@ slug: wordpress-for-mobile-devices
 title: Wordpress for mobile devices
 wordpress_id: 296
 categories:
-- PHP
+- php
 - Tools
 ---
 
@@ -21,7 +21,7 @@ After all you might not be able to offer your standard site (with pages exceedin
 > WordPress Mobile Plugin was developed to make your blog mobile friendly, bring you more mobile traffic and make you money on the mobile web!
 
 Installation couldn't be simpler;
-	
+
   1. Upload wordpress-mobile.php to your wp-content/plugins folder
   2. Navigate to your plugin manager and activate the plugin
 

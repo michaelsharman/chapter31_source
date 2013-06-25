@@ -4,7 +4,7 @@ title: "Installing APC in PHP 5.4.x on Mac OSX"
 date: 2013-06-02 16:33
 comments: true
 categories:
-- PHP
+- php
 ---
 I recently [installed PHP 5.4 from source](/2013/05/06/installing-php-5-dot-4-plus-from-source-on-mac-mountain-lion/) but needed to add <abbr title="Alternative PHP Cache">APC</abbr>.
 

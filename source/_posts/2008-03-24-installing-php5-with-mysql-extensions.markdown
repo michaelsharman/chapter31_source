@@ -6,7 +6,7 @@ slug: installing-php5-with-mysql-extensions
 title: Installing PHP5 with MySQL extensions
 wordpress_id: 217
 categories:
-- PHP
+- php
 ---
 
 I'm generally a ColdFusion programmer but occasionally I need to install PHP for one reason or another, the last couple of times has been to use [Wordpress](http://wordpress.org/).
@@ -19,7 +19,7 @@ I remember the last time I did this (maybe 6 months ago) I had problems with con
   * Future versions of the library are under the GPL and thus we don't have an upgrade path since we cannot bundle a GPL'ed library in a BSD/Apache-style licensed project. A clean break in PHP 5 seemed like the best option.
 
 Ok fine, no problems. There are even some fairly easy to find instructions for Windows users (which I am at home):
-	
+
   * Windows users may enable the extension php_mysql.dll inside php.ini
   * Also, be sure libmysql.dll is available to the systems PATH.
 
@@ -30,7 +30,7 @@ So I fire up my Wordpress site and get the following error:
 _"Your PHP installation appears to be missing the MySQL which is required for WordPress."_
 
 A few rounds in Google told me I needed to uncomment some files in php.ini:
-	
+
   * extension=php_mysql.dll
   * extension=php_mysqli.dll
 

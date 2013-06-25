@@ -4,7 +4,7 @@ title: "Date timezone error when upgrading to PHP 5.3+"
 date: 2013-05-06 09:03
 comments: true
 categories:
-- PHP
+- php
 ---
 I upgraded to 5.4.14 last night on Mac OSX 10.8.3. Things went smoothly except I got an error running my apps:
 

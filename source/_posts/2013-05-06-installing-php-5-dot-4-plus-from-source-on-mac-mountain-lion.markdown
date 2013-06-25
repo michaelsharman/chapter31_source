@@ -4,7 +4,7 @@ title: "Installing PHP 5.4+ from source on Mac OSX Mountain Lion"
 date: 2013-05-06 09:32
 comments: true
 categories:
-- PHP
+- php
 ---
 Download and extract the PHP source from [php.net](http://php.net/downloads.php), for me that was  5.4.14. Put it somewhere friendly, the desktop will do.
 

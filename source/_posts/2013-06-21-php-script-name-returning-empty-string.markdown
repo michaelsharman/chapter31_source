@@ -4,7 +4,7 @@ title: "PHP ['SCRIPT_NAME'] returning empty string"
 date: 2013-06-21 11:58
 comments: true
 categories:
-- PHP
+- php
 - apache
 ---
 I was working with [Slim](http://slimframework.com/) (v2.2.x) the other day and saw that a PHP warning was being thrown in one of the interal Slim files:

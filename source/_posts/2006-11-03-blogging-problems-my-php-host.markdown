@@ -6,7 +6,7 @@ slug: blogging-problems-my-php-host
 title: Blogging problems with my (PHP) host
 wordpress_id: 65
 categories:
-- PHP
+- php
 ---
 
 Last week my blog software decided to stop working. I couldn't create or edit any posts, bugger.

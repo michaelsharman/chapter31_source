@@ -7,7 +7,7 @@ title: Don't ever user www.templatesbrowser.com for wordpress themes
 wordpress_id: 182
 categories:
 - Misc
-- PHP
+- php
 ---
 
 Today I noticed a JavaScript error on my site, on investigation I saw the following JavaScript code in the page source:

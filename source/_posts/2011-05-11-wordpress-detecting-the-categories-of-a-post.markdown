@@ -6,7 +6,7 @@ slug: wordpress-detecting-the-categories-of-a-post
 title: Wordpress - detecting the categories of a post
 wordpress_id: 909
 categories:
-- PHP
+- php
 - Wordpress
 ---
 
@@ -17,7 +17,7 @@ The following snippet will loop over all post categories, if it finds that "port
 ``` php
 <?php
 	$isPortfolio = false;
-	
+
 	$categories = get_the_category();
 
 	foreach($categories as $cat)
@@ -26,7 +26,7 @@ The following snippet will loop over all post categories, if it finds that "port
 		{
 			$isPortfolio = true;
 			break;
-		}		
+		}
 	}
 ?>
 ```

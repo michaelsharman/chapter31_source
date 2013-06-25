@@ -9,7 +9,7 @@ categories:
 - Apache/IIS
 - cfeclipse
 - Databases
-- PHP
+- php
 - SVN
 - Ubuntu
 ---

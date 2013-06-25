@@ -4,7 +4,7 @@ title: "PHP Composer error - cannot redeclare class"
 date: 2013-06-03 09:16
 comments: true
 categories:
-- PHP
+- php
 ---
 I rebuilt PHP last night to include APC and all of a sudden composer stopped working in my project. Whenever I ran a simple update, install or dump-autoload I'd get:
 

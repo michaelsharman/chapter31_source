@@ -6,7 +6,7 @@ slug: fancybox-for-wordpress-plugin-not-working
 title: FancyBox for Wordpress plugin not working
 wordpress_id: 910
 categories:
-- PHP
+- php
 - Wordpress
 ---
 
