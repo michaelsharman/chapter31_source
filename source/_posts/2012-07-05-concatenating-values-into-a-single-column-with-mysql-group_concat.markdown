@@ -60,3 +60,8 @@ ORDER BY sy.title
 ![](/images/uploads/2012/07/Screen-shot-2012-07-06-at-7.12.02-AM.png)
 
 [See the group_concat page](http://dev.mysql.com/doc/refman/5.0/en/group-by-functions.html#function_group-concat) for more details.
+
+## Update 10th August 2013
+I just ran into a restriction with this, by default the results are truncated to the maximum length that is given by the ```group_concat_max_len``` system variable, which has a default value of 1024.
+
+If you plan to concat a lot of data, I suggest using a different approach.
