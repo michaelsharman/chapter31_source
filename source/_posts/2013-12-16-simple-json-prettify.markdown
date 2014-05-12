@@ -8,7 +8,7 @@ categories:
 ---
 I went looking for a quick and easy way to style JSON content for display in the browser and quickly came across this [answer at stack overflow](http://stackoverflow.com/questions/4810841/json-pretty-print-using-javascript/7220510#7220510) with a [corresponding jsfiddle entry](http://jsfiddle.net/unLSJ/).
 
-However the problem is that this is kinda broken, the output isn't valid JSON because the keys aren't quoted. It's just outputting a JavaScript object intead. A quick fix to the JavaScript gave me what I needed, I couldn't post on SO as I don't have the reputation (yeah that's annoying) so I'm posting here for reference and I [forked the original JSFiddle](http://jsfiddle.net/michaelsharman/HLzxw/).
+However the problem is that this is kinda broken, the output isn't valid JSON because the keys aren't quoted. It's just outputting a JavaScript object intead. A quick fix to the JavaScript gave me what I needed, I couldn't post on SO as I don't have the reputation (yeah that's annoying) so I'm posting here for reference and I [forked the original JSFiddle](http://jsfiddle.net/michaelsharman/HLzxw/2/).
 
 ```javascript
 if (!library) {
@@ -32,7 +32,7 @@ library.json = {
     prettyPrint: function(obj) {
         var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
         return JSON.stringify(obj, null, 3)
-            .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+            .replace(/&/g, '&amp;').replace(/\\"/g, '\\&quot;')
             .replace(/</g, '&lt;').replace(/>/g, '&gt;')
             .replace(jsonLine, library.json.replacer);
     }
