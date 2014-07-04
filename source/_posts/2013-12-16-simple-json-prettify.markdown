@@ -8,15 +8,13 @@ categories:
 ---
 I went looking for a quick and easy way to style JSON content for display in the browser and quickly came across this [answer at stack overflow](http://stackoverflow.com/questions/4810841/json-pretty-print-using-javascript/7220510#7220510) with a [corresponding jsfiddle entry](http://jsfiddle.net/unLSJ/).
 
-However the problem is that this is kinda broken, the output isn't valid JSON because the keys aren't quoted. It's just outputting a JavaScript object intead. A quick fix to the JavaScript gave me what I needed, I couldn't post on SO as I don't have the reputation (yeah that's annoying) so I'm posting here for reference and I [forked the original JSFiddle](http://jsfiddle.net/michaelsharman/HLzxw/2/).
+However the problem is that this is kinda broken, the output isn't valid JSON because the keys aren't quoted. It's just outputting a JavaScript object intead. A quick fix (and slight refactor) to the JavaScript gave me what I needed, I couldn't post on SO as I don't have the reputation (yeah that's annoying) so I'm posting here for reference and I [forked the original JSFiddle](http://jsfiddle.net/michaelsharman/HLzxw/3/).
 
 ```javascript
-if (!library) {
-    var library = {};
-}
+var prettyPrint = (function () {
+    'use strict';
 
-library.json = {
-   replacer: function(match, pIndent, pKey, pVal, pEnd) {
+   function replacer (match, pIndent, pKey, pVal, pEnd) {
         var key = '<span class=json-key>';
         var val = '<span class=json-value>';
         var str = '<span class=json-string>';
@@ -28,15 +26,20 @@ library.json = {
             r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
         }
         return r + (pEnd || '');
-    },
-    prettyPrint: function(obj) {
+    }
+
+    function render (obj) {
         var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
         return JSON.stringify(obj, null, 3)
             .replace(/&/g, '&amp;').replace(/\\"/g, '\\&quot;')
             .replace(/</g, '&lt;').replace(/>/g, '&gt;')
-            .replace(jsonLine, library.json.replacer);
+            .replace(jsonLine, replacer);
     }
-};
+
+    return {
+        render: render
+    };
+}());
 ```
 
 And the CSS that goes with it:
