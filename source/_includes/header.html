@@ -49,8 +49,9 @@
 		{% endif %}
 	</div>
 	<form class="search" action="{{ site.simple_search }}" method="get">
-		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}">
+		<input class="alignright" type="text" name="query" results="0">
+        <input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}"
+        onkeydown="if (event.keyCode === 13 || event.which === 13) { location.href='{{ site.simple_search }}?q=' + site:{{ site.url | shorthand_url }} + ' ' + encodeURIComponent(document.getElementById('query').value);}">
 	</form>
 </nav>
 {% include custom/header.html %}
