@@ -31,7 +31,6 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
-    rake (10.3.2)
     rb-fsevent (0.9.1)
     rdiscount (1.6.8)
     rubypants (0.2.0)
