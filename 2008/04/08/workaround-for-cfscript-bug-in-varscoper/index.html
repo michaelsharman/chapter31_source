@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Workaround for cfscript bug in varscoper | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Workaround for cfscript bug in varscoper - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 8, 2008</h2>
+    <h1 class="title">Workaround for cfscript bug in varscoper</h1>
+    
+    <div class="content">
+      <p>Those that use the sensational <a href="http://www.schierberl.com/varScoper/">varscoper tool</a> from Mike Schierberl know that cfscript is still a little experimental with the current release.</p>
+
+<p>One of the things it can do is return variables that <em>are</em> actually &ldquo;var&rdquo; scoped as <em>not var</em> scoped when using cfscript. This seems to happen most often when you have a comment directly above the variable in question.</p>
+
+<pre><code class="language-javascript">&lt;cfscript&gt;
+
+	var column = 2;		//which column the pod is in
+	var row = 3;		//which row the pod is on
+	var newRow = 0;
+
+&lt;/cfscript&gt;
+</code></pre>
+
+<p>In the above example Varscoper tells me that &ldquo;newRow&rdquo; is not var scoped when clearly it is.</p>
+
+<p><a href="/images/uploads/2008/04/varscoper.jpg"><img src="/images/uploads/2008/04/varscoper-300x38.jpg" alt="" /></a></p>
+
+<p>This is usually fine, but if you start to get a lot of these false positives there is a quick little workaround. Place a semi-colon at the end of the last comment which effectively tells varscoper where the statement finishes and fixes the problem.</p>
+
+<pre><code class="language-javascript">&lt;cfscript&gt;
+
+	var column = 2;		//which column the pod is in
+	var row = 3;		//which row the pod is on;
+	var newRow = 0;
+
+&lt;/cfscript&gt;
+</code></pre>
+
+<p>Note the semi-colon after the 2nd comment. Now my reports are nice and clean :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

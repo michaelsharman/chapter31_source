@@ -1,0 +1,152 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Multi-step forms | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Multi-step forms - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 5, 2006</h2>
+    <h1 class="title">Multi-step forms</h1>
+    
+    <div class="content">
+      <p><a href="http://rahulnarula.blogspot.com/">Rahul Narula</a> has a great post on <a href="http://rahulnarula.blogspot.com/2006/09/multi-step-forms.html">Multi-step forms</a>. As web developers forms are a part of our everyday lives, sometimes those forms exist over several pages instead of 1 looong page. That being said we need a way to hold the data entered by the user at each step (page) thoughout the process.</p>
+
+<p>We can of course use either of the following:</p>
+
+<ul>
+<li>Database</li>
+<li>Session scope</li>
+<li>Structures</li>
+<li>URL</li>
+</ul>
+
+<p>There are probably more but that would be all I would consider (at this stage!).</p>
+
+<p>The database is fine but poses problems; namely we need to create a new record after the submission from step 1. Lets say there are 4 steps (pages) to this form. If a user doesn&rsquo;t complete all steps (they may give up!) then we need a mechanism for clearing out the now (presumably) invalid data from the database. Of course there are many ways to do this which really aren’t that difficult, but it is still more work for you to do! Also consider the extra load on the database server in a high traffic environment.</p>
+
+<p>Sessions work really well here, no extra database load and no cleaning up the database if a user doesn&rsquo;t complete all steps. This is one I use all the time.</p>
+
+<p>The URL (via action=&ldquo;get&rdquo;) is an option, particularly if you don’t want to (or can&rsquo;t) use session. Things get tricky however if users are allowed to jump back to prior pages. i.e. if they are on step 4 and they want to go back to step 2. They can use the back button, but it&rsquo;s not very elegant.</p>
+
+<p>Rahul&rsquo;s method uses a UDF to generate hidden fields on each subsequent page. A nice and elegant solution including the ability to &lsquo;exclude&rsquo; a list of fields.</p>
+
+<p>An excerpt from his site:</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;createHiddenFields&quot; output=&quot;no&quot; returntype=&quot;string&quot;&gt;
+  &lt;cfargument name=&quot;excludeFields&quot; type=&quot;string&quot; default=&quot;&quot;/&gt;
+
+ &lt;cfscript&gt;
+  var formFieldsList =&quot;&quot;;
+  var formFieldArray= ArrayNew(1);
+  var formHTML=&quot;&quot;;
+  var element=0;
+  var exclude = listappend(arguments.excludeFields,&quot;formfields&quot;);
+
+  if(structKeyExists(form,&quot;fieldnames&quot;)) {
+   formFieldsList = form.fieldnames;
+  }
+  formFieldArray = listtoArray(formFieldsList);
+
+ &lt;/cfscript&gt;
+
+ &lt;cfsavecontent variable=&quot;formHTML&quot;&gt;
+   &lt;cfoutput&gt;
+ &lt;cfloop from =&quot;1&quot; to=&quot;#ArrayLen(formFieldArray)#&quot; index=&quot;element&quot;&gt;
+   &lt;cfif listfindnocase(exclude,formFieldArray[element]) eq 0&gt;
+     &lt;input type=&quot;hidden&quot; name=&quot;#lcase(formFieldArray[element])#&quot;  value=&quot;#htmleditformat(form[formFieldArray[element]])#&quot;&gt;
+  &lt;/cfif&gt;
+   &lt;/cfloop&gt;
+ &lt;/cfoutput&gt;
+ &lt;/cfsavecontent&gt; 
+
+  &lt;cfreturn formHTML /&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>To use the UDF just call this udf anywhere within the &lt;form&gt;…&lt;/form&gt; in your page</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

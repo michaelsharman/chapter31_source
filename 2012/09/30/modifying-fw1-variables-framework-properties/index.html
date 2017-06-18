@@ -1,0 +1,139 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Modifying FW/1 variables.framework properties | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Modifying FW/1 variables.framework properties - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 30, 2012</h2>
+    <h1 class="title">Modifying FW/1 variables.framework properties</h1>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/fw/1">FW/1</a>
+    
+</div>
+
+    
+    <div class="content">
+      <p><a href="https://github.com/seancorfield/fw1/">FW/1</a> gives you a nice, clean way to manage framework configuration properties. They&rsquo;re all wrapped up inside Application.cfc in a structure called <em>variables.framework</em>, <a href="https://github.com/seancorfield/fw1/wiki/Developing-Applications-Manual">you can read more about them here</a> under <em>Configuring FW/1 Applications</em>.</p>
+
+<p><a href="http://www.learnosity.com">Our applications</a> often have a need to use different values for these properties, depending on which environment the application is running in (development, testing, staging, production etc). An example of this might be <em>reloadApplicationOnEveryRequest</em>, which we want as <em>true</em> in development, but <em>false</em> elsewhere else.</p>
+
+<p>So our defaults (at the top of Application.cfc) might be to set the reload property as false:</p>
+
+<pre><code class="language-javascript">variables.framework = {
+  reloadApplicationOnEveryRequest = false,
+  disableReloadApplication = true;
+  ...
+}
+</code></pre>
+
+<p>These are good values for production, but we want to override them if we&rsquo;re in development. Here&rsquo;s how:</p>
+
+<pre><code class="language-javascript">/**
+* @hint We need to override variables.framework values, only way to do this is pre-fw/1 onRequestStart() as setupRequest() is called later in the call stack
+**/
+public any function onRequestStart(string targetPath)
+{
+  if (isDefined(&quot;application.config.mode&quot;))
+  {
+    if (application.config.mode == &quot;dev&quot;)
+    {
+      variables.framework.reloadApplicationOnEveryRequest = true;
+      variables.framework.disableReloadApplication = false;
+    }
+  }
+  super.onRequestStart(targetPath);
+}
+</code></pre>
+
+<p>You can see in the example above that we override the default values we set initially, so that if we&rsquo;re in <em>development</em> mode we not only <a href="http://www.chapter31.com/2012/09/27/preventing-fw1-from-reinitialising-an-app-via-the-url/">have the ability to reload the application (using a custom property called <em>disableReloadApplication</em>)</a>, but we also reload the application on every request.</p>
+
+<p>2 things to note here, are that we can&rsquo;t use setupRequest() for this, as it&rsquo;s called too late by framework.cfc and won&rsquo;t enable us to override any <em>variables.framework</em> properties. So instead we use onRequestStart(), which gives us the 2nd thing to watch out for, and that is that you must be careful to call super.onRequestStart(targetPath); at the conclusion of this method. Or you might get strange results.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coldfusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coldfusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">April 8, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/04/08/workaround-for-cfscript-bug-in-varscoper/">Workaround for cfscript bug in varscoper</a></h1>
+      
+      <div class="content">
+        Those that use the sensational varscoper tool from Mike Schierberl know that cfscript is still a little experimental with the current release.
+One of the things it can do is return variables that are actually &ldquo;var&rdquo; scoped as not var scoped when using cfscript. This seems to happen most often when you have a comment directly above the variable in question.
+&lt;cfscript&gt; var column = 2;	//which column the pod is in var row = 3;	//which row the pod is on var newRow = 0; &lt;/cfscript&gt;  In the above example Varscoper tells me that &ldquo;newRow&rdquo; is not var scoped when clearly it is.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/04/08/workaround-for-cfscript-bug-in-varscoper/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 7, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/04/07/flushing-a-cached-web-service/">Flushing a cached web service</a></h1>
+      
+      <div class="content">
+        When you use WebServices with ColdFusion, the WSDL &lsquo;stub&rsquo; is cached in CF Administrator (presumably for performance reasons).
+This can be a pain when you need to change the WSDL and you don&rsquo;t have access to CF Admin to flush the service which is the scenario I found myself in today.
+Luckily for me I sit near some ColdFusion peeps who sorted me out with a little Java method (courtesy of the ServiceFactory) to flush a WSDL from a ColdFusion template.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/04/07/flushing-a-cached-web-service/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 3, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/04/03/combining-multiple-insert-statements-with-mysql/">Combining multiple INSERT statements with MySQL</a></h1>
+      
+      <div class="content">
+        As all developers know, one of the most common bottlenecks in a web application is the database. Database optimisation is therefore a huge part of building a streamlined application capable of handling more concurrent users.
+Often you might have the need to perform multiple INSERT&rsquo;s against a database from a single user form submission.
+Let&rsquo;s say you had a form allowing a user to add their own web bookmarks (think a simple del.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/04/03/combining-multiple-insert-statements-with-mysql/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 28, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/28/evaluating-coldfusion-unscoped-query-variables/">Evaluating (ColdFusion) unscoped query variables</a></h1>
+      
+      <div class="content">
+        Most developers know that if you reference a variable without a scope prefix (such as variables, form, URL etc) ColdFusion will check each of the available scopes until it finds a variable of the name you are looking for.
+The order in which ColdFusion checks is:
+ Function local (UDFs and CFCs only) Thread local (inside threads only) Arguments Variables (local scope) Thread CGI Cffile URL Form Cookie Client  *** Note:** Although the order above came from the Adobe docs I&rsquo;m not sure about &ldquo;cffile&rdquo;.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/28/evaluating-coldfusion-unscoped-query-variables/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/22/update-for-java-6/">Update for Java 6</a></h1>
+      
+      <div class="content">
+        Sun have just released Java 6 update 5, looking at the release notes it doesn&rsquo;t look as though the CFC issues for ColdFusion have been addressed yet, we can only hope though!
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 21, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/21/random-database-results-with-coldfusion/">Random database results with ColdFusion</a></h1>
+      
+      <div class="content">
+        Today I was looking at returning random records purely from MySQL but was limited with large tables in getting all random results (not just a random starting seed).
+I tried a ColdFusion solution instead.
+First get all the primary keys from the table in question and create an array of the values (this works for numeric and non-numeric keys):
+&lt;cfquery name=&quot;qGetPKs&quot; datasource=&quot;dsn&quot;&gt; SELECT Id FROM myTable &lt;/cfquery&gt; &lt;cfset aIds = listToArray(valueList(qGetPKs.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/21/random-database-results-with-coldfusion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 16, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/16/options-for-accessing-the-coldfusion-8-documentation/">Options for accessing the ColdFusion 8 documentation</a></h1>
+      
+      <div class="content">
+        ColdFusion developers have quite a few options when wanting to access full help documentation for ColdFusion 8 including:
+ Livedocs CFQuickdocs ColdFusionDocs.com CFDocs on AIR CFML Reference Docs for the iPod ColdFusion 8 Help Files for Eclipse  The &lsquo;source&rsquo; of all these is the same (Livedocs) so which do you go with? Funnily enough the offical Adobe Livedocs is probably the last one I&rsquo;d choose simply because it&rsquo;s a little slow :)
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/16/options-for-accessing-the-coldfusion-8-documentation/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 16, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/16/vince-bonfanti-and-the-differences-between-bluedragon-versions/">Vince Bonfanti and the differences between BlueDragon versions?</a></h1>
+      
+      <div class="content">
+        More news on the differences between the commercial and open source offerings for Blue Dragon on Vince Bonfanti&rsquo;s blog as well as the New Atlanta forums;
+&ldquo;The free open source edition of BlueDragon/J2EE will be fully featured, with only minor differences to remove dependencies on commercial libraries.&rdquo;
+Vince elaborated more on the NA Product forums:
+ There will be three differences between the commericial and open source editions of BlueDragon/J2EE:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/16/vince-bonfanti-and-the-differences-between-bluedragon-versions/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 3, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/03/always-add-the-cfimport-tag-when-using-cfimport-style-syntax/">Always add the &lt;cfimport&gt; tag when using cfimport style syntax</a></h1>
+      
+      <div class="content">
+        Using cfimport is a great way to add custom tag functionality to your applications.
+One thing you need to do of course is add a  tag to every template where you want to use the cfimport syntax. However, a couple of times when I&rsquo;ve been creating new templates I&rsquo;ve forgotten this rule and not added  and subsequently gotten confused when my results aren&rsquo;t as expected.
+I think the annoying thing is that ColdFusion does not throw an error in these situations, it just does nothing.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/03/always-add-the-cfimport-tag-when-using-cfimport-style-syntax/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 2, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/02/converting-boolean-values-to-numeric-equivalents/">Converting boolean values to numeric equivalents</a></h1>
+      
+      <div class="content">
+        Today I had a situation where I wanted to convert a boolean value (true or false) to a numeric equivalent (1 or 0) for insertion into a database table field which had a &ldquo;tinyint&rdquo; data type.
+The value was coming from a form checkbox, so the actual element may or may not exist in the form struct depending on whether the user &ldquo;checked&rdquo; the box or not.
+I found a few ways to do this, some &ldquo;better&rdquo; than others but all using structKeyExists() to look for the form element.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/02/converting-boolean-values-to-numeric-equivalents/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/5/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/7/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

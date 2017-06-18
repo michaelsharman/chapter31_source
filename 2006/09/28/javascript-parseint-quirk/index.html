@@ -1,0 +1,115 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Javascript parseInt() quirk | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Javascript parseInt() quirk - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 28, 2006</h2>
+    <h1 class="title">Javascript parseInt() quirk</h1>
+    
+    <div class="content">
+      <p>I ran into a little quirk or &lsquo;bug&rsquo; today when using parseInt() with a string (input from a text box). Now as we all know parseInt() parses a string and returns an integer value.</p>
+
+<p>The scenario: I was working on a legacy application where a user could pass a date to the server in 3 separate form fields (day, month and year); all text boxes. No nice little DHTML calendars here</p>
+
+<p>Anyways, the validation on the month text box was being tripped when a user entered a value like &lsquo;08&rsquo; or &lsquo;09&rsquo; for the month, note the leading 0.</p>
+
+<p>The parseInt() function can take 2 arguments – the first is the string to be parsed and the second is a radix. The radix parameter is used to specify which numeral system to be used but if it is not supplied (as it most commonly is not), the function tries to determine what to use based on the submitted string. If the string passed to parseInt() begins with a &lsquo;0&rsquo;, then it is parsed in octal ( base 8 ). Note that this &lsquo;bug&rsquo; does not happen with parseFloat().</p>
+
+<p>Keep in mind that this only happens when the value being checked is a string and only when the string starts with a leading zero. So that’s why it is difficult to notice. But if you’re dealing with a web page that has user input, there’s nothing prevening the user from entering &lsquo;08&rsquo; for a number field. To be 100% confident that you won’t see the bug, use one of these two techniques:</p>
+
+<pre><code class="language-javascript">parseInt(parseFloat(&lt;my text value&gt;))
+
+parseInt(&lt;my text value&gt;, 10)
+</code></pre>
+
+<p>The first example uses parseFloat() which doesn’t suffer from this little quirk and the second used the radix value of 10.</p>
+
+<p>Muchas gracias to <a href="http://www.go4expert.com/forums/showthread.php?t=857">Pradeep</a> for the tip</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

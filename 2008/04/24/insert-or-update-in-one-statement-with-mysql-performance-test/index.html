@@ -1,0 +1,162 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>INSERT or UPDATE in one statement with MySQL - performance test | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="INSERT or UPDATE in one statement with MySQL - performance test - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 24, 2008</h2>
+    <h1 class="title">INSERT or UPDATE in one statement with MySQL - performance test</h1>
+    
+    <div class="content">
+      
+
+<p><a href="http://www.chapter31.com/2008/04/23/insert-or-update-in-one-statement-with-mysql/">Yesterday I posted</a> on a handy MySQL feature where you can combine an INSERT and UPDATE on a record in the one statement.</p>
+
+<p>Someone asked about the performance of this so I ran a little test to get some basic numbers.</p>
+
+<p>One thing to note is that even when MySQL is actually UPDATING your record (ON DUPLICATE KEY UPDATE), the statement is being executed on the database as an INSERT and not an UPDATE statement. MySQL Administrator <a href="http://www.chapter31.com/2008/02/21/using-mysql-administrator-to-view-real-time-stats/">provides a good view</a> of these types of database actions. Not sure if this means anything, but it might be something to watch out for.</p>
+
+<p>I ran a (not so clinical) test by looping over 1000 INSERTs with ON DUPLICATE KEY UPDATE, and then simply using an UPDATE (again 1000 times). I used getTickCount() to provide measurements, restarting MySQL after each type of test.</p>
+
+<p>This ran on CF8, MySQL5 and Ubuntu.</p>
+
+<h3 id="insert-on-duplicate-key-update">INSERT ON DUPLICATE KEY UPDATE</h3>
+
+<p>448<br />
+426<br />
+356<br />
+320<br />
+404<br />
+387<br />
+427<br />
+355<br />
+433<br />
+350<br />
+Avg: 391</p>
+
+<h3 id="update">UPDATE</h3>
+
+<p>353<br />
+328<br />
+356<br />
+299<br />
+363<br />
+342<br />
+434<br />
+302<br />
+342<br />
+416<br />
+Avg: 354</p>
+
+<p>So although my test wasn&rsquo;t done under the most optimal conditions, we can see that at first using a simple UPDATE is the quicker of the two.</p>
+
+<p>But&hellip;</p>
+
+<p>We still need to know whether we&rsquo;ll be performing an INSERT or UPDATE. There are of course different ways to tackle this solution, let&rsquo;s assume that we&rsquo;re first running a SELECT statement against the database to see if the record exists. The SELECT retrieves 1 column, the primary key value, and of course the WHERE clause uses the primary key as a condition which is a clustered index so should perform quite quickly.</p>
+
+<p>If no record is returned then we&rsquo;ll be INSERTING, if we get a record then we&rsquo;ll be UPDATING. Bear in mind that I really dislike this approach, but a lot of people use it so I thought it would be interesting to see the performance of running 2 queries against the database. 1 SELECT, then either an UPDATE or INSERT.</p>
+
+<h3 id="initial-select-then-update">Initial SELECT, then UPDATE</h3>
+
+<p>535<br />
+487<br />
+605<br />
+510<br />
+534<br />
+559<br />
+480<br />
+515<br />
+560<br />
+502<br />
+Avg: 529</p>
+
+<p>So the cost of running 2 queries makes everything a lot slower than either of the first 2 options.</p>
+
+<p>I&rsquo;d say using INSERT with ON DUPLICATE KEY UPDATE is a good solution for most situations. But if you really want to get the most out of your application then use an UPDATE but have a separate way to tell if your record exists or not (an empty primary key property in a bean etc).</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

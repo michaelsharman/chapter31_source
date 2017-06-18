@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Css on chapter31</title>
+    <link>http://chapter31.com/categories/css/</link>
+    <description>Recent content in Css on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Wed, 13 Jun 2007 23:54:27 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reading blogs on a mac using Firefox</title>
+      <link>http://chapter31.com/2007/06/13/reading-blogs-on-a-mac-using-firefox/</link>
+      <pubDate>Wed, 13 Jun 2007 23:54:27 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/06/13/reading-blogs-on-a-mac-using-firefox/</guid>
+      <description>I&amp;rsquo;ve been on a Mac (OSX) for a little while now and generally I&amp;rsquo;m having a nice time, except when it comes to reading some (but only some) blogs!
+We all know that font sizes are different across browser and platform, but Firefox on a mac occasionally makes life a little difficult particularly when it comes to reading comments and code snippets.
+Here is a screen grab of an example, certainly not to pick on this particular blog but just one of the few examples I come across on my daily travels thru fullasagoog.</description>
+    </item>
+    
+    <item>
+      <title>Firefox Web Developer Toolbar</title>
+      <link>http://chapter31.com/2006/09/29/firefox-web-developer-toolbar/</link>
+      <pubDate>Fri, 29 Sep 2006 01:11:11 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/09/29/firefox-web-developer-toolbar/</guid>
+      <description>Scott Stroz (aka boyzoid) has a nice little post on the Firefox Web Developer Toolbar by Chris Pederick.
+The toolbar (which has been around for ages) is a must have for any web developer, I thought I&amp;rsquo;d post some of the tools including their shortcuts which I use regularly.
+CSS Viewing CSS - Ctrl+Shift+C
+Opens up a new tab with the current pages CSS. I also use the [JSView](https://addons.mozilla.org/firefox/2076/) for this because it lets you view and individual Javascript or CSS files  View Style Information - Ctrl+Shift+Y</description>
+    </item>
+    
+    <item>
+      <title>HTML pre-launch flight check</title>
+      <link>http://chapter31.com/2006/08/25/html-pre-launch-flight-check/</link>
+      <pubDate>Fri, 25 Aug 2006 02:49:28 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/08/25/html-pre-launch-flight-check/</guid>
+      <description>AnyBrowser have a lot of tools for you to use when validating and preparing your website for deployment including:
+ Screen Size Test
+ Meta Tag Creator
+ HTML Validation
+ Link checking
+ Engine View (See how your site might get listed by search engine spiders.)
+  Not a bad list, don&amp;rsquo;t forget that ALL web developers should validate their pages, perform link checking and test on different resolutions before going live.</description>
+    </item>
+    
+    <item>
+      <title>Flash of Unstyled Content</title>
+      <link>http://chapter31.com/2006/06/20/flash-of-unstyled-content/</link>
+      <pubDate>Tue, 20 Jun 2006 08:41:49 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/06/20/flash-of-unstyled-content/</guid>
+      <description>The lovely people (person?) over at Blue Robot have coined a term &amp;lsquo;FOUC&amp;rsquo;; or Flash of Unstyled Content.
+This is that annoying &amp;lsquo;bug&amp;rsquo; in Windows IE where a user can see the entire body of the page their trying to view &amp;lsquo;unstyled&amp;rsquo; (particularly for page layout) for a moment before the stylesheet kicks in. If the CSS is cached then you probably won&amp;rsquo;t see this happen, but for first time users this just looks amature.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,148 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>PHP Composer error - cannot redeclare class | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="PHP Composer error - cannot redeclare class - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">June 3, 2013</h2>
+    <h1 class="title">PHP Composer error - cannot redeclare class</h1>
+    
+    <div class="content">
+      <p>I rebuilt PHP last night to include APC and all of a sudden composer stopped working in my project. Whenever I ran a simple update, install or dump-autoload I&rsquo;d get:</p>
+
+<pre><code class="language-bash">$ composer update
+PHP Fatal error:  include(): Cannot redeclare class symfony\component\process\process in phar:///usr/local/bin/composer/vendor/composer/ClassLoader.php on line 183
+
+Fatal error: include(): Cannot redeclare class symfony\component\process\process in phar:///usr/local/bin/composer/vendor/composer/ClassLoader.php on line 183
+</code></pre>
+
+<p>A quick google told me <a href="https://github.com/composer/composer/issues/1432">others</a> also had the <a href="https://github.com/composer/composer/issues/264">same</a> issue.</p>
+
+<p>It seems that there&rsquo;s a bug between composer.phar and APC. From one of the composer issues:</p>
+
+<pre><code>Quite weird, but then again the php docs seem to acknowledge that APC should not really be
+enabled on the CLI. It seems to be a phar+apc bug, see https://bugs.php.net/bug.php?id=59398
+https://bugs.php.net/bug.php?id=59829 https://bugs.php.net/bug.php?id=59907 as well.
+</code></pre>
+
+<p>There are a couple of things you can do to fix this, but they all involve turning off APC for php-cli. First, run <em>composer diag</em> to see whether any more information can be gleaned:</p>
+
+<pre><code class="language-bash">$ composer diag
+Checking platform settings: FAIL
+
+The apc.enable_cli setting is incorrect.
+Add the following to the end of your `php.ini`:
+    apc.enable_cli = Off
+
+The php.ini used by your command-line PHP is: /opt/php-5.4.15/lib/php.ini
+If you can not modify the ini file, you can also run `php -d option=value` to modify ini values on the fly. You can use -d multiple times.
+</code></pre>
+
+<p>If you get that message, you know you have the same problem as I did :) You can also check the <a href="http://getcomposer.org/doc/articles/troubleshooting.md">troubleshooting</a> page on getcomposer.org</p>
+
+<p>You can try running the <em>self-update</em> (for me I don&rsquo;t reference the .phar file because I use the unix install convention).</p>
+
+<pre><code class="language-bash">php /usr/local/bin/composer self-update
+</code></pre>
+
+<p>Those are really just everyday things to try if you have composer issues, to really fix this you need to disable APC for php-cli. You should set this option to <em>0</em> in your php.ini</p>
+
+<pre><code class="language-bash">apc.enable_cli=0
+</code></pre>
+
+<p>If you don&rsquo;t have access to php.ini, you can disable APC on the CLI per command:</p>
+
+<pre><code class="language-bash">php -d apc.enable_cli=0 /usr/local/bin/composer install
+</code></pre>
+
+<p>Note: if you have composer.phar in your project you could just do:</p>
+
+<pre><code class="language-bash">php -d apc.enable_cli=0 composer.phar install
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

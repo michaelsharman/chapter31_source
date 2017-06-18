@@ -1,0 +1,110 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Setting a &#34;Label&#34; property tip for FarCry 5 | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Setting a &#34;Label&#34; property tip for FarCry 5 - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 28, 2009</h2>
+    <h1 class="title">Setting a &#34;Label&#34; property tip for FarCry 5</h1>
+    
+    <div class="content">
+      <p>Quick tip which might fix some problems for people as it did for me today.</p>
+
+<p>I had a custom object for a calendar where the main title was &ldquo;EventTitle&rdquo;. Now as you may know <a href="http://farcrycms.org/">FarCry</a> uses the &ldquo;label&rdquo; and &ldquo;title&rdquo; property from types.cfc by default.</p>
+
+<p>As I wasn&rsquo;t using this default property my <em>label</em> value was &ldquo;incomplete&rdquo; in the database. This didn&rsquo;t really bother me as it would never be seen, however it was preventing my content object from being approved. I wasn&rsquo;t getting an error message when attempting to publish, it&rsquo;s just that the row would remain in draft.</p>
+
+<p>I figured if I could add a value to the <em>label</em> property I would be able to approve the object. A quick search on the <a href="http://docs.farcrycms.org/">docs</a> site gave me a nice little attribute to add to your type cfproperty of <em><a href="http://docs.farcrycms.org/display/FCDEV40/Form+Tool+Property+Metadata">bLabel</a>=&ldquo;true/false&rdquo;</em>. What this does is maps the property to the types.label property.</p>
+
+<p>This is a nice little solution, now the &ldquo;label&rdquo; property can be populated by any property I choose (i.e. EventTitle) and I&rsquo;m not restricted to name my propery &ldquo;label&rdquo; or &ldquo;title&rdquo; etc.</p>
+
+<p>Btw this also fixed my publishing issue.</p>
+
+<p>This works as of FarCry 5.1.4</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

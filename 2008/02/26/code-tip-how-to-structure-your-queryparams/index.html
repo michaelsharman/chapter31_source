@@ -1,0 +1,181 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Code Tip: How to structure your queryparams | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Code Tip: How to structure your queryparams - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">February 26, 2008</h2>
+    <h1 class="title">Code Tip: How to structure your queryparams</h1>
+    
+    <div class="content">
+      <p>If I were a betting man I&rsquo;d bet a LOT of money (and perhaps even the house!) that you&rsquo;ve done this before.</p>
+
+<p>Try to spot the error in the query below:</p>
+
+<pre><code class="language-javascript">&lt;cfquery name=&quot;qCreate&quot; datasource=&quot;#getDSN()#&quot;&gt;
+	INSERT INTO	myTable
+		(
+			ObjectId,
+			Country,
+			DateOfBirth,
+			Email,
+			FirstName,
+			Gender,
+			LastName,
+			MainSchoolId,
+			PhoneHome,
+			PhoneMobile,
+			PostCode,
+			State,
+			Street,
+			StudentId,
+			StudentPassword,
+			StudentPodId,
+			Suburb
+		)
+	VALUES
+		(
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#createUUID()#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('country')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_date&quot; value=&quot;#createODBCDate(arguments.oUser.get('dateOfBirth'))#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('email')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('firstName')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('gender')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('lastName')#&quot; /&gt;
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_integer&quot; value=&quot;#arguments.oUser.get('mainSchoolId')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('phoneHome')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('phoneMobile')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('postCode')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('state')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('street')#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_integer&quot; value=&quot;#arguments.oUser.getStudentId()#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#hash(arguments.oUser.get('studentPassword'))#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#createUUID()#&quot; /&gt;,
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('suburb')#&quot; /&gt;
+		)			
+&lt;/cfquery&gt;
+</code></pre>
+
+<p>Spot it? It&rsquo;s one of those &ldquo;Where&rsquo;s Wally&rdquo; errors where some people spot it straight away and some people (like me today) spend FAR too long searching for what went wrong.</p>
+
+<p>Ok&hellip;if you haven&rsquo;t spotted it there is a missing comma in the SQL (after the 7th argument &lsquo;lastName&rsquo;).</p>
+
+<p>Even though in hindsight the error returned from MySQL was telling me exactly what was wrong:</p>
+
+<blockquote>
+<p>&ldquo;You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &lsquo;MainSchoolId = 8459, PhoneHome = &ldquo;, PhoneMobile = &ldquo;, Post&rsquo; at line 9&rdquo;</p>
+</blockquote>
+
+<p>Still took me longer than 5 minutes to debug. So&hellip;</p>
+
+<p>A new rule for me is going back to what I used to do all the time for this exact reason (no idea why I didn&rsquo;t in this case).</p>
+
+<p>Putting the comma at the START of any argument like this:</p>
+
+<pre><code class="language-javascript">&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#createUUID()#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('country')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_date&quot; value=&quot;#createODBCDate(arguments.oUser.get('dateOfBirth'))#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('email')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('firstName')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('gender')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('lastName')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_integer&quot; value=&quot;#arguments.oUser.get('mainSchoolId')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('phoneHome')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('phoneMobile')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('postCode')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('state')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('street')#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_integer&quot; value=&quot;#arguments.oUser.getStudentId()#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#hash(arguments.oUser.get('studentPassword'))#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#createUUID()#&quot; /&gt;
+, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('suburb')#&quot; /&gt;
+</code></pre>
+
+<p>Now it&rsquo;s EASY to spot this all too common syntax error, especially if you&rsquo;re copying and pasting from somewhere else :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

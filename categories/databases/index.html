@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Databases | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Databases - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">July 5, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/07/05/concatenating-values-into-a-single-column-with-mysql-group_concat/">Concatenating values into a single column with MySQL group_concat</a></h1>
+      
+      <div class="content">
+        How many times have you wanted to return a list of grouped values from a database, in a single column, per row of your recordset? Actually I&rsquo;ve wanted to do that a few times! Most of the time I&rsquo;ll let the application layer handle that, but sometimes letting the database do the hard work fits the bill.
+My not-so-theoretical example is course subjects (think English, Maths etc) that have 1-n &ldquo;stages&rdquo; (think categories) attached to them.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/07/05/concatenating-values-into-a-single-column-with-mysql-group_concat/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 15, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/03/15/error-restoring-mysql-database-when-using-btree-on-indexes/">Error restoring MySQL database when USING BTREE on indexes</a></h1>
+      
+      <div class="content">
+        Occasionally when I&rsquo;m restoring a database that was backed up from a different server than the one I&rsquo;m restoring on I get an error along the lines of:
+&gt;[Error] Script lines: 5-17 ------------------------- You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USING BTREE ) ENGINE=InnoDB DEFAULT CHARSET=utf8' at line 11 Warnings: ---&gt; W (1): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USING BTREE ) ENGINE=InnoDB DEFAULT CHARSET=utf8' at line 11  Hmm, the docs suggest that BTREE is a valid index type for both MyISAM and InnoDB.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/03/15/error-restoring-mysql-database-when-using-btree-on-indexes/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 3, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/03/03/mysql-alternative-to-mssqls-isnull/">MySQL alternative to MSSQL&#39;&#39;s isNull()</a></h1>
+      
+      <div class="content">
+        I was looking for a way to do isNull() in MySQL the other day, for those that don&rsquo;t know this means you can do something like:
+SELECT isNull(mycolumn, 'blah') FROM myTable;  If the value in mycolumn is NULL, then &lsquo;blah&rsquo; is returned, this can of course be any string literal/numeric value you want. MySQL doesn&rsquo;t have isNull() but it does have ifNull() which is basically the same.
+SELECT ifNull(mycolumn, 'blah') FROM myTable;  
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">February 8, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/02/08/sql-for-finding-duplicate-values/">SQL for finding duplicate values</a></h1>
+      
+      <div class="content">
+        Quick post to remind me how to check a table column for duplicate values next time I&rsquo;m looking for it (when my memory fails!)
+SELECT id, count(id) FROM mytable GROUP BY id HAVING count(id) &gt; 1  
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 14, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/11/14/importing-a-csv-into-mysql-using-the-command-line/">Importing a csv into MySQL using the command line</a></h1>
+      
+      <div class="content">
+        UPDATE 16th Nov 2010: I had some issues with the import which I noted in the first code example below
+Today I had to import csv into a single mysql table. The destination table only had 5 columns and the csv was around 22MB (around 400,000 records). The csv also contained more columns that I needed for the import. Sometimes I&rsquo;ll use a GUI to do this as I usually have one open, but it never ceases to amaze me how much slower GUI tools are compared to the command line.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/11/14/importing-a-csv-into-mysql-using-the-command-line/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 4, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/10/04/case-sensitive-development-on-mac-os-x/">Case sensitive development on Mac OS X</a></h1>
+      
+      <div class="content">
+        At work most of the developers are on Mac OS X but our staging and production environments are Linux based. This means development is case insensitive but stage/production is case sensitive. Although we have development guidelines/standards which dictate file and database naming conventions etc, human error can still occur (in terms of referencing files with a different &ldquo;case&rdquo;). We also use a few open source packages where we obviously don&rsquo;t have control over the naming of files or the references to database tables within those files.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/10/04/case-sensitive-development-on-mac-os-x/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 8, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/09/08/tip-when-adding-allowmultiqueriestrue-to-your-mysql-dsn-in-coldfusion/">Tip when adding &#34;allowMultiQueries=true&#34; to your MySQL DSN in ColdFusion</a></h1>
+      
+      <div class="content">
+        Scenario&hellip;I&rsquo;m using ColdFusion 9 and MySQL 5. I already had my DSN setup but had a requirement to get the last inserted id from a MySQL INSERT statement (I&rsquo;m using auto-incrementing integer&rsquo;s).
+As most people know, the best way to do this (in MySQL) is using the last_insert_id() function. I wanted to attach this to the end of my INSERT statement for performance reasons, as I&rsquo;d only be sending one query to the server instead of separate ones.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/09/08/tip-when-adding-allowmultiqueriestrue-to-your-mysql-dsn-in-coldfusion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 13, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/">Development configuration tips for Ubuntu</a></h1>
+      
+      <div class="content">
+        I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc
+Here are some notes which helped me out when configuring some of these development tools.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 3, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/12/03/querying-multiple-databases-within-one-cfquery/">Querying multiple databases within one cfquery</a></h1>
+      
+      <div class="content">
+        In discussing a possible caching solution at work a suggestion was made to use a secondary database (on the same server) to store some key application data. It&rsquo;s not really important to describe why we wanted to do this, suffice to say that my concern was if and when the application would need to perform a SQL &ldquo;JOIN&rdquo; between the primary and secondary (caching) database as I wasn&rsquo;t sure if it was technically possible within our environment (ColdFusion 8, MySQL).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/12/03/querying-multiple-databases-within-one-cfquery/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/22/cfqueryparam-does-not-work-in-order-by-what-are-my-options/">cfqueryparam does not work in ORDER BY, what are my options?</a></h1>
+      
+      <div class="content">
+        For those that don&rsquo;t know, ColdFusion&rsquo;s cfqueryparam won&rsquo;t work on a SQL ORDER BY clause, so the following will not work:
+&lt;cfquery name=&quot;qGetUsers&quot; datasource=&quot;mydsn&quot;&gt; SELECT	FirstName, LastName FROM	Users ORDER BY &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.order#&quot; /&gt; &lt;/cfquery&gt;  This is really nothing new, people have been talking about this for years but with the spate of recent SQL injection attacks (note that I meant to publish this around sept 08 but got sidetracked!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/22/cfqueryparam-does-not-work-in-order-by-what-are-my-options/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/databases/page/2/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,130 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>When to use form POST vs GET? | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="When to use form POST vs GET? - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">January 24, 2008</h2>
+    <h1 class="title">When to use form POST vs GET?</h1>
+    
+    <div class="content">
+      <p>I read <a href="http://www.coldfusionmuse.com/index.cfm/2008/1/23/web.logs.security">a post</a> today from <a href="http://www.coldfusionmuse.com/">Mark Kruger</a> where he was warning against the possible side effects when using GET as a form submit <em>method</em>.</p>
+
+<p>I think I (unintentionally) offended Mark with my comment where I asked <em>why would anyone EVER use GET?</em> because I pretty much always use POST so was wondering why you would use GET.</p>
+
+<p>In my search for answers I asked <a href="http://www.lynchconsulting.com.au/">Mark Lynch</a> who seems to always have the answer to my questions :)</p>
+
+<p>So in summary (from <a href="http://weblogs.asp.net/mschwarz/archive/2006/12/04/post-vs-get.aspx">Michael Schwarz</a>);</p>
+
+<blockquote>
+<p>POST</p>
+
+<ol>
+<li>By default no proxy server or web browser is caching this data, you will always get the real data from you web server.</li>
+<li>The length of data you can send to the web server is only restricted by the web server itself, but there is no real restriction.</li>
+<li>Character encoding can be done easily using application/x-www-form-urlencoded.</li>
+</ol>
+
+<p>GET</p>
+
+<ol>
+<li>Running a http request with GET can be cached on your web browser or a configured proxy server.</li>
+<li>To get the live data from you web server you have to modify the url that is used in your XHR invoke, simply by using a counter or new Date().getTime() which will generate a unique url.</li>
+<li>Maximum URL length is 2,083 characters in Internet Explorer (see MaxClientRequestBuffer: Use POST instead of GET to Send Large Amounts of Data in Request)</li>
+<li>In particular, the convention has been established that the GET and HEAD methods SHOULD NOT have the significance of taking an action other than retrieval. [RFC 2616 sec 9]</li>
+<li>Character encoding will reduce the amount of data that can be used because of url encoding entities (i.e. three Japanese characters are converted to this: %26%2312454%3B%26%2312455%3B%26%2312502%3B)</li>
+</ol>
+</blockquote>
+
+<p>There is also a <a href="http://www.cs.tut.fi/~jkorpela/forms/methods.html">great article here</a> if you want some further reading on this subject.</p>
+
+<p>For me (at this stage) this really only has an effect when doing Ajax. If I&rsquo;m purely wanting to retrieve data (just HTML for example) from the server then I&rsquo;ll use GET, but if I want to do something else with server <em>side effects</em> (such as posting data to be saved to a database) then I&rsquo;ll use POST.</p>
+
+<p>Phew&hellip;you learn something new everyday!</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

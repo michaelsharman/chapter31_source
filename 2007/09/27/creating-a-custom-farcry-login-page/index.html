@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Creating a custom FarCry login page | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Creating a custom FarCry login page - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 27, 2007</h2>
+    <h1 class="title">Creating a custom FarCry login page</h1>
+    
+    <div class="content">
+      <p>The FarCry security model is really very cool. You can of course setup users within the &lsquo;admin&rsquo; area and assign those users to groups (and those groups can have different permissions), but you can also authenticate via Active Directory or LDAP etc.</p>
+
+<p>One thing you can also do with ease is secure particular navigation &lsquo;nodes&rsquo; of the website, thus quickly and easily creating password protected &lsquo;member&rsquo; areas.</p>
+
+<p>Whenever you secure a navigation branch the user is presented with the default FarCry login screen as seen below:</p>
+
+<p><img src="/images/uploads/2007/09/farcrylogin.jpg" alt="FarCry login" /></p>
+
+<p>Because this is a &lsquo;front end&rsquo; page (seen by site visitors) you will often want to change the look and feel to mimick your client&rsquo;s design for branding purposes. As with a lot of things with FarCry this is a piece of cake!</p>
+
+<p>All you need to do is add your own login screen in /yourproject/customadmin/login/login.cfm</p>
+
+<p>It&rsquo;s probably best to copy the original login.cfm from /farcry/core/tags/navajo/login.cfm so all the FarCry &lsquo;logic&rsquo; is retained, just make all the HTML/CSS changes you need.</p>
+
+<p>Here is an example of just that, a custom &lsquo;front end&rsquo; login screen:</p>
+
+<p><img src="/images/uploads/2007/09/customlogin.jpg" alt="Custom login" /></p>
+
+<p>The only thing with this is that when a client administrator needs to login to FarCry administration area (or &lsquo;Webtop&rsquo;) they will also see this &lsquo;custom&rsquo; template.</p>
+
+<p>If this meets client expectations then you have nothing to worry about, if however you want to have the default FarCry login screen visible when an administrator is logging in to the back-end (while retaining the custom login screen on the front-end) then you need to make this simple change at the top of your custom login.cfm:</p>
+
+<p>/yourproject/customadmin/login/login.cfm</p>
+
+<p>Note that this needs to be at the top of the page (above your custom login code).</p>
+
+<pre><code class="language-javascript">&lt;!---
+	If a user is attempting to login to the FarCry webtop, load the default login screen.
+	Otherwise load the custom 'members' login screen for password protected site areas.
+ ---&gt;
+&lt;cfif structKeyExists(URL, &quot;returnURL&quot;) AND URL.returnURL CONTAINS &quot;farcry&quot;&gt;
+	&lt;cfimport taglib=&quot;/farcry/core/tags/navajo&quot; prefix=&quot;nj&quot; /&gt;
+	&lt;nj:Login&gt;
+	&lt;cfabort /&gt;
+&lt;/cfif&gt;
+</code></pre>
+
+<p>You can read a little more about <a href="http://docs.farcrycms.org:8080/confluence/display/FCDEV40/Customise+Login">customising logins here</a>.</p>
+
+<p>This will work in FarCry versions 3 and 4.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,149 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>FarCry Plugin - Webtop Tools | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="FarCry Plugin - Webtop Tools - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">August 17, 2011</h2>
+    <h1 class="title">FarCry Plugin - Webtop Tools</h1>
+    
+    <div class="content">
+      
+
+<p>We&rsquo;re starting to compile a list of internal tools used when developing a FarCry application. I thought it might be simpler to create a small FarCry plugin to keep them all in the same place, makes it easier to use across multiple projects.</p>
+
+<p><a href="https://github.com/michaelsharman/lcwebtoptools">The plugin</a> currently contains 2 scripts:</p>
+
+<ul>
+<li>FarCry database diff (MySQL only at this stage)</li>
+<li>Content Object Meta</li>
+</ul>
+
+<p>The database diff looks for case-sensitivity differences between your ColdFusion components and the actual MySQL table names (MySQL only). Historically we&rsquo;ve had issues because we are on Linux, this tool has helped quickly iron out any differences in &ldquo;case&rdquo;.</p>
+
+<p>The Content Object Meta assists in finding information about content of any &ldquo;type&rdquo; in FarCry, based on the title, objectId or friendly URL. What does this mean? Well any &ldquo;content object&rdquo; you want information on can be found using this tool. Whether you have an objectId and you don&rsquo;t know if it belongs to dmNavigation, dmHTML, dmNews or a custom type. Or you might have part of a friendly URL or content label/title. This tool can help tell you what the content type is, whether it&rsquo;s approved, where it sits in the site tree (if relevant) etc.</p>
+
+<p>For example; if I wanted to know everything in FarCry that had a label LIKE &lsquo;credential&rsquo; (wildcards are automatically added to your search term) I might get results like the following:</p>
+
+<p><img src="/images/uploads/2011/08/contenttitle.png" alt="" /></p>
+
+<p>From that initial resultset, if I clicked on an objectid for dmNavigation:</p>
+
+<p><img src="/images/uploads/2011/08/objectid.png" alt="" /></p>
+
+<p>Or if I clicked on an objectid for dmHTML:</p>
+
+<p><img src="/images/uploads/2011/08/objectid_dmhtml.png" alt="" /></p>
+
+<p>Note that there is a collapsed cfdump that you can expand for further info.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>Railo 3.2+ or ColdFusion 7+
+FarCry 6+
+MySQL 5+</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>&ldquo;Official&rdquo; notes on installing FarCry plugins can be found here: <a href="https://farcry.jira.com/wiki/pages/viewpage.action?pageId=12943398">https://farcry.jira.com/wiki/pages/viewpage.action?pageId=12943398</a></p>
+
+<p>It&rsquo;s pretty simple though:</p>
+
+<ul>
+<li>add the &ldquo;lcwebtoptools&rdquo; directory from git into /farcry/plugins/</li>
+<li>add &ldquo;lcwebtoptools&rdquo; to THIS.plugins in farcryConstructor.cfm (in your project webroot)</li>
+</ul>
+
+<p>e.g.
+    <cfset THIS.plugins = "farcrycms,lcwebtoptools"></p>
+
+<p>Restart your app, that&rsquo;s it. No coapi changes need to be made. To access the current tools, go to the &ldquo;Admin&rdquo; tab and choose &ldquo;Webtop Tools&rdquo; from the drop down.</p>
+
+<p>The plugin is <a href="https://github.com/michaelsharman/lcwebtoptools">hosted on github</a>, for a direct download to the zip <a href="https://github.com/michaelsharman/lcwebtoptools/zipball/master">click here</a>.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

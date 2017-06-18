@@ -1,0 +1,154 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>isValid() | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="isValid() - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 20, 2006</h2>
+    <h1 class="title">isValid()</h1>
+    
+    <div class="content">
+      <p>New to ColdFusion MX7 the isValid() function tests whether a value meets a validation or data type rule and returns True if the value conforms to the rule; False, otherwise.</p>
+
+<p>Function syntax</p>
+
+<pre><code class="language-javascript">isValid(type, value)
+isValid(&quot;range&quot;, value, min, max)
+isValid(&quot;regex&quot; or &quot;regular_expression&quot;, value, pattern)
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code class="language-javascript">&lt;cfif IsValid(&quot;integer&quot;, url.value)&gt;
+   Valid integer!
+&lt;cfelse&gt;
+   Invalid Integer!
+&lt;/cfif&gt;
+
+&lt;cfif IsValid(&quot;range&quot;, url.value, 1, 100)&gt;
+   Value is between 1 and 100
+&lt;cfelse&gt;
+   Value is not between 1 and 100
+&lt;/cfif&gt;
+
+&lt;cfif IsValid(&quot;regex&quot;, url.value, &quot;[A-Z][a-z]+&quot;)&gt;
+   Word starts with a capital letter
+&lt;cfelse&gt;
+   Word does not match pattern.
+&lt;/cfif&gt;
+</code></pre>
+
+<p>There are a lot of pre-existing functions that can already do a lot of what isValid() offers like:</p>
+
+<ul>
+<li>isNumeric()</li>
+<li>isBoolean()</li>
+<li>isArray()</li>
+<li>isQuery()</li>
+<li>isStruct</li>
+</ul>
+
+<p>But with isValid() you can do those as well as things like:</p>
+
+<ul>
+<li>creditcard (mod10 checks for credit cards)</li>
+<li>email</li>
+<li>eurodate</li>
+<li>guid</li>
+<li>range</li>
+<li>regex</li>
+<li>url</li>
+<li>usdate</li>
+<li>variablename (a string formatted according to ColdFusion variable naming conventions)</li>
+</ul>
+
+<p>There are also a few US specific test conditions as well like “ssn” and “telephone” etc.</p>
+
+<p>All in all this is an extremely versatile tag to use for validation and will save you oodles of time!</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

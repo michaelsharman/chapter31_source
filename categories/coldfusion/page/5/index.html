@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coldfusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coldfusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">July 21, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/07/21/inetaddresslocator-problems-with-farcry-3/">InetAddressLocator problems with FarCry 3</a></h1>
+      
+      <div class="content">
+        Took me a little bit to find the solution for this across several different board posts so I thought I&rsquo;d quickly write it up.
+For those of us still using FarCry 3 (remember that FarCry 5 is out!) you may come across the following error:
+&ldquo;java init failed: net.sf.javainetloca­tor.InetAddressLocat­or&rdquo;
+The docs tell us:
+ Geolocator is a plugin that determines the locale of an inbound request. Its an optional plugin that is turned off by default, and requires a class file InetAddressLocator to be placed in your class path.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/07/21/inetaddresslocator-problems-with-farcry-3/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 19, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/07/19/another-reminder-of-the-importance-of-preventing-sql-injection/">Another reminder of the importance of preventing SQL injection</a></h1>
+      
+      <div class="content">
+        Mark Kruger has another interesting and timely read about an ambitious SQL injection attack one of his clients recently experienced.
+One things for sure, it&rsquo;s certainly an interesting time to be a developer. Hackers and spammers make sure of that :(
+SQL injection has been around for so long, it is truly a crime if developers (ColdFusion developers at least) aren&rsquo;t using cfqueryparam for every WHERE clause in their queries.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/07/19/another-reminder-of-the-importance-of-preventing-sql-injection/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 17, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/07/17/coding-standards-do-you-use-them/">Coding standards, do you use them?</a></h1>
+      
+      <div class="content">
+        Reading a blog entry this morning got me thinking. Essentially the author had experienced problems (after installing the latest ColdFusion hotfix) with case sensitivity on a Linux server. Two of the issues where based around calling custom tags and createObject(), where the actual filename was in a different &ldquo;case&rdquo; to the code calling the tag or instansiating the object.
+Why did this get me thinking? Coding standards.
+What standards do you use when developing?
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/07/17/coding-standards-do-you-use-them/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 8, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/07/08/dont-forget-the-coldfusion-site-wide-error-handler/">Don&#39;t forget the ColdFusion site-wide error handler</a></h1>
+      
+      <div class="content">
+        Most developers know and use exception handling techniques when building web apps. One of the important reasons to do this is so that the end user isn&rsquo;t presented with an ugly server error message, but instead a nice &ldquo;skinned&rdquo; template advising them that something&rsquo;s gone wrong and an administrator has been notified etc. (Of course another reason for this is not to give away sensitive server configuration information to prying eyes!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/07/08/dont-forget-the-coldfusion-site-wide-error-handler/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 28, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/06/28/pastebin-perfect-for-code-collaboration/">Pastebin - perfect for code collaboration</a></h1>
+      
+      <div class="content">
+        Have you ever pasted code you are working on to a colleague over IM or even email for some help or an opinion? Then you would benefit from using pastebin (free service) particularly if you experienced problems with code over IM in the past :(
+&ldquo;Pastebin is a tool for collaborative debugging or editing&rdquo;
+What that means is you can paste any code into a nice big textarea on the pastebin homepage, choose your syntax highlighting (ColdFusion is available!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/06/28/pastebin-perfect-for-code-collaboration/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 23, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/06/23/new-farcry-core-site/">New FarCry &#34;core&#34; site</a></h1>
+      
+      <div class="content">
+        The guys at Daemon have been busy of late. With the conference just barely over I just noticed they&rsquo;ve found the time to launch a new site at http://www.farcrycore.org/ for all your information needs on the FarCry framework.
+Includes documentation, downloads (for the new version 5!) and more, go and take a look and try it out today.
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 19, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/06/19/farcry-finding-a-page-by-typename-somewhere-above-the-current-page/">FarCry - Finding a page by &#39;typename&#39; somewhere above the current page</a></h1>
+      
+      <div class="content">
+        Note: This is for FarCry v3 which is a bit old now but should work for v5 :)
+Sometimes when using FarCry I have a need to find an occurance of a page &ldquo;type&rdquo; which sits somewhere above where I currently am in the the navigation hierachy.
+Say I want to find the &ldquo;VehicleType&rdquo; page (which could be Car or Bike etc) above where I am in the navigation hierachy as listed below (when I&rsquo;m on the &ldquo;Models&rdquo; page):
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/06/19/farcry-finding-a-page-by-typename-somewhere-above-the-current-page/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 14, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/06/14/does-your-bank-do-online-statements/">Does your bank do online statements?</a></h1>
+      
+      <div class="content">
+        I&rsquo;m a lucky member of the teachers credit union, lucky for many reasons but just one of them is that they offer online statements. Meaning you get no correspondence via traditional mail.
+They are also donating $1 into the Teachers Environment Fund for each member who signs up for e-statements.
+Ask yourself, do you really need all those paper statements every month? I know I don&rsquo;t, which is why I&rsquo;m lucky to have a bank which provides an alternative.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/06/14/does-your-bank-do-online-statements/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 11, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/06/11/preservesinglequotes-still-breaks-on-array-style-parameters/">PreserveSingleQuotes still breaks on array style parameters</a></h1>
+      
+      <div class="content">
+        As far back as ColdFusion 6 PreserveSingleQuotes hasn&rsquo;t worked with array style parameters.
+#preserveSingleQuotes(aWhere[i])#  This was even submitted as ColdFusion Bug number 53977 on the CF6 docs, a few years later and we still have no joy for ColdFusion 8 :(
+Structures will work but only when you access the value by dot notation, not using array style:
+#preserveSingleQuotes(stWhere.i)#  This was annoying today when I wanted to loop over an array of &ldquo;WHERE&rdquo; clause arguments passed into a function.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/06/11/preservesinglequotes-still-breaks-on-array-style-parameters/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 23, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/04/23/insert-or-update-in-one-statement-with-mysql/">INSERT or UPDATE in one statement with MySQL</a></h1>
+      
+      <div class="content">
+        A little while ago I mentioned combining multiple INSERT statements with MySQL, here is another helpful approach to a common problem.
+In many systems you will give the user a chance to ADD and EDIT a record, a News post for example. As usual there are many ways to handle writing any changes to the database, one common approach would be to have 2 methods in a News.cfc
+E.g. create() and update()
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/04/23/insert-or-update-in-one-statement-with-mysql/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/4/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/6/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

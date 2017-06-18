@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wordpress on chapter31</title>
+    <link>http://chapter31.com/categories/wordpress/</link>
+    <description>Recent content in Wordpress on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Wed, 11 May 2011 13:48:49 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Wordpress - detecting the categories of a post</title>
+      <link>http://chapter31.com/2011/05/11/wordpress-detecting-the-categories-of-a-post/</link>
+      <pubDate>Wed, 11 May 2011 13:48:49 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2011/05/11/wordpress-detecting-the-categories-of-a-post/</guid>
+      <description>I was creating a Wordpress child theme (the best way to modify/override your themes) tonight and had the need to have different display options depending on which categories the blog article had. So for example if I had a post categorised with &amp;ldquo;portfolio&amp;rdquo;, I wanted to hide the comments form which usually sits at the bottom of a post.
+The following snippet will loop over all post categories, if it finds that &amp;ldquo;portfolio&amp;rdquo; is one of the categories assigned to the current post then a local variable (boolean) is set which you can use to hide Wordpress functions anywhere in the current template.</description>
+    </item>
+    
+    <item>
+      <title>FancyBox for Wordpress plugin not working</title>
+      <link>http://chapter31.com/2011/05/11/fancybox-for-wordpress-plugin-not-working/</link>
+      <pubDate>Wed, 11 May 2011 13:42:10 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2011/05/11/fancybox-for-wordpress-plugin-not-working/</guid>
+      <description>I just spent some time figuring out why fancybox wasn&amp;rsquo;t working tonight (image thumbnails were just linking to the large image&amp;hellip;not loading the overlay as they should). It now seems obvious after the fact but as far as I can see it&amp;rsquo;s NOT in the fancybox docs.
+When you insert your gallery from the media section of a page in wp-admin, you HAVE to choose &amp;ldquo;Image File&amp;rdquo;, not &amp;ldquo;Attachment Page&amp;rdquo;. That&amp;rsquo;s it!</description>
+    </item>
+    
+  </channel>
+</rss>

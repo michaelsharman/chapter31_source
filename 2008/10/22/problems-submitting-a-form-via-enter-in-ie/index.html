@@ -1,0 +1,154 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Problems submitting a form via &#39;enter&#39; in IE | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Problems submitting a form via &#39;enter&#39; in IE - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">October 22, 2008</h2>
+    <h1 class="title">Problems submitting a form via &#39;enter&#39; in IE</h1>
+    
+    <div class="content">
+      <p>Like many things, handling form submissions with <a href="http://www.adobe.com/products/coldfusion/">ColdFusion</a> can be done many many ways. A preferred method which I&rsquo;ve been using for years now is looking for a specific element in the form struct. Something like:</p>
+
+<pre><code class="language-javascript">&lt;cfif structKeyExists(form, &quot;myelement&quot;)&gt;
+	&lt;!--- handle form submission here ---&gt;
+&lt;/cfif&gt;
+</code></pre>
+
+<p>Most times I use a hidden field as the form element to look for (in my <a href="http://www.cfquickdocs.com/#StructKeyExists">structKeyExists()</a>), but I came across something funny today where I happened to be looking for the <em>name</em> of a submit button.</p>
+
+<p>My form was very basic:</p>
+
+<p><a href="/images/uploads/2008/10/form.png"><img src="/images/uploads/2008/10/form.png" alt="" /></a></p>
+
+<p>If this form is submitted by clicking the submit button (&ldquo;Go&rdquo;) in all browsers I get the following form struct:</p>
+
+<p><a href="/images/uploads/2008/10/picture-3.png"><img src="/images/uploads/2008/10/picture-3.png" alt="" /></a></p>
+
+<p>Notice that I have <em>2 form elements</em> in the form dump, &ldquo;btnSearch&rdquo; which is the submit button and &ldquo;searchCriteria&rdquo; which is the text box. So far so good, but what happens when I submit the form by hitting the &ldquo;enter&rdquo; key (when I have focus in the text box)?</p>
+
+<p>In most browsers you get the same form dump as above&hellip;not so with IE where I get the following:</p>
+
+<p><a href="/images/uploads/2008/10/picture-2.png"><img src="/images/uploads/2008/10/picture-2.png" alt="" /></a></p>
+
+<p>As you can see, my submit button (btnSearch) <em><strong>does not exist in the form struct!</strong></em>.</p>
+
+<p>The submit button HTML was:</p>
+
+<pre><code class="language-javascript">&lt;input type=&quot;submit&quot; name=&quot;btnSearch&quot; id=&quot;btnSearch&quot; value=&quot;Go&quot; /&gt;
+</code></pre>
+
+<p>After discussions with <a href="http://www.lynchconsulting.com.au/blog/">Mark Lynch</a> and some testing it appears that this only happens when you have <em>a single text element</em> on the page. If you have 2 or more textboxes then the form submit button appears in the form struct as expected</p>
+
+<p>For those asking whether it&rsquo;s really important, after all how often will you have a form with a single text box. Ever used a search form? :)</p>
+
+<p>The easy way around this <em>bug</em> is to never look for a submit button, instead look for a hidden field or a text box.</p>
+
+<p>For those who sometimes use 2 submit buttons on the same page and take action depending on which one was clicked&hellip;the same thing happens i.e. neither submit button exists in the form struct (in IE) if you hit &ldquo;enter&rdquo;. In Firefox the submit button which appears first in the form markup exists in the form!</p>
+
+<p>All in all I&rsquo;d recommend never using the name of a submit button to determine the action of a form submission. The only exception is if you have multiple submit buttons and you understand and are happy with the default action in IE (the first submit button existing etc).</p>
+
+<p>Some might say you could have a 2nd textbox on the form and hide it using CSS. While this would work it just feels wrong and a bit of a hack.</p>
+
+<p>If you&rsquo;re curious, here&rsquo;s a small compatibility table of my findings on Mac OSX (except IE of course which was on Windows XP):</p>
+
+<p>| Browser | Submit exists on enter |
+| |
+| Firefox 3.0.3 | Yes
+| |
+| Internet Explorer 7 (7.0.5730.13) | No
+| |
+| Internet Explorer 6 SP2 (6.0.2900.2180) | No
+| |
+| Opera 9.<sup>52</sup>&frasl;<sub>9</sub>.61 | Yes
+| |
+| Safari 3.1.2 | Yes
+| |
+| Camino 1.6.4 | Yes</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

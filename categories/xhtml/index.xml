@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xhtml on chapter31</title>
+    <link>http://chapter31.com/categories/xhtml/</link>
+    <description>Recent content in Xhtml on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Wed, 22 Oct 2008 02:35:25 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/xhtml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Problems submitting a form via &#39;enter&#39; in IE</title>
+      <link>http://chapter31.com/2008/10/22/problems-submitting-a-form-via-enter-in-ie/</link>
+      <pubDate>Wed, 22 Oct 2008 02:35:25 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/10/22/problems-submitting-a-form-via-enter-in-ie/</guid>
+      <description>Like many things, handling form submissions with ColdFusion can be done many many ways. A preferred method which I&amp;rsquo;ve been using for years now is looking for a specific element in the form struct. Something like:
+&amp;lt;cfif structKeyExists(form, &amp;quot;myelement&amp;quot;)&amp;gt; &amp;lt;!--- handle form submission here ---&amp;gt; &amp;lt;/cfif&amp;gt;  Most times I use a hidden field as the form element to look for (in my structKeyExists()), but I came across something funny today where I happened to be looking for the name of a submit button.</description>
+    </item>
+    
+    <item>
+      <title>Kotatsu - a simple html table generator</title>
+      <link>http://chapter31.com/2008/07/08/kotatsu-a-simple-html-table-generator/</link>
+      <pubDate>Tue, 08 Jul 2008 09:53:23 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/07/08/kotatsu-a-simple-html-table-generator/</guid>
+      <description>Sometimes you want to create an HTML table by hand and don&amp;rsquo;t have the luxury (if you consider it a luxury!) of having Dreamweaver around. Of course, creating HTML tables really isn&amp;rsquo;t all that difficult or time consuming, but considering we use snippets for just about everything else why not have a tool to generate these tables for us?
+Kotatsu is an online tool to do just that, sure it is very simple (doesn&amp;rsquo;t support col/rowspans or accessibility attributes etc) but when you want to churn out a basic custom table it just might save you some time.</description>
+    </item>
+    
+    <item>
+      <title>When to use form POST vs GET?</title>
+      <link>http://chapter31.com/2008/01/24/when-to-use-form-post-vs-get/</link>
+      <pubDate>Thu, 24 Jan 2008 03:01:30 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/01/24/when-to-use-form-post-vs-get/</guid>
+      <description>I read a post today from Mark Kruger where he was warning against the possible side effects when using GET as a form submit method.
+I think I (unintentionally) offended Mark with my comment where I asked why would anyone EVER use GET? because I pretty much always use POST so was wondering why you would use GET.
+In my search for answers I asked Mark Lynch who seems to always have the answer to my questions :)</description>
+    </item>
+    
+    <item>
+      <title>The &#39;coolest&#39; DHTML calendar</title>
+      <link>http://chapter31.com/2007/03/25/the-coolest-dhtml-calendar/</link>
+      <pubDate>Sun, 25 Mar 2007 07:25:13 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/03/25/the-coolest-dhtml-calendar/</guid>
+      <description>As web developers we are often some of the first people to see the newer techniques and tools available for use in web applications. This can be great as we can then hurry off and implement these things into our new projects.
+But of course there are still millions of older sites (which will no doubt still be around for years to come!) using old techniques and tools. Ugh!
+One of the more common things you find is the age old popup calendar window which is SLOW and could be blocked by the numerous popup blockers out there today.</description>
+    </item>
+    
+    <item>
+      <title>Including js files from within js files</title>
+      <link>http://chapter31.com/2006/12/07/including-js-files-from-within-js-files/</link>
+      <pubDate>Thu, 07 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/12/07/including-js-files-from-within-js-files/</guid>
+      <description>I&amp;rsquo;m working on an application which stores a lot of data in the application scope. Part of the data stored is a config CFC that has a method which loads &amp;lsquo;external assets&amp;rsquo; (javascript and css files etc) into the  of the html document via . I love that tag :)
+My part in this application development is limited to a particular section only, but there was already a lot of external assets present in the header and things were getting very messy.</description>
+    </item>
+    
+    <item>
+      <title>Viewing AJAX generated source code</title>
+      <link>http://chapter31.com/2006/12/04/viewing-ajax-generated-source-code/</link>
+      <pubDate>Mon, 04 Dec 2006 12:13:26 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/12/04/viewing-ajax-generated-source-code/</guid>
+      <description>When developing for the web there is often a need to view the (X)HTML source code of a page to see exactly what ColdFusion (or your server side language of choice) is generating from the server.
+One of the problems you might face is when viewing the source code of an AJAX generated event. Of course AJAX being asynchronous means that the page doesn&amp;rsquo;t reload in the browser, so viewing the source code doesn&amp;rsquo;t allow us to see the content which was generated by our AJAX call.</description>
+    </item>
+    
+    <item>
+      <title>Reserved characters in HTML &#39;id&#39; attribute</title>
+      <link>http://chapter31.com/2006/11/09/reserved-characters-in-html-id-attribute/</link>
+      <pubDate>Thu, 09 Nov 2006 06:22:59 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/11/09/reserved-characters-in-html-id-attribute/</guid>
+      <description>Currently I&amp;rsquo;m building an app which will accept metadata from different sources, translate that into an API to dynamically build an HTML form from. Everything is going just dandy until my page stopped validating (I use tidy to validate my markup) when I got the following warning:
+After some digging I discovered that the value of the &amp;lsquo;id&amp;rsquo; attribute in not simply a string which you can put anything into. I found this on w3c:</description>
+    </item>
+    
+    <item>
+      <title>Browser testing your site design</title>
+      <link>http://chapter31.com/2006/11/08/browser-testing-your-site-design/</link>
+      <pubDate>Wed, 08 Nov 2006 01:59:50 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/11/08/browser-testing-your-site-design/</guid>
+      <description>I&amp;rsquo;ve often used browsercam for testing my sites in different browsers on different operating systems. So I can pass a URL (which must be publicly available) and see screenshot results on Windows, Linux and Mac across just about any browser you like&amp;hellip;from Flock to Firefox and Safari to Konqueror. A full browser list can be seen here.
+Now browsercam is also cool because it lets you devicecheck, meaning testing your site on Blackberries or Windows Mobile&amp;hellip;nice :) Only problem is that browsercam is commercial, so if you&amp;rsquo;re a sole trader you may not have the budget for what is such an ESSENTIAL part of web development.</description>
+    </item>
+    
+    <item>
+      <title>Building accessible tables</title>
+      <link>http://chapter31.com/2006/10/20/building-accessible-tables/</link>
+      <pubDate>Fri, 20 Oct 2006 04:37:51 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/10/20/building-accessible-tables/</guid>
+      <description>These days all the rage is building web pages without tables, but has this gone too far for a lot of developers?
+I&amp;rsquo;m of the opinion that HTML tables shouldn&amp;rsquo;t be used for layout purposes and I think most would agree, if you don&amp;rsquo;t please let me know because I&amp;rsquo;d love to hear the reasoning :)
+There is however a quite valid and obvious for using tables, that being where the content contains tabular data.</description>
+    </item>
+    
+    <item>
+      <title>Web Standards - rooting for the underdog</title>
+      <link>http://chapter31.com/2006/10/02/web-standards-rooting-for-the-underdog/</link>
+      <pubDate>Mon, 02 Oct 2006 23:20:23 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/10/02/web-standards-rooting-for-the-underdog/</guid>
+      <description>Roger Johansson wrote a nice article on why web standards still matter. He notes that recently there has been an increased level of interest and activity around web standards, but those that do strive for excellence in their code (i.e. web standards) are in the extreme minority.
+I would tend to agree with this, take his example:
+ I encourage anyone who thinks we do not need yet another article or book on Web standards, CSS, accessibility, graceful degradation, progressive enhancement, or anything else related to best practices, to take a quick look around you.</description>
+    </item>
+    
+    <item>
+      <title>Robots META tag</title>
+      <link>http://chapter31.com/2006/09/12/robots-meta-tag/</link>
+      <pubDate>Tue, 12 Sep 2006 23:35:52 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/09/12/robots-meta-tag/</guid>
+      <description>The Robots META tag is a way you can tell &amp;lsquo;Robots&amp;rsquo; or &amp;lsquo;Spiders&amp;rsquo; whether a page (or pages) on your site should be indexed, or if links on the page should be followed.
+At this stage I don&amp;rsquo;t believe all &amp;lsquo;robots&amp;rsquo; out there support the use of this META tag, but some do so in the right situation it&amp;rsquo;s worth using.
+The most common examples for the robots META tags are:</description>
+    </item>
+    
+    <item>
+      <title>HTML pre-launch flight check</title>
+      <link>http://chapter31.com/2006/08/25/html-pre-launch-flight-check/</link>
+      <pubDate>Fri, 25 Aug 2006 02:49:28 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/08/25/html-pre-launch-flight-check/</guid>
+      <description>AnyBrowser have a lot of tools for you to use when validating and preparing your website for deployment including:
+ Screen Size Test
+ Meta Tag Creator
+ HTML Validation
+ Link checking
+ Engine View (See how your site might get listed by search engine spiders.)
+  Not a bad list, don&amp;rsquo;t forget that ALL web developers should validate their pages, perform link checking and test on different resolutions before going live.</description>
+    </item>
+    
+    <item>
+      <title>SWFObject</title>
+      <link>http://chapter31.com/2006/08/01/swfobject/</link>
+      <pubDate>Tue, 01 Aug 2006 03:27:29 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/08/01/swfobject/</guid>
+      <description>I&amp;rsquo;ve been using SWFObject for quite a while now and it amazes me that developers out there still don&amp;rsquo;t know about it, especially with all the news around Microsoft&amp;rsquo;s EOLAS case late last year.
+SWFObject is a tasty method for embedding Macromedia Flash content into your web pages and has (among others) the following functionality which alone are reason to be using it!
+ Flash detection Search engine friendly Validates to HTML and XHTML (as long as pages sent as text/html, not application/xhtml+xml.</description>
+    </item>
+    
+    <item>
+      <title>Semantic named anchors</title>
+      <link>http://chapter31.com/2006/07/17/33/</link>
+      <pubDate>Mon, 17 Jul 2006 08:22:23 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/07/17/33/</guid>
+      <description>bitesizestandards have a nice article on &amp;lsquo;semantic anchors&amp;rsquo; which are used to link to different areas of the current page you are viewing.
+The usual way we all do this is with a named anchor as follows, &amp;lsquo;Name&amp;rsquo; a content area on your page:
+&amp;lt;a name=&amp;quot;myContent&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;  Add the link to that content area
+&amp;lt;a href=&amp;quot;#myContent&amp;quot;&amp;gt;Go to myContent&amp;lt;/a&amp;gt;  The problem is that this isn&amp;rsquo;t semantic and it&amp;rsquo;s not ideal to have empty &amp;lt;a href&amp;gt; elements on your page (&amp;lt;a name=&amp;ldquo;&amp;rdquo;&amp;gt;).</description>
+    </item>
+    
+    <item>
+      <title>Flash of Unstyled Content</title>
+      <link>http://chapter31.com/2006/06/20/flash-of-unstyled-content/</link>
+      <pubDate>Tue, 20 Jun 2006 08:41:49 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/06/20/flash-of-unstyled-content/</guid>
+      <description>The lovely people (person?) over at Blue Robot have coined a term &amp;lsquo;FOUC&amp;rsquo;; or Flash of Unstyled Content.
+This is that annoying &amp;lsquo;bug&amp;rsquo; in Windows IE where a user can see the entire body of the page their trying to view &amp;lsquo;unstyled&amp;rsquo; (particularly for page layout) for a moment before the stylesheet kicks in. If the CSS is cached then you probably won&amp;rsquo;t see this happen, but for first time users this just looks amature.</description>
+    </item>
+    
+  </channel>
+</rss>

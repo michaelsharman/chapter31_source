@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>FarCry Tip - Enable cfc&#39;s in your Railo ProxyPassMatch | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="FarCry Tip - Enable cfc&#39;s in your Railo ProxyPassMatch - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">July 1, 2011</h2>
+    <h1 class="title">FarCry Tip - Enable cfc&#39;s in your Railo ProxyPassMatch</h1>
+    
+    <div class="content">
+      <p>I ran into an issue today while working on a FarCry project, basically when I opened up the &ldquo;Related Content&rdquo; popup from the WYSIWYG editor it was blank. Nothing. Not the usual tabs for Images, File, Flash etc.</p>
+
+<p><img src="/images/uploads/2011/07/relatedcontent.png" alt="" /></p>
+
+<p>The Railo logs were empty but Apache was throwing a strange error which I hadn&rsquo;t seen before: <em>&ldquo;Couldn&rsquo;t initialize from remote server, JRun server(s) probably down.&rdquo;</em>. Funny as I&rsquo;m not even using JRun!</p>
+
+<p>Looking at the Chrome console I could see that opening the popup made a request directly to a cfc (/webtop/facade/tinyMCE.cfc?method=ajaxGetTemplateDropdowns) and returned the following error: &ldquo;<em>Failed to load resource: the server responded with a status of 500 (Internal Server Error)</em>&ldquo;</p>
+
+<p>Eventually <a href="http://www.learnosity.com/techblog/">Mark</a> pointed me in the right direction which was kind of obvious if I&rsquo;d actually read the error properly! Our config for Apache -&gt; Railo is for cfm&rsquo;s only&hellip;not cfc&rsquo;s. I don&rsquo;t really like the approach of calling cfc&rsquo;s directly at all, which is why it&rsquo;s not in our Apache -&gt; Railo proxy. But it wasn&rsquo;t a big deal to add it for FarCry projects.</p>
+
+<p>Here is the config we now use, note we now pass requests for cfm and cfc to Railo:</p>
+
+<pre><code class="language-javascript">        &lt;IfModule mod_proxy_ajp.c&gt;
+                &lt;Proxy *&gt;
+                        Order deny,allow
+                        Allow from all
+                &lt;/Proxy&gt;
+                ProxyPassMatch ^/(.*\.cf[cm])$ ajp://127.0.0.1:8009/$1
+                ProxyPassReverse  /  ajp://127.0.0.1:8009/
+        &lt;/IfModule&gt;
+</code></pre>
+
+<p>And of course now the related content popup works :)</p>
+
+<p><img src="/images/uploads/2011/07/relatedcontent2.png" alt="" /></p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

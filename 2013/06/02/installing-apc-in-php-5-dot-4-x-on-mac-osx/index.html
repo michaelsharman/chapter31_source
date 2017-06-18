@@ -1,0 +1,182 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Installing APC in PHP 5.4.x on Mac OSX | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Installing APC in PHP 5.4.x on Mac OSX - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">June 2, 2013</h2>
+    <h1 class="title">Installing APC in PHP 5.4.x on Mac OSX</h1>
+    
+    <div class="content">
+      <p>I recently <a href="/2013/05/06/installing-php-5-dot-4-plus-from-source-on-mac-mountain-lion/">installed PHP 5.4 from source</a> but needed to add <abbr title="Alternative PHP Cache">APC</abbr>.</p>
+
+<p>Most people can install this using <abbr title="PHP Extension Community Library">PECL</abbr>, but I got an error doing this:</p>
+
+<pre><code class="language-bash">$ pecl install apc
+
+Warning: lstat(): Lstat failed for /private/tmp/pear/cache/497e483d585c1e3f341260e73a8c6e85rest.cacheid in PEAR/REST.php on line 276
+
+Warning: lstat(): Lstat failed for /private/tmp/pear/cache/497e483d585c1e3f341260e73a8c6e85rest.cacheid in /opt/php-5.4.15/lib/php/PEAR/REST.php on line 276
+No releases available for package &quot;pecl.php.net/apc&quot;
+install failed
+</code></pre>
+
+<p>So instead I downloaded the APC source <a href="http://pecl.php.net/package/APC">from the PECL website</a> and ran the following:</p>
+
+<pre><code class="language-bash">cd APC-3.1.13/
+phpize
+./configure --with-php-config=/opt/php/bin/php-config --enable-apc
+make
+export TEST_PHP_ARGS='-n'
+sudo make install
+</code></pre>
+
+<p>Note that my <em>php-config</em> setting is a little different because I installed my PHP into <em>/opt</em> instead of the default <em>/usr/bin</em></p>
+
+<p>The output of <em>make install</em> is:</p>
+
+<pre><code class="language-bash">$ sudo make install
+Installing shared extensions:     /opt/php-5.4.15/lib/php/extensions/no-debug-non-zts-20100525/
+Installing header files:          /opt/php-5.4.15/include/php/
+</code></pre>
+
+<p>Copy the <em>Installing shared extensions</em> path into your php.ini file.</p>
+
+<pre><code class="language-bash">[apc]
+extension=/opt/php-5.4.15/lib/php/extensions/no-debug-non-zts-20100525/apc.so
+apc.enabled=1
+apc.shm_size=128M
+apc.ttl=7200
+apc.user_ttl=7200
+apc.enable_cli=1
+</code></pre>
+
+<p>You can double check the installation process by either reviewing phpinfo(); in a browser or using CLI:</p>
+
+<pre><code class="language-bash">php -i | grep apc
+</code></pre>
+
+<p>If you see something like the following (from php -i)&hellip;all good:</p>
+
+<pre><code class="language-bash">apc.cache_by_default =&gt; On =&gt; On
+apc.canonicalize =&gt; On =&gt; On
+apc.coredump_unmap =&gt; Off =&gt; Off
+apc.enable_cli =&gt; On =&gt; On
+apc.enabled =&gt; On =&gt; On
+apc.file_md5 =&gt; Off =&gt; Off
+apc.file_update_protection =&gt; 2 =&gt; 2
+apc.filters =&gt; no value =&gt; no value
+apc.gc_ttl =&gt; 3600 =&gt; 3600
+apc.include_once_override =&gt; Off =&gt; Off
+apc.lazy_classes =&gt; Off =&gt; Off
+apc.lazy_functions =&gt; Off =&gt; Off
+apc.max_file_size =&gt; 1M =&gt; 1M
+apc.mmap_file_mask =&gt; no value =&gt; no value
+apc.num_files_hint =&gt; 1000 =&gt; 1000
+apc.preload_path =&gt; no value =&gt; no value
+apc.report_autofilter =&gt; Off =&gt; Off
+apc.rfc1867 =&gt; Off =&gt; Off
+apc.rfc1867_freq =&gt; 0 =&gt; 0
+apc.rfc1867_name =&gt; APC_UPLOAD_PROGRESS =&gt; APC_UPLOAD_PROGRESS
+apc.rfc1867_prefix =&gt; upload_ =&gt; upload_
+apc.rfc1867_ttl =&gt; 3600 =&gt; 3600
+apc.serializer =&gt; default =&gt; default
+apc.shm_segments =&gt; 1 =&gt; 1
+apc.shm_size =&gt; 128M =&gt; 128M
+apc.shm_strings_buffer =&gt; 4M =&gt; 4M
+apc.slam_defense =&gt; On =&gt; On
+apc.stat =&gt; On =&gt; On
+apc.stat_ctime =&gt; Off =&gt; Off
+apc.ttl =&gt; 7200 =&gt; 7200
+apc.use_request_time =&gt; On =&gt; On
+apc.user_entries_hint =&gt; 4096 =&gt; 4096
+apc.user_ttl =&gt; 7200 =&gt; 7200
+apc.write_lock =&gt; On =&gt; On
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

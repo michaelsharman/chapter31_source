@@ -1,0 +1,139 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mura - overriding dspCrumblistLinks | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Mura - overriding dspCrumblistLinks - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 31, 2011</h2>
+    <h1 class="title">Mura - overriding dspCrumblistLinks</h1>
+    
+    <div class="content">
+      <p>Like most CMS solutions out there, Mura CMS gives you some cool hooks to override core functionality. <a href="http://docs.getmura.com/index.cfm/developer-guides/">See the developer guides</a> for more information.</p>
+
+<p>I&rsquo;ve created a <a href="https://github.com/michaelsharman/muracustomisations/">repository on github</a> to store any customisations or extensions that could be cherry picked for use in any Mura app.</p>
+
+<p>First up was a super simple one for breadcrumbs. By default, Mura will put an &ldquo;a href&rdquo; around the last item in the crumb list. The site I was working on specified that the last item should be plain text (no hyperlink).</p>
+
+<p>Mura makes this nice and easy by extending the contentRenderer.cfc inside your /[siteid]/includes folder. Here is the function which includes my custom argument <em>linkLastItem [bool]</em> to determine whether or not to link the last item:</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;dspCrumblistLinks&quot;  output=&quot;false&quot; returntype=&quot;string&quot;&gt;
+	&lt;cfargument name=&quot;id&quot; type=&quot;string&quot; default=&quot;crumblist&quot;&gt;
+	&lt;cfargument name=&quot;separator&quot; type=&quot;string&quot; default=&quot;&quot;&gt;
+	&lt;cfargument name=&quot;linkLastItem&quot; type=&quot;boolean&quot; required=&quot;false&quot; default=&quot;true&quot; hint=&quot;Whether to generate an 'a href' for the last crumb item&quot;&gt;
+
+	&lt;cfset var thenav=&quot;&quot; /&gt;
+	&lt;cfset var theOffset=arrayLen(this.crumbdata)- this.navOffSet /&gt;
+	&lt;cfset var I = 0 /&gt;
+
+	&lt;cfif arrayLen(this.crumbdata) gt (1 + this.navOffSet)&gt;
+		&lt;cfsavecontent variable=&quot;theNav&quot;&gt;
+			&lt;cfoutput&gt;&lt;ul id=&quot;#arguments.id#&quot;&gt;
+				&lt;cfloop from=&quot;#theOffset#&quot; to=&quot;1&quot; index=&quot;I&quot; step=&quot;-1&quot;&gt;
+					&lt;cfif I neq 1&gt;
+						&lt;li class=&quot;#iif(I eq theOffset,de('first'),de(''))#&quot;&gt;
+						&lt;cfif i neq theOffset&gt;#arguments.separator#&lt;/cfif&gt;
+						#addlink(this.crumbdata[I].type, this.crumbdata[I].filename, this.crumbdata[I].menutitle, '_self', '', this.crumbdata[I].contentid, this.crumbdata[I].siteid, '', application.configBean.getContext(), application.configBean.getStub(), application.configBean.getIndexFile(), event.getValue('showMeta'),0)#&lt;/li&gt;
+					&lt;cfelse&gt;
+						&lt;li class=&quot;#iif(arraylen(this.crumbdata),de('last'),de('first'))#&quot;&gt;
+							&lt;cfif arguments.linkLastItem&gt;
+								#arguments.separator##addlink(this.crumbdata[1].type, this.crumbdata[1].filename, this.crumbdata[1].menutitle, '_self', '', this.crumbdata[1].contentid, this.crumbdata[1].siteid, '', application.configBean.getContext(), application.configBean.getStub(), application.configBean.getIndexFile(),event.getValue('showMeta'),0)#
+							&lt;cfelse&gt;
+								#arguments.separator##this.crumbdata[1].menutitle#
+							&lt;/cfif&gt;
+						&lt;/li&gt;
+					&lt;/cfif&gt;
+				&lt;/cfloop&gt;
+			&lt;/ul&gt;&lt;/cfoutput&gt;
+		&lt;/cfsavecontent&gt;
+	&lt;/cfif&gt;
+
+	&lt;cfreturn trim(theNav)&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

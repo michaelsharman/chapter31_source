@@ -1,0 +1,140 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>ColdFusion UUID and MSSQL newID() | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="ColdFusion UUID and MSSQL newID() - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">January 30, 2007</h2>
+    <h1 class="title">ColdFusion UUID and MSSQL newID()</h1>
+    
+    <div class="content">
+      <p>A lot of web applications these days use a UUID as the primary key instead of the int/identity combination (speaking for MSSQL that is).</p>
+
+<p>Now there is a (valid) argument that UUID&rsquo;s aren&rsquo;t great for primary keys due to the fact that primary keys are clustered, meaning that integers would work much better if the table had a large amount of data. This may not effect you dramatically as you&rsquo;d would most likely only see performance degradation once the database had a substantial amount of data.</p>
+
+<p>Anyway, creating a UUID is often handled by the createUUID() function in ColdFusion which produces a 35 character string in the format of:</p>
+
+<blockquote>
+<p>xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxxxxx (8-4-4-16)</p>
+</blockquote>
+
+<p>However you can also generate a unique id at the database level which is a slightly different format to ColdFusions UUID. The Microsoft/DCE standard uses the following:</p>
+
+<blockquote>
+<p>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (8-4-4-4-12)</p>
+</blockquote>
+
+<p>Lots of developers prefer to let the database handle the creation of primary keys instead of the application (ColdFusion). Having the database create this can be done using the MSSQL <em>newID()</em> built in function. Note that this will produce a 36 character string, 1 more than ColdFusions createUUID(). You have the option to use something like char(36) or varchar(36) as the column datatype, but you could also use the <em>uniqueidentifier</em> datatype.</p>
+
+<p>This can cause a few incompatibility problems if you are expecting the ColdFusion standard in your code. So to maintain consistency and possibly prevent database/code errors you can simply convert the database level <em>newID()</em> to the ColdFusion UUID by removing the last (4th) hyphen in the SQL.</p>
+
+<pre><code class="language-ruby">select left(newid(), 23) + right(newid(),12) as objectid
+</code></pre>
+
+<p>or in the middle of a query:</p>
+
+<pre><code class="language-ruby">INSERT INTO myTable (ID, FirstName)
+VALUES (left(newid(), 23) + right(newid(),12), &quot;Michael&quot;)
+</code></pre>
+
+<p>In the situation where you might want to convert a ColdFusion created UUID to conform to the Microsoft standard, you can use the CreateGUID() function (by Nathan Dintenfass) from <a href="http://cflib.org/">cflib</a> as follows:</p>
+
+<pre><code class="language-ruby">function CreateGUID()
+{
+	return insert(&quot;-&quot;, CreateUUID(), 23);
+}
+</code></pre>
+
+<p>UUID&rsquo;s for database keys can be very handy but just watch out how and where you are creating them and how they fit into your application. Remember that if you did an</p>
+
+<pre><code class="language-ruby">IsValid(&quot;uuid&quot;, myNewID)
+</code></pre>
+
+<p>where myNewID was created by newID() in the database&hellip;your test would fail!</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

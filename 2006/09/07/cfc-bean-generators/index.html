@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CFC Bean generators | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="CFC Bean generators - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 7, 2006</h2>
+    <h1 class="title">CFC Bean generators</h1>
+    
+    <div class="content">
+      <p>There are a few Bean generators around for ColdFusion which can save you a lot if time and effort when you need to create your CFC Beans, here are a few making the rounds.</p>
+
+<p><a href="http://www.jonathanblock.com/Members/admin/ColdFusionBeanCreator">Jonathan Block</a></p>
+
+<p>A more advanced generator which creates init() and validate() functions for you. For the picky developers out there you might want to tidy things up a bit. Example the ‘set’ in the init() misses a space at the end of the <cfset></p>
+
+<pre><code class="language-javascript">&lt;cfset setFirstName(arguments.FirstName)/&gt;
+</code></pre>
+
+<p>also when declaring your instance (inside the init()) the reference to a new struct is in capitals</p>
+
+<pre><code class="language-javascript">&lt;cfset variables.instance = STRUCTNEW() /&gt;
+</code></pre>
+
+<p><a href="http://www.doughughes.net/includes/beans/">Doug Hughes</a></p>
+
+<p>I like this one a lot for simple beans. It’s extremely easy to use and generates fast, clean code in (X)HTML style syntax.</p>
+
+<p><a href="http://www.feed-squirrel.com/index.cfm?evt=viewItem&amp;ID=4358">Francis Scott</a></p>
+
+<p>This one is pretty cool and is one of my favourites. It can generate Beans, DAO’s and Gateways FROM your database table! Nice  Simply choose your datasource, this will populate a select box with a list of tables to choose from. Choose your table, submit and voila! You have your bean complete with init() and validate() methods. Your gateway and DAO. Lovely!</p>
+
+<p>Oh and you can also <a href="http://www.franciswscott.com/downloads/cfccreator.zip">download it here</a></p>
+
+<p><a href="http://www.sparkit.biz/codegen/uml2cfc/">David Sirr</a></p>
+
+<p>Not a bad generator taking advantage of UML style syntax when entering ‘generate’ commands. This one does create an init() for you but generates with unwanted functions:</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;doSomethingPublic&quot; access=&quot;public&quot; returntype=&quot;string&quot; output=&quot;false&quot; hint=&quot;description&quot;&gt;
+    &lt;cfargument name=&quot;foo&quot; type=&quot;numeric&quot; required=&quot;true&quot; /&gt;
+    &lt;cfargument name=&quot;poo&quot; type=&quot;string&quot; required=&quot;true&quot; /&gt;
+    &lt;cfreturn /&gt;
+&lt;/cffunction&gt;
+&lt;cffunction name=&quot;doSomethingPrivate&quot; access=&quot;private&quot; returntype=&quot;void&quot; output=&quot;false&quot; hint=&quot;description&quot;&gt;
+
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>Also the init() validates bean creation by calling a changeBean() method, but if this fails for whatever reason you need to add your own exception handling.</p>
+
+<p><a href="http://rooibos.maestropublishing.com/">Rooibos Generator</a></p>
+
+<p>Create boilerplate beans and transfer objects for ColdFusion! Based on Jon Block’s original bean creator. This one is fantastic, probably all you’ll ever need! Peter has done a great job making life simple for us all.</p>
+
+<p>Easy to use it even can create Transfer Objects (TO) for you! Of course there are init() and validate() methods as well as dump() and tools to create, get and set your TO’s all in super clean code. Niiiiice</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coldfusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coldfusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">October 8, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/08/cant-set-a-scheduled-task-end-date/">Can&#39;t set a scheduled task &#39;End Date&#39; </a></h1>
+      
+      <div class="content">
+        I&rsquo;ve just created some functionality which will be executed by a ColdFusion (8 standard on Win 2003) scheduled task daily, but only for 1 month.
+When I add my new task in ColdFusion administrator I can set the &lsquo;Start Date&rsquo; ok, but not the &lsquo;End Date&rsquo;. The reason? Well I&rsquo;m not sure, but it looks like a conflict in US/European date formats (I&rsquo;m located in Australia and the server region settings are English/Australia).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/08/cant-set-a-scheduled-task-end-date/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 5, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/05/createodbcdate-returns-time-as-well/">createODBCDate() returns &#39;time&#39; as well?</a></h1>
+      
+      <div class="content">
+        Recently I was just comparing 2 dates (one from a query and the other was now()) using the createODBCDate() and dateCompare() functions.
+I was using the createODBCDate() function because I only wanted the &lsquo;date&rsquo; part of a date object, not the &lsquo;time&rsquo;. More than likely I should have been using dateFormat(), but that&rsquo;s another story :)
+I had the following:
+&lt;cfif dateCompare(createODBCDate(q.DateTimeCreated), createODBCDate(now())) EQ 0&gt;  The problem was I kept getting -1 returned, meaning that &lsquo;q.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/05/createodbcdate-returns-time-as-well/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 28, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/09/28/caveat-when-calling-components-from-onsessionend/">Caveat when calling components from onSessionEnd()</a></h1>
+      
+      <div class="content">
+        As most ColdFusion developers know, you cannot reference &lsquo;application&rsquo; scoped variables directly in Application.cfc&rsquo;s onSessionEnd() method. Instead you need to use the ApplicationScope parameter. Notes from the docs:
+ You must use the ApplicationScope parameter to access the Application scope. You cannot reference the Application scope directly; for example, use Arguments.ApplicationScope.myVariable, not Application.myVariable. Use a named lock when you reference variables in the Application scope, as shown in the example.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/09/28/caveat-when-calling-components-from-onsessionend/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 27, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/09/27/creating-a-custom-farcry-login-page/">Creating a custom FarCry login page</a></h1>
+      
+      <div class="content">
+        The FarCry security model is really very cool. You can of course setup users within the &lsquo;admin&rsquo; area and assign those users to groups (and those groups can have different permissions), but you can also authenticate via Active Directory or LDAP etc.
+One thing you can also do with ease is secure particular navigation &lsquo;nodes&rsquo; of the website, thus quickly and easily creating password protected &lsquo;member&rsquo; areas.
+Whenever you secure a navigation branch the user is presented with the default FarCry login screen as seen below:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/09/27/creating-a-custom-farcry-login-page/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 27, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/09/27/coldfire-10-released/">ColdFire 1.0 released</a></h1>
+      
+      <div class="content">
+        Yesterday there was some news from Ray and Nathan Mische regarding the 1.0 release of ColdFire, Nathan has a great write up here.
+From RIAForge:
+ ColdFire is an extension to FireBug. It provides debug information in a FireBug tab as opposed to the bottom of the page. This lets you debug and keep your site layout intact, since ColdFusion&rsquo;s built-in debug information can sometimes mess with your site layout.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/09/27/coldfire-10-released/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 22, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/08/22/hostmysite-not-quite-as-stable-as-id-like/">hostmysite not quite as stable as I&#39;d like</a></h1>
+      
+      <div class="content">
+        I know most rave about how good hostmysite are. They do have great support and competitive plans, but even for a shared plan (CF+) I have had the same issues for a few months now.
+My issue is simple, they seem to restart JRun on average 5-6 times per day. PER DAY!
+Hmm, is this not a little too frequent? I have a couple of sites on there and it seems everytime I visit the site (5-6 times a day) the application restarts.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/08/22/hostmysite-not-quite-as-stable-as-id-like/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 16, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/08/16/localurl-attribute-added-to-cfdocument-in-coldfusion-8/">&#34;localURL&#34; attribute added to cfdocument in ColdFusion 8</a></h1>
+      
+      <div class="content">
+        I was debugging a legacy app today which I&rsquo;d just migrated to a new server running ColdFusion 8. A part of this application generates a PDF using . As usual it was working fine on my development and staging environments&hellip;but not on production! Damn.
+After a bit of fiddling I found a related post by Rupesh Kumar where he mentions that you may have problems if ColdFusion is behind a firewall.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/08/16/localurl-attribute-added-to-cfdocument-in-coldfusion-8/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 14, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/08/14/my-aptana-ide-is-busted/">My Aptana IDE is busted</a></h1>
+      
+      <div class="content">
+        Hmm, running with my past history of having that &lsquo;special&rsquo; touch with computers&hellip;my version of Aptana (Aptana IDE (build 0.2.8.15637)) has busted.
+Kaput.
+Not happy Jan.
+I was running an Aptana update yesterday when the network went down. Everything seemed fine until I went to restart Apatana and got the following:
+Damn
+Damn
+Damn
+No fix as yet and roughly 500 lines in the .log file everytime I try to start up telling me I have a hell of a lot of missing bundles :(
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/08/14/my-aptana-ide-is-busted/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 13, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/08/13/storing-flash-coldfusion-and-sql-in-subversion/">Storing Flash, ColdFusion and SQL in subversion</a></h1>
+      
+      <div class="content">
+        Most developers who use Source Code Management are familiar with the fact that while you can have any directory you want in your &lsquo;repositories&rsquo;, it is recommended that you use the following directories as a base layout:
+ branches
+ tags
+ trunk
+  The trunk directory will hold the &ldquo;main line&rdquo; of development, a branches directory will have &ldquo;branch-ing&rdquo; development (perhaps a maintenance release?), and a tags directory holds a &ldquo;snapshot&rdquo; in time (essentially a read-only area) often used when deploying to a production server.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/08/13/storing-flash-coldfusion-and-sql-in-subversion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 12, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/08/12/facebook-homepage-source-code-found/">Facebook homepage source code found!</a></h1>
+      
+      <div class="content">
+        Hmm, seems a problem with the .htaccess file made the source for Facebooks homepage available.
+Nik Cubrilovic offers an explanation from a technical standpoint:
+ PHP has always been notorious for sometimes not processing requests poorly and sending back the source code for pages to the client. Because of the way mod_php works with apache, if mod_php fails in intercepting and processing the request, then apache will just serve it back to the client as an ordinary text file.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/08/12/facebook-homepage-source-code-found/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/7/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/9/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

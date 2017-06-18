@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Reseting a lost ColdFusion Administrator password | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Reseting a lost ColdFusion Administrator password - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">December 15, 2006</h2>
+    <h1 class="title">Reseting a lost ColdFusion Administrator password</h1>
+    
+    <div class="content">
+      <p>A colleague sent me a nice way to obtain access to ColdFusion Administrator (any instance) when you&rsquo;ve lost your password. After a little googling I also came across another method, both assume that you have administrator access to the application server.</p>
+
+<p>The following examples assume a ColdFusion installation in a multi-server environment, using the default (cfusion) instance.</p>
+
+<ol>
+<li>Reseting the password:
+
+<ul>
+<li>Open the <em>password.properties</em> file in C:\JRun4\servers\cfusion\cfusion-ear\cfusion-war\WEB-INF\cfusion\lib</li>
+<li>Enter your new password for RDS (&ldquo;rdspassword&rdquo;) and ColdFusion Administrator (&ldquo;password&rdquo;)</li>
+<li>Make sure &ldquo;encrypted&rdquo; is set to false</li>
+<li>Restart your ColdFusion instance</li>
+</ul></li>
+<li>Turning the password off (allowing full access with no authentication)
+
+<ul>
+<li>Open the <em>neo-security.xml</em> file in C:\JRun4\servers\cfusion\cfusion-ear\cfusion-war\WEB-INF\cfusion\lib</li>
+<li>Search for <em>&lt;var name=&lsquo;admin.security.enabled&rsquo;&gt;&lt;boolean value=&lsquo;true&rsquo;/&gt;&lt;/var&gt;</em></li>
+<li>Set <em>value=&lsquo;false&rsquo;</em> and restart your ColdFusion instance.</li>
+</ul></li>
+</ol>
+
+<p>Note that with option 2 you are left totally unprotected, anyone who has access to that machine (and knows the administrator URL) will have access and control over your ColdFusion application server.</p>
+
+<p>Therefore it would be best now that you have access, to set a new password immediately :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

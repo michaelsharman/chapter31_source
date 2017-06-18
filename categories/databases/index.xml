@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Databases on chapter31</title>
+    <link>http://chapter31.com/categories/databases/</link>
+    <description>Recent content in Databases on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Thu, 05 Jul 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/databases/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Concatenating values into a single column with MySQL group_concat</title>
+      <link>http://chapter31.com/2012/07/05/concatenating-values-into-a-single-column-with-mysql-group_concat/</link>
+      <pubDate>Thu, 05 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/07/05/concatenating-values-into-a-single-column-with-mysql-group_concat/</guid>
+      <description>How many times have you wanted to return a list of grouped values from a database, in a single column, per row of your recordset? Actually I&amp;rsquo;ve wanted to do that a few times! Most of the time I&amp;rsquo;ll let the application layer handle that, but sometimes letting the database do the hard work fits the bill.
+My not-so-theoretical example is course subjects (think English, Maths etc) that have 1-n &amp;ldquo;stages&amp;rdquo; (think categories) attached to them.</description>
+    </item>
+    
+    <item>
+      <title>Error restoring MySQL database when USING BTREE on indexes</title>
+      <link>http://chapter31.com/2012/03/15/error-restoring-mysql-database-when-using-btree-on-indexes/</link>
+      <pubDate>Thu, 15 Mar 2012 04:42:39 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/03/15/error-restoring-mysql-database-when-using-btree-on-indexes/</guid>
+      <description>Occasionally when I&amp;rsquo;m restoring a database that was backed up from a different server than the one I&amp;rsquo;m restoring on I get an error along the lines of:
+&amp;gt;[Error] Script lines: 5-17 ------------------------- You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;USING BTREE ) ENGINE=InnoDB DEFAULT CHARSET=utf8&#39; at line 11 Warnings: ---&amp;gt; W (1): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;USING BTREE ) ENGINE=InnoDB DEFAULT CHARSET=utf8&#39; at line 11  Hmm, the docs suggest that BTREE is a valid index type for both MyISAM and InnoDB.</description>
+    </item>
+    
+    <item>
+      <title>MySQL alternative to MSSQL&#39;&#39;s isNull()</title>
+      <link>http://chapter31.com/2011/03/03/mysql-alternative-to-mssqls-isnull/</link>
+      <pubDate>Thu, 03 Mar 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2011/03/03/mysql-alternative-to-mssqls-isnull/</guid>
+      <description>I was looking for a way to do isNull() in MySQL the other day, for those that don&amp;rsquo;t know this means you can do something like:
+SELECT isNull(mycolumn, &#39;blah&#39;) FROM myTable;  If the value in mycolumn is NULL, then &amp;lsquo;blah&amp;rsquo; is returned, this can of course be any string literal/numeric value you want. MySQL doesn&amp;rsquo;t have isNull() but it does have ifNull() which is basically the same.
+SELECT ifNull(mycolumn, &#39;blah&#39;) FROM myTable;  </description>
+    </item>
+    
+    <item>
+      <title>SQL for finding duplicate values</title>
+      <link>http://chapter31.com/2011/02/08/sql-for-finding-duplicate-values/</link>
+      <pubDate>Tue, 08 Feb 2011 06:47:18 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2011/02/08/sql-for-finding-duplicate-values/</guid>
+      <description>Quick post to remind me how to check a table column for duplicate values next time I&amp;rsquo;m looking for it (when my memory fails!)
+SELECT id, count(id) FROM mytable GROUP BY id HAVING count(id) &amp;gt; 1  </description>
+    </item>
+    
+    <item>
+      <title>Importing a csv into MySQL using the command line</title>
+      <link>http://chapter31.com/2010/11/14/importing-a-csv-into-mysql-using-the-command-line/</link>
+      <pubDate>Sun, 14 Nov 2010 23:38:10 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2010/11/14/importing-a-csv-into-mysql-using-the-command-line/</guid>
+      <description>UPDATE 16th Nov 2010: I had some issues with the import which I noted in the first code example below
+Today I had to import csv into a single mysql table. The destination table only had 5 columns and the csv was around 22MB (around 400,000 records). The csv also contained more columns that I needed for the import. Sometimes I&amp;rsquo;ll use a GUI to do this as I usually have one open, but it never ceases to amaze me how much slower GUI tools are compared to the command line.</description>
+    </item>
+    
+    <item>
+      <title>Case sensitive development on Mac OS X</title>
+      <link>http://chapter31.com/2010/10/04/case-sensitive-development-on-mac-os-x/</link>
+      <pubDate>Mon, 04 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2010/10/04/case-sensitive-development-on-mac-os-x/</guid>
+      <description>At work most of the developers are on Mac OS X but our staging and production environments are Linux based. This means development is case insensitive but stage/production is case sensitive. Although we have development guidelines/standards which dictate file and database naming conventions etc, human error can still occur (in terms of referencing files with a different &amp;ldquo;case&amp;rdquo;). We also use a few open source packages where we obviously don&amp;rsquo;t have control over the naming of files or the references to database tables within those files.</description>
+    </item>
+    
+    <item>
+      <title>Tip when adding &#34;allowMultiQueries=true&#34; to your MySQL DSN in ColdFusion</title>
+      <link>http://chapter31.com/2010/09/08/tip-when-adding-allowmultiqueriestrue-to-your-mysql-dsn-in-coldfusion/</link>
+      <pubDate>Wed, 08 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2010/09/08/tip-when-adding-allowmultiqueriestrue-to-your-mysql-dsn-in-coldfusion/</guid>
+      <description>Scenario&amp;hellip;I&amp;rsquo;m using ColdFusion 9 and MySQL 5. I already had my DSN setup but had a requirement to get the last inserted id from a MySQL INSERT statement (I&amp;rsquo;m using auto-incrementing integer&amp;rsquo;s).
+As most people know, the best way to do this (in MySQL) is using the last_insert_id() function. I wanted to attach this to the end of my INSERT statement for performance reasons, as I&amp;rsquo;d only be sending one query to the server instead of separate ones.</description>
+    </item>
+    
+    <item>
+      <title>Development configuration tips for Ubuntu</title>
+      <link>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</link>
+      <pubDate>Sat, 13 Dec 2008 02:28:20 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</guid>
+      <description>I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&amp;rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc
+Here are some notes which helped me out when configuring some of these development tools.</description>
+    </item>
+    
+    <item>
+      <title>Querying multiple databases within one cfquery</title>
+      <link>http://chapter31.com/2008/12/03/querying-multiple-databases-within-one-cfquery/</link>
+      <pubDate>Wed, 03 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/12/03/querying-multiple-databases-within-one-cfquery/</guid>
+      <description>In discussing a possible caching solution at work a suggestion was made to use a secondary database (on the same server) to store some key application data. It&amp;rsquo;s not really important to describe why we wanted to do this, suffice to say that my concern was if and when the application would need to perform a SQL &amp;ldquo;JOIN&amp;rdquo; between the primary and secondary (caching) database as I wasn&amp;rsquo;t sure if it was technically possible within our environment (ColdFusion 8, MySQL).</description>
+    </item>
+    
+    <item>
+      <title>cfqueryparam does not work in ORDER BY, what are my options?</title>
+      <link>http://chapter31.com/2008/11/22/cfqueryparam-does-not-work-in-order-by-what-are-my-options/</link>
+      <pubDate>Sat, 22 Nov 2008 02:15:50 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/11/22/cfqueryparam-does-not-work-in-order-by-what-are-my-options/</guid>
+      <description>For those that don&amp;rsquo;t know, ColdFusion&amp;rsquo;s cfqueryparam won&amp;rsquo;t work on a SQL ORDER BY clause, so the following will not work:
+&amp;lt;cfquery name=&amp;quot;qGetUsers&amp;quot; datasource=&amp;quot;mydsn&amp;quot;&amp;gt; SELECT	FirstName, LastName FROM	Users ORDER BY &amp;lt;cfqueryparam cfsqltype=&amp;quot;cf_sql_varchar&amp;quot; value=&amp;quot;#arguments.order#&amp;quot; /&amp;gt; &amp;lt;/cfquery&amp;gt;  This is really nothing new, people have been talking about this for years but with the spate of recent SQL injection attacks (note that I meant to publish this around sept 08 but got sidetracked!</description>
+    </item>
+    
+    <item>
+      <title>Logging all MySQL queries on Mac OSX</title>
+      <link>http://chapter31.com/2008/11/19/logging-all-mysql-queries-on-mac-osx/</link>
+      <pubDate>Wed, 19 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/11/19/logging-all-mysql-queries-on-mac-osx/</guid>
+      <description>We&amp;rsquo;ve been doing some debugging of a 3rd party application recently where we had some possible performance concerns under a certain load and/or size of data in the database. What we wanted to know was exactly which queries (and how many) where hitting the database on a specific page request.
+The simplest method was to turn on logging of all queries on the local MySQL database, this is turned off by default as like most debugging techniques it adds overhead.</description>
+    </item>
+    
+    <item>
+      <title>Fun with reserved words in MySQL 5</title>
+      <link>http://chapter31.com/2008/10/27/fun-with-reserved-words-in-mysql-5/</link>
+      <pubDate>Mon, 27 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/10/27/fun-with-reserved-words-in-mysql-5/</guid>
+      <description>Most tools or languages you work with have words which are &amp;ldquo;reserved&amp;rdquo;, meaning you cannot use them in a variable declaration or schema definition etc as they have special treatment in the underlying system. If you try to do this you&amp;rsquo;ll usually get an immediate error.
+Today I needed to change an existing SQL query from a &amp;ldquo;SELECT *&amp;rdquo; to explicitly defining each column because I wanted to add some date formating at the SQL level.</description>
+    </item>
+    
+    <item>
+      <title>Aqua Data Studio 7 includes an ER modeler</title>
+      <link>http://chapter31.com/2008/10/22/aqua-data-studio-7-includes-an-er-modeler/</link>
+      <pubDate>Wed, 22 Oct 2008 03:23:49 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/10/22/aqua-data-studio-7-includes-an-er-modeler/</guid>
+      <description>Those of you who miss diagramming support when using MySQL tools will be pleased to know that the latest version of Aqua Data Studio has support for ER Modeling :)
+ The Entity-Relationship (ER) Modeler we’ve built into Aqua Data Studio 7 is as powerful as even the best standalone database diagramming tools. Use it to design a new database from scratch, understand and clean up a database nightmare in your office, or visually understand entity relationships in existing databases to write more effective SQL queries.</description>
+    </item>
+    
+    <item>
+      <title>MySQL aliases (just like table names) are case sensitive on *nix</title>
+      <link>http://chapter31.com/2008/08/22/mysql-alias-just-like-table-names-are-case-sensitive-on-nix/</link>
+      <pubDate>Fri, 22 Aug 2008 03:00:47 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/08/22/mysql-alias-just-like-table-names-are-case-sensitive-on-nix/</guid>
+      <description>As you might know when using MySQL on a case-sensitive OS (like Linux) you must reference your table names in a case sensitive manner. So if you have a table called products the following sample query will NOT work:
+SELECT	productId FROM	Products  It won&amp;rsquo;t work because MySQL stores the table information in directories on the file system, therefore these directories are case sensitive. So your query must be as follows (note the lower case products):</description>
+    </item>
+    
+    <item>
+      <title>INSERT DELAYED with MySQL</title>
+      <link>http://chapter31.com/2008/05/22/insert-delayed-with-mysql/</link>
+      <pubDate>Thu, 22 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/05/22/insert-delayed-with-mysql/</guid>
+      <description>Yet another tip for MySQL users, INSERT DELAYED.
+What does it do? Well when you execute your query MySQL will return an ok immediately to your application, and the request then gets queued to be INSERTED when the table in question is not being used by any other thread. This obviously means your application doesn&amp;rsquo;t have to sit around waiting for the INSERT to be completed which can have a positive impact on performance under load.</description>
+    </item>
+    
+    <item>
+      <title>INSERT or UPDATE in one statement with MySQL - performance test</title>
+      <link>http://chapter31.com/2008/04/24/insert-or-update-in-one-statement-with-mysql-performance-test/</link>
+      <pubDate>Thu, 24 Apr 2008 01:59:11 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/04/24/insert-or-update-in-one-statement-with-mysql-performance-test/</guid>
+      <description>Yesterday I posted on a handy MySQL feature where you can combine an INSERT and UPDATE on a record in the one statement.
+Someone asked about the performance of this so I ran a little test to get some basic numbers.
+One thing to note is that even when MySQL is actually UPDATING your record (ON DUPLICATE KEY UPDATE), the statement is being executed on the database as an INSERT and not an UPDATE statement.</description>
+    </item>
+    
+    <item>
+      <title>INSERT or UPDATE in one statement with MySQL</title>
+      <link>http://chapter31.com/2008/04/23/insert-or-update-in-one-statement-with-mysql/</link>
+      <pubDate>Wed, 23 Apr 2008 02:09:18 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/04/23/insert-or-update-in-one-statement-with-mysql/</guid>
+      <description>A little while ago I mentioned combining multiple INSERT statements with MySQL, here is another helpful approach to a common problem.
+In many systems you will give the user a chance to ADD and EDIT a record, a News post for example. As usual there are many ways to handle writing any changes to the database, one common approach would be to have 2 methods in a News.cfc
+E.g. create() and update()</description>
+    </item>
+    
+    <item>
+      <title>Combining multiple INSERT statements with MySQL</title>
+      <link>http://chapter31.com/2008/04/03/combining-multiple-insert-statements-with-mysql/</link>
+      <pubDate>Thu, 03 Apr 2008 12:24:26 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/04/03/combining-multiple-insert-statements-with-mysql/</guid>
+      <description>As all developers know, one of the most common bottlenecks in a web application is the database. Database optimisation is therefore a huge part of building a streamlined application capable of handling more concurrent users.
+Often you might have the need to perform multiple INSERT&amp;rsquo;s against a database from a single user form submission.
+Let&amp;rsquo;s say you had a form allowing a user to add their own web bookmarks (think a simple del.</description>
+    </item>
+    
+    <item>
+      <title>Random database results with ColdFusion</title>
+      <link>http://chapter31.com/2008/03/21/random-database-results-with-coldfusion/</link>
+      <pubDate>Fri, 21 Mar 2008 03:58:45 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/03/21/random-database-results-with-coldfusion/</guid>
+      <description>Today I was looking at returning random records purely from MySQL but was limited with large tables in getting all random results (not just a random starting seed).
+I tried a ColdFusion solution instead.
+First get all the primary keys from the table in question and create an array of the values (this works for numeric and non-numeric keys):
+&amp;lt;cfquery name=&amp;quot;qGetPKs&amp;quot; datasource=&amp;quot;dsn&amp;quot;&amp;gt; SELECT Id FROM myTable &amp;lt;/cfquery&amp;gt; &amp;lt;cfset aIds = listToArray(valueList(qGetPKs.</description>
+    </item>
+    
+    <item>
+      <title>Returning random results with MySQL</title>
+      <link>http://chapter31.com/2008/03/21/returning-random-results-with-mysql/</link>
+      <pubDate>Fri, 21 Mar 2008 03:20:13 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/03/21/returning-random-results-with-mysql/</guid>
+      <description>Selecting random query results is something we often need to do, whether it be a single row or a small record set. You may want to display a random list of &amp;ldquo;tips&amp;rdquo; or &amp;ldquo;facts&amp;rdquo;, a random &amp;ldquo;user&amp;rdquo; or &amp;ldquo;related product&amp;rdquo; etc.
+The simplest and most common solution you find uses the MySQL rand() function (which can be used to create an integer from 0 to 1.0)
+Solution 1 SELECT	[.</description>
+    </item>
+    
+    <item>
+      <title>Using MySQL Administrator to view real time stats</title>
+      <link>http://chapter31.com/2008/02/21/using-mysql-administrator-to-view-real-time-stats/</link>
+      <pubDate>Thu, 21 Feb 2008 06:49:15 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/02/21/using-mysql-administrator-to-view-real-time-stats/</guid>
+      <description>I was working on piece of code today which was sending an Ajax request to the server. The result of this request could have been 0 - 5 database UPDATE statements.
+What I needed was a way to test my code to make sure the correct number of database statements were being executed based on the user event which fired the request.
+There are of course a number of ways I could have done this including:</description>
+    </item>
+    
+    <item>
+      <title>Combining insert and update SQL logic</title>
+      <link>http://chapter31.com/2007/04/11/combining-update-and-insert-sql-logic/</link>
+      <pubDate>Wed, 11 Apr 2007 06:40:48 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/04/11/combining-update-and-insert-sql-logic/</guid>
+      <description>*Note that this example is using MSSQL with an Identity set to generate the primary key automatically.
+An all too common process developers go through when building database driven web applications is creating logic to INSERT a record when one doesn&amp;rsquo;t exist, and UPDATE a record when one does exist.
+This often leads to conditional logic within your application (inside a Service layer perhaps) and then running one of 2 SQL statements depending on the existance of a primary key value which may be coming from a form or URL.</description>
+    </item>
+    
+    <item>
+      <title>ColdFusion UUID and MSSQL newID()</title>
+      <link>http://chapter31.com/2007/01/30/coldfusion-uuids-and-mssql-newid/</link>
+      <pubDate>Tue, 30 Jan 2007 00:25:38 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/01/30/coldfusion-uuids-and-mssql-newid/</guid>
+      <description>A lot of web applications these days use a UUID as the primary key instead of the int/identity combination (speaking for MSSQL that is).
+Now there is a (valid) argument that UUID&amp;rsquo;s aren&amp;rsquo;t great for primary keys due to the fact that primary keys are clustered, meaning that integers would work much better if the table had a large amount of data. This may not effect you dramatically as you&amp;rsquo;d would most likely only see performance degradation once the database had a substantial amount of data.</description>
+    </item>
+    
+    <item>
+      <title>To delete or not to delete</title>
+      <link>http://chapter31.com/2007/01/11/to-delete-or-not-to-delete/</link>
+      <pubDate>Thu, 11 Jan 2007 12:19:57 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/01/11/to-delete-or-not-to-delete/</guid>
+      <description>As a web developer you are constantly faced with building functionality to remove an object from an application. The object could be anything from a web page in a CMS to a user in a CRM, but generally involves a record(s) stored in a database.
+For a user &amp;lsquo;using&amp;rsquo; the application whenever they access the functionality to remove the object it disappears from view&amp;hellip;but what happens behind the scenes?
+There are a couple of standard options available to developers:</description>
+    </item>
+    
+    <item>
+      <title>Truncating MSSQL transaction log</title>
+      <link>http://chapter31.com/2006/07/26/truncating-mssql-transaction-log/</link>
+      <pubDate>Wed, 26 Jul 2006 05:32:10 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/07/26/truncating-mssql-transaction-log/</guid>
+      <description>Every wanted to truncate the transaction log of a MS SQL database? We do that all the time when moving a database from one server to the other. Remember that the transaction log can take up a LOT of space in the backup file which you don&amp;rsquo;t need when you are simply moving a database to a new server (and when you don&amp;rsquo;t have the option to simply DTS).
+Open up Query Analyser and run the following, substituting real database, file and log names.</description>
+    </item>
+    
+  </channel>
+</rss>

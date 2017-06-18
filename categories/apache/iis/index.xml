@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apache/Iis on chapter31</title>
+    <link>http://chapter31.com/categories/apache/iis/</link>
+    <description>Recent content in Apache/Iis on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Thu, 09 Aug 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/apache/iis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting font MIME types in apache</title>
+      <link>http://chapter31.com/2012/08/09/setting-font-mime-types-in-apache/</link>
+      <pubDate>Thu, 09 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/08/09/setting-font-mime-types-in-apache/</guid>
+      <description>If your website is using custom fonts, you may see this line in your Chrome console:
+ Resource interpreted as Font but transferred with MIME type application/octet-stream
+ This is really kinda annoying, if you want to get rid of that warning then add the following directives to your apache conf/.htaccess:
+AddType application/vnd.ms-fontobject eot AddType font/opentype otf AddType font/truetype ttf AddType application/x-font-woff .woff  See here for more information.</description>
+    </item>
+    
+    <item>
+      <title>Apache permission denied on Mac OSX Lion</title>
+      <link>http://chapter31.com/2012/06/05/apache-permission-denied-on-mac-osx-lion/</link>
+      <pubDate>Tue, 05 Jun 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/06/05/apache-permission-denied-on-mac-osx-lion/</guid>
+      <description>I&amp;rsquo;ve just upgraded to OSX Lion and had some trouble getting Apache to load a vhost. I kept getting a 403 permission denied error, but all my vhosts had the correct permission directives set.
+Now by default your webserver document root is located in /Library/WebServer/Documents. I don&amp;rsquo;t really like that for my local machine, I&amp;rsquo;d rather store web files under my user account. Just tends to make things easier.
+However&amp;hellip;if you&amp;rsquo;re getting a 403 error, and something like this in your apache error log (/var/log/apache2/error_log):</description>
+    </item>
+    
+    <item>
+      <title>Development configuration tips for Ubuntu</title>
+      <link>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</link>
+      <pubDate>Sat, 13 Dec 2008 02:28:20 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</guid>
+      <description>I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&amp;rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc
+Here are some notes which helped me out when configuring some of these development tools.</description>
+    </item>
+    
+    <item>
+      <title>Careful when sharing code sent from an IM client</title>
+      <link>http://chapter31.com/2008/06/20/careful-when-copying-code-sent-from-an-im-client/</link>
+      <pubDate>Fri, 20 Jun 2008 07:28:11 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/06/20/careful-when-copying-code-sent-from-an-im-client/</guid>
+      <description>Ok this is a warning to all those who get sent commands to use via IM.
+Scenario:
+I was helping someone setup their Apache config today, so I copied part of my VirtualHost block to them in an IM client. Then I went to their machine, grabbed the code and pasted it into their .conf file. Then Apache wouldn&amp;rsquo;t start/restart.
+After spending 10 minutes scratching my head and comparing code and files etc&amp;hellip;I removed all carriage returns/whitespace from the code and woo hoo!</description>
+    </item>
+    
+    <item>
+      <title>Apache, are you secure?</title>
+      <link>http://chapter31.com/2006/07/16/apache-are-you-secure/</link>
+      <pubDate>Sun, 16 Jul 2006 05:15:47 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/07/16/apache-are-you-secure/</guid>
+      <description>Peter Freitag has a great post on &amp;lsquo;20 ways to secure your Apache Configuration&amp;rsquo;
+Seeing as Apache is a rather popular web server, this is invaluable information for any developer particularly those who are involved with configuring production boxes.
+Just how popular is Apache? Have a look at Netcrafts Web Server Survey to September 2006.</description>
+    </item>
+    
+  </channel>
+</rss>

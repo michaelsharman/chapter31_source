@@ -1,0 +1,130 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Caveat using dateDiff() to compare difference in days | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Caveat using dateDiff() to compare difference in days - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 3, 2008</h2>
+    <h1 class="title">Caveat using dateDiff() to compare difference in days</h1>
+    
+    <div class="content">
+      <p>I had <a href="http://www.chapter31.com/2007/10/05/createodbcdate-returns-time-as-well/">some problems a little while ago</a> using dateCompare() and the same thing bit me recently with dateDiff(). Well really I had a problem with createODBCDate(), but let me explain.</p>
+
+<p>I wanted to compare the &ldquo;day&rdquo; value between 2 dates like;</p>
+
+<pre><code class="language-javascript">&lt;cfscript&gt;
+	date1 = now();
+	date2 = myQuery.dateCreated;
+	
+	dateDifference = dateDiff(&quot;d&quot;, date1, date2);	
+&lt;/cfscript&gt;
+</code></pre>
+
+<p>The initial problem was that &ldquo;myQuery.dateCreated&rdquo; has a time value associated with it, as does the value of now(). This meant that where I should have had (or expected to have) a value of &ldquo;1&rdquo; if date2 was the next day, I wasn&rsquo;t because the times were being calculated and both dates where within a 24-hour range. Makes sense.</p>
+
+<p>My first simple fix (which was <a href="http://www.chapter31.com/2007/10/05/createodbcdate-returns-time-as-well/">what I tried before</a>) was to add a <em>createODBCDate()</em> around my dates.</p>
+
+<p>This doesn&rsquo;t work though, indeed when you ouput the results of createODBCDate() it looks as though you have a date object with no time but you really DO have a time&hellip;you just can&rsquo;t see it :(</p>
+
+<p>2 ways around this both involve stripping out the time part&hellip;using createDate() which is a bit unwieldy:</p>
+
+<pre><code class="language-javascript">&lt;cfscript&gt;
+	date1 = createDate(year(now()), month(now()), day(now()));
+&lt;/cfscript&gt;
+</code></pre>
+
+<p>Or using dateFormat():</p>
+
+<pre><code class="language-javascript">&lt;cfscript&gt;
+	date1 = dateFormat(now(), &quot;yyyy/mmm/dd&quot;);
+&lt;/cfscript&gt;
+</code></pre>
+
+<p>So another note to self&hellip;whenever you want to do any sort of date comparisons watch out for the &ldquo;time&rdquo; values unless of course you want the times as part of your comparison!</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

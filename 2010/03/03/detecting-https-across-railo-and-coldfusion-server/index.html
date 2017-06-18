@@ -1,0 +1,143 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Detecting https across Railo and ColdFusion Server | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Detecting https across Railo and ColdFusion Server - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 3, 2010</h2>
+    <h1 class="title">Detecting https across Railo and ColdFusion Server</h1>
+    
+    <div class="content">
+      <p>Previously I had a way of <a href="http://www.chapter31.com/2007/07/21/detecting-and-redirecting-http-to-https/">detecting whether page requests were being made via ssl</a> but today I came across a scenario where this doesn&rsquo;t work. Let me explain&hellip;</p>
+
+<p>Right now we&rsquo;re looking at developing across different ColdFusion engines, &ldquo;ColdFusion&rdquo; of course but also <a href="http://www.getrailo.com/">&ldquo;Railo&rdquo;</a>. One of the applications we had detected whether a request was being made securely (https) and if it wasn&rsquo;t we turned off session management for security reasons. The basic code looked like the following snippet:</p>
+
+<pre><code class="language-javascript">oRequest = getPageContext().getRequest();			
+if (oRequest.isSecure())
+{
+	this.sessionManagement = true;
+	this.sessionTimeout = createTimeSpan(0,0,20,0);
+	this.setClientCookies = true;
+}
+else
+{
+	this.sessionManagement = false;
+	this.setClientCookies = false;
+}
+</code></pre>
+
+<p>This was working all fine and dandy for ColdFusion Server, but was failing when we went to Railo (at least in the way we configure Railo). The reason was that we proxy page requests on Railo through Apache to Tomcat. This proxy is done over http regardless of the actual client request to the server. I guess the reason for this is that Apache to Tomcat is considered part of your secure (server) network. What was happening was that isSecure() was coming back false, because of this proxy request.</p>
+
+<p><a href="http://www.lynchconsulting.com.au">Mark</a> came up with a cool solution for this. We simply add a custom header in the Apache conf file.</p>
+
+<pre><code class="language-javascript">RequestHeader set https on
+</code></pre>
+
+<p>All this does is set a value into the header which we can pickup via the CGI scope, i.e. CGI.https</p>
+
+<p>Now this key (https) already exists on ColdFusion server and will be blank for http requests and &ldquo;on&rdquo; for https requests. This is the reason we set the custom header value to &ldquo;on&rdquo; in the Railo vhost, so our application code is easily compatible across the two ColdFusion engines.</p>
+
+<p>So now we just have a simple function to detect ssl requests:</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;isRequestSecure&quot; access=&quot;public&quot; output=&quot;false&quot; returnType=&quot;boolean&quot;&gt;
+	
+	&lt;cfset var secure = false&gt;
+		
+	&lt;cfif cgi.https EQ &quot;on&quot;&gt;
+		&lt;cfset secure = true&gt;
+	&lt;/cfif&gt;
+		
+	&lt;cfreturn secure&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>Now we can easily call isRequestSecure() which will be either true or false. Nice :)</p>
+
+<p>Don&rsquo;t forget that the CGI scope is kind of &ldquo;magic&rdquo;, in that we won&rsquo;t ever need to param a key in that struct (like CGI.https).</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,127 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Fun with reserved words in MySQL 5 | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Fun with reserved words in MySQL 5 - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">October 27, 2008</h2>
+    <h1 class="title">Fun with reserved words in MySQL 5</h1>
+    
+    <div class="content">
+      <p>Most tools or languages you work with have words which are &ldquo;reserved&rdquo;, meaning you cannot use them in a variable declaration or schema definition etc as they have special treatment in the underlying system. If you try to do this you&rsquo;ll usually get an immediate error.</p>
+
+<p>Today I needed to change an existing SQL query from a &ldquo;SELECT *&rdquo; to explicitly defining each column because I wanted to add some date formating at the SQL level.</p>
+
+<p>The query (after modifications) was as follows:</p>
+
+<pre><code class="language-javascript">SELECT
+	id
+	, date_format(dt_start, &quot;%d/%m/%Y&quot;) as dt_start
+	, date_format(dt_end, &quot;%d/%m/%Y&quot;) as dt_end
+	, repeat
+FROM
+	smsschedule
+</code></pre>
+
+<p>Now remember that the code <em>used</em> to be SELECT * and was working fine. But when I changed it as above it failed and threw an error:</p>
+
+<blockquote>
+<p>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near&hellip;</p>
+</blockquote>
+
+<p>The reason is that &ldquo;repeat&rdquo; is a <a href="http://dev.mysql.com/doc/mysqld-version-reference/en/mysqld-version-reference-reservedwords-5-0.html">MySQL reserved word</a>. The interesting part (and real reason for this post) is that it didn&rsquo;t fail when the query was sent as &ldquo;*&ldquo;, only when I explicitly set the invalid column in the SELECT list.</p>
+
+<p>This was sent from ColdFusion but I also checked directly against the database (MySQL query browser) and had the same result.</p>
+
+<p>Might be best to <a href="http://dev.mysql.com/doc/mysqld-version-reference/en/mysqld-version-reference-reservedwords-5-0.html">check the reserved list</a>, most are obvious but a few could catch you out if you&rsquo;re not aware of them.</p>
+
+<p>Also interesting to note is that the table in question contained 2 column names which I thought would have failed. Those being &ldquo;hour&rdquo; and &ldquo;minute&rdquo;.</p>
+
+<p>Not only did they not fail, but they aren&rsquo;t in the reserved words list for MySQL. It would appear that function names (at least some of them) are ok to be used as column names. Still&hellip;I wouldn&rsquo;t really recommend using these column names in your tables :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

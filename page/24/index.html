@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.23" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">September 25, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/25/cfhtmlhead/">cfhtmlhead</a></h1>
+      
+      <div class="content">
+        Sometimes during development you may want to programmatically add text/content to the &lt;head&gt; area of the currently processing page. Most often I do this when I want to add Javascript code or link tags dynamically.
+&lt;cfhtmlhead&gt; is a great tool to use for this as you don’t need to try and spaghetti code your header include/module.
+For example:
+&lt;cfhtmlhead text=&quot;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/myScript.js&quot;&gt;&lt;/script&gt;&quot;&gt;  TEXT
+The text you want to add to the &lt;head&gt; area of an HTML page.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/25/cfhtmlhead/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 19, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/19/trimming-strings-with-javascript/">Trimming strings with Javascript</a></h1>
+      
+      <div class="content">
+        Ben Nadel has a nice post on trimming strings with javascript using regular expressions.
+Note that the reg exp white space character &lsquo;\s&rsquo; is used to match:
+ space tab horizontal tab vertical tab line break  Sample code below:
+&lt;script type=&quot;text/javascript&quot;&gt; // Trims the beginning and trailing white space from a string. function trim( strText ){ return( strText.replace(new RegExp(&quot;^([s]+)|([s]+)$&quot;, &quot;gm&quot;), &quot;&quot;) ); } // Trims the beinning white space from a string.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/19/trimming-strings-with-javascript/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 12, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/12/robots-meta-tag/">Robots META tag</a></h1>
+      
+      <div class="content">
+        The Robots META tag is a way you can tell &lsquo;Robots&rsquo; or &lsquo;Spiders&rsquo; whether a page (or pages) on your site should be indexed, or if links on the page should be followed.
+At this stage I don&rsquo;t believe all &lsquo;robots&rsquo; out there support the use of this META tag, but some do so in the right situation it&rsquo;s worth using.
+The most common examples for the robots META tags are:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/12/robots-meta-tag/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 11, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/11/hostmysitecom-and-coldfusion-mappings/">hostmysite.com and ColdFusion mappings</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve recently gotten myself a hostmysite account on a shared server for a project I&rsquo;m involved with. Everything looked fantastic and they certainly have a great reputation in the community.
+Before signing on the dotted line I wanted to make sure everything was in order including:
+ ColdFusion; Enterprise or Standard?
+ Multiple CF mappings?
+ Web mappings?
+ Multiple DSN&rsquo;s?
+ Are any CF tags disabled etc
+ Server specs etc
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/11/hostmysitecom-and-coldfusion-mappings/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 10, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/10/cfcomponent-should-you-use-the-name-attribute/">cfcomponent - should you use the name=&#34;&#34; attribute?</a></h1>
+      
+      <div class="content">
+        Charlie Arehart has an interesting post here on whether you should use the name attribute in cfcomponent.
+Apparently there is no &lsquo;name&rsquo; attrbribute in the cfdocs for &lt;cfcomponent&gt;, remember you can use displayName or hint for component introspection. And if you want to take advantage of getMetaData()? Well there already is a &lsquo;name&rsquo; attribute as default in ColdFusionMX! The thing is that&rsquo;s it&rsquo;s for internal use and even if you do use &lsquo;name&rsquo;, the value you specify won&rsquo;t appear in getMetaData(), the internal ColdFusion value will instead!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/10/cfcomponent-should-you-use-the-name-attribute/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 9, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/09/html-strip/">HTML strip</a></h1>
+      
+      <div class="content">
+        Let&rsquo;s say you have a form or mechanism in a web application which allows users to enter content which may be displayed on a web page, a comment area for example.
+In these scenarios you need to be carefull of what my be entered by a malicious user, think cross site scripting. There are various reg exp’s available to assist you in cleaning the data but good folks a Adobe have given us a nice little function in htmlEditFormat().
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/09/html-strip/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 7, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/07/cfc-bean-generators/">CFC Bean generators</a></h1>
+      
+      <div class="content">
+        There are a few Bean generators around for ColdFusion which can save you a lot if time and effort when you need to create your CFC Beans, here are a few making the rounds.
+Jonathan Block
+A more advanced generator which creates init() and validate() functions for you. For the picky developers out there you might want to tidy things up a bit. Example the ‘set’ in the init() misses a space at the end of the
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/07/cfc-bean-generators/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 7, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/07/server-settings-with-java/">Server settings with Java</a></h1>
+      
+      <div class="content">
+        Here are a couple of ways which you can determine the name of the JRun instance you are running as well as the server name of the Application server. Here at Daemon we use these quite a bit in our more complex project environments.
+&lt;!--- get the machine (server) name ---&gt; &lt;cfset variables.serverName = createObject(&quot;java&quot;, &quot;java.net.InetAddress&quot;).localhost.getHostName() /&gt; &lt;!--- get the JRun instance name ---&gt; &lt;cfset variables.instanceName = createObject(&quot;java&quot;, &quot;jrunx.kernel.JRun&quot;).getServerName() /&gt; &lt;cfoutput&gt; Server: #variables.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/07/server-settings-with-java/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 6, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/06/dashboard-confessional/">Dashboard Confessional</a></h1>
+      
+      <div class="content">
+        Tonight (well last night considering the time at the moment!) I went to see Dashboard Confessional at the Hordern Pavillion.
+Not a bad show, I am a fan but not a huge one. His voice is quite unique and I like a lot of their tunes. A strong band with good vocals all round. I&rsquo;d go a 6.5 out of 10
+It was interesting being there considering my age and the average age of the people around me&hellip;I felt old!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/06/dashboard-confessional/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 5, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/05/multi-step-forms/">Multi-step forms</a></h1>
+      
+      <div class="content">
+        Rahul Narula has a great post on Multi-step forms. As web developers forms are a part of our everyday lives, sometimes those forms exist over several pages instead of 1 looong page. That being said we need a way to hold the data entered by the user at each step (page) thoughout the process.
+We can of course use either of the following:
+ Database Session scope Structures URL  There are probably more but that would be all I would consider (at this stage!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/05/multi-step-forms/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/page/23/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/page/25/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+
+

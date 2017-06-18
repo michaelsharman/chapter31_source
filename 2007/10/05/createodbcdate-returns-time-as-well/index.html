@@ -1,0 +1,124 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>createODBCDate() returns &#39;time&#39; as well? | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="createODBCDate() returns &#39;time&#39; as well? - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">October 5, 2007</h2>
+    <h1 class="title">createODBCDate() returns &#39;time&#39; as well?</h1>
+    
+    <div class="content">
+      <p>Recently I was just comparing 2 dates (one from a query and the other was now()) using the <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=functions_c-d_19.html#1102341">createODBCDate()</a> and <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=functions_c-d_26.html">dateCompare()</a> functions.</p>
+
+<p>I was using the createODBCDate() function because I only wanted the &lsquo;date&rsquo; part of a date object, not the &lsquo;time&rsquo;. More than likely I should have been using <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=functions-pt0_05.html#1098968">dateFormat()</a>, but that&rsquo;s another story :)</p>
+
+<p>I had the following:</p>
+
+<pre><code class="language-javascript">&lt;cfif dateCompare(createODBCDate(q.DateTimeCreated), createODBCDate(now())) EQ 0&gt;
+</code></pre>
+
+<p>The problem was I kept getting -1 returned, meaning that &lsquo;q.DateTimeCreated&rsquo; was less than &lsquo;now()&rsquo;. As &lsquo;q.DateTimeCreated&rsquo; was technically created before &lsquo;now()&rsquo; (same day but an earlier &lsquo;time&rsquo;) it <strong>is</strong> actually <em>less than</em>, but I only wanted to compare the date&hellip;not the time. When I dumped both date objects I got:</p>
+
+<pre><code class="language-javascript">{d '2007-10-05'}
+{d '2007-10-05'}
+</code></pre>
+
+<p>Looks the same to me&hellip;</p>
+
+<p>I <em>think</em> that those date objects actually have the &lsquo;time&rsquo; in them as well, they&rsquo;re just not being displayed on cfdump or cfoutput. This seems strange especially considering there is a createODBCDateTime() function as well.</p>
+
+<p>My fix was to do what I probably should have done in the first place; use dateFormat()</p>
+
+<pre><code class="language-javascript">&lt;cfif dateCompare(dateFormat(q.DateTimeCreated), dateFormat(now())) EQ 0&gt;
+</code></pre>
+
+<p>That did the trick!</p>
+
+<p>Now the only thing bothering me is whether the createODBCDate() function actually <em>does</em> return the &lsquo;time&rsquo; as well&hellip;or was something else the culprit?</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

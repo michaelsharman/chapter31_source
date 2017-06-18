@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shell on chapter31</title>
+    <link>http://chapter31.com/categories/shell/</link>
+    <description>Recent content in Shell on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Sat, 01 Jun 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/shell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>base16 - colour scheme for hackers</title>
+      <link>http://chapter31.com/2013/06/01/base16-colour-scheme-for-hackers/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/06/01/base16-colour-scheme-for-hackers/</guid>
+      <description>I came across a great set of colour schemes called base16. From the website:
+Base16 provides carefully chosen syntax highlighting and a default set of sixteen colors suitable for a wide range of applications. Base16 is both a color scheme and a template.  There are repos for the following tools:
+ Base 16 Builder Vim Shell iTerm2 TextMate OSX Color Palette Xresources Mou XFCE4 Terminal Gimp Palette Gnome Terminal Emacs Geany  There&amp;rsquo;s even a builder so you can roll your own theme!</description>
+    </item>
+    
+    <item>
+      <title>Stopping a remote process after killing an ssh session</title>
+      <link>http://chapter31.com/2013/05/05/stopping-a-remote-process-after-killing-an-ssh-session/</link>
+      <pubDate>Sun, 05 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/05/05/stopping-a-remote-process-after-killing-an-ssh-session/</guid>
+      <description>I often want to tail log files on remote server(s) when running diagnostics for an application. You can either login to the remote server via an SSH session, then execute the tail command. Or you can do it from a local shell (without explicitly logging onto the remote server first). That&amp;rsquo;s pretty simple:
+ssh myRemoteServer tail -f /path/to/logs/myapp.log  The problem here, is when you ctrl-c out of this command to kill the tail, the process is still running on the remote machine.</description>
+    </item>
+    
+  </channel>
+</rss>

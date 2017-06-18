@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Railo | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Railo - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">September 26, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/09/26/adding-a-mail-server-to-a-railo-instance/">Adding a mail server to a Railo instance</a></h1>
+      
+      <div class="content">
+        We turn off all GUI based administration consoles in our production environments, this includes Railo&rsquo;s admin area.
+If you need to configure your Railo instance to include an SMTP server, you can add a line in WEB-INF/railo/railo-web.xml.cfm
+Open up that file (probably as sudo), look for the  tag (which is empty by default) and insert the following:
+&lt;server port=&quot;25&quot; smtp=&quot;127.0.0.1&quot; /&gt;  The &ldquo;smtp&rdquo; attribute should be the IP address of your SMTP server.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/09/26/adding-a-mail-server-to-a-railo-instance/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 1, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/07/01/farcry-tip-enable-cfcs-in-your-railo-proxypassmatch/">FarCry Tip - Enable cfc&#39;s in your Railo ProxyPassMatch</a></h1>
+      
+      <div class="content">
+        I ran into an issue today while working on a FarCry project, basically when I opened up the &ldquo;Related Content&rdquo; popup from the WYSIWYG editor it was blank. Nothing. Not the usual tabs for Images, File, Flash etc.
+The Railo logs were empty but Apache was throwing a strange error which I hadn&rsquo;t seen before: &ldquo;Couldn&rsquo;t initialize from remote server, JRun server(s) probably down.&rdquo;. Funny as I&rsquo;m not even using JRun!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/07/01/farcry-tip-enable-cfcs-in-your-railo-proxypassmatch/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 31, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/05/31/mura-overriding-dspcrumblistlinks/">Mura - overriding dspCrumblistLinks</a></h1>
+      
+      <div class="content">
+        Like most CMS solutions out there, Mura CMS gives you some cool hooks to override core functionality. See the developer guides for more information.
+I&rsquo;ve created a repository on github to store any customisations or extensions that could be cherry picked for use in any Mura app.
+First up was a super simple one for breadcrumbs. By default, Mura will put an &ldquo;a href&rdquo; around the last item in the crumb list.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/05/31/mura-overriding-dspcrumblistlinks/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 29, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/05/29/farcry-to-mura-migrating-data-from-farcry-to-mura-cms/">FarCry to Mura - migrating data from FarCry to Mura CMS</a></h1>
+      
+      <div class="content">
+        For years here at Learnosity we&rsquo;ve been using FarCry for most of our CMS requirements (yes, I know that FarCry, or rather farcrycms, is a lot more than just a CMS).
+For one reason or another we decided it was time to look at some of the other options for content management in the ColdFusion sphere, Mura CMS was a likely candidate for evalutation.
+We had a small-ish site that was already running in FarCry 6+ which we wanted to port to Mura so we could really get a feel for how things worked in Mura-land.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/05/29/farcry-to-mura-migrating-data-from-farcry-to-mura-cms/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 27, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/05/27/cfml-issue-on-railo-with-the-accelerate-cache-tag/">CFML issue on Railo with the accelerate cache tag</a></h1>
+      
+      <div class="content">
+        We&rsquo;ve been using Brandon Purcell&rsquo;s excellent accelerate custom cache tag for a few projects. I had an issue today while testing a new app which is about to go live. It seemed that whatever I did nothing would be cached.
+Upon investigation it seemed that the caching worked fine on Adobe ColdFusion but not on Railo. A quick look at the codebase brought me to this line:
+&lt;cfif IsDefined(&quot;application.accelerator.#scriptName#.#primarykey#.#secondaryKey#&quot;)  Basically this was always returning false, even when I knew the key was in the application scope.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/05/27/cfml-issue-on-railo-with-the-accelerate-cache-tag/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 3, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/03/03/detecting-https-across-railo-and-coldfusion-server/">Detecting https across Railo and ColdFusion Server</a></h1>
+      
+      <div class="content">
+        Previously I had a way of detecting whether page requests were being made via ssl but today I came across a scenario where this doesn&rsquo;t work. Let me explain&hellip;
+Right now we&rsquo;re looking at developing across different ColdFusion engines, &ldquo;ColdFusion&rdquo; of course but also &ldquo;Railo&rdquo;. One of the applications we had detected whether a request was being made securely (https) and if it wasn&rsquo;t we turned off session management for security reasons.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/03/03/detecting-https-across-railo-and-coldfusion-server/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 16, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/08/16/2-cool-things-about-railo/">2 cool things about Railo</a></h1>
+      
+      <div class="content">
+        Session management: If an application/session scope is defined with the tag or the application.cfc, in Railo it will not automatically exist. Only when the scope is used for the first time it will be created. If the scope is not used, it won&rsquo;t be created either.
+This is really good news. Many people have blogged in the past about issues with &ldquo;bots&rdquo; hitting ColdFusion sites and spawning a multitude of sessions which (depending on the application of course) can cause memory and/or performance problems.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/08/16/2-cool-things-about-railo/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 16, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/08/16/farcry-5-running-on-railo-3-windows/">FarCry 5 running on Railo 3 (Windows)</a></h1>
+      
+      <div class="content">
+        The CFML market is hotting up with Railo going open source (in version 3.1) and joining forces with JBoss for an end of 2008 release! With that in mind I figured it was time to check out Railo with the latest version of FarCry.
+My environment:
+ Windows XP Railo 3.0.0.003 FarCry 5.0.0 (although 5.0.2 is out, the latest distro from the site offers only 5.0.0) FarCry 5.0.2 MySQL 5  I&rsquo;m using the &ldquo;express&rdquo; version of Railo which bundles with Jetty Application Server, so no need for any apache configurations as everything runs off port 8888.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/08/16/farcry-5-running-on-railo-3-windows/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Use application.applicationName? Careful when re-initing your app | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Use application.applicationName? Careful when re-initing your app - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 24, 2008</h2>
+    <h1 class="title">Use application.applicationName? Careful when re-initing your app</h1>
+    
+    <div class="content">
+      <p>I&rsquo;m sure most ColdFusion developers know that the application scope has a built-in variable called <em>application.applicationName</em> which stores the name of the application that you specify in the cfapplication tag or the <em>this.name</em> value if your using <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=AppEvents_01.html">Application.cfc</a>. This doesn&rsquo;t appear when you dump the application scope&hellip;but it&rsquo;s there.</p>
+
+<p>Today I wanted to use this variable, everything was working fine until I ran into an error when I re-initialised my application via a URL variable. The error I received was:</p>
+
+<blockquote>
+<p>Element APPLICATIONNAME is undefined in APPLICATION.</p>
+</blockquote>
+
+<p><a href="http://www.lynchconsulting.com.au/blog/">Marko</a> helped me out with the obvious&hellip;as I had cleared my application scope the &ldquo;applicationName&rdquo; variable didn&rsquo;t exist for the page request. Let me show you how I was re-initialising the application scope; the following 2 methods are declared in my Application.cfc, checkReInit() is called from onRequestStart():</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;checkReInit&quot; access=&quot;private&quot; output=&quot;false&quot; returntype=&quot;void&quot;&gt;
+	&lt;cfscript&gt;		
+		if (structKeyExists(URL, &quot;reinit&quot;) AND URL.reinit EQ 101)
+		{
+			clearAppScope();
+		}		
+	&lt;/cfscript&gt;
+&lt;/cffunction&gt;
+
+&lt;cffunction name=&quot;clearAppScope&quot; access=&quot;private&quot; output=&quot;false&quot; returnType=&quot;void&quot;&gt;
+	&lt;cfscript&gt;		
+		structClear(application);
+		onApplicationStart();		
+	&lt;/cfscript&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>As you can see in the sample code above, if a URL parameter called <em>reinit</em> exists with the value of 101 the application scope is cleared then re-inited via onApplicationStart().</p>
+
+<p><em>**<strong>Note:</strong></em> I <em>really</em> don&rsquo;t recommend this type of code for a production environment, in fact this is a cut down version of what the actual code is&hellip;we don&rsquo;t run applications with the ability to re-initialise the application scope via the public URL from a production site.</p>
+
+<p>Anyway&hellip;clearAppScope() essentially clears whatever is in the application scope then calls onApplicationStart() to re-initialise the application. This is all good and well except <em>this.name</em> is not defined inside onApplicationStart(), it&rsquo;s defined in the constructor area at the top of the file so any code in your .cfm template referencing <em>application.applicationName</em> will fail because this value won&rsquo;t exist.</p>
+
+<p>I would have thought a simple page refresh would rectify any issues (as this.name would be called the next time a template was executed) but I was still getting errors.</p>
+
+<p>A simple fix is to explicitly set the application name value if and when you clear the app scope. That way it will be available to your application as expected.</p>
+
+<pre><code class="language-ruby">&lt;cffunction name=&quot;clearAppScope&quot; access=&quot;private&quot; output=&quot;false&quot; returnType=&quot;void&quot;&gt;
+	&lt;cfscript&gt;		
+		structClear(application);
+		application.applicationName = this.name;
+		onApplicationStart();		
+	&lt;/cfscript&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

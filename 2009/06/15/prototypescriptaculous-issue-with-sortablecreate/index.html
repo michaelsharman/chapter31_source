@@ -1,0 +1,129 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Prototype/scriptaculous issue with Sortable.create() | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Prototype/scriptaculous issue with Sortable.create() - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">June 15, 2009</h2>
+    <h1 class="title">Prototype/scriptaculous issue with Sortable.create()</h1>
+    
+    <div class="content">
+      <p>I&rsquo;ve been doing some custom sorting within FarCry using the prototype/scriptaculous libraries as they already exist in the FarCry framework by default.</p>
+
+<p>I was having trouble getting the <a href="http://wiki.github.com/madrobby/scriptaculous/sortable-create">Sortable.create()</a> to work properly and the main docs site for scriptaculous seems severely lacking in examples. Basically the &ldquo;sorting&rdquo; action was happening fine but no event was being fired &ldquo;onUpdate&rdquo;. No exception was being thrown, just that nothing was happening after the drag/drop.</p>
+
+<p>The solution came from google (where else?) on the rubyonrails groups thanks to a fellow named Chris.</p>
+
+<p><a href="http://groups.google.com/group/rubyonrails-spinoffs/browse_thread/thread/eb54b586942af4f2/d27bf870447b0584">Straight from the board</a>:</p>
+
+<pre><code class="language-javascript">I had the same problem, and the issue is probably in your markup. Each
+item of the 'sortable' has to be named in the format 'string_integer'.
+So this will work:
+
+&lt;ul id=&quot;makeMeSortable&quot;&gt;
+   &lt;li id=&quot;item_1&quot;&gt;&lt;/li&gt;
+   &lt;li id=&quot;item_2&quot;&gt;&lt;/li&gt;
+   &lt;li id=&quot;item_3&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+and this will NOT work:
+
+&lt;ul id=&quot;makeMeSortable&quot;&gt;
+   &lt;li id=&quot;firstitem&quot;&gt;&lt;/li&gt;
+   &lt;li id=&quot;seconditem&quot;&gt;&lt;/li&gt;
+   &lt;li id=&quot;thirditem&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt; 
+</code></pre>
+
+<p>Wait, read that again. Are you serious?</p>
+
+<p>Yep&hellip;you have to split your &ldquo;id&rdquo; value with a string, then an underscore followed by an integer. This is truly the dumbest thing I&rsquo;ve found in a while. Hall of famer for sure.</p>
+
+<p>Just posting here to help anyone else who spends more time than necessary getting this (simple) task working.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

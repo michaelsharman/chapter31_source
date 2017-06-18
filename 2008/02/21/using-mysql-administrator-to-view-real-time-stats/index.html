@@ -1,0 +1,124 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Using MySQL Administrator to view real time stats | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Using MySQL Administrator to view real time stats - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">February 21, 2008</h2>
+    <h1 class="title">Using MySQL Administrator to view real time stats</h1>
+    
+    <div class="content">
+      <p>I was working on piece of code today which was sending an Ajax request to the server. The result of this request could have been 0 - 5 database UPDATE statements.</p>
+
+<p>What I needed was a way to test my code to make sure the correct number of database statements were being executed based on the user event which fired the request.</p>
+
+<p>There are of course a number of ways I could have done this including:</p>
+
+<ul>
+<li>Returning a &lsquo;count&rsquo; or equivalent from the server to my Ajax callback</li>
+<li>Manually checking the relevant records in the database via a query</li>
+<li>Logging the results etc</li>
+</ul>
+
+<p>While all of these are fine, they all involved a bit more effort so I wanted to find another way to simply see how many UPDATES where being run.</p>
+
+<p>Enter <a href="http://www.mysql.com/products/tools/administrator/">MySQL Administrator</a> :)</p>
+
+<p>There are a BUNCH of useful operations you can perform using this free tool as well as viewing real time performance stats including the current server health (such as memory usage and current traffic) and the number of cached queries vs actual queries which are being accessed.</p>
+
+<p>The one I was interested in resides in the &lsquo;Health&rsquo; area and allows you to view a real time count of all DDL and DML statements which hit the server. Perfect!</p>
+
+<p><a href="/images/uploads/2008/02/mysql_admin.jpg"><img src="/images/uploads/2008/02/mysql_admin.thumbnail.jpg" alt="mysql administrator" /></a></p>
+
+<p>All I needed to do was run my page, fire the Ajax event and then &lsquo;refresh&rsquo; the Health view in MySQL Admin.</p>
+
+<p>For those that use MySQL and don&rsquo;t really know this tool, take the time&hellip;it&rsquo;s well worth it!</p>
+
+<p>I&rsquo;m sure MSSQL has similar tools like the Profiler etc, but I&rsquo;m really not using it these days.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

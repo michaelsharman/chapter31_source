@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coldfusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coldfusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">October 14, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/10/14/validating-a-user-defined-password-with-reg-exp/">Validating a user defined password with reg exp</a></h1>
+      
+      <div class="content">
+        A nice little reg exp from the ColdFusion Cookbook when you need to make sure a users new password (which they are setting) contains at least 1 letter and 1 number.
+You can also make sure the password length is within a range, the following makes sure the password is between 6 and 15 characters long.
+&lt;cfif NOT reFind(&quot;^[[:alnum:]]{6,15}$&quot;, form.sPassword) /&gt;  Don&rsquo;t you just love regular expressions :)
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 10, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/10/10/paginating-with-sql-server-2005/">Paginating with SQL Server 2005</a></h1>
+      
+      <div class="content">
+        Adam Howitt blogged recently about Pagination made easier with SQL Server 2005, have a read of his post and take the time to implement the solution as most pagination scripts I&rsquo;ve seen are lazy and don&rsquo;t perform well&hellip;particularly with a lot of content!
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 6, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/10/06/regular-expressions-in-javascript/">Regular Expressions in JavaScript</a></h1>
+      
+      <div class="content">
+        All about regular expressions, particularly for javascript!
+click here for more
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 6, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/10/06/google-code-search/">Google code search</a></h1>
+      
+      <div class="content">
+        Google have come out with yet another fantastic tool, particularly for the developers out there :)
+google code search was released yesterday as a beta in google labs to search for public source code.
+You can read more here.
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 5, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/10/05/double-checked-locking-2/">double-checked locking</a></h1>
+      
+      <div class="content">
+        Mark Kruger details a concept (with a little help from Sean Corfield) known as &ldquo;double-checked locking&rdquo;, in the example as it pertains to application scoped variables.
+The basic premise is that normally you would put &lt;cfif NOT structKeyExists(application, “myVar”)&gt; logic around you setting of application variables. If the application variable(s) didn’t exist you would have a &lt;cflock&gt; within the &lt;cfif&gt; to perform locking while you write your application variables.
+However what would happen when 2 threads (2 users) hit that logic/lock at the same time?
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/10/05/double-checked-locking-2/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 4, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/10/04/finding-cpu-andor-memory-leak-issues-with-coldfusion/">High CPU and memory usage in ColdFusion</a></h1>
+      
+      <div class="content">
+        Charlie Arehart had an extremely interesting article today on JRun performance issues, particularly relating to high CPU cycles and memory usage.
+The perpetrators in this example were thought to be search engine spiders (or &lsquo;bots&rsquo;) and/or RSS feeds.
+Now bots may visit your website many times throughout the course of a single day, this could be the same bot of different bots (for different search engines). Also you may be in a situation where you have many people syndicating content from your site in the form of a feed (RSS/Atom etc).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/10/04/finding-cpu-andor-memory-leak-issues-with-coldfusion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 3, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/10/03/mach-ii-111-public-beta2/">Mach-II 1.1.1 Public Beta2</a></h1>
+      
+      <div class="content">
+        The peeps over at Mach-II have been busy with the latest dot release of the Mach-II framework. Last week they released the Public Beta2 for 1.1.1 which you can download here.
+A big note for Version 1.1.1 is Application.cfc support :)
+Although Mach-II is a well known framework in the community it seems that Model Glue is getting all the attention lately. With that in mind I&rsquo;ve been looking forward to new releases from the Mach-II side.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/10/03/mach-ii-111-public-beta2/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 25, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/25/cfhtmlhead/">cfhtmlhead</a></h1>
+      
+      <div class="content">
+        Sometimes during development you may want to programmatically add text/content to the &lt;head&gt; area of the currently processing page. Most often I do this when I want to add Javascript code or link tags dynamically.
+&lt;cfhtmlhead&gt; is a great tool to use for this as you don’t need to try and spaghetti code your header include/module.
+For example:
+&lt;cfhtmlhead text=&quot;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/myScript.js&quot;&gt;&lt;/script&gt;&quot;&gt;  TEXT
+The text you want to add to the &lt;head&gt; area of an HTML page.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/25/cfhtmlhead/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 11, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/11/hostmysitecom-and-coldfusion-mappings/">hostmysite.com and ColdFusion mappings</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve recently gotten myself a hostmysite account on a shared server for a project I&rsquo;m involved with. Everything looked fantastic and they certainly have a great reputation in the community.
+Before signing on the dotted line I wanted to make sure everything was in order including:
+ ColdFusion; Enterprise or Standard?
+ Multiple CF mappings?
+ Web mappings?
+ Multiple DSN&rsquo;s?
+ Are any CF tags disabled etc
+ Server specs etc
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/11/hostmysitecom-and-coldfusion-mappings/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 10, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/10/cfcomponent-should-you-use-the-name-attribute/">cfcomponent - should you use the name=&#34;&#34; attribute?</a></h1>
+      
+      <div class="content">
+        Charlie Arehart has an interesting post here on whether you should use the name attribute in cfcomponent.
+Apparently there is no &lsquo;name&rsquo; attrbribute in the cfdocs for &lt;cfcomponent&gt;, remember you can use displayName or hint for component introspection. And if you want to take advantage of getMetaData()? Well there already is a &lsquo;name&rsquo; attribute as default in ColdFusionMX! The thing is that&rsquo;s it&rsquo;s for internal use and even if you do use &lsquo;name&rsquo;, the value you specify won&rsquo;t appear in getMetaData(), the internal ColdFusion value will instead!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/10/cfcomponent-should-you-use-the-name-attribute/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/11/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/13/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

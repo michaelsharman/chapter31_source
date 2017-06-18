@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Misc on chapter31</title>
+    <link>http://chapter31.com/categories/misc/</link>
+    <description>Recent content in Misc on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Mon, 24 Sep 2012 03:41:55 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing new fonts on Ubuntu server</title>
+      <link>http://chapter31.com/2012/09/24/installing-new-fonts-on-ubuntu-server/</link>
+      <pubDate>Mon, 24 Sep 2012 03:41:55 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/09/24/installing-new-fonts-on-ubuntu-server/</guid>
+      <description>I had some new fonts to install on our test server that runs Ubuntu server. Pretty simple really, just noting it down here for next time:
+ Upload/ssh the font(s) to your home folder on the server
+ Copy font to the system fonts folder, this way it can be used by all users on the system sudo cp -R ~/trade-gothic /usr/share/fonts/truetype/
+ Check permissions sudo chmod 755 /usr/share/fonts/truetype/trade-gothic/ Install the fonts so applications can use them sudo fc-cache -f -v  </description>
+    </item>
+    
+    <item>
+      <title>jQuery tinyMCE issue with $.attr();</title>
+      <link>http://chapter31.com/2012/07/04/jquery-tinymce-issue-with-attr/</link>
+      <pubDate>Wed, 04 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/07/04/jquery-tinymce-issue-with-attr/</guid>
+      <description>I had some strange behaviour with the jQuery verion of tinyMCE (3.4.6). Basically I was integrating the chosen library (which is build as a jQuery plugin), but it seems the $.attr(&amp;lsquo;id&amp;rsquo;) from within chosen.js was returning a JavaScript element reference instead of the value of the &amp;ldquo;id&amp;rdquo; field.
+
+Some basic tracing showed the strange error:
+
+The solution for me was moving to tinyMCE 3.5.4.1 (and jQuery 1.7.2, previously I was on 1.</description>
+    </item>
+    
+    <item>
+      <title>IE and underscores in domain names</title>
+      <link>http://chapter31.com/2010/05/09/ie-and-underscores-in-domain-names/</link>
+      <pubDate>Sun, 09 May 2010 23:09:27 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2010/05/09/ie-and-underscores-in-domain-names/</guid>
+      <description>Ok, a short warning to those who use underscores in their domain names. Underscores you say? Aren&amp;rsquo;t they illegal characters in domain names? Why yes they are (but I think they&amp;rsquo;re valid in sub-domains&amp;hellip;not sure), but you may find yourself using them in development environments, particularly if you&amp;rsquo;re doing a re-design. Think something like _http://mysite_v2.local/_ etc
+Now, this works of course and everything is fine and dandy because your using your own hosts file to make it &amp;ldquo;legal&amp;rdquo;&amp;hellip;except that Internet Explorer has this little quirk where it doesn&amp;rsquo;t persist your session (cookie) information.</description>
+    </item>
+    
+    <item>
+      <title>BrowserLab live on adobe.com</title>
+      <link>http://chapter31.com/2009/10/30/browserlab-live-on-adobe-com/</link>
+      <pubDate>Fri, 30 Oct 2009 01:02:27 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2009/10/30/browserlab-live-on-adobe-com/</guid>
+      <description>I&amp;rsquo;m probably a bit behind the times with this one, but Adobe have added &amp;ldquo;BrowserLab&amp;rdquo; functionality to &amp;ldquo;preview and test your web pages on leading browsers and operating systems - on demand&amp;rdquo;.
+Seems to work like other paid services, but is free :)
+https://browserlab.adobe.com/
+Available browser options (across mac and windows) include:
+ IE 6/7/8 Firefox 2&amp;frasl;3 Safari 3&amp;frasl;4</description>
+    </item>
+    
+    <item>
+      <title>Firefox changing default download location?</title>
+      <link>http://chapter31.com/2009/08/15/firefox-changing-default-download-location/</link>
+      <pubDate>Sat, 15 Aug 2009 08:04:44 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2009/08/15/firefox-changing-default-download-location/</guid>
+      <description>Hmm it seems firefox (Windows) 3.5.2 has decided to change the default location for downloading files. Used to be the desktop, but if you suddenly discover that you can&amp;rsquo;t find things you&amp;rsquo;ve download you might want to head to Tools-&amp;gt;Options in firefox.
+If you see &amp;ldquo;Downloads&amp;rdquo; as the chosen folder (as below), you can change it back to the desktop.
+Safari (at least on the Mac) also annoyingly places files there.</description>
+    </item>
+    
+    <item>
+      <title>Google releases video chat</title>
+      <link>http://chapter31.com/2008/11/12/google-releases-video-chat/</link>
+      <pubDate>Wed, 12 Nov 2008 03:04:21 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/11/12/google-releases-video-chat/</guid>
+      <description>For those that use gtalk/gmail, google have finally caught up and released voice and video chat.
+They even help you buy a webcam!</description>
+    </item>
+    
+    <item>
+      <title>Google Chrome - Google entering the browser market</title>
+      <link>http://chapter31.com/2008/09/02/google-chrome-google-entering-the-browser-market/</link>
+      <pubDate>Tue, 02 Sep 2008 02:36:09 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/09/02/google-chrome-google-entering-the-browser-market/</guid>
+      <description>Yep, Google have entered the browser market with Google Chrome.
+Although the press release was sent a little early, you can read an interesting comic book (PDF) here with some quite technical details on the ins and outs of Google&amp;rsquo;s newest plan for world domination philanthropic effort.
+Webkit is the rendering engine, and the V8 team have created an entirely new JavaScript Virtual Machine to help make this browser super quick and stable.</description>
+    </item>
+    
+    <item>
+      <title>Gmail hacking tool - do you access your email securely?</title>
+      <link>http://chapter31.com/2008/08/25/gmail-hacking-tool-do-you-access-your-email-securely/</link>
+      <pubDate>Mon, 25 Aug 2008 04:15:31 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/08/25/gmail-hacking-tool-do-you-access-your-email-securely/</guid>
+      <description>Stumbled upon this article today detailing a Gmail hacking tool presented at the Defcon hackers&amp;rsquo; conference in Las Vegas which will be released in a week or so.
+While news about the insecurity of accessing personal information without using encryption is really nothing new it serves as a timely reminder to secure ALL information you access online including email (not just your bank account!). So much detail of our personal and professional lives are held in our (primary) email account, so much so that if it was compromised the fallout could be quite devastating.</description>
+    </item>
+    
+    <item>
+      <title>getmooh - automated callback service</title>
+      <link>http://chapter31.com/2008/08/13/getmooh-automated-callback-service/</link>
+      <pubDate>Wed, 13 Aug 2008 23:33:23 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/08/13/getmooh-automated-callback-service/</guid>
+      <description>Looking to escape from a date or to get out of any sticky social situation?
+Try this free online automated callback service called getmooh.
+
+ It is designed to help you escape a variety of situations by calling you automatically on your phone at a pre-specified time and playing you a recording which will either instruct you on what to say to elude your tormentor(s), or which will simply give a convincing sense of you being on an important call.</description>
+    </item>
+    
+    <item>
+      <title>12 Breeds of Client and How to Work with Them</title>
+      <link>http://chapter31.com/2008/07/01/12-breeds-of-client-and-how-to-work-with-them/</link>
+      <pubDate>Tue, 01 Jul 2008 22:49:17 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/07/01/12-breeds-of-client-and-how-to-work-with-them/</guid>
+      <description>We&amp;rsquo;ve all experienced dealing with clients before, even if they are &amp;ldquo;internal&amp;rdquo; clients within our organisation. Today I saw this article on 12 Breeds of Client and How to Work with Them.
+The article mentions 12 different types of client (like a low-tech or hands-on client), how to spot one, the highs and lows of dealing with them and how to work effectively together.
+A good read :)</description>
+    </item>
+    
+    <item>
+      <title>Careful when sharing code sent from an IM client</title>
+      <link>http://chapter31.com/2008/06/20/careful-when-copying-code-sent-from-an-im-client/</link>
+      <pubDate>Fri, 20 Jun 2008 07:28:11 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/06/20/careful-when-copying-code-sent-from-an-im-client/</guid>
+      <description>Ok this is a warning to all those who get sent commands to use via IM.
+Scenario:
+I was helping someone setup their Apache config today, so I copied part of my VirtualHost block to them in an IM client. Then I went to their machine, grabbed the code and pasted it into their .conf file. Then Apache wouldn&amp;rsquo;t start/restart.
+After spending 10 minutes scratching my head and comparing code and files etc&amp;hellip;I removed all carriage returns/whitespace from the code and woo hoo!</description>
+    </item>
+    
+    <item>
+      <title>Does your bank do online statements?</title>
+      <link>http://chapter31.com/2008/06/14/does-your-bank-do-online-statements/</link>
+      <pubDate>Sat, 14 Jun 2008 05:17:37 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/06/14/does-your-bank-do-online-statements/</guid>
+      <description>I&amp;rsquo;m a lucky member of the teachers credit union, lucky for many reasons but just one of them is that they offer online statements. Meaning you get no correspondence via traditional mail.
+They are also donating $1 into the Teachers Environment Fund for each member who signs up for e-statements.
+Ask yourself, do you really need all those paper statements every month? I know I don&amp;rsquo;t, which is why I&amp;rsquo;m lucky to have a bank which provides an alternative.</description>
+    </item>
+    
+    <item>
+      <title>WebDU over for another year :(</title>
+      <link>http://chapter31.com/2008/06/13/webdu-over-for-another-year/</link>
+      <pubDate>Fri, 13 Jun 2008 10:23:05 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/06/13/webdu-over-for-another-year/</guid>
+      <description>Unfortunately WebDU has been and gone, all the good things go by so quickly :(
+It was a fantastic event yet again and a HUGE thank you to Geoff, Julie, Vanessa and all the Daemonites for putting on a spectacular couple of days.
+I don&amp;rsquo;t know what the highlight was, the great speakers/topics or the night of activities (bowling, pool, laser skirmish and drinking&amp;hellip;lots of drinking!).
+One of the cool things about WebDU is the calibre of speakers it attracts from all over the globe.</description>
+    </item>
+    
+    <item>
+      <title>WebDU starts tomorrow!!!</title>
+      <link>http://chapter31.com/2008/06/11/webdu-starts-tomorrow/</link>
+      <pubDate>Wed, 11 Jun 2008 12:57:10 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/06/11/webdu-starts-tomorrow/</guid>
+      <description>Looking forward to another WebDU starting tomorrow in beautiful Sydney.
+Geoff, Julie and the rest of the Daemon gang have brought us yet another stella cast of speakers. Judging from the agenda I&amp;rsquo;m going to have trouble knowing which session to attend, but that&amp;rsquo;s always a good thing.
+Also can&amp;rsquo;t wait for the first evening party, something different this year to help everyone meet and greet.
+I hope to see (and meet) some new faces and hopefully not be too worn out on Friday for day 2 :)</description>
+    </item>
+    
+    <item>
+      <title>Looking for the source code of open source software? Use koders</title>
+      <link>http://chapter31.com/2008/06/09/looking-for-the-source-code-of-open-source-software-use-koders/</link>
+      <pubDate>Mon, 09 Jun 2008 05:37:08 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/06/09/looking-for-the-source-code-of-open-source-software-use-koders/</guid>
+      <description>I came across a cool search engine the other day called Koders which is &amp;ldquo;a free on-line search engine for open source software and other web-downloadable code.&amp;rdquo;
+The cool thing about this is you can search for just about any and every language you can think of, and quickly browse the source code of open source projects. This can be a nice way to view the API docs or just to see if the project is what you&amp;rsquo;re looking for.</description>
+    </item>
+    
+    <item>
+      <title>Password strength checker</title>
+      <link>http://chapter31.com/2008/05/30/password-strength-checker/</link>
+      <pubDate>Fri, 30 May 2008 12:41:35 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/05/30/password-strength-checker/</guid>
+      <description>We all know passwords are the bane of any internet users online experience. So many sites, each with their own authentication requirements.
+I came across this handy site called passwordmeter to help test the strength of your passwords.
+It&amp;rsquo;s cool because it gives you an instant visual response for your passwords based upon things like;
+ Number of characters Upper and lower case Letters or numbers only etc  I typically use several passwords and found that I might need to strengthen them up, but I did have a couple which scored over 70% which is good :)</description>
+    </item>
+    
+    <item>
+      <title>I hate spam: Spambot cracks Live Hotmail CAPTCHA</title>
+      <link>http://chapter31.com/2008/04/16/i-hate-spam-spambot-cracks-live-hotmail-captcha/</link>
+      <pubDate>Wed, 16 Apr 2008 23:04:01 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/04/16/i-hate-spam-spambot-cracks-live-hotmail-captcha/</guid>
+      <description>Apparently the CAPTCHA for Windows Live Mail can be cracked in as little as 60 seconds and Gmail&amp;rsquo;s CAPTCHA has also been cracked.
+Does this mean the beginning of the end for CAPTCHA?
+There are some other interesting solutions to spambots out there, it&amp;rsquo;ll be interesting to see the future landscape of this infestation and the methods used to prevent it.
+Read more here</description>
+    </item>
+    
+    <item>
+      <title>Better YouTube Firefox Extension</title>
+      <link>http://chapter31.com/2008/03/06/better-youtube-firefox-extension/</link>
+      <pubDate>Thu, 06 Mar 2008 03:21:39 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/03/06/better-youtube-firefox-extension/</guid>
+      <description>This is cool, a little Firefox addon from the guys at lifehacker to make your youtube experience a little richer :)
+It basically combines several Greasemonkey scripts together into a single package.
+Features include:
+ smartly enlarges videos for better viewing hides user comments declutters the page disables autoplay  Download and install the addon, restart Firefox and you&amp;rsquo;re set to go. To edit the preferences you need to go to:</description>
+    </item>
+    
+    <item>
+      <title>A couple more cool Firefox tips</title>
+      <link>http://chapter31.com/2008/02/18/a-couple-more-cool-firefox-tips/</link>
+      <pubDate>Mon, 18 Feb 2008 20:50:05 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/02/18/a-couple-more-cool-firefox-tips/</guid>
+      <description>Another couple of cool Firefox features which most people probably already know about.
+How many times have you closed a tab only to realise &amp;ldquo;Damn&amp;hellip;I still wanted that open!&amp;rdquo;? Well I do that about everyday and although you have the general history manager&amp;hellip;if you&amp;rsquo;ve visited 100 sites that day it&amp;rsquo;s a pain to wade through to find the tab you just closed.
+Instead you can visit the History menu and see the item &amp;ldquo;Recently Closed Tabs&amp;rdquo; for a list of the last 10 viewed tabs.</description>
+    </item>
+    
+    <item>
+      <title>The only valid measurement of code quality</title>
+      <link>http://chapter31.com/2008/02/07/the-only-valid-measurement-of-code-quality/</link>
+      <pubDate>Thu, 07 Feb 2008 00:05:17 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/02/07/the-only-valid-measurement-of-code-quality/</guid>
+      <description>A friend of mine Don sent me this yesterday:
+ Gold!  :)</description>
+    </item>
+    
+    <item>
+      <title>Don&#39;t ever user www.templatesbrowser.com for wordpress themes</title>
+      <link>http://chapter31.com/2008/01/24/dont-ever-user-wwwtemplatesbrowsercom-for-wordpress-themes/</link>
+      <pubDate>Thu, 24 Jan 2008 04:43:02 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/01/24/dont-ever-user-wwwtemplatesbrowsercom-for-wordpress-themes/</guid>
+      <description>Today I noticed a JavaScript error on my site, on investigation I saw the following JavaScript code in the page source:
+var CCounter=2151068; var CCsite=www.chapter31.com; CCinvisible=0; &amp;lt;nosc/ript&amp;gt;&amp;lt;a hreflang=&amp;quot;de&amp;quot; lang=&amp;quot;de&amp;quot; href=&amp;quot;http://www.portalux.com/&amp;quot;&amp;gt;online casino&amp;lt;/a&amp;gt;&amp;lt;/nosc/ript&amp;gt; var CCounter=2151068; var CCsite=www.chapter31.com; CCinvisible=0;  My investigations found that where I downloaded the template from was a nice (NOT) little site called http://www.templatesbrowser.com/. Now what they do is add a &amp;ldquo;functions.php&amp;rdquo; file in the original code base, then call a method from the footer &amp;ldquo;credits();&amp;rdquo; which is in the functions.</description>
+    </item>
+    
+    <item>
+      <title>Mylyn plugin for Aptana</title>
+      <link>http://chapter31.com/2007/12/18/mylyn-plugin-for-aptana/</link>
+      <pubDate>Tue, 18 Dec 2007 04:27:08 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/12/18/mylyn-plugin-for-aptana/</guid>
+      <description>I&amp;rsquo;ve been reading about Mylyn for a little while now but haven&amp;rsquo;t had the opportunity to install it. After reading this post today from Adam Flater I thought it was about time I gave it a go.
+For those that don&amp;rsquo;t know Mylyn:
+ Mylyn is the Task-Focused UI for Eclipse that reduces information overload and makes multi-tasking easy. It does this by making tasks a first class part of Eclipse, and integrating rich and offline editing for repositories such as Bugzilla, Trac, and JIRA</description>
+    </item>
+    
+    <item>
+      <title>OT: I HATE ads on CFDJ</title>
+      <link>http://chapter31.com/2007/06/22/ot-i-hate-ads-on-cfdj/</link>
+      <pubDate>Fri, 22 Jun 2007 01:20:02 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/06/22/ot-i-hate-ads-on-cfdj/</guid>
+      <description>Ok&amp;hellip;
+I understand (though I&amp;rsquo;m not happy) that advertising is a part of our everyday lives and &amp;lsquo;online&amp;rsquo; is no exception.
+I understand that to subsidise costs, many sites have to display advertising to bring us (the audience) great content. These ads are usually in the form of banners or inline (adsense) textual ads etc.
+I understand all of this but what I HATE is video based advertising.
+I&amp;rsquo;m really not trying to pick on these guys, but the ColdFusion Developers Journal currently has video ads on most (all?</description>
+    </item>
+    
+    <item>
+      <title>Inspirational posts from the community</title>
+      <link>http://chapter31.com/2007/06/17/inspirational-posts-from-the-community/</link>
+      <pubDate>Sun, 17 Jun 2007 23:50:47 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/06/17/inspirational-posts-from-the-community/</guid>
+      <description>Like a lot of people I spend quite a bit of time reading the technical blogs as a constant source of knowledge and advancement.
+A couple of posts both inspired and got me thinking over the weekend so I thought I&amp;rsquo;d quickly mention both in case anybody missed them, they&amp;rsquo;re a great read.
+The first was by Ben Nadel on a book called The Dip which is subtitled &amp;ldquo;A Little Book That Teaches You When To Quit (And When To Stick)&amp;rdquo; and delivers a huge message:</description>
+    </item>
+    
+    <item>
+      <title>Reading blogs on a mac using Firefox</title>
+      <link>http://chapter31.com/2007/06/13/reading-blogs-on-a-mac-using-firefox/</link>
+      <pubDate>Wed, 13 Jun 2007 23:54:27 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/06/13/reading-blogs-on-a-mac-using-firefox/</guid>
+      <description>I&amp;rsquo;ve been on a Mac (OSX) for a little while now and generally I&amp;rsquo;m having a nice time, except when it comes to reading some (but only some) blogs!
+We all know that font sizes are different across browser and platform, but Firefox on a mac occasionally makes life a little difficult particularly when it comes to reading comments and code snippets.
+Here is a screen grab of an example, certainly not to pick on this particular blog but just one of the few examples I come across on my daily travels thru fullasagoog.</description>
+    </item>
+    
+    <item>
+      <title>snap...a google competitor and cool site preview tool</title>
+      <link>http://chapter31.com/2006/12/05/snapa-google-competitor-and-cool-site-preview-tool/</link>
+      <pubDate>Tue, 05 Dec 2006 06:20:57 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/12/05/snapa-google-competitor-and-cool-site-preview-tool/</guid>
+      <description>Snap is a nice little search engine which displays your results in a left window pane and a site preview of your search result in the right. It&amp;rsquo;s very Ajax-y and includes personalised settings, email a friend, result ratings and more. They even made the Time 50 coolest websites of 2006.
+Snap is also a free preview tool for your website which enables visitors to catch a glimpse of what websites you are linking to.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,154 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>cfeclipse snippets | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="cfeclipse snippets - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">October 22, 2006</h2>
+    <h1 class="title">cfeclipse snippets</h1>
+    
+    <div class="content">
+      <p>The eclipse/cfeclipse combinations makes for a pretty powerfull developing tool for ColdFusion programmers, even those who miss the good old days of using Homesite!</p>
+
+<p>One of the cool things cfeclipse brought over from Homesite is <a href="http://www.cfeclipse.org/go/documentation/user-docs/snippets">snippets</a>, but cfeclipse has a few extra goodies to make them better than ever :)</p>
+
+<p>Whereas in Homesite you would assign a keyboard shortcut directly to a snippet, cfeclipse has an invoke/trigger key combination which stays the same while allowing you to use ANY key(s) as the actual trigger text for the snippet.</p>
+
+<p>For example I have a cfabort snippet with a trigger text of &lsquo;a&rsquo;. Now in eclipse 3.2 the invoke/trigger combination is ctrl + j, so if I type the letter &lsquo;a&rsquo;, then press ctrl + j I get a lovely cfabort tag! Doing things this way allows me to have the same invoke key (ctrl + j) then simply remember my trigger text for each snippet. Nice :)</p>
+
+<p>In common with Homesite is the idea of snippet variables, most handy if your snippet text requires or relies upon a user defined parameter value. An example here is cfinclude where you must specify the &lsquo;template&rsquo; attribute.</p>
+
+<p>To setup snippet variables you use the $${variable:default} format. My trigger text is &lsquo;i&rsquo; for cfinclude, so when I invoke the snippet I get asked to enter a parameter value as follows:</p>
+
+<p><img src="/images/uploads/2006/10/snippet.jpg" alt="cfeclipse snippet variable" /></p>
+
+<p>My entire snippet looks like this: <cfinclude template="$${template:.cfm}" />&gt;</p>
+
+<p>There are a number of built in snippet variables:</p>
+
+<p>$${DATE}
+$${MONTH}
+$${TIME}
+$${DATETIME}
+$${DAYOFWEEK}
+$${CURRENTFILE} - Current file name (just the file)
+$${CURRENTFOLDER} - Current folder (The path to the containing folder)
+$${CURRENTPATH} - Current path (full file name)
+$${CURRENTPRJPATH} - Just the folder
+$${USERNAME} - Current user
+$${MONTHNUMBER} - Month as a number
+$${DAYOFMONTH} - Day of month as a number
+$${DAYOFWEEKNUMBER} - Day of week (the week starts on Sunday)
+$${DATETIME24} - DateTime24 - a 24 hour clock version of datetime.
+$${YEAR} - Current year.
+$${YEAR2DIGIT} - Current two digit year.</p>
+
+<p>Other than those, you&rsquo;re free to name your variables as you wish.</p>
+
+<p>Another SUPER cool feature is the ability to choose a default value from a range. So for my cflocation snippet I have:</p>
+
+<pre><code>&lt;cflocation url=&quot;$${url:.cfm}&quot; addToken=&quot;$${addToken:false|true}&quot; /&gt;
+</code></pre>
+
+<p>Note the use of the pipe (|). There is even more than this on the cfeclipse.org site so take a peek. Some of the snippets I use are:</p>
+
+<p>cfabort
+cfcomment
+cfdump
+cfinclude
+cflocation
+cfoutput
+cfquery
+cfscript
+html comment (used with xml files)</p>
+
+<p>I also use tonnes of snippets for HTML, (strong, em etc). Using snippets is easy to learn and saves you a LOT of time when you&rsquo;re used to invoking them with ease!</p>
+
+<p><a href="http://www.chapter31.com/cfeclipse-snippets/">Have a look here</a> for a complete list of my snippets, you can also download them for easy use</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,188 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>FarCry to Mura - migrating data from FarCry to Mura CMS | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="FarCry to Mura - migrating data from FarCry to Mura CMS - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 29, 2011</h2>
+    <h1 class="title">FarCry to Mura - migrating data from FarCry to Mura CMS</h1>
+    
+    <div class="content">
+      
+
+<p>For years <a href="http://www.learnosity.com/">here at Learnosity</a> we&rsquo;ve been using <a href="http://www.farcrycore.org/">FarCry</a> for most of our CMS requirements (yes, I know that FarCry, or rather farcrycms, is a lot more than just a CMS).</p>
+
+<p>For one reason or another we decided it was time to look at some of the other options for content management in the ColdFusion sphere, <a href="http://www.getmura.com/">Mura CMS</a> was a likely candidate for evalutation.</p>
+
+<p>We had a small-ish site that was already running in FarCry 6+ which we wanted to port to Mura so we could really get a feel for how things worked in Mura-land. If things go well we may decide to move more sites across, so I wanted a way to migrate existing content from a FarCry database to a Mura one. A quick search for something to do this came up blank so I spent half a day coming up with a little tool to do this. Here it is in case anyone else might find it useful.</p>
+
+<p>You can <a href="https://github.com/michaelsharman/farcrytomura">find the project on github</a> (<a href="https://github.com/michaelsharman/farcrytomura">https://github.com/michaelsharman/farcrytomura</a>), below is the &ldquo;help&rdquo; page I added:</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This script imports basic navigation and HTML data from an existing FarCry database into a Mura one.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>This was built on</p>
+
+<ul>
+<li>Railo 3.2+</li>
+<li>ColdFusion 7+</li>
+<li>FarCry 6+</li>
+<li>Mura 5.4+</li>
+<li>MySQL 5+</li>
+</ul>
+
+<p>Not sure about FarCry 5, you should be ok as I don&rsquo;t think the v6 schema changes will effect this script</p>
+
+<p>To make things easier, session management must enabled</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Probably easiest to put this folder (farcrytomura) in the webroot of an existing project/vhost, then call it from <a href="http://www.yourproject.com/farcrytomura/">http://www.yourproject.com/farcrytomura/</a></p>
+
+<p>If you want, you can setup a project/vhost specifically for this, but it&rsquo;s not necessary.</p>
+
+<p>This script has its own Application.cfc to avoid scope conflict</p>
+
+<p>Caveat - the ColdFusion/Railo server (instance/context) that you run this from needs to have BOTH dsn&rsquo;s (the FarCry and Mura ones) in the cf admin</p>
+
+<h2 id="farcry-content-types">FarCry content types</h2>
+
+<p>Currently we examine the FarCry navigation tree and bring across the entire structure underneath &lsquo;Root&rsquo; (i.e. any nLevel 2+ nodes)</p>
+
+<p>If people want it, we can extend the functionality to import from a specific node, e.g. from &lsquo;Home&rsquo;.This would be handy if your FarCry site has secondary/utility navigation etc that you want imported separately.</p>
+
+<p>Although all navigation nodes will be created in Mura, the only actual content that is imported is dmHTML, we ignore:</p>
+
+<ul>
+<li>dmInclude</li>
+<li>dmLink</li>
+<li>Anything but the first content object under a navigation node</li>
+<li>dmNews, dmEvent or any other &ldquo;dynamic&rdquo; content type</li>
+<li>Custom tree content types</li>
+</ul>
+
+<p>Basically we import all navigation nodes under the site tab, from &ldquo;Root&rdquo; down, including the HTML content.</p>
+
+<h2 id="farcry-homepage-content">FarCry homepage content</h2>
+
+<p>Currently we ignore the farcry homepage content because we assume there is at least a &ldquo;home&rdquo; page in Mura. This is a TODO</p>
+
+<h2 id="ses-urls">SES URLs</h2>
+
+<p>Mura ses url&rsquo;s are created on import based off the title of the page from FarCry. This should be the default behaviour as if you were created a page from within Mura admin.</p>
+
+<p>Currently we&rsquo;re NOT importing the FarCry friendly URL into Mura.</p>
+
+<h2 id="rolling-back">Rolling back</h2>
+
+<p>If you want to rollback the import, you&rsquo;ll need to:</p>
+
+<pre><code>DELETE FROM tcontent WHERE siteID = '[yoursite]' AND lastUpdateBy = 'farcrytomura'
+</code></pre>
+
+<h2 id="todos">TODOs</h2>
+
+<ul>
+<li>Ability to select the page template from Mura</li>
+<li>When previewing the Mura navigation tree, indent properly</li>
+<li>Import the FarCry &ldquo;home&rdquo; page content</li>
+<li>Handle farcry secondary/utility nav&rsquo;s (anything else at the same level as &ldquo;home&rdquo;)</li>
+<li>Fix sortorder on sub items, they work fine but not as neat as they could be</li>
+</ul>
+
+<p><img src="/images/uploads/2011/05/farcrytomura_setdns.png" alt="" />
+<img src="/images/uploads/2011/05/farcrytomura_setmurasiteid.png" alt="" />
+<img src="/images/uploads/2011/05/farcrytomura_checkfarcry.png" alt="" />
+<img src="/images/uploads/2011/05/farcrytomura_checkmura.png" alt="" />
+<img src="/images/uploads/2011/05/farcrytomura_domigration.png" alt="" />
+<img src="/images/uploads/2011/05/farcrytomura_help.png" alt="" /></p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

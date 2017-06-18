@@ -1,0 +1,164 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Editing svn:ignore on the terminal | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Editing svn:ignore on the terminal - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">July 10, 2012</h2>
+    <h1 class="title">Editing svn:ignore on the terminal</h1>
+    
+    <div class="content">
+      
+
+<p><em>svn:ignore</em> is a great way to exclude certain files or folders from being added to your subversion repository. Typically I&rsquo;ll manage this via an IDE plugin like subclipse (in Eclipse), but if you want to do it via the terminal instead (bash)&hellip;here&rsquo;s how.</p>
+
+<h2 id="crappy-way">Crappy way</h2>
+
+<p>You can add single values to your svn:ignore by running this command either at the root of your project or wherever directory you want the ignore to take effect:</p>
+
+<pre><code>svn propset svn:ignore &quot;*.project&quot; .
+</code></pre>
+
+<p>However that command seems not only to add an ignore rule, but also it clears any rules you may have had on that directory and only inserts the single rule you just specified. No good.</p>
+
+<h2 id="better-way">Better way</h2>
+
+<p>There are a couple of ways to enter multiple ignore values into your ignore file, I like simply opening up the ignore editor. Try this command:</p>
+
+<pre><code>svn propedit svn:ignore .
+</code></pre>
+
+<p>If you get the following error it means you haven&rsquo;t associated an editor with svn:ignore</p>
+
+<blockquote>
+<p>svn: None of the environment variables SVN_EDITOR, VISUAL or EDITOR are set, and no &lsquo;editor-cmd&rsquo; run-time configuration option was found</p>
+</blockquote>
+
+<p>You can quickly associate the editor with nano (or another editor of your choice) by running:</p>
+
+<pre><code>export SVN_EDITOR=nano
+</code></pre>
+
+<p>That&rsquo;s not ideal as it&rsquo;ll only work in the current bash session, when you close your terminal window that export will be lost. The best bet is to add it to your ~/.bash_profile (or ~/.bash_login).</p>
+
+<pre><code>cd ~
+nano .bash_profile
+export SVN_EDITOR=nano
+</code></pre>
+
+<p>Now you&rsquo;ll always be able to edit your svn:ignore file. So let&rsquo;s try again:</p>
+
+<pre><code>svn propedit svn:ignore .
+</code></pre>
+
+<p>Nano (or whatever editor you specified) should open allowing you to enter whatever you want :)</p>
+
+<p>Here&rsquo;s a simple list of mine:</p>
+
+<pre><code>*.DS_Store  
+*.project  
+*.sublime-project  
+*.sublime-workspace  
+htdocs/WEB-INF
+</code></pre>
+
+<p>If you actually want to see all your files (including those that you&rsquo;ve ignored) via the terminal, run:</p>
+
+<pre><code>svn status --no-ignore
+</code></pre>
+
+<h2 id="externals">Externals</h2>
+
+<p>Note that you can also edit any svn:externals using the same technique.</p>
+
+<pre><code>svn propedit svn:externals .
+</code></pre>
+
+<p>Remember that you need to be in the location of the directory that contains any externals for this to work properly.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,141 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Whitespace issues in cfscript based functions | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Whitespace issues in cfscript based functions - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 20, 2012</h2>
+    <h1 class="title">Whitespace issues in cfscript based functions</h1>
+    
+    <div class="content">
+      <p>Ok now we all know that ColdFusion is kind of lame when it comes to whitespace management, unless you specifically have &ldquo;whitespace management&rdquo; turned on for your server.</p>
+
+<p>I have a function that is used to build the <em>href</em> value of a hyperlink. Nothing special there. However when I viewed the source of the page I was a little surprised to see a mountain of whitespace coming back from the function.</p>
+
+<p>All I do is return a string from the function, I don&rsquo;t output any text from within the function.</p>
+
+<p>Here it is:</p>
+
+<pre><code class="language-javascript">public string function getFullPageURI(required string pagename)
+{
+  var pages = new lib.services.pages();
+  var page = pages.getPageByNavURL(arguments.pagename, getId());
+  return page.getPageURI();
+}
+</code></pre>
+
+<p>And the link source:</p>
+
+<p><img src="/images/uploads/2012/09/Screen-shot-2012-09-20-at-5.24.32-PM.png" alt="" /></p>
+
+<p>Hmm, could that suck any more? Now what happens if I add output=&ldquo;false&rdquo; (not particularly intuitive) to the end of the function, like this:</p>
+
+<pre><code class="language-javascript">public string function getFullPageURI(required string pagename) output=&quot;false&quot;
+{
+  var pages = new lib.services.pages();
+  var page = pages.getPageByNavURL(arguments.pagename, getId());
+  return page.getPageURI();
+}
+</code></pre>
+
+<p>Now I get:</p>
+
+<p><img src="/images/uploads/2012/09/Screen-shot-2012-09-20-at-5.25.54-PM.png" alt="" /></p>
+
+<p>Sorry but that&rsquo;s just insane. cfscript should behave like cfsilent all the time unless you specify a writeOutput();</p>
+
+<p>Hope this helps any other people out there. The lesson learned is that you can specify output=&ldquo;false&rdquo; in a cfscript based function, but ONLY AFTER THE METHOD SIGNATAURE!</p>
+
+<p>So if you did this:</p>
+
+<pre><code class="language-javascript">public string output=&quot;false&quot; function getFullPageURI(required string pagename)
+</code></pre>
+
+<p>If would fail. It needs to occur after the parens.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

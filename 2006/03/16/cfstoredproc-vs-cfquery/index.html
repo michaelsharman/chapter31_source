@@ -1,0 +1,115 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>cfstoredproc vs cfquery | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="cfstoredproc vs cfquery - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 16, 2006</h2>
+    <h1 class="title">cfstoredproc vs cfquery</h1>
+    
+    <div class="content">
+      <p>There are of course pros and cons to using each method to perform CRUD operations on a database.</p>
+
+<p><strong>cfstoredproc Pros:</strong></p>
+
+<ul>
+<li>With stored procedures you can control security in the database as well as the web pages.</li>
+<li>Transactions are handled at the database level, stored procedures are ideal here.</li>
+<li>Stored procedures provide greater performance, because the execution plan for the sql doesn&rsquo;t have to be recreated and if a page has multiple calls to the database, you can combine them all in one stored procedure, meaning only one trip to and back from the db.</li>
+<li>Putting all of your sql in stored procedures provides centralization of your database code, so if your table structure or business rules change, all of your sql is located in your database stored procedures instead of distributed throughout your application code.</li>
+</ul>
+
+<p><strong>cfstoredproc Cons</strong></p>
+
+<ul>
+<li><del>You can have ColdFusion cache the query - which it doesn&rsquo;t do with stored procedures.</del> <strong>Update Nov 2006</strong>: you can actually cache stored procedures! <a href="http://www.chapter31.com/2006/11/08/caching-stored-procedures/">See here for more info</a></li>
+<li>It often seems a waste to create a stored proc for a simple select statement.</li>
+<li>cfquery gives you maximum flexibility in terms of creating the sql for the query. there are many ways to make stored procedures &ldquo;dynamic&rdquo;, such as providing parameters for a where clause, the fields used in an order by clause, etc., but many of these sql solutions are clunky (involving multiple CASE statements) or impossible (dynamically assigning the table to do the query on).</li>
+</ul>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,123 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Caching stored procedures | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Caching stored procedures - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 8, 2006</h2>
+    <h1 class="title">Caching stored procedures</h1>
+    
+    <div class="content">
+      <p>Stored procedures are great for many reasons but one of the reasons I might not use them is you can&rsquo;t cache them&hellip;or can you?</p>
+
+<p>A discussion at work enlightened me to a simple way around the lack of the cachedwithin attribute inside the <cfstoredproc> tag. Simply use the <cfquery> tag instead!</p>
+
+<p>Ok, so normally if I wanted to use a stored procedure I might do something like:</p>
+
+<pre><code class="language-javascript">&lt;cfstoredproc procedure=&quot;qGetUser&quot; datasource=&quot;#application.dsn#&quot;&gt;
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_INTEGER&quot; null=&quot;false&quot; type=&quot;in&quot; value=&quot;#arguments.userId#&quot; /&gt;
+&lt;/cfstoredproc&gt;
+</code></pre>
+
+<p>But did you know that you can execute your stored procedures from within the <cfquery> tag? Well you can, that way you can also take advantage of the cachedwithin attribute!:</p>
+
+<pre><code class="language-javascript">&lt;cfquery name=&quot;qGetUser&quot; datasource=&quot;#application.dsn#&quot; cachedwithin=&quot;#createTimeSpan(0,2,0,0)#&quot;&gt;
+	exec usp_getUser #arguments.userId#
+&lt;/cfquery&gt;
+</code></pre>
+
+<p>One thing though is that this will only work when you return a <strong>single record set</strong>, if you need to return multiple record sets (which I often do) then <cfstoredproc> is your only option as you can use the <cfprocresult> tag like:</p>
+
+<pre><code>&lt;cfprocresult name=&quot;myResultOne&quot; resultset=&quot;2&quot; /&gt;
+</code></pre>
+
+<p>It always amazes me when you get simple solutions to problems you have using what you already know in a creative way, at least creative or new to you!</p>
+
+<p>Always look to refactor your code, you never know what you&rsquo;ll learn to save you time and effort in the future :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,153 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Downloading youtube videos | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Downloading youtube videos - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">January 1, 2013</h2>
+    <h1 class="title">Downloading youtube videos</h1>
+    
+    <div class="content">
+      <p>I wanted to grab some youtube videos for the kids and found this cool <a href="http://rg3.github.com/youtube-dl/">CLI utility called youtube-dl</a> to handle it. I downloaded it from the website (you may need to chmod 755):</p>
+
+<pre><code>wget https://github.com/downloads/rg3/youtube-dl/youtube-dl -O /usr/local/bin/youtube-dl
+</code></pre>
+
+<p>However you can get it via brew if you want:</p>
+
+<pre><code>brew install youtube-dl
+</code></pre>
+
+<p>The basic process is the following:</p>
+
+<pre><code>youtube-dl [video URL]
+</code></pre>
+
+<p>By default that should download the highest quality format available (in case you didn&rsquo;t know, youtube usually has multiple versions of a file for different qualities etc). If you want to see what formats are available, try:</p>
+
+<pre><code>youtube-dl -F [URL]
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code class="language-bash">youtube-dl -F http://www.youtube.com/watch?v=iThX9rbOqXY
+[youtube] Setting language
+[youtube] iThX9rbOqXY: Downloading video webpage
+[youtube] iThX9rbOqXY: Downloading video info webpage
+[youtube] iThX9rbOqXY: Extracting video information
+Available formats:
+34 : flv [360x640]
+18 : mp4 [360x640]
+43 : webm [360x640]
+5 : flv [240x400]
+17 : mp4 [144x176]
+</code></pre>
+
+<p>Then you can select whichever you want to download by choosing the number next to the format you want:</p>
+
+<pre><code>youtube-dl -f [format number] [URL]
+</code></pre>
+
+<p>So if I wanted the highest quality mp4 available in the example above I&rsquo;d  type (note the number corresponds to the video I want) the following, note the lowercase f:</p>
+
+<pre><code>youtube-dl -f 18 http://www.youtube.com/watch?v=iThX9rbOqXY
+</code></pre>
+
+<p>You can also pass in a file containing a list of URLs (one on ea to handle batch downloading:</p>
+
+<pre><code>youtube-dl -a urls.txt
+</code></pre>
+
+<p>If you want to rename the file as you download it (by default it&rsquo;s the filename on youtube which isn&rsquo;t really that useful):</p>
+
+<pre><code>youtube-dl -f 18 -o &quot;myfilename.mp4&quot; [URL]
+</code></pre>
+
+<p>You can do other cool things like extracting the audio only (and choosing which audio format you want). There are also <a href="http://rg3.github.com/youtube-dl/documentation.html#d4">LOTS of sites</a> that are supported&hellip;not just youtube.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

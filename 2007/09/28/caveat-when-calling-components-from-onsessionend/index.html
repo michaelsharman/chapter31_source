@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Caveat when calling components from onSessionEnd() | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Caveat when calling components from onSessionEnd() - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 28, 2007</h2>
+    <h1 class="title">Caveat when calling components from onSessionEnd()</h1>
+    
+    <div class="content">
+      <p>As most ColdFusion developers know, you cannot reference &lsquo;application&rsquo; scoped variables directly in Application.cfc&rsquo;s <em>onSessionEnd()</em> method. Instead you need to use the <em>ApplicationScope</em> parameter. <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=AppEvents_11.html">Notes from the docs</a>:</p>
+
+<blockquote>
+<p>You must use the <em>ApplicationScope</em> parameter to access the Application scope. You cannot reference the Application scope directly; for example, use Arguments.ApplicationScope.myVariable, not Application.myVariable. Use a named lock when you reference variables in the Application scope, as shown in the example.</p>
+</blockquote>
+
+<p>I ran into this today when working on some code a colleague wrote which was firing a method in an application scoped component, the code was as follows:</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;onSessionEnd&quot; output=&quot;false&quot; returnType=&quot;void&quot;&gt;
+	&lt;cfargument name=&quot;SessionScope&quot; required=&quot;true&quot; /&gt;
+	&lt;cfargument name=&quot;AppScope&quot; required=&quot;true&quot; /&gt;
+	&lt;cfscript&gt;
+		arguments.AppScope.myCFC(arg=arguments.SessionScope.arg);
+	&lt;/cfscript&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>Obviously this method is being executed when the users session has expired. The use of <em>arguments.AppScope</em> means I can access the &lsquo;myCFC&rsquo; component which is stored in application scope.</p>
+
+<p>Now to the actual problem&hellip;inside the cfc was a method which was logging information in the database, but the <em>datasource</em> value was coming from application scope.</p>
+
+<pre><code class="language-javascript">&lt;cfquery datasource=&quot;#application.dsn#&quot; name=&quot;qInsert&quot;&gt;
+</code></pre>
+
+<p>Obviously arguments should be passed to components instead of being accessed directly, but that&rsquo;s another story :)</p>
+
+<p>I would have thought this would work fine, but no luck. It was a little bit of a pain to debug as you can&rsquo;t see the results of onSessionEnd() being run.</p>
+
+<p>The fix was simply to pass in the required variables as arguments to the method:</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;onSessionEnd&quot; output=&quot;false&quot; returnType=&quot;void&quot;&gt;
+	&lt;cfargument name=&quot;SessionScope&quot; required=&quot;true&quot; /&gt;
+	&lt;cfargument name=&quot;AppScope&quot; required=&quot;true&quot; /&gt;
+	&lt;cfscript&gt;
+		arguments.AppScope.myCFC(arg=arguments.SessionScope.arg,dsn=arguments.Appscope.dsn);
+	&lt;/cfscript&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>Either way, be careful when doing this particularly if the method is being called from multiple application points and one of those could be <em>onSessionEnd()</em>.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

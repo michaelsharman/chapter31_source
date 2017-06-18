@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Uncategorised on chapter31</title>
+    <link>http://chapter31.com/categories/uncategorised/</link>
+    <description>Recent content in Uncategorised on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Tue, 14 Nov 2006 22:15:29 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/uncategorised/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Wordpress RSS feed validation</title>
+      <link>http://chapter31.com/2006/11/14/wordpress-rss-feed-validation/</link>
+      <pubDate>Tue, 14 Nov 2006 22:15:29 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/11/14/wordpress-rss-feed-validation/</guid>
+      <description>I&amp;rsquo;ve been using Wordpress for a while now and I&amp;rsquo;m really happy with it. Only recently have I tried to validate my RSS feed using feedvalidator.
+Unfortunately even though the feed validated I received the following warning:
+ wfw:commentRSS should be wfw:commentRss
+ The explanation given on the site was:
+ Due to a clerical error, the element Chris Sells originally spec&amp;rsquo;ed as wfw:commentRss appeared as wfw:commentRSS (note the difference in case) on Joe Gregorio&amp;rsquo;s site.</description>
+    </item>
+    
+    <item>
+      <title>Broken image on Google search results page</title>
+      <link>http://chapter31.com/2006/10/05/broken-image-on-google-search-results-page/</link>
+      <pubDate>Thu, 05 Oct 2006 02:01:19 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/10/05/broken-image-on-google-search-results-page/</guid>
+      <description>Funny when the big guys get something wrong :)
+I noticed this today on the google.com.au search results page; a nice little broken image!
+Bugger!</description>
+    </item>
+    
+  </channel>
+</rss>

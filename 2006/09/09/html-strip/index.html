@@ -1,0 +1,139 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>HTML strip | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="HTML strip - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 9, 2006</h2>
+    <h1 class="title">HTML strip</h1>
+    
+    <div class="content">
+      <p>Let&rsquo;s say you have a form or mechanism in a web application which allows users to enter content which may be displayed on a web page, a comment area for example.</p>
+
+<p>In these scenarios you need to be carefull of what my be entered by a malicious user, think cross site scripting. There are various reg exp’s available to assist you in cleaning the data but good folks a Adobe have given us a nice little function in <a href="http://livedocs.macromedia.com/coldfusion/6.1/htmldocs/funct116.htm">htmlEditFormat()</a>.</p>
+
+<p>This function basically converts any discovered HTML characters into HTML entities, thus rendering them safe from cross site scripting attacks. The following characters are transformed to HTML character entities:</p>
+
+<pre><code class="language-javascript">&lt;        &amp;lt;
+&gt;        &amp;gt;
+&amp;        &amp;
+&quot;        &quot;
+</code></pre>
+
+<p>So if a user enters something like:</p>
+
+<pre><code class="language-javascript">&lt;script type=&quot;javascript&quot;&gt;...&lt;/script&gt;
+</code></pre>
+
+<p>All that will be returned from htmlEditFormat() will be</p>
+
+<pre><code class="language-javascript">&amp;lt;script type=&quot;javascript&quot;&amp;gt;...&amp;lt;/script&amp;gt;
+</code></pre>
+
+<p>There is also <a href="http://livedocs.macromedia.com/coldfusion/6.1/htmldocs/funct115.htm#wp1105634">htmlCodeFormat()</a> which works the same as htmlEditFormat() but wraps the text in &lt;pre&gt; tags.</p>
+
+<p>You may of course want to strip HTML entirely, instead of simply escaping the relevant characters with entities. In this case you may want try something like:</p>
+
+<pre><code class="language-javascript">&lt;cfset noHTML = REReplace(noHTML, &quot;&lt;[^&gt;]*&gt;&quot;,&quot;&quot;,&quot;All&quot;) /&gt;
+</code></pre>
+
+<p>Also note that line feed characters are preserved and there is no function to reverse the replacement of HTML characters into entities.</p>
+
+<p>Update 14th November 2006</p>
+
+<p>An easy way to clean your forms is to use the reg exp as a function and loop over your form fields. If our function was called <a href="http://www.cflib.org/udf.cfm?ID=12">stripHTML</a> (from Ray Camden at cflib) then you could do:</p>
+
+<pre><code class="language-javascript">&lt;cfscript&gt;
+   for(key in form)
+   {
+      form[key] = stripHTML(form[key]);
+   }
+&lt;/cfscript&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

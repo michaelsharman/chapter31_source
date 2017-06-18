@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.23" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">May 31, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/05/31/mura-overriding-dspcrumblistlinks/">Mura - overriding dspCrumblistLinks</a></h1>
+      
+      <div class="content">
+        Like most CMS solutions out there, Mura CMS gives you some cool hooks to override core functionality. See the developer guides for more information.
+I&rsquo;ve created a repository on github to store any customisations or extensions that could be cherry picked for use in any Mura app.
+First up was a super simple one for breadcrumbs. By default, Mura will put an &ldquo;a href&rdquo; around the last item in the crumb list.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/05/31/mura-overriding-dspcrumblistlinks/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 29, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/05/29/farcry-to-mura-migrating-data-from-farcry-to-mura-cms/">FarCry to Mura - migrating data from FarCry to Mura CMS</a></h1>
+      
+      <div class="content">
+        For years here at Learnosity we&rsquo;ve been using FarCry for most of our CMS requirements (yes, I know that FarCry, or rather farcrycms, is a lot more than just a CMS).
+For one reason or another we decided it was time to look at some of the other options for content management in the ColdFusion sphere, Mura CMS was a likely candidate for evalutation.
+We had a small-ish site that was already running in FarCry 6+ which we wanted to port to Mura so we could really get a feel for how things worked in Mura-land.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/05/29/farcry-to-mura-migrating-data-from-farcry-to-mura-cms/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 11, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/05/11/wordpress-detecting-the-categories-of-a-post/">Wordpress - detecting the categories of a post</a></h1>
+      
+      <div class="content">
+        I was creating a Wordpress child theme (the best way to modify/override your themes) tonight and had the need to have different display options depending on which categories the blog article had. So for example if I had a post categorised with &ldquo;portfolio&rdquo;, I wanted to hide the comments form which usually sits at the bottom of a post.
+The following snippet will loop over all post categories, if it finds that &ldquo;portfolio&rdquo; is one of the categories assigned to the current post then a local variable (boolean) is set which you can use to hide Wordpress functions anywhere in the current template.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/05/11/wordpress-detecting-the-categories-of-a-post/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 11, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/05/11/fancybox-for-wordpress-plugin-not-working/">FancyBox for Wordpress plugin not working</a></h1>
+      
+      <div class="content">
+        I just spent some time figuring out why fancybox wasn&rsquo;t working tonight (image thumbnails were just linking to the large image&hellip;not loading the overlay as they should). It now seems obvious after the fact but as far as I can see it&rsquo;s NOT in the fancybox docs.
+When you insert your gallery from the media section of a page in wp-admin, you HAVE to choose &ldquo;Image File&rdquo;, not &ldquo;Attachment Page&rdquo;. That&rsquo;s it!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/05/11/fancybox-for-wordpress-plugin-not-working/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 17, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/04/17/farcry-twitter-plugin/">FarCry twitter plugin</a></h1>
+      
+      <div class="content">
+        I spent a couple of hours on a FarCry plugin for twitter yesterday based off their official API.
+What? This plugin basically wraps up the options that the offical twitter API gives you including:
+ Twitter username Showing avatars, timestamps, hashtags etc Theme appearance (colours for background and text etc Dimensions of widget  For more, visit the project page, download it and have a play.
+Why? Although the twitter API is super simple to implement, it&rsquo;s always handy to have things wrapped up as a plugin so we can easily create as many widgets as we need and handle caching etc.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/04/17/farcry-twitter-plugin/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 3, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/03/03/mysql-alternative-to-mssqls-isnull/">MySQL alternative to MSSQL&#39;&#39;s isNull()</a></h1>
+      
+      <div class="content">
+        I was looking for a way to do isNull() in MySQL the other day, for those that don&rsquo;t know this means you can do something like:
+SELECT isNull(mycolumn, 'blah') FROM myTable;  If the value in mycolumn is NULL, then &lsquo;blah&rsquo; is returned, this can of course be any string literal/numeric value you want. MySQL doesn&rsquo;t have isNull() but it does have ifNull() which is basically the same.
+SELECT ifNull(mycolumn, 'blah') FROM myTable;  
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">February 8, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/02/08/sql-for-finding-duplicate-values/">SQL for finding duplicate values</a></h1>
+      
+      <div class="content">
+        Quick post to remind me how to check a table column for duplicate values next time I&rsquo;m looking for it (when my memory fails!)
+SELECT id, count(id) FROM mytable GROUP BY id HAVING count(id) &gt; 1  
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">January 12, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/01/12/checking-for-correct-case-sensitive-tables-in-farcry/">Checking for correct case-sensitive tables in FarCry</a></h1>
+      
+      <div class="content">
+        We run several FarCry projects at Learnosity and all of them run on Linux. We have occasionally come across issues where the FarCry codebase will refer to a MySQL table in the wrong &ldquo;case&rdquo;.
+E.g. referring to &ldquo;dmhtml&rdquo; where the actual table name is &ldquo;dmHTML&rdquo;.
+This is course fails in any case sensitive environment. Note that we also run our Macs as case sensitive in development to help find these issues before deploying to a stage/production server.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/01/12/checking-for-correct-case-sensitive-tables-in-farcry/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 7, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/12/07/adding-prototype-methods-to-jquery/">Adding Prototype methods to jQuery</a></h1>
+      
+      <div class="content">
+        We recently upgraded a project which was using the Prototype JavaScript framework to use jQuery and ran into a few methods which didn&rsquo;t exist in jQuery at all.
+A quick search gave us an easy solution; by adding a prototype property (not related to the Prototype framework) to String.prototype we can give every string in our codebase access to these methods as if they were part of the JavaScript spec (or the jQuery library).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/12/07/adding-prototype-methods-to-jquery/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 14, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/11/14/importing-a-csv-into-mysql-using-the-command-line/">Importing a csv into MySQL using the command line</a></h1>
+      
+      <div class="content">
+        UPDATE 16th Nov 2010: I had some issues with the import which I noted in the first code example below
+Today I had to import csv into a single mysql table. The destination table only had 5 columns and the csv was around 22MB (around 400,000 records). The csv also contained more columns that I needed for the import. Sometimes I&rsquo;ll use a GUI to do this as I usually have one open, but it never ceases to amaze me how much slower GUI tools are compared to the command line.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/11/14/importing-a-csv-into-mysql-using-the-command-line/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/page/5/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/page/7/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+
+

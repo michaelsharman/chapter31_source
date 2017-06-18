@@ -1,0 +1,138 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>INSERT or UPDATE in one statement with MySQL | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="INSERT or UPDATE in one statement with MySQL - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 23, 2008</h2>
+    <h1 class="title">INSERT or UPDATE in one statement with MySQL</h1>
+    
+    <div class="content">
+      <p>A little while ago I mentioned <a href="http://www.chapter31.com/2008/04/03/combining-multiple-insert-statements-with-mysql/">combining multiple INSERT statements with MySQL</a>, here is another helpful approach to a common problem.</p>
+
+<p>In many systems you will give the user a chance to ADD and EDIT a record, a News post for example. As usual there are many ways to handle writing any changes to the database, one common approach would be to have 2 methods in a News.cfc</p>
+
+<p>E.g. create() and update()</p>
+
+<p>create() would have an INSERT statement and update() would have an UPDATE statement.</p>
+
+<p>That works well but means you have to have 2 methods for each <em>type</em> of content you want to save to the database.</p>
+
+<p>How about this instead:</p>
+
+<pre><code class="language-javascript">&lt;cfquery name=&quot;qSave&quot; datasource=&quot;#getDSN()#&quot;&gt;
+	INSERT INTO	News
+		(
+			NewsId,
+			DateTimeCreated,
+			Title,
+			Body
+		)
+	VALUES
+		(
+			&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#newsId#&quot; /&gt;
+			, &lt;cfqueryparam cfsqltype=&quot;cf_sql_timestamp&quot; value=&quot;#createODBCDateTime(now())#&quot; /&gt;
+			, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#title#&quot; /&gt;
+			, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#body#&quot; /&gt;
+		)ON DUPLICATE KEY UPDATE DateTimeLastUpdated = &lt;cfqueryparam cfsqltype=&quot;cf_sql_timestamp&quot; value=&quot;#createODBCDateTime(now())#&quot; /&gt;
+			, Title = &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#title#&quot; /&gt;
+			, Body = &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#body#&quot; /&gt;
+&lt;/cfquery&gt;
+</code></pre>
+
+<p>From the <a href="http://dev.mysql.com/doc/refman/5.0/en/insert-on-duplicate.html">docs</a>:</p>
+
+<blockquote>
+<p>If you specify ON DUPLICATE KEY UPDATE, and a row is inserted that would cause a duplicate value in a UNIQUE index or PRIMARY KEY, an UPDATE of the old row is performed.</p>
+</blockquote>
+
+<p>Now you can just have this query in one method (e.g. save()) which will handle both use cases.</p>
+
+<p>This feature has been available since MySQL 4.1.0</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,127 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Installing Xdebug on Mac Mountain Lion (10.8.3) | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Installing Xdebug on Mac Mountain Lion (10.8.3) - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 29, 2013</h2>
+    <h1 class="title">Installing Xdebug on Mac Mountain Lion (10.8.3)</h1>
+    
+    <div class="content">
+      <p>Even though I&rsquo;m running Mountain Lion (10.8.3) which comes with Xdebug I couldn&rsquo;t get the PHP (5.4.14) local web server to register that Xdebug was actually installed and enabled.</p>
+
+<p>My php.ini had the already installed Xdebug extension enabled:</p>
+
+<pre><code class="language-bash">zend_extension=&quot;/usr/lib/php/extensions/no-debug-non-zts-20090626/xdebug.so&quot;
+</code></pre>
+
+<p>But whenever I inspected <code>phpinfo()</code> there wasn&rsquo;t any mention of Xdebug.</p>
+
+<p>Luckily the <a href="http://xdebug.org/wizard.php">website has a wizard</a> where you can paste the output of phpinfo(). From there you get detailed instructions on how to download, configure and make the latest version of Xdebug. It&rsquo;s pretty simple.</p>
+
+<p>Essentially the steps are as follows:</p>
+
+<ol>
+<li>Download <a href="http://xdebug.org/files/xdebug-2.2.3.tgz">xdebug-2.2.3.tgz</a></li>
+<li>Unpack the downloaded file with <code>tar -xvzf xdebug-2.2.3.tgz</code></li>
+<li>Run: <code>cd xdebug-2.2.3</code></li>
+<li>Run: <code>phpize</code> (Any problems…<a href="http://xdebug.org/docs/faq#phpize">see the FAQ</a>)</li>
+<li>Run: <code>./configure</code></li>
+<li>Run: <code>make</code></li>
+<li>Run: <code>sudo mkdir -p /usr/lib/php/extensions/no-debug-non-zts-20100525</code></li>
+<li>Run: <code>sudo cp modules/xdebug.so /usr/lib/php/extensions/no-debug-non-zts-20100525</code></li>
+<li>Update your /etc/php.ini and uncomment/add the line
+<code>zend_extension = /usr/lib/php/extensions/no-debug-non-zts-20100525/xdebug.so</code></li>
+<li>Restart the webserver</li>
+</ol>
+
+<p>Now if you check the output of phpinfo() you should see Xdebug.</p>
+
+<p>To make sure your debug output is being styled properly, make sure you have <code>html_errors = On</code> in php.ini (it defaults to <em>Off</em>).</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

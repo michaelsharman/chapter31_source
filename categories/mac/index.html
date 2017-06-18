@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mac | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Mac - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">June 5, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/06/05/apache-permission-denied-on-mac-osx-lion/">Apache permission denied on Mac OSX Lion</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve just upgraded to OSX Lion and had some trouble getting Apache to load a vhost. I kept getting a 403 permission denied error, but all my vhosts had the correct permission directives set.
+Now by default your webserver document root is located in /Library/WebServer/Documents. I don&rsquo;t really like that for my local machine, I&rsquo;d rather store web files under my user account. Just tends to make things easier.
+However&hellip;if you&rsquo;re getting a 403 error, and something like this in your apache error log (/var/log/apache2/error_log):
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/06/05/apache-permission-denied-on-mac-osx-lion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 24, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/05/24/strange-linefeed-characters-appearing-on-mac/">Strange linefeed characters appearing on Mac</a></h1>
+      
+      <div class="content">
+        Had a funny situation today where I was emailed a bash program file, but simply downloading the attachment from gmail (in Chrome) added a linefeed (\r) to the file.
+This is strange because I never actually opened the file to edit, so I&rsquo;m not sure what was writing those chars to the file. I&rsquo;m on a Mac (OSX 10.6.8), so I get the line feed character in general, but just not in this case as the file was never opened.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/05/24/strange-linefeed-characters-appearing-on-mac/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 14, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/03/14/turning-voice-over-off-permanently-on-max-osx/">Turning voice over off permanently on Max OSX</a></h1>
+      
+      <div class="content">
+        One of the keyboard shortcuts I often use is command-F6, but I seem to accidentally hit command-F5 on most occasions :(
+Problem with this is that the god awful &ldquo;voice over&rdquo; starts yapping away. Well if you&rsquo;re like me and know that you&rsquo;ll pretty much never want this enabled (at least for now!) then here&rsquo;s how you turn it off permanently.
+ Open up system preferences Click on keyboard Go to the keyboard shortcuts tab Choose universal access from the list on the left Uncheck the &ldquo;Turn voice over on or off&rdquo; checkbox  Breathe a sigh of relief :)
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 14, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/11/14/importing-a-csv-into-mysql-using-the-command-line/">Importing a csv into MySQL using the command line</a></h1>
+      
+      <div class="content">
+        UPDATE 16th Nov 2010: I had some issues with the import which I noted in the first code example below
+Today I had to import csv into a single mysql table. The destination table only had 5 columns and the csv was around 22MB (around 400,000 records). The csv also contained more columns that I needed for the import. Sometimes I&rsquo;ll use a GUI to do this as I usually have one open, but it never ceases to amaze me how much slower GUI tools are compared to the command line.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/11/14/importing-a-csv-into-mysql-using-the-command-line/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 4, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/10/04/case-sensitive-development-on-mac-os-x/">Case sensitive development on Mac OS X</a></h1>
+      
+      <div class="content">
+        At work most of the developers are on Mac OS X but our staging and production environments are Linux based. This means development is case insensitive but stage/production is case sensitive. Although we have development guidelines/standards which dictate file and database naming conventions etc, human error can still occur (in terms of referencing files with a different &ldquo;case&rdquo;). We also use a few open source packages where we obviously don&rsquo;t have control over the naming of files or the references to database tables within those files.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/10/04/case-sensitive-development-on-mac-os-x/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 6, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/08/06/getting-inkscape-046-to-run-on-mac-leopard/">Getting Inkscape (0.46) to run on Mac Leopard</a></h1>
+      
+      <div class="content">
+        Inscape is a fantastic open source vector graphics tool which can be a nice alternative to Adobe&rsquo;s Illustrator.
+Getting it to run on the Mac took a couple of extra steps though.
+Firstly the download page advises that you upgrade X11.app to at least XQuartz v2.1.4. This is a large-ish download which forces you to quit all applications as it needs to restart your system after installing.
+The next problem was that after a restart, Inkscape displays a message saying that the first time it runs it may take a while to load as it needs to caches fonts.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/08/06/getting-inkscape-046-to-run-on-mac-leopard/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/07/22/how-do-you-lock-your-screen-on-a-mac/">How do you lock your screen on a Mac?</a></h1>
+      
+      <div class="content">
+        Call me crazy, but it doesn&rsquo;t seem like you can &ldquo;natively&rdquo; lock your screen on a Mac like you can on Windows. Very odd and annoying as it&rsquo;s something I do everytime I leave my workstation, I&rsquo;ve even had to agree to a policy that I will never leave my workstation open as I have secure access to production servers (via ssh).
+I found some craziness on google where users setup &ldquo;hot corners&rdquo; with mouse gestures with the idea that when you &ldquo;drag your cursor&rdquo; into that corner the screensaver will be activated requiring a password to get back to the desktop.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/07/22/how-do-you-lock-your-screen-on-a-mac/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

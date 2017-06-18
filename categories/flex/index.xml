@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flex on chapter31</title>
+    <link>http://chapter31.com/categories/flex/</link>
+    <description>Recent content in Flex on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Mon, 10 Nov 2008 03:16:54 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/flex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>&#34;Invalid serial number&#34; when upgrading to Flex Builder 3 Pro</title>
+      <link>http://chapter31.com/2008/11/10/invalid-serial-number-when-upgrading-to-flex-builder-3-pro/</link>
+      <pubDate>Mon, 10 Nov 2008 03:16:54 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/11/10/invalid-serial-number-when-upgrading-to-flex-builder-3-pro/</guid>
+      <description>Ok this was annoying&amp;hellip;I had an older trial version of the standalone Flex Builder 3 on my system (Mac 10.5) and wanted to activate it with a new serial for FB3 Professional.
+Whenever I entered the serial in &amp;ldquo;Help -&amp;gt; Manage Flex Licenses&amp;rdquo; I kept getting a message saying &amp;ldquo;Invalid serial number&amp;rdquo; even though it was a brand new serial. Damn.
+Mark gave me the original hint to remove the license.</description>
+    </item>
+    
+    <item>
+      <title>mooFlair on Adobe&#39;s top 10 list</title>
+      <link>http://chapter31.com/2008/09/03/mooflair-on-adobes-top-10-list/</link>
+      <pubDate>Wed, 03 Sep 2008 22:33:59 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/09/03/mooflair-on-adobes-top-10-list/</guid>
+      <description>Areez Gangji has just posted on Adobe devnet an article listing the &amp;ldquo;Top 10 Adobe Flex and AIR applications for students&amp;rdquo;.
+I&amp;rsquo;m very proud to say that a good friend (and fellow Daemon alumni) Patrick Tai has an app on their called mooFlair which he originally built for the AIR derby.
+What is mooFlair?
+ A desktop application that helps you to manage and watch both online and offline FLVs videos.</description>
+    </item>
+    
+    <item>
+      <title>Flex not working on Ubuntu using the Gnash player</title>
+      <link>http://chapter31.com/2007/11/14/flex-not-working-on-ubuntu-using-the-gnash-player/</link>
+      <pubDate>Wed, 14 Nov 2007 00:38:27 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/11/14/flex-not-working-on-ubuntu-using-the-gnash-player/</guid>
+      <description>Gnash is a free Flash movie player for Ubuntu which works as a standalone player or as a plugin for Firefox and Konqueror.
+This is the default (I believe) player installed on Ubuntu 7.10 (the Adobe player isn&amp;rsquo;t there by default).
+I recently tried to load a Flex app in this player and failed, the reason is that Gnash is in alpha state and supports Flash version 7 (and some AS classes for 8.</description>
+    </item>
+    
+  </channel>
+</rss>

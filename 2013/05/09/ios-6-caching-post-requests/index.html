@@ -1,0 +1,148 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>iOS 6 caching POST requests | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="iOS 6 caching POST requests - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 9, 2013</h2>
+    <h1 class="title">iOS 6 caching POST requests</h1>
+    
+    <div class="content">
+      
+
+<p>Apparently I&rsquo;ve been living under a rock, never having been bitten (that I know of) by the pretty massive bug Apple rolled out in iOS 6 (with Safari). The bug has been well documented around the interwebs, basically Safari caches HTTP POST requests. If you haven&rsquo;t heard about this&hellip;stop and read that last bit again.</p>
+
+<p>Now, replicating this bug is dependent on the payload of the POST not changing between requests, so in many circumstances you may be fine. However let&rsquo;s talk about something like a simple login form.</p>
+
+<ul>
+<li>User enters credentials in web form and clicks &ldquo;Login&rdquo;</li>
+<li>App/site POSTs data to the server for authentication</li>
+<li>Server authenticates request</li>
+<li>200 OK is returned, and a session is spawned on the server</li>
+</ul>
+
+<p>Pretty standard workflow. Now what happens if the session expires and the user is presented with the login form again?</p>
+
+<ul>
+<li>User enters credentials in web form and clicks &ldquo;Login&rdquo;</li>
+<li>App/site POSTs data to the server for authentication</li>
+<li>The request is cached because the users data (credentials) are the same as before</li>
+</ul>
+
+<p>So in this scenario the request never actually gets sent to the server.  Your app/site is now broken, the user cannot login. This sort of issue can of course have huge consequences for any number of websites/applications.</p>
+
+<p>It&rsquo;s worth noting that the <a href="http://www.faqs.org/rfcs/rfc2616.html">HTTP/1.1 RFC</a> states (thanks <a href="http://stackoverflow.com/a/626083/1448058">Diomidis Spinellis</a>):</p>
+
+<blockquote>
+<p>Responses to this method are not cacheable, unless the response includes appropriate Cache-Control or Expires header fields.</p>
+</blockquote>
+
+<p>and:</p>
+
+<blockquote>
+<p>Some HTTP methods MUST cause a cache to invalidate an entity. This is either the entity referred to by the Request-URI, or by the Location or Content-Location headers (if present). These methods are:</p>
+
+<ul>
+<li>PUT</li>
+<li>DELETE</li>
+<li>POST</li>
+</ul>
+</blockquote>
+
+<h2 id="solution">Solution</h2>
+
+<p>People have listed fixes like jQuery&rsquo;s <em>{cache: false}</em> in the ajax params, to adding a random token to your payload. These methods seem a intrusive to me though as you need to change every form on every page in every app. So we went for a different approach, a simple Apache rule in your conf:</p>
+
+<pre><code class="language-bash">&lt;Limit POST&gt;
+	Header set Cache-Control no-cache
+&lt;/Limit&gt;
+</code></pre>
+
+<p>All that&rsquo;s saying is, if the incoming request is using the HTTP POST method, set a <em>no-cache</em> header. Nice and simple. Note that _mod<em>headers</em> needs to be enabled in Apache for this to work.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

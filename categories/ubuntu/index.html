@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Ubuntu | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Ubuntu - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">September 24, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/09/24/installing-new-fonts-on-ubuntu-server/">Installing new fonts on Ubuntu server</a></h1>
+      
+      <div class="content">
+        I had some new fonts to install on our test server that runs Ubuntu server. Pretty simple really, just noting it down here for next time:
+ Upload/ssh the font(s) to your home folder on the server
+ Copy font to the system fonts folder, this way it can be used by all users on the system sudo cp -R ~/trade-gothic /usr/share/fonts/truetype/
+ Check permissions sudo chmod 755 /usr/share/fonts/truetype/trade-gothic/ Install the fonts so applications can use them sudo fc-cache -f -v  
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 13, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/">Development configuration tips for Ubuntu</a></h1>
+      
+      <div class="content">
+        I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc
+Here are some notes which helped me out when configuring some of these development tools.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">February 28, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/02/28/cant-access-shared-music-with-rhythmbox-ubuntu/">Can&#39;t access shared music with Rhythmbox (Ubuntu)?</a></h1>
+      
+      <div class="content">
+        Probably quite old news for those in the know, but if you&rsquo;re using Rhythmbox to play music on Ubuntu and want to listen to shared music over a network where people are using iTunes version 7+&hellip;.it ain&rsquo;t going to work :(
+You can view who is sharing music, but their actual libraries won&rsquo;t load into Rhythmbox. In this case it&rsquo;s not a compatibility between OS&rsquo;s etc, it&rsquo;s purely proprietary :(
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/02/28/cant-access-shared-music-with-rhythmbox-ubuntu/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 14, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/11/14/flex-not-working-on-ubuntu-using-the-gnash-player/">Flex not working on Ubuntu using the Gnash player</a></h1>
+      
+      <div class="content">
+        Gnash is a free Flash movie player for Ubuntu which works as a standalone player or as a plugin for Firefox and Konqueror.
+This is the default (I believe) player installed on Ubuntu 7.10 (the Adobe player isn&rsquo;t there by default).
+I recently tried to load a Flex app in this player and failed, the reason is that Gnash is in alpha state and supports Flash version 7 (and some AS classes for 8.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/11/14/flex-not-working-on-ubuntu-using-the-gnash-player/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

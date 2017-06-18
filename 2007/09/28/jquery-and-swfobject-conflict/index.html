@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>jQuery and SWFObject conflict | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="jQuery and SWFObject conflict - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 28, 2007</h2>
+    <h1 class="title">jQuery and SWFObject conflict</h1>
+    
+    <div class="content">
+      <p>I experienced some strange behaviour today when building a site which was using jQuery and SWFObject. Our Flash files were loading ok and 99% of the javascript (using jQuery) was working fine.</p>
+
+<p>The problem was found only in IE (sound familiar?) with the following code:</p>
+
+<pre><code class="language-javascript">$(document).ready(function(){
+
+	$('#submitButton').click(function(){
+</code></pre>
+
+<p>When the &lsquo;submitButton&rsquo; was clicked, this function was not firing in IE. After some googling I found that there is a slight conflict with jQuery and SWFObject. I tested this and found the problem in jQuery 1.1.x and 1.2.1.</p>
+
+<p><a href="http://blog.deconcept.com/swfobject/forum/discussion/540/jquery-and-swfobject-tips/">I found the fix</a> on the SWFObject forums which is basically using jQuery to load the .swf:</p>
+
+<pre><code class="language-javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+	$(document).ready(function(){
+		var so = new SWFObject(&quot;movie.swf&quot;, &quot;mymovie&quot;, &quot;400&quot;, &quot;100%&quot;, &quot;8&quot;, &quot;#336699&quot;);
+		so.addParam(&quot;quality&quot;, &quot;low&quot;);
+		so.addParam(&quot;wmode&quot;, &quot;transparent&quot;);
+		so.addParam(&quot;salign&quot;, &quot;t&quot;);
+		so.write(&quot;flashcontent&quot;);
+	});
+&lt;/script&gt;
+</code></pre>
+
+<p>All good in all browsers :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

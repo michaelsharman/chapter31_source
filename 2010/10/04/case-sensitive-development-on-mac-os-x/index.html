@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Case sensitive development on Mac OS X | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Case sensitive development on Mac OS X - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">October 4, 2010</h2>
+    <h1 class="title">Case sensitive development on Mac OS X</h1>
+    
+    <div class="content">
+      <p><a href="http://www.learnosity.com/">At work</a> most of the developers are on Mac OS X but our staging and production environments are Linux based. This means development is case insensitive but stage/production is case sensitive. Although we have development guidelines/standards which dictate file and database naming conventions etc, human error can still occur (in terms of referencing files with a different &ldquo;case&rdquo;). We also use a few open source packages where we obviously don&rsquo;t have control over the naming of files or the references to database tables within those files.</p>
+
+<p>Why is this an issue?</p>
+
+<p>Linux is a case sensitive environment, so calling <em>myClass.cfc</em> when the actual name of the file is <em>MyClass.cfc</em> will fail on Linux, but will be ok during development as Mac OS X isn&rsquo;t case sensitive by default. The same would happen for MySQL table references in the codebase as tables are stored as files on the file system.</p>
+
+<p>This has been an ongoing issue for us over the years particularly with open source libraries we may be using. So last week I decided to change my working environment to avoid finding these issues only once code had been deployed to staging. Overall the process was simple and really only took an hour or so (and most of that was waiting for files to copy across to the new location).</p>
+
+<p>What I did was to create a case sensitive partition on the Mac and move my &ldquo;Workspace&rdquo; (project folders and files) and &ldquo;MySQL&rdquo; install to the new partition. Now any case sensitive issues will be found during development which is much preferable to finding them in staging/production :)</p>
+
+<p>Setting up the new partition was done using <a href="http://www.coriolis-systems.com/iPartition.php">iPartition</a> but you could just as easily use the Disk Utility. I setup a new 50GB jhfsx partition (HFS Journaled case sensitive). Once that was done I copied my <em>workspace</em> folder across, then the <em>MySQL</em> folder. Finally, create symlinks for both the workspace and mysql paths so I didn&rsquo;t run into any pathing issues in my apache conf etc.</p>
+
+<p>Steps:</p>
+
+<ol>
+<li><p>Create your case sensitive <em>jhfsx (HFS Journaled case sensitive)</em> partition. 50GB was fine for me; your requirements may vary. Remember that you need enough space for your MySQL databases and your project files (both current and future).</p></li>
+
+<li><p>Stop MySQL
+&gt; $ mysqladmin -uroot -p shutdown</p></li>
+
+<li><p>Copy the MySQL and Workspaces folders to the new paritition (I named my new partition &ldquo;Learnosity&rdquo;)
+&gt; $ sudo cp -rp /usr/local/mysql /Volumes/Learnosity
+&gt; $ sudo cp -rp /users/michaelsharman/Workspaces /Volumes/Learnosity</p></li>
+
+<li><p>symlink your previous paths to the new partition to save you having to remap apache confs and MySQL commands etc
+&gt; $ sudo ln -sf /Volumes/Learnosity/mysql /usr/local/mysql
+&gt; $ sudo ln -sf /Volumes/Learnosity/Workspaces /users/michaelsharman/Workspaces</p></li>
+
+<li><p>Set the MySQL _lower_case_table<em>names</em> to 0 (same as it is on Linux by default) by adding this line in /etc/my.cnf
+&gt; lower_case_table_names = 0</p></li>
+</ol>
+
+<p>If you run <em>$ mysqladmin -uroot -p variables</em> you can see all global variables for your MySQL instance.</p>
+
+<ol>
+<li>Start MySQL
+&gt; $ sudo mysqld -uroot</li>
+</ol>
+
+<p>That should be it, don&rsquo;t need to do anything else except change the location to your Workspaces folder in your editor of choice.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

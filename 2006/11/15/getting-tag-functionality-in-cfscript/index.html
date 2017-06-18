@@ -1,0 +1,145 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Getting tag functionality in cfscript | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Getting tag functionality in cfscript - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 15, 2006</h2>
+    <h1 class="title">Getting tag functionality in cfscript</h1>
+    
+    <div class="content">
+      <p>For some developers there is an age old argument between the use of ColdFusion tags and &lt;cfscript&gt;, I&rsquo;m not going to delve too much into this argument as I believe you can use both for different scenarios.</p>
+
+<p>What I will say is that I do like many things about &lt;cfscript&gt;. It is easy to read and arguably more elegant and concise. Of course the annoying thing is that it doesn&rsquo;t have the full feature set of tags&hellip;.VERY annoying. So bad in fact that I often ask myself why I bother with it and whether or not Adobe will ever update it?</p>
+
+<p>How many times have you been in the middle of coding something (in &lt;cfscript&gt;) and needed to do cfdump, cflocation, cfabort, cfsavecontent&hellip;.the list goes on. Because I do like cfscript I did what a lot of other cfscripters do, came up with some methods to add to my Utility.cfc (which I store in application scope) to simulate the functions I cannot natively use when writing cfscript.</p>
+
+<p>Here is an example method for simulating &lt;cfdump&gt;</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;dump&quot; access=&quot;public&quot; output=&quot;true&quot; returntype=&quot;void&quot; hint=&quot;Simulates cfdump from a cfscript block&quot;&gt;
+	&lt;cfargument name=&quot;var&quot; required=&quot;true&quot; type=&quot;any&quot; hint=&quot;Variable to dump&quot; /&gt;
+	&lt;cfargument name=&quot;expand&quot; required=&quot;false&quot; type=&quot;boolean&quot; hint=&quot;Boolean to expand the dump&quot; /&gt;
+	&lt;cfargument name=&quot;top&quot; required=&quot;false&quot; type=&quot;numeric&quot; hint=&quot;Only show the top n layers&quot; /&gt;
+
+	&amp;lt;cfscript&amp;gt;
+
+		var sOptions = &quot;&quot;;
+
+		if (structKeyExists(arguments, &quot;expand&quot;))
+			sOptions = &quot; expand=&quot; &amp; arguments.expand;
+
+		if (structKeyExists(arguments, &quot;top&quot;))
+			sOptions = sOptions &amp; &quot; top=&quot; &amp; arguments.top;
+
+	&lt;/cfscript&gt;
+
+	&lt;cfdump var=&quot;#arguments.var#&quot;sOptions /&gt;
+
+	&lt;cfreturn /&gt;
+
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>I set this up as a snippet in eclipse and use a snippet variable to enter the dump value. My trigger text in ud (for Utility Dump) and the snippet is as follows:</p>
+
+<pre><code class="language-javascript">application.oUtility.dump($${var:});
+</code></pre>
+
+<p>I&rsquo;ve attached my full Utility.cfc which contains the following methods:</p>
+
+<ul>
+<li>abort</li>
+<li>dump</li>
+<li>location</li>
+<li>param</li>
+<li>sleep</li>
+</ul>
+
+<p><a href="/images/uploads/2006/11/utility.zip">Click here to download Utility.cfc</a></p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

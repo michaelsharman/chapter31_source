@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on chapter31</title>
+    <link>http://chapter31.com/categories/mysql/</link>
+    <description>Recent content in Mysql on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Wed, 19 Jun 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Problem dumping MySQL database - Unknown system variable &#39;GTID_MODE&#39;</title>
+      <link>http://chapter31.com/2013/06/19/problem-dumping-mysql-database-unknown-system-variable-gtid-mode/</link>
+      <pubDate>Wed, 19 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/06/19/problem-dumping-mysql-database-unknown-system-variable-gtid-mode/</guid>
+      <description>I was trying to dump and restore a MySQL database today, but received the following error when I tried to dump:
+mysqldump: Couldn&#39;t execute &#39;SELECT @@GTID_MODE&#39;: Unknown system variable &#39;GTID_MODE&#39; (1193)  The MySQL version of the database I was trying to dump was 5.5.28 and the server I was trying to restore into was 5.6.10.
+A quick google told me that the error was likely due to this mismatch in versions.</description>
+    </item>
+    
+    <item>
+      <title>MySQL thread_stack overrun error</title>
+      <link>http://chapter31.com/2013/05/22/mysql-thread-stack-overrun-error/</link>
+      <pubDate>Wed, 22 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/05/22/mysql-thread-stack-overrun-error/</guid>
+      <description>We added a trigger to MySQL (v5.5.28) recently that was a simple UPDATE on table column, when a target table was UPDATEd. It ran fine (as expected) on our development environment but not when we pushed the changes to staging.
+The error being thrown by MySQL was:
+Thread stack overrun: 8304 bytes used of a 131072 byte stack, and 128000 bytes needed. Use &#39;mysqld --thread_stack=#&#39; to specify a bigger stack.  Querying the database told me that the current _threadstack setting is 128K:</description>
+    </item>
+    
+  </channel>
+</rss>

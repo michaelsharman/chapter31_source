@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Javascript | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Javascript - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">January 23, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/01/23/taking-advantage-of-dom-on-ready-and-event-observers-using-prototypejs/">Taking advantage of DOM on ready and Event observers using Prototype.js</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve been doing some JavaScript development with Prototype over the last few days and it&rsquo;s been interesting trying to do things that I know how to do in jQuery, but in Prototype.
+One of the cool things I like with all these JavaScript frameworks is the easy way they allow you to execute code on &lsquo;DOM Ready&rsquo; (once the page markup has completed but before all the images etc have loaded).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/01/23/taking-advantage-of-dom-on-ready-and-event-observers-using-prototypejs/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 28, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/09/28/jquery-and-swfobject-conflict/">jQuery and SWFObject conflict</a></h1>
+      
+      <div class="content">
+        I experienced some strange behaviour today when building a site which was using jQuery and SWFObject. Our Flash files were loading ok and 99% of the javascript (using jQuery) was working fine.
+The problem was found only in IE (sound familiar?) with the following code:
+$(document).ready(function(){ $('#submitButton').click(function(){  When the &lsquo;submitButton&rsquo; was clicked, this function was not firing in IE. After some googling I found that there is a slight conflict with jQuery and SWFObject.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/09/28/jquery-and-swfobject-conflict/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 25, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/03/25/the-coolest-dhtml-calendar/">The &#39;coolest&#39; DHTML calendar</a></h1>
+      
+      <div class="content">
+        As web developers we are often some of the first people to see the newer techniques and tools available for use in web applications. This can be great as we can then hurry off and implement these things into our new projects.
+But of course there are still millions of older sites (which will no doubt still be around for years to come!) using old techniques and tools. Ugh!
+One of the more common things you find is the age old popup calendar window which is SLOW and could be blocked by the numerous popup blockers out there today.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/03/25/the-coolest-dhtml-calendar/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 7, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/12/07/including-js-files-from-within-js-files/">Including js files from within js files</a></h1>
+      
+      <div class="content">
+        I&rsquo;m working on an application which stores a lot of data in the application scope. Part of the data stored is a config CFC that has a method which loads &lsquo;external assets&rsquo; (javascript and css files etc) into the  of the html document via . I love that tag :)
+My part in this application development is limited to a particular section only, but there was already a lot of external assets present in the header and things were getting very messy.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/12/07/including-js-files-from-within-js-files/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 12, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/10/12/when-not-to-use-thisformsubmit/">When not to use this.form.submit()</a></h1>
+      
+      <div class="content">
+        So ok, I&rsquo;ve run into this problem in the past where I&rsquo;m using an onclick event to submit a form from a button control. When you click the button you get a nice little Javascript error stating:
+ this.form.submit is not a function
+ Bugger&hellip;wtf?
+This only seems to happen when you have a form element named &ldquo;submit&rdquo; already on your page, so the browser treats that &ldquo;submit&rdquo; element as an object which is of course NOT a function.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/10/12/when-not-to-use-thisformsubmit/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 1, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/10/01/javascript-function-properties/">Javascript function properties</a></h1>
+      
+      <div class="content">
+        Javascript is pretty cool and I&rsquo;ll admit that I don&rsquo;t get to do as much as I&rsquo;d like with it. Today I&rsquo;m going to briefly cover a few properties of any Javascript function which you can take advantage of:
+ arguments callee arity  arguments The arguments property contains an array of input parameters which may be passed to the function. It can be used to determine how many variables are being passed in and what they are, without each argument being explicitly declared in the function.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/10/01/javascript-function-properties/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 28, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/28/javascript-parseint-quirk/">Javascript parseInt() quirk</a></h1>
+      
+      <div class="content">
+        I ran into a little quirk or &lsquo;bug&rsquo; today when using parseInt() with a string (input from a text box). Now as we all know parseInt() parses a string and returns an integer value.
+The scenario: I was working on a legacy application where a user could pass a date to the server in 3 separate form fields (day, month and year); all text boxes. No nice little DHTML calendars here
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/28/javascript-parseint-quirk/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 19, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/19/trimming-strings-with-javascript/">Trimming strings with Javascript</a></h1>
+      
+      <div class="content">
+        Ben Nadel has a nice post on trimming strings with javascript using regular expressions.
+Note that the reg exp white space character &lsquo;\s&rsquo; is used to match:
+ space tab horizontal tab vertical tab line break  Sample code below:
+&lt;script type=&quot;text/javascript&quot;&gt; // Trims the beginning and trailing white space from a string. function trim( strText ){ return( strText.replace(new RegExp(&quot;^([s]+)|([s]+)$&quot;, &quot;gm&quot;), &quot;&quot;) ); } // Trims the beinning white space from a string.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/19/trimming-strings-with-javascript/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/javascript/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

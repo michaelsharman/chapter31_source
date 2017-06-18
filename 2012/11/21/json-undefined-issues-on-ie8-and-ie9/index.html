@@ -1,0 +1,133 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>JSON undefined issues on IE8 and IE9 | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="JSON undefined issues on IE8 and IE9 - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 21, 2012</h2>
+    <h1 class="title">JSON undefined issues on IE8 and IE9</h1>
+    
+    <div class="content">
+      
+
+<p>I had some issues today while testing in IE, where &ldquo;JSON&rdquo; was undefined. This was happening in IE8 and IE9, which is strange because the JSON functions are in those IE versions. The problem was IE&rsquo;s compatibility view, which triggers rendering in sort-of-IE7 mode. Classy. This was making JSON undefined ;(</p>
+
+<p>The usual fix for this is to add a meta tag to force IE to use &ldquo;edge&rdquo; (or a specific version if you like):</p>
+
+<pre><code class="language-html">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+</code></pre>
+
+<p>However we&rsquo;ve had problems with this in the past where it doesn&rsquo;t always seem to work, especially on corporate networks and intranets. We now use an Apache header (and not use the meta tag at all) to achieve IE=edge. Here&rsquo;s the Apache header (to go in your .htaccess, note that you need mod_headers enabled for this to work):</p>
+
+<pre><code>Header set X-UA-Compatible &quot;IE=edge&quot;
+</code></pre>
+
+<h3 id="update">Update</h3>
+
+<p>You can use the Apache header above, combined with a check to only send the header for Internet Explorer</p>
+
+<pre><code>BrowserMatch MSIE ie
+Header set X-UA-Compatible &quot;IE=edge,chrome=1&quot; env=ie
+</code></pre>
+
+<p>To be safe, if you can&rsquo;t use the Apache header above (which we found to always work as opposed to the meta tag) you might want to load <a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js">json2.js</a> for IE8 and 9 because you can&rsquo;t control if a user is in compatibility view. If they are, then JSON will be undefined. The cool thing about json2 is that if it detects that JSON is already defined, it won&rsquo;t do anything at all. But it&rsquo;s there if the older browsers need it (IE7) or you somehow have visitors in compatibility view.</p>
+
+<p>You can also load json2.js from a CDN:</p>
+
+<pre><code>http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js
+or minified
+http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.min.js
+
+or
+
+http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js
+or minified
+http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.min.js
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

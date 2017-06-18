@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on chapter31</title>
+    <link>http://chapter31.com/categories/ubuntu/</link>
+    <description>Recent content in Ubuntu on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Mon, 24 Sep 2012 03:41:55 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing new fonts on Ubuntu server</title>
+      <link>http://chapter31.com/2012/09/24/installing-new-fonts-on-ubuntu-server/</link>
+      <pubDate>Mon, 24 Sep 2012 03:41:55 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/09/24/installing-new-fonts-on-ubuntu-server/</guid>
+      <description>I had some new fonts to install on our test server that runs Ubuntu server. Pretty simple really, just noting it down here for next time:
+ Upload/ssh the font(s) to your home folder on the server
+ Copy font to the system fonts folder, this way it can be used by all users on the system sudo cp -R ~/trade-gothic /usr/share/fonts/truetype/
+ Check permissions sudo chmod 755 /usr/share/fonts/truetype/trade-gothic/ Install the fonts so applications can use them sudo fc-cache -f -v  </description>
+    </item>
+    
+    <item>
+      <title>Development configuration tips for Ubuntu</title>
+      <link>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</link>
+      <pubDate>Sat, 13 Dec 2008 02:28:20 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</guid>
+      <description>I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&amp;rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc
+Here are some notes which helped me out when configuring some of these development tools.</description>
+    </item>
+    
+    <item>
+      <title>Can&#39;t access shared music with Rhythmbox (Ubuntu)?</title>
+      <link>http://chapter31.com/2008/02/28/cant-access-shared-music-with-rhythmbox-ubuntu/</link>
+      <pubDate>Thu, 28 Feb 2008 06:21:14 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/02/28/cant-access-shared-music-with-rhythmbox-ubuntu/</guid>
+      <description>Probably quite old news for those in the know, but if you&amp;rsquo;re using Rhythmbox to play music on Ubuntu and want to listen to shared music over a network where people are using iTunes version 7+&amp;hellip;.it ain&amp;rsquo;t going to work :(
+You can view who is sharing music, but their actual libraries won&amp;rsquo;t load into Rhythmbox. In this case it&amp;rsquo;s not a compatibility between OS&amp;rsquo;s etc, it&amp;rsquo;s purely proprietary :(</description>
+    </item>
+    
+    <item>
+      <title>Flex not working on Ubuntu using the Gnash player</title>
+      <link>http://chapter31.com/2007/11/14/flex-not-working-on-ubuntu-using-the-gnash-player/</link>
+      <pubDate>Wed, 14 Nov 2007 00:38:27 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/11/14/flex-not-working-on-ubuntu-using-the-gnash-player/</guid>
+      <description>Gnash is a free Flash movie player for Ubuntu which works as a standalone player or as a plugin for Firefox and Konqueror.
+This is the default (I believe) player installed on Ubuntu 7.10 (the Adobe player isn&amp;rsquo;t there by default).
+I recently tried to load a Flex app in this player and failed, the reason is that Gnash is in alpha state and supports Flash version 7 (and some AS classes for 8.</description>
+    </item>
+    
+  </channel>
+</rss>

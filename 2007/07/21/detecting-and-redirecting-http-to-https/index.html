@@ -1,0 +1,129 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Detecting and redirecting http to https | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Detecting and redirecting http to https - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">July 21, 2007</h2>
+    <h1 class="title">Detecting and redirecting http to https</h1>
+    
+    <div class="content">
+      <p>There was a <a href="http://groups.google.com/group/mach-ii-for-coldfusion/browse_thread/thread/c742be0d8ab0395c?hl=en">recent thread</a> on the <a href="http://groups.google.com/group/mach-ii-for-coldfusion/">mach-ii mailing list</a> where a user wanted to detect whether a request was being made via http or https.</p>
+
+<p>This is quite a common step developers take when working on a site with secure (SSL) and non-secure areas. As the list is mach-ii there are a couple of obvious framework specific options to take, those being Filters and Plugins. Although Peter Farrel does have an sslPlugin available, I liked the approach put forward by <a href="http://www.pteradactylcry.com/blog/">Matt Osbun</a>:</p>
+
+<pre><code class="language-javascript">&lt;cfif Compare(cgi.SERVER_PORT,443)&gt;
+	&lt;cflocation url=&quot;https://#cgi.server_name##cgi.path_info#?#cgi.query_string#&quot; addtoken=&quot;false&quot;/&gt;
+&lt;/cfif&gt;
+</code></pre>
+
+<p>Now I know a lot of people don&rsquo;t like using CGI scoped variables, even the more common ones, so I thought I&rsquo;d try it out with getPageContext().</p>
+
+<pre><code class="language-javascript">&lt;!--- set up the getRequest method for easy access ---&gt;
+&lt;cfset oRequest = getPageContext().getRequest() /&gt;
+
+&lt;cfif compare(oRequest.getServerPort(), 443)&gt;
+	&lt;cflocation url=&quot;https://#oRequest.getServerName()##oRequest.getRequestURI()#?#oRequest.getQueryString()#&quot; addtoken=&quot;false&quot; /&gt;
+&lt;/cfif&gt;
+</code></pre>
+
+<p>As you can see it&rsquo;s a little bit longer, but I believe is a safer option than relying on CGI variables.</p>
+
+<p>A slight modification (using getRequest()) is testing the isSecure() which &ldquo;<em>Returns true if this protocol is secure</em>&ldquo;:</p>
+
+<pre><code class="language-javascript">&lt;!--- set up the getRequest method for easy access ---&gt;
+&lt;cfset oRequest = getPageContext().getRequest() /&gt;
+
+&lt;cfif NOT oRequest.isSecure()&gt;
+	&lt;cflocation url=&quot;https://#oRequest.getServerName()##oRequest.getRequestURI()#?#oRequest.getQueryString()#&quot; addtoken=&quot;false&quot; /&gt;
+&lt;/cfif&gt;
+</code></pre>
+
+<p>I&rsquo;m still (slowly) making my way through getPageContext(), it can provide an absolute wealth of knowledge for the ColdFusion programmer. You can view the 1.4 <a href="http://java.sun.com/j2ee/1.4/docs/api/javax/servlet/jsp/PageContext.html">pagecontext docs here</a> and the <a href="http://java.sun.com/j2ee/1.4/docs/api/javax/servlet/ServletRequest.html">servletrequest docs here</a>.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

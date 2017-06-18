@@ -1,0 +1,151 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Setting application variables in FarCry | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Setting application variables in FarCry - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">June 9, 2009</h2>
+    <h1 class="title">Setting application variables in FarCry</h1>
+    
+    <div class="content">
+      <p>I just thought I&rsquo;d write up some quick thoughts on setting application scoped variables in FarCry as it occured to me that it could be a little confusing to non-FarCry developers.</p>
+
+<p>It doesn&rsquo;t really matter which framework you use,  you can theoretically set you application variables <em>anywhere you want</em>, but ideally you want to follow some sort of methodology and consistency both with the rest of your development team and of course the <a href="http://www.farcrycms.org/">framework you happen to be using</a>.</p>
+
+<p><a href="http://www.farcrycms.org/">FarCry</a> has (somewhat) recently added a &ldquo;farcryConstructor.cfm&rdquo; inside the project webroot (www). A quick peek inside suggests that this is where application vars are set, this is re-inforced by checking Application.cfc which has a bascially empty OnApplicationStart() in terms of setting project application vars.</p>
+
+<p>Sample of farcryConstructor.cfm:</p>
+
+<pre><code class="language-javascript">&lt;cfset THIS.sessionmanagement = true  /&gt;
+&lt;cfset THIS.sessiontimeout = createTimeSpan(0,0,20,0) /&gt;
+&lt;cfset THIS.applicationtimeout = createTimeSpan(2,0,0,0) /&gt;
+&lt;cfset THIS.clientmanagement = false /&gt;
+...
+</code></pre>
+
+<p>There is also the <em>/config</em> directory which has been in existence for several versions and contains, you guessed it, &ldquo;configuration&rdquo; files. Namely:</p>
+
+<ul>
+<li>_serverSpecificRequestScope.cfm</li>
+<li>_serverSpecificVars.cfm</li>
+<li>_serverSpecificVarsAfterInit.cfm</li>
+</ul>
+
+<p>So where do you add your custom project application vars? The options we have so far are:</p>
+
+<ul>
+<li>www/farcryConstuctor.cfm</li>
+<li>www/Application.cfc</li>
+<li>config/_serverSpecificxxx.cfm</li>
+</ul>
+
+<p>Well <em>farcryConstructor.cfm</em> could seem like an ideal place, after all it&rsquo;s the &ldquo;constructor&rdquo;. But it is generated from the installation routine and as such ignores any custom variables which are set inside it. So steer clear of this one.</p>
+
+<p>OnApplicationStart() would also be a logical place inside <em>Application.cfc</em>. After all that&rsquo;s probably where all your configuration happens in non-framework applications. This will indeed work as expected, but it&rsquo;s not really the ideal place for your project config information.</p>
+
+<p>It&rsquo;s probably best to follow the &ldquo;FarCry way&rdquo; of doing things which is to utilise the files inside your <em>/config</em> directory. This should be the first place anyone in your development team goes to look for any custom project properties or application scoped variables.</p>
+
+<p>Let&rsquo;s look at the 3 /config files:</p>
+
+<p><strong>_serverSpecificRequestScope.cfm</strong>
+_This file is run after /core/tags/farcry/<em>requestScope.cfm
+It enables us to both override the default farcry request scope variables and also add our own</em></p>
+
+<p><strong>_serverSpecificVars.cfm</strong>
+<em>THIS WILL BE INCLUDED BEFORE THE FARCRY INIT IS RUN BUT ONLY ON APPLICATION INITIALISATION.</em></p>
+
+<p><strong>_serverSpecificVarsAfterInit.cfm</strong>
+<em>THIS WILL BE INCLUDED AFTER THE FARCRY INIT HAS BEEN RUN BUT ONLY ON APPLICATION INITIALISATION.</em></p>
+
+<p>I would therefore use _<em>serverSpecificVars.cfm</em> for all your application scoped variables as it is run once on application initialisation. If you need to make a change here you need to update the application.</p>
+
+<p>I&rsquo;d use _<em>serverSpecificRequestScope.cfm</em> for all your request scoped variables. This template is basically like OnRequestStart() in <em>Application.cfc</em>, i.e. it is executed on each page request.</p>
+
+<p>Hope that helps some people :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

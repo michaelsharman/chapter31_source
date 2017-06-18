@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Databases | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Databases - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">November 19, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/19/logging-all-mysql-queries-on-mac-osx/">Logging all MySQL queries on Mac OSX</a></h1>
+      
+      <div class="content">
+        We&rsquo;ve been doing some debugging of a 3rd party application recently where we had some possible performance concerns under a certain load and/or size of data in the database. What we wanted to know was exactly which queries (and how many) where hitting the database on a specific page request.
+The simplest method was to turn on logging of all queries on the local MySQL database, this is turned off by default as like most debugging techniques it adds overhead.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/19/logging-all-mysql-queries-on-mac-osx/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 27, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/10/27/fun-with-reserved-words-in-mysql-5/">Fun with reserved words in MySQL 5</a></h1>
+      
+      <div class="content">
+        Most tools or languages you work with have words which are &ldquo;reserved&rdquo;, meaning you cannot use them in a variable declaration or schema definition etc as they have special treatment in the underlying system. If you try to do this you&rsquo;ll usually get an immediate error.
+Today I needed to change an existing SQL query from a &ldquo;SELECT *&rdquo; to explicitly defining each column because I wanted to add some date formating at the SQL level.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/10/27/fun-with-reserved-words-in-mysql-5/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/10/22/aqua-data-studio-7-includes-an-er-modeler/">Aqua Data Studio 7 includes an ER modeler</a></h1>
+      
+      <div class="content">
+        Those of you who miss diagramming support when using MySQL tools will be pleased to know that the latest version of Aqua Data Studio has support for ER Modeling :)
+ The Entity-Relationship (ER) Modeler we’ve built into Aqua Data Studio 7 is as powerful as even the best standalone database diagramming tools. Use it to design a new database from scratch, understand and clean up a database nightmare in your office, or visually understand entity relationships in existing databases to write more effective SQL queries.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/10/22/aqua-data-studio-7-includes-an-er-modeler/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/08/22/mysql-alias-just-like-table-names-are-case-sensitive-on-nix/">MySQL aliases (just like table names) are case sensitive on *nix</a></h1>
+      
+      <div class="content">
+        As you might know when using MySQL on a case-sensitive OS (like Linux) you must reference your table names in a case sensitive manner. So if you have a table called products the following sample query will NOT work:
+SELECT	productId FROM	Products  It won&rsquo;t work because MySQL stores the table information in directories on the file system, therefore these directories are case sensitive. So your query must be as follows (note the lower case products):
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/08/22/mysql-alias-just-like-table-names-are-case-sensitive-on-nix/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/05/22/insert-delayed-with-mysql/">INSERT DELAYED with MySQL</a></h1>
+      
+      <div class="content">
+        Yet another tip for MySQL users, INSERT DELAYED.
+What does it do? Well when you execute your query MySQL will return an ok immediately to your application, and the request then gets queued to be INSERTED when the table in question is not being used by any other thread. This obviously means your application doesn&rsquo;t have to sit around waiting for the INSERT to be completed which can have a positive impact on performance under load.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/05/22/insert-delayed-with-mysql/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 24, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/04/24/insert-or-update-in-one-statement-with-mysql-performance-test/">INSERT or UPDATE in one statement with MySQL - performance test</a></h1>
+      
+      <div class="content">
+        Yesterday I posted on a handy MySQL feature where you can combine an INSERT and UPDATE on a record in the one statement.
+Someone asked about the performance of this so I ran a little test to get some basic numbers.
+One thing to note is that even when MySQL is actually UPDATING your record (ON DUPLICATE KEY UPDATE), the statement is being executed on the database as an INSERT and not an UPDATE statement.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/04/24/insert-or-update-in-one-statement-with-mysql-performance-test/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 23, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/04/23/insert-or-update-in-one-statement-with-mysql/">INSERT or UPDATE in one statement with MySQL</a></h1>
+      
+      <div class="content">
+        A little while ago I mentioned combining multiple INSERT statements with MySQL, here is another helpful approach to a common problem.
+In many systems you will give the user a chance to ADD and EDIT a record, a News post for example. As usual there are many ways to handle writing any changes to the database, one common approach would be to have 2 methods in a News.cfc
+E.g. create() and update()
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/04/23/insert-or-update-in-one-statement-with-mysql/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 3, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/04/03/combining-multiple-insert-statements-with-mysql/">Combining multiple INSERT statements with MySQL</a></h1>
+      
+      <div class="content">
+        As all developers know, one of the most common bottlenecks in a web application is the database. Database optimisation is therefore a huge part of building a streamlined application capable of handling more concurrent users.
+Often you might have the need to perform multiple INSERT&rsquo;s against a database from a single user form submission.
+Let&rsquo;s say you had a form allowing a user to add their own web bookmarks (think a simple del.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/04/03/combining-multiple-insert-statements-with-mysql/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 21, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/21/random-database-results-with-coldfusion/">Random database results with ColdFusion</a></h1>
+      
+      <div class="content">
+        Today I was looking at returning random records purely from MySQL but was limited with large tables in getting all random results (not just a random starting seed).
+I tried a ColdFusion solution instead.
+First get all the primary keys from the table in question and create an array of the values (this works for numeric and non-numeric keys):
+&lt;cfquery name=&quot;qGetPKs&quot; datasource=&quot;dsn&quot;&gt; SELECT Id FROM myTable &lt;/cfquery&gt; &lt;cfset aIds = listToArray(valueList(qGetPKs.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/21/random-database-results-with-coldfusion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 21, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/21/returning-random-results-with-mysql/">Returning random results with MySQL</a></h1>
+      
+      <div class="content">
+        Selecting random query results is something we often need to do, whether it be a single row or a small record set. You may want to display a random list of &ldquo;tips&rdquo; or &ldquo;facts&rdquo;, a random &ldquo;user&rdquo; or &ldquo;related product&rdquo; etc.
+The simplest and most common solution you find uses the MySQL rand() function (which can be used to create an integer from 0 to 1.0)
+Solution 1 SELECT	[.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/21/returning-random-results-with-mysql/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/databases/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/databases/page/3/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

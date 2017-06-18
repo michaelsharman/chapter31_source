@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Air on chapter31</title>
+    <link>http://chapter31.com/categories/air/</link>
+    <description>Recent content in Air on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Wed, 03 Sep 2008 22:33:59 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/air/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mooFlair on Adobe&#39;s top 10 list</title>
+      <link>http://chapter31.com/2008/09/03/mooflair-on-adobes-top-10-list/</link>
+      <pubDate>Wed, 03 Sep 2008 22:33:59 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/09/03/mooflair-on-adobes-top-10-list/</guid>
+      <description>Areez Gangji has just posted on Adobe devnet an article listing the &amp;ldquo;Top 10 Adobe Flex and AIR applications for students&amp;rdquo;.
+I&amp;rsquo;m very proud to say that a good friend (and fellow Daemon alumni) Patrick Tai has an app on their called mooFlair which he originally built for the AIR derby.
+What is mooFlair?
+ A desktop application that helps you to manage and watch both online and offline FLVs videos.</description>
+    </item>
+    
+    <item>
+      <title>cfdocs on air (livedocs for CF8)</title>
+      <link>http://chapter31.com/2008/02/21/cfdocs-on-air-livedocs-for-cf8/</link>
+      <pubDate>Thu, 21 Feb 2008 22:33:59 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/02/21/cfdocs-on-air-livedocs-for-cf8/</guid>
+      <description>Brian Love recently released an AIR application he wrote which wraps up the ColdFusion 8 &amp;lsquo;livedocs&amp;rsquo;.
+This is a great idea and a fantastic tool to add to your list. I&amp;rsquo;m sure most developers use livedocs as a reference (I do all the time) but historically the are SO slow (not to mention that I think Adobe needs to invest in a little SEO as I often get CF6 livedocs at the top of Google results!</description>
+    </item>
+    
+    <item>
+      <title>Google analytics AIR app</title>
+      <link>http://chapter31.com/2007/09/25/google-analytics-air-app/</link>
+      <pubDate>Tue, 25 Sep 2007 02:26:32 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/09/25/google-analytics-air-app/</guid>
+      <description>An interesting AIR app has been released in Beta for Google analytics.
+From the author:
+ The Google Analytics Reporting suite is an Adobe AIR application that brings Google Analytics to the desktop. It uses itâ€™s own custom API to interact with Google and nearly implements all features of Analytics.
+ You can even export the data to PDF, XLS (Excel) and XML.
+Nice :)</description>
+    </item>
+    
+  </channel>
+</rss>

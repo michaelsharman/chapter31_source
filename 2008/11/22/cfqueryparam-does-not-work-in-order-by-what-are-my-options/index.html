@@ -1,0 +1,150 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>cfqueryparam does not work in ORDER BY, what are my options? | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="cfqueryparam does not work in ORDER BY, what are my options? - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 22, 2008</h2>
+    <h1 class="title">cfqueryparam does not work in ORDER BY, what are my options?</h1>
+    
+    <div class="content">
+      <p>For those that don&rsquo;t know, ColdFusion&rsquo;s <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=Tags_p-q_18.html">cfqueryparam</a> won&rsquo;t work on a SQL ORDER BY clause, so the following <strong>will not work</strong>:</p>
+
+<pre><code class="language-javascript">&lt;cfquery name=&quot;qGetUsers&quot; datasource=&quot;mydsn&quot;&gt;
+	SELECT	FirstName, LastName
+	FROM		Users
+	ORDER BY &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.order#&quot; /&gt;
+&lt;/cfquery&gt;
+</code></pre>
+
+<p>This is really nothing new, people have been talking about this for years but with the spate of recent SQL injection attacks (<em>note that I meant to publish this around sept 08 but got sidetracked!</em>) it&rsquo;s worth mentioning again because there certainly are times where you want dynamic ordering based on a URL or form value.</p>
+
+<p>So what does this mean to you? How are you to manage dynamic ORDER BY values? The most common scenario I&rsquo;ve come across is to use a list of allowed <em>order by</em> column values as defined by the developer. Something like:</p>
+
+<pre><code class="language-javascript">&lt;cfset lValidOrderBy = &quot;firstName, lastName, dateTimeCreated&quot; /&gt;
+&lt;cfif listFindNoCase(lValidOrderBy, arguments.order)&gt;
+	&lt;cfset orderBy = arguments.order /&gt;
+&lt;cfelse&gt;
+	&lt;!--- Default order by column ---&gt;
+	&lt;cfset orderBy = &quot;lastName&quot; /&gt;
+&lt;/cfif&gt;
+
+&lt;cfquery name=&quot;qGetUsers&quot; dsn=&quot;mydsn&quot;&gt;
+	SELECT	FirstName, LastName
+	FROM	Users
+	ORDER BY #orderBy#
+&lt;/cfquery&gt;
+</code></pre>
+
+<p>Another approach might be to use a switch with either a **literal **value or a **keyword **which might map to a list of options like:</p>
+
+<pre><code class="language-javascript">SELECT	FirstName, LastName
+FROM	 Users
+ORDER BY
+&lt;cfswitch expression=&quot;#arguments.order#&quot;&gt;
+	&lt;!--- A literal value ---&gt;
+	&lt;cfcase value=&quot;lastName&quot;&gt;
+		lastName
+	&lt;/cfcase&gt;
+	&lt;!--- A keyword defined by the application ---&gt;	
+	&lt;cfcase value=&quot;user-reverse&quot;&gt;
+		lastName DESC, firstName ASC
+	&lt;/cfcase&gt;
+	&lt;cfdefaultcase&gt;
+		lastName
+	&lt;/cfdefaultcase&gt;
+&lt;/cfswitch&gt;
+</code></pre>
+
+<p>I like this approach as the &ldquo;mapped&rdquo; keyword allows you to use <em>order by</em> values which aren&rsquo;t so simple as a basic literal.</p>
+
+<p>This means when you want to order by multiple columns, use ASC/DESC or a combination of both (which are of course perfectly valid and real-world options) you can define these keywords in your application and still benefit from the safety of possible SQL injection by utilising the <a href="http://www.cfquickdocs.com/#cfswitch">cfswitch</a> statement.</p>
+
+<p>Don&rsquo;t forget to always sanitise ANY USER INPUT!!!</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

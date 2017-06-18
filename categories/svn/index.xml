@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Svn on chapter31</title>
+    <link>http://chapter31.com/categories/svn/</link>
+    <description>Recent content in Svn on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Tue, 10 Jul 2012 12:49:19 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/svn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Editing svn:ignore on the terminal</title>
+      <link>http://chapter31.com/2012/07/10/editing-svnignore-on-the-terminal/</link>
+      <pubDate>Tue, 10 Jul 2012 12:49:19 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/07/10/editing-svnignore-on-the-terminal/</guid>
+      <description>svn:ignore is a great way to exclude certain files or folders from being added to your subversion repository. Typically I&amp;rsquo;ll manage this via an IDE plugin like subclipse (in Eclipse), but if you want to do it via the terminal instead (bash)&amp;hellip;here&amp;rsquo;s how.
+Crappy way You can add single values to your svn:ignore by running this command either at the root of your project or wherever directory you want the ignore to take effect:</description>
+    </item>
+    
+    <item>
+      <title>Development configuration tips for Ubuntu</title>
+      <link>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</link>
+      <pubDate>Sat, 13 Dec 2008 02:28:20 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</guid>
+      <description>I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&amp;rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc
+Here are some notes which helped me out when configuring some of these development tools.</description>
+    </item>
+    
+    <item>
+      <title>Setting up svn:externals with subclipse</title>
+      <link>http://chapter31.com/2008/05/22/setting-up-svnexternals-with-subclipse/</link>
+      <pubDate>Thu, 22 May 2008 07:30:43 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/05/22/setting-up-svnexternals-with-subclipse/</guid>
+      <description>Setting up &amp;ldquo;externals&amp;rdquo; with subversion can assist you when you want to load external libraries into an existing project.
+You may have a JavaScript validation framework which you re-use amongst many projects. Of course you don&amp;rsquo;t want to copy and paste the code into every project, what would happen then if you wanted to upgrade the codebase?
+Using subclipse (in the Eclipse IDE) you can link a separate svn repository in the middle of your project by adding an svn:externals property.</description>
+    </item>
+    
+    <item>
+      <title>Storing Flash, ColdFusion and SQL in subversion</title>
+      <link>http://chapter31.com/2007/08/13/storing-flash-coldfusion-and-sql-in-subversion/</link>
+      <pubDate>Mon, 13 Aug 2007 23:28:38 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/08/13/storing-flash-coldfusion-and-sql-in-subversion/</guid>
+      <description>Most developers who use Source Code Management are familiar with the fact that while you can have any directory you want in your &amp;lsquo;repositories&amp;rsquo;, it is recommended that you use the following directories as a base layout:
+ branches
+ tags
+ trunk
+  The trunk directory will hold the &amp;ldquo;main line&amp;rdquo; of development, a branches directory will have &amp;ldquo;branch-ing&amp;rdquo; development (perhaps a maintenance release?), and a tags directory holds a &amp;ldquo;snapshot&amp;rdquo; in time (essentially a read-only area) often used when deploying to a production server.</description>
+    </item>
+    
+  </channel>
+</rss>

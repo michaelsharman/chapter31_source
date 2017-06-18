@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.23" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">March 17, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/03/17/find-and-replace-with-line-breaks-in-eclipse/">Find and Replace with line breaks in Eclipse</a></h1>
+      
+      <div class="content">
+        Often with doing a find and replace you want to use line breaks in the find (or replace) criteria. Sometimes I&rsquo;ll have a column of data from a csv that I want to modify&hellip;whatever.
+You can now check the &ldquo;regular expressions&rdquo; checkbox while doing a file search in Eclipse and specify &ldquo;\R&rdquo; to find or replace line breaks (platform independent).
+Eg replace line breaks with commas:
+Other interesting and useful options are:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/03/17/find-and-replace-with-line-breaks-in-eclipse/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 15, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/03/15/error-restoring-mysql-database-when-using-btree-on-indexes/">Error restoring MySQL database when USING BTREE on indexes</a></h1>
+      
+      <div class="content">
+        Occasionally when I&rsquo;m restoring a database that was backed up from a different server than the one I&rsquo;m restoring on I get an error along the lines of:
+&gt;[Error] Script lines: 5-17 ------------------------- You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USING BTREE ) ENGINE=InnoDB DEFAULT CHARSET=utf8' at line 11 Warnings: ---&gt; W (1): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USING BTREE ) ENGINE=InnoDB DEFAULT CHARSET=utf8' at line 11  Hmm, the docs suggest that BTREE is a valid index type for both MyISAM and InnoDB.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/03/15/error-restoring-mysql-database-when-using-btree-on-indexes/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 14, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/03/14/turning-voice-over-off-permanently-on-max-osx/">Turning voice over off permanently on Max OSX</a></h1>
+      
+      <div class="content">
+        One of the keyboard shortcuts I often use is command-F6, but I seem to accidentally hit command-F5 on most occasions :(
+Problem with this is that the god awful &ldquo;voice over&rdquo; starts yapping away. Well if you&rsquo;re like me and know that you&rsquo;ll pretty much never want this enabled (at least for now!) then here&rsquo;s how you turn it off permanently.
+ Open up system preferences Click on keyboard Go to the keyboard shortcuts tab Choose universal access from the list on the left Uncheck the &ldquo;Turn voice over on or off&rdquo; checkbox  Breathe a sigh of relief :)
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 27, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/10/27/twitter-bootstrap-modal-not-working-in-firefox/">Twitter bootstrap - modal not working in firefox</a></h1>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/bootstrap">bootstrap</a>
+    
+</div>
+
+      
+      <div class="content">
+        Quick heads up for those having issues getting the modal window in the twitter bootstrap to work in firefox, I had a problem where the overlay would show but not the actual modal window content. Seems there is a problem if you&rsquo;re using animation (fade etc).
+See here for more information.
+For now we use no animation, so a typical modal source example might be (note: no animation as is the default in the docs):
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/10/27/twitter-bootstrap-modal-not-working-in-firefox/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 17, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/08/17/farcry-plugin-webtop-tools/">FarCry Plugin - Webtop Tools</a></h1>
+      
+      <div class="content">
+        We&rsquo;re starting to compile a list of internal tools used when developing a FarCry application. I thought it might be simpler to create a small FarCry plugin to keep them all in the same place, makes it easier to use across multiple projects.
+The plugin currently contains 2 scripts:
+ FarCry database diff (MySQL only at this stage) Content Object Meta  The database diff looks for case-sensitivity differences between your ColdFusion components and the actual MySQL table names (MySQL only).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/08/17/farcry-plugin-webtop-tools/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 17, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/08/17/customising-search-results-from-google-cse/">Customising search results from google cse</a></h1>
+      
+      <div class="content">
+        Google custom search engine (cse) is pretty cool, in fact it&rsquo;s very cool. Within minutes you can have the ability to search your entire site all with a snippet of code! And for a nominal fee you can deliver these results without ads :)
+We use google cse for most of our sites but the other day we ran into a slight problem. The site in question has both public and private access, the public site is delivered over http and has plenty of indexable content.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/08/17/customising-search-results-from-google-cse/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 31, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/07/31/label-vs-title-in-farcry/">Label vs Title in FarCry</a></h1>
+      
+      <div class="content">
+        All system content objects (and those custom types which extend &ldquo;types&rdquo; or &ldquo;versions&rdquo; etc) in FarCry have the &ldquo;label&rdquo; and &ldquo;title&rdquo; properties. Most of the time the value of these are identical, I find myself typically using the &ldquo;title&rdquo; property in formtools as well as any display methods. The question of course is why have both these if they&rsquo;re always exactly the same?
+A note on the FarCry forums suggested that this was a handy way split what you might want to use in a display method vs an admin screen or any other scenario etc.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/07/31/label-vs-title-in-farcry/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 1, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/07/01/farcry-tip-enable-cfcs-in-your-railo-proxypassmatch/">FarCry Tip - Enable cfc&#39;s in your Railo ProxyPassMatch</a></h1>
+      
+      <div class="content">
+        I ran into an issue today while working on a FarCry project, basically when I opened up the &ldquo;Related Content&rdquo; popup from the WYSIWYG editor it was blank. Nothing. Not the usual tabs for Images, File, Flash etc.
+The Railo logs were empty but Apache was throwing a strange error which I hadn&rsquo;t seen before: &ldquo;Couldn&rsquo;t initialize from remote server, JRun server(s) probably down.&rdquo;. Funny as I&rsquo;m not even using JRun!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/07/01/farcry-tip-enable-cfcs-in-your-railo-proxypassmatch/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 1, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/07/01/farcry-grouping-formtool-category-items/">FarCry - grouping formtool category items</a></h1>
+      
+      <div class="content">
+        A new project we&rsquo;re working has the need to categorise each new content object, for this we use the built in FarCry category/keyword formtool.
+By default the render type is a multi-select tree, I wanted a single select dropdown. Luckily formtools makes this oh so simple.
+&lt;cfproperty name=&quot;catHTML&quot; type=&quot;nstring&quot; required=&quot;true&quot; default=&quot;&quot; ftSeq=&quot;2&quot; ftwizardStep=&quot;Content&quot; ftValidation=&quot;required&quot; ftFieldset=&quot;General Details&quot; ftLabel=&quot;Categories&quot; ftType=&quot;Category&quot; ftAlias=&quot;sections&quot; ftRenderType=&quot;dropdown&quot; ftSelectSize=&quot;1&quot; ftSelectMultiple=&quot;false&quot; ftAliasAsOptGroup=&quot;true&quot;&gt;  Note that I&rsquo;ve set the dropdown size to 1 and multiple select to false.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/07/01/farcry-grouping-formtool-category-items/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 30, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/06/30/farcry-tip-remove-install-directory/">FarCry Tip - remove install directory</a></h1>
+      
+      <div class="content">
+        After you install FarCry you must make sure to delete the &ldquo;install&rdquo; folder(s) that FarCry leaves behind. Otherwise it&rsquo;s possible for anyone to access the installer wizard again from your production website, and as it&rsquo;s the installer they don&rsquo;t even need to be logged in to cause real havoc. Not good.
+By default, as of FarCry 6.1.x, there are 2 install folders to delete:
+ farcry.core.webtop.install farcry.plugins.farcrycms.install  
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/page/4/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/page/6/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,243 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Installing a new FarCry 5 project - (Extended) Advanced Mode | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Installing a new FarCry 5 project - (Extended) Advanced Mode - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 28, 2008</h2>
+    <h1 class="title">Installing a new FarCry 5 project - (Extended) Advanced Mode</h1>
+    
+    <div class="content">
+      
+
+<p>There are several installation options for the latest version of <a href="http://www.farcrycore.org/">FarCry</a> (5.0.2) which makes things nice and flexible for the framework to be used by different people in a variety of setups.</p>
+
+<p>The <a href="http://docs.farcrycms.org/display/FCDEV50/Deployment+Configurations">deployment configurations</a> page has some easy to follow instructions for installing in &ldquo;Standalone&rdquo; mode. This is really the best option if you are in a shared environment where you may not have control over ColdFusion mappings, but also if you are looking to get up and running quickly (maybe you just want to evaluate the product etc).</p>
+
+<p>For <a href="http://www.lynchconsulting.com.au/">us</a> we use FarCry for many applications, but in what would be considered an &ldquo;Advanced&rdquo; configuration mode (using FarCry 5+ parlance). Unfortunately it looks as though we may stray a little from the &ldquo;Advanced&rdquo; configuration which is the point of this tutorial.</p>
+
+<p>The <a href="http://docs.farcrycms.org/display/FCDEV50/Deployment+Configurations">current advanced</a> setup may be a little confusing to some. It doesn&rsquo;t really list full details for the advanced mode, but still seems to require you to have FarCry running in the following directory structure (note that in the example below &lsquo;farcry_5.0.2&rsquo; can really be called anything and is not a strict naming requirement, I like to use this as it is explicit as to which version I&rsquo;m using):</p>
+
+<ul>
+<li>/farcry_5.0.2
+
+<ul>
+<li>/core</li>
+<li>/plugins
+
+<ul>
+<li>/farcrycms</li>
+</ul></li>
+<li>/projects
+
+<ul>
+<li>/myproject1</li>
+<li>/myproject2</li>
+</ul></li>
+<li>/skeletons
+
+<ul>
+<li>/mollio</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>This is nice and easy as it gives you the ability to have only 1 ColdFusion mapping (<em>/farcry</em> pointing to your /farcry_5.0.2 directory) which all your projects can share (i.e. all projects would share the same farcry &ldquo;core&rdquo; and &ldquo;plugins&rdquo; codebase etc). It&rsquo;s this structure where our setup starts to differ.</p>
+
+<p>We typically have <em>library</em> directories to hold shared codebases and a <em>completely separate location for our vhosts</em> (projects or &ldquo;web sites&rdquo;). This is the main difference and means we have something like the following:</p>
+
+<ul>
+<li>/libs/farcry_5.0.2
+
+<ul>
+<li>/core</li>
+<li>/plugins
+
+<ul>
+<li>/farcrycms</li>
+</ul></li>
+<li>/projects <em>(note this is only needed for our installation, we won&rsquo;t be hosting projects from here)</em></li>
+<li>/skeletons <em>(note this is only needed for our installation, we won&rsquo;t need this in production)</em></li>
+</ul></li>
+<li>/vhosts
+
+<ul>
+<li>/myproject1</li>
+</ul></li>
+</ul>
+
+<p><strong>Note:</strong> <em>In actual fact our vhost setup is slightly different than what I&rsquo;ve listed above, but this is easier to describe for the purposes of a tutorial.</em></p>
+
+<p>This is an extremely flexible setup, but installing this way is a little tricky. I&rsquo;ve done several installs for this configuration using the following steps:</p>
+
+<h3 id="installation-preparation">Installation - Preparation</h3>
+
+<p>Is is assumed that your farcry files, as mentioned above, are in the following location (this location is of course an example of what you may have on a linux based machine, you could obviously use a different path like C:/libs/farcry_5.0.2):</p>
+
+<ul>
+<li>/libs/farcry_5.0.2</li>
+</ul>
+
+<p>It is also assumed that you want to install your project into the following location:</p>
+
+<ul>
+<li>/vhosts/myproject</li>
+</ul>
+
+<p>*Note: <strong>DO NOT</strong> actually create this project folder yet, we will move the folder to this location <em>after the FarCry installation</em> has completed.</p>
+
+<p>Follow the following steps:</p>
+
+<ol>
+<li>Create a blank database. This can be called anything you want, typically something which mirrors your project name is a good idea</li>
+<li>Create a new datasource in ColdFusion Administrator and verify that it is connecting to your new database</li>
+<li>Create your project vhost (i.e. <a href="http://myproject.local">http://myproject.local</a>) in your web server of choice (Apache or IIS etc)
+
+<ul>
+<li>Point the document root to &lsquo;/vhosts/myproject/www&rsquo; <em>(even though this actual location doesn&rsquo;t exist yet!)</em></li>
+<li>Make sure you have a &lsquo;/webtop&rsquo; alias (this replaces the old &lsquo;farcry&rsquo; alias for those familiar with prior versions of FarCry) pointing to /libs/farcry_5.0.2/core/webtop</li>
+</ul></li>
+<li>Create an entry in your hosts file so myproject.local is in use on 127.0.0.1 (for production you&rsquo;d obviously use different settings!)</li>
+<li>Create a &lsquo;/farcry&rsquo; ColdFusion mapping pointing to the directory which holds &ldquo;core&rdquo; (i.e. /libs/farcry_5.0.2)</li>
+<li>Create a &lsquo;/farcry/projects/myproject&rsquo; ColdFusion mapping
+
+<ul>
+<li>mapping: /farcry/projects/myproject</li>
+<li>path: /vhosts/myproject</li>
+</ul></li>
+</ol>
+
+<p>*Note: You could get away with having a single ColdFusion mapping of /farcry/projects if all your projects existed under the same directory (i.e. /vhosts), otherwise create a projects mapping per project (e.g. /farcry/projects/myproject). I find it&rsquo;s a good idea anyway to have a separate mapping per project.</p>
+
+<h3 id="installation-installing">Installation - Installing</h3>
+
+<p>To install FarCry we visit the &lsquo;/webtop/install&rsquo; sub-directory off your project URL, e.g. <a href="http://myproject.local/webtop/install/">http://myproject.local/webtop/install/</a>.</p>
+
+<p>You may be wondering how this works as we haven&rsquo;t setup our physical project diretory yet, it works because of the web mapping (alias/virtual directory) of &lsquo;/webtop&rsquo; which points directly to /farcry_5.0.2/core/webtop/install.</p>
+
+<p>Ok we&rsquo;re almost there! If everything is going well so far and the stars have aligned you&rsquo;ll see the FarCry installation screen.</p>
+
+<p><a href="/images/uploads/2008/11/screen-1.png"><img src="/images/uploads/2008/11/screen-1-270x300.png" alt="" /></a></p>
+
+<p>The important value on this page is &ldquo;Project Folder Name&rdquo;. This should be &ldquo;myproject&rdquo; (i.e. what will become the physical name of your project directory, the same name as we added in our vhost).</p>
+
+<p>The 2nd step allows you to enter your ColdFusion datasource and database type:</p>
+
+<p><a href="/images/uploads/2008/11/screen-2.png"><img src="/images/uploads/2008/11/screen-2-300x196.png" alt="" /></a></p>
+
+<p>On the 3rd step you must choose a skeleton to install from. Just use the default &lsquo;mollio&rsquo;:</p>
+
+<p><a href="/images/uploads/2008/11/screen-3.png"><img src="/images/uploads/2008/11/screen-3-300x174.png" alt="" /></a></p>
+
+<p>The 4th step is for plugins, for most cases leave the default which is probably &lsquo;farcry&rsquo; and &lsquo;farcry greybox&rsquo;:</p>
+
+<p><a href="/images/uploads/2008/11/screen-4.png"><img src="/images/uploads/2008/11/screen-4-282x300.png" alt="" /></a></p>
+
+<p>The 5th step is important as the default is &ldquo;Sub-Directory&rdquo;. You have to change this to the last option &ldquo;Advanced Configuration&rdquo;:</p>
+
+<p><a href="/images/uploads/2008/11/screen-5.png"><img src="/images/uploads/2008/11/screen-5-229x300.png" alt="" /></a></p>
+
+<p>Step 6 is a confirmation step, nothing to do here except &ldquo;INSTALL NOW&rdquo;:</p>
+
+<p><a href="/images/uploads/2008/11/screen-6.png"><img src="/images/uploads/2008/11/screen-6-189x300.png" alt="" /></a></p>
+
+<p>After hitting &ldquo;INSTALL NOW&rdquo; FarCry will go off and do its magic:</p>
+
+<p><a href="/images/uploads/2008/11/installing.png"><img src="/images/uploads/2008/11/installing-300x100.png" alt="" /></a></p>
+
+<p>When the installation is complete and you can see the final screen FarCry will have successfully installed your project under the /libs/farcry_5.0.2/projects/myproject directory.</p>
+
+<p><a href="/images/uploads/2008/11/complete.png"><img src="/images/uploads/2008/11/complete-300x265.png" alt="" /></a></p>
+
+<p>*<strong><em>Important</em></strong>* BEFORE you click the &ldquo;VIEW SITE&rdquo; or &ldquo;LOGIN TO FARCY WEBTOP&rdquo; buttons you must <em>move the project directory</em> to where you&rsquo;ve specified in your vhost (i.e. move &lsquo;myproject&rsquo; from &lsquo;farcry_5.0.2/projects/myproject&rsquo; to &lsquo;/vhosts/myproject&rsquo;).</p>
+
+<p>Once you&rsquo;ve moved your project directory, you can click the &ldquo;Visit Site&rdquo; button and/or &ldquo;Login to the FarCry Webtop&rdquo; and you&rsquo;re ready to roll :)</p>
+
+<p>Hopefully that helps people trying to install FarCry in a slightly different configuration.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

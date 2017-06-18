@@ -1,0 +1,150 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Evaluating (ColdFusion) unscoped query variables | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Evaluating (ColdFusion) unscoped query variables - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 28, 2008</h2>
+    <h1 class="title">Evaluating (ColdFusion) unscoped query variables</h1>
+    
+    <div class="content">
+      <p>Most developers know that if you reference a variable without a scope prefix (such as variables, form, URL etc) ColdFusion will check <em>each</em> of the available scopes until it finds a variable of the name you are looking for.</p>
+
+<p>The <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=Variables_32.html">order in which ColdFusion checks</a> is:</p>
+
+<ol>
+<li>Function local (UDFs and CFCs only)</li>
+<li>Thread local (inside threads only)</li>
+<li>Arguments</li>
+<li>Variables (local scope)</li>
+<li>Thread</li>
+<li>CGI</li>
+<li>Cffile</li>
+<li>URL</li>
+<li>Form</li>
+<li>Cookie</li>
+<li>Client</li>
+</ol>
+
+<p><em>*** Note:** Although the order above came from the Adobe docs I&rsquo;m not sure about &ldquo;cffile&rdquo;. It doesn&rsquo;t seem like a scope, more like a return variable much like cfquery. But see below for that</em> :)</p>
+
+<p>Of course this means if you are trying to output #myVar#, and that variable exists in the URL as well as the form scope then #URL.myVar# is what ColdFusion will evaluate. This might not be what you want however, leading to frustrating inconsistencies.</p>
+
+<p>Another downside of not scoping your variables is performance, why make ColdFusion look behind each door (scope) for a variable? Most times you will know exactly where the variable is, so you can improve things by clearly specifying which scope you are using.</p>
+
+<p>But what about query variables either in <cfoutput query=""> or <cfloop query="">?</p>
+
+<p>&ldquo;Query&rdquo; isn&rsquo;t a scope as such but can still be effected by the order of evaluation if you have variable naming conflicts with columns from your query.</p>
+
+<p>How often do you prefix your recordset variables with the query name? I bet most developers out there don&rsquo;t prefix their query variables, instead take the easy way out with something like:</p>
+
+<pre><code class="language-javascript">&lt;cfloop query=&quot;myQuery&quot;&gt;
+	#firstName#
+	#lastName#
+	#email#
+&lt;/cfloop&gt;
+</code></pre>
+
+<p>Most of the time this will be fine, but what if this loop was in a function which also had an argument called &ldquo;firstName&rdquo;? Enter a naming conflict leading to dirty data.</p>
+
+<p>I came across a similar situation today (because I didn&rsquo;t prefix my query variables!) and found that my query was only outputting the value of the argument (which had the same name as one of my query columns), not the actual query value.</p>
+
+<p>Prefixing the variables with the query name of course will fix up any conflicting issues:</p>
+
+<pre><code class="language-javascript">&lt;cfloop query=&quot;myQuery&quot;&gt;
+	#myQuery.firstName#
+	#myQuery.lastName#
+	#myQuery.email#
+&lt;/cfloop&gt;
+</code></pre>
+
+<p>Although it can be convenient to take advantage of not scoping your variables, it&rsquo;s really a &ldquo;best practice&rdquo; to scope everything unless you have a reason not to.</p>
+
+<p>Don&rsquo;t forget the performance (and internal documenting for all developers) benefits which comes as well, although admittedly you would probably only notice any degradation at very high traffic levels. But that&rsquo;s what we should be aiming for right? :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

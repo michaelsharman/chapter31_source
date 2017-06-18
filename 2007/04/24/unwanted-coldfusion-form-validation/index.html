@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Unwanted ColdFusion form validation | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Unwanted ColdFusion form validation - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 24, 2007</h2>
+    <h1 class="title">Unwanted ColdFusion form validation</h1>
+    
+    <div class="content">
+      
+
+<p>I came across something strange today when developing a web form.</p>
+
+<p>Basically I had a form field with a name/id of &ldquo;restoration_required&rdquo; but when I submitted the form I got the following error:</p>
+
+<p><img src="/images/uploads/2007/04/formerror.gif" alt="Form Error" /></p>
+
+<p>Now <a href="http://www.daemon.com.au/">Geoff Bowers</a> happened to be standing nearby and was kind enough to point out that this looked like a <cfform> validation error, only I wasn&rsquo;t using cfform!</p>
+
+<p>A quick test (on WinXP, CFMX 7.0.2) showed everything working as expected when I renamed the field as &ldquo;restoration_isRequired&rdquo;.</p>
+
+<p>Of course what was really strange was the fact that this was happening when using a normal <form> tag&hellip;not <cfform>.</p>
+
+<h3 id="update-25th-april-2007">Update 25th April 2007</h3>
+
+<p>In response to Todd&rsquo;s last comment I did a little bit of testing, and when I create a <cfform> ColdFusion will (as expected) generate an HTML form for me.</p>
+
+<p>If I then add the validation attributes (for validateat=&ldquo;onserver&rdquo;) ColdFusion will validate any fields where I specify &ldquo;required=&lsquo;true&rsquo;&rdquo;. In that situation I will get the same error message as before&hellip;not that I know where you&rsquo;d use this because you don&rsquo;t really seem to get any control over the message!</p>
+
+<p>But&hellip;</p>
+
+<p>Even with a <cfform> if I name a field something which ends with &ldquo;_required&rdquo; I get that server side validation message whether I&rsquo;ve entered a value or not!</p>
+
+<pre><code class="language-javascript">&lt;cfform name=&quot;myForm&quot; action=&quot;&quot; format=&quot;html&quot; method=&quot;post&quot;&gt;
+
+	&lt;cfinput type=&quot;text&quot; name=&quot;firstName_required&quot; id=&quot;firstName_required&quot; required=&quot;true&quot; validateat=&quot;onServer&quot; /&gt;
+
+	&lt;cfinput type=&quot;submit&quot; name=&quot;Submit&quot; id=&quot;Submit&quot; value=&quot;Send&quot; /&gt;
+
+&lt;/cfform&gt;
+</code></pre>
+
+<p><img src="/images/uploads/2007/04/form1.gif" alt="Sample form" /></p>
+
+<p>Submitting this gives me the following error:</p>
+
+<p><img src="/images/uploads/2007/04/formerror2.gif" alt="Form Error 2" /></p>
+
+<p>In my opinion that is a bug which basically means whether you&rsquo;re using &lt;cfform&gt; or &lt;form&gt; you can&rsquo;t name any fields ending with &ldquo;_required&rdquo;.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

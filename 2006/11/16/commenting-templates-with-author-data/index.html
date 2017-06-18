@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Commenting templates with author data | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Commenting templates with author data - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 16, 2006</h2>
+    <h1 class="title">Commenting templates with author data</h1>
+    
+    <div class="content">
+      <p>We all know that we should liberally comment our code to allow other developers (and yourself) to quickly and easily find out what a particular section of code does. But what about a comment block at the top of the page so anybody can (at a glance) determine template specific information?</p>
+
+<p>Here is an example of what I use at the top of my pages, this is pretty standard but I know a lot of people don&rsquo;t do it.</p>
+
+<pre><code class="language-ruby">&lt;!---
+   Name          : myFile.cfm
+   Author        : Michael Sharman
+   Created       : November 06, 2006
+   Last Updated  : November 06, 2006
+   History       : Initial release (mps 6/11/2006)
+   Purpose       : A descriptive message
+---&gt;
+</code></pre>
+
+<p>I find the best thing is to either have this as part of a template for a new <em>.cfm</em> file, or as a snippet for easy access. I actually use snippets with built-in and custom <a href="http://www.chapter31.com/2006/10/22/cfeclipse-snippets/">snippet variables</a> for the comment options.</p>
+
+<p>The snippet I use for cfeclipse is:</p>
+
+<pre><code class="language-ruby">&lt;!---
+   Name          : $${CURRENTFILE}
+   Author        : Michael Sharman
+   Created       : $${MONTH} $${DAYOFMONTH}, $${YEAR}
+   Last Updated  : $${MONTH} $${DAYOFMONTH}, $${YEAR}
+   History       : Initial release (mps $${DAYOFMONTH}/$${MONTHNUMBER}/$${YEAR})
+   Purpose       : $${Purpose:}
+---&gt;
+</code></pre>
+
+<p>Note the custom variable $${Purpose:} as well as the built-in snippet variables like $${CURRENTFILE}. You can read more about <a href="http://www.cfeclipse.org/go/documentation/user-docs/snippets">snippet variables here</a>.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

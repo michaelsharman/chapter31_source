@@ -1,0 +1,138 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Removing duplicate rows in Open Office (calc) | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Removing duplicate rows in Open Office (calc) - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 13, 2010</h2>
+    <h1 class="title">Removing duplicate rows in Open Office (calc)</h1>
+    
+    <div class="content">
+      <p>I needed to de-dupe a spreadsheet the other day and <a href="http://blogs.sun.com/oootnt/entry/removing_duplicate_rows_in_calc">found a great how-to</a> from google. Thought I&rsquo;d post it here for my own future purposes:</p>
+
+<hr />
+
+<p>There is no automatic function to remove duplicate rows. Follow these steps to delete all rows that have duplicate values in column A:</p>
+
+<ol>
+<li><p>Select all cells of the current data range.</p>
+
+<p>On most systems, you can click any cell inside the data range, then press Ctrl+Multiplication key on the numeric keypad.</p></li>
+
+<li><p>Sort the data range by column A.</p>
+
+<p>Choose Data - Sort.</p></li>
+
+<li><p>Click an empty cell in the first row. Let&rsquo;s assume it is cell C1. Enter the formula:</p>
+
+<p>=IF(A1=A2;1;0)</p>
+
+<p>This will display 1 if the current row has the same value in column A as the next row. It will display 0 if the values are different.</p></li>
+
+<li><p>Copy the formula down for all rows of the data range.</p>
+
+<p>Drag the lower right edge of the cell C1 down to the last row.</p></li>
+
+<li><p>Now the formulas must be replaced by their values to freeze the contents.</p>
+
+<p>While the column C is still highlighted, press Ctrl+C to copy all selected cells to the clipboard.</p></li>
+
+<li><p>Press Shift+Ctrl+V to open the Paste Special dialog box.</p>
+
+<p>In the Selection area, enable only the Numbers command; disable the other Selection commands. Click OK.</p></li>
+
+<li><p>Select the whole data range including the new column C and sort the range by column C.</p>
+
+<p>Choose Data - Sort.</p></li>
+
+<li><p>Select all rows which have a value 1 in column C, then press Del key.</p></li>
+
+<li><p>Optional steps: Delete column C. Select the remaining rows and sort them again by column A.</p></li>
+</ol>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

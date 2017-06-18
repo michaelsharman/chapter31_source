@@ -1,0 +1,144 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>cfquery &#39;result&#39; attribute caveat | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="cfquery &#39;result&#39; attribute caveat - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 10, 2007</h2>
+    <h1 class="title">cfquery &#39;result&#39; attribute caveat</h1>
+    
+    <div class="content">
+      <p>A great feature of <cfquery> which was introduced in CFMX7 is the addition of the &lsquo;result&rsquo; attribute. When used, a developer can access a Structure of query result variables including the following keys:</p>
+
+<ul>
+<li>Cache</li>
+<li>ColumnList</li>
+<li>ExecutionTime</li>
+<li>RecordCount</li>
+<li>SQL</li>
+<li>SQLParameters</li>
+</ul>
+
+<p>You can read more about the &lsquo;result&rsquo; attribute in a <a href="http://www.chapter31.com/2006/03/11/new-attribute-and-object-variable-in-for-cfmx7/">previous post</a> or at <a href="http://livedocs.macromedia.com/coldfusion/7/htmldocs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=ColdFusion_Documentation&amp;file=00000316.htm">Live docs</a>.</p>
+
+<p>One thing I&rsquo;ve come across is that the structure returned (by using the result attribute) is created <em>where</em> the query is executed and the value of &lsquo;result&rsquo; references this struct in the local variable scope.</p>
+
+<p>So an inline query followed by a reference to the &lsquo;result&rsquo; struct would run fine:</p>
+
+<pre><code class="language-javascript">&lt;cfquery name=&quot;qData&quot; dsn=&quot;myDSN&quot; result=&quot;stResult&quot;&gt;
+	SELECT	*
+	FROM	MyTable
+&lt;/cfquery&gt;
+
+&lt;cfoutput&gt;
+	#stResult.sql#
+&lt;/cfoutput&gt;
+</code></pre>
+
+<p>But a problem exists when you have a query in a Component that is being returned by a method call. In this case the structure won&rsquo;t exist in the calling templates &lsquo;local&rsquo; scope and an exception will be thrown.</p>
+
+<p><img src="/images/uploads/2007/04/stresulterrors.jpg" alt="stResult exception" /></p>
+
+<p>The simple way around this is to declare the &lsquo;result&rsquo; attribute in the request scope:</p>
+
+<pre><code class="language-javascript">&lt;cfquery name=&quot;qData&quot; dsn=&quot;myDSN&quot; result=&quot;request.stResult&quot;&gt;
+	SELECT	*
+	FROM	MyTable
+&lt;/cfquery&gt;
+</code></pre>
+
+<p>Now you can reference the structure inside the calling template using the request scope:</p>
+
+<pre><code class="language-javascript">&lt;cfoutput&gt;
+	#request.stResult.sql#
+	#request.stResult.cached
+	etc
+&lt;/cfoutput&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

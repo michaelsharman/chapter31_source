@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.23" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">December 3, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/12/03/querying-multiple-databases-within-one-cfquery/">Querying multiple databases within one cfquery</a></h1>
+      
+      <div class="content">
+        In discussing a possible caching solution at work a suggestion was made to use a secondary database (on the same server) to store some key application data. It&rsquo;s not really important to describe why we wanted to do this, suffice to say that my concern was if and when the application would need to perform a SQL &ldquo;JOIN&rdquo; between the primary and secondary (caching) database as I wasn&rsquo;t sure if it was technically possible within our environment (ColdFusion 8, MySQL).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/12/03/querying-multiple-databases-within-one-cfquery/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 28, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/28/installing-a-new-farcry-5-project-extended-advanced-mode/">Installing a new FarCry 5 project - (Extended) Advanced Mode</a></h1>
+      
+      <div class="content">
+        There are several installation options for the latest version of FarCry (5.0.2) which makes things nice and flexible for the framework to be used by different people in a variety of setups.
+The deployment configurations page has some easy to follow instructions for installing in &ldquo;Standalone&rdquo; mode. This is really the best option if you are in a shared environment where you may not have control over ColdFusion mappings, but also if you are looking to get up and running quickly (maybe you just want to evaluate the product etc).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/28/installing-a-new-farcry-5-project-extended-advanced-mode/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 25, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/25/security-reminder-are-you-using-scriptprotect/">Security reminder - Are you using scriptprotect?</a></h1>
+      
+      <div class="content">
+        One of our applications had an entry in the ColdFusion exception logs today:
+ ScriptProtect error replacing insecure tag in scope CGI;
+ Essentially someone (via an automated process) was trying to find a weakness in our application by trying URL&rsquo;s like:
+http://www.mysite.com/?mode=&gt;'&gt;&lt;script&gt;alert(40891)&lt;/script&gt;  Luckily we use scriptprotect (among many other defensive techniques) to prevent this type of thing from causing any damage. But I just thought I&rsquo;d throw out a quick reminder to EVERYONE using CF7+ (or Railo) to make sure and use the scriptprotect attribute of either the cfapplication tag or Application.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/25/security-reminder-are-you-using-scriptprotect/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 24, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/24/use-applicationapplicationname-careful-when-re-initing-your-app/">Use application.applicationName? Careful when re-initing your app</a></h1>
+      
+      <div class="content">
+        I&rsquo;m sure most ColdFusion developers know that the application scope has a built-in variable called application.applicationName which stores the name of the application that you specify in the cfapplication tag or the this.name value if your using Application.cfc. This doesn&rsquo;t appear when you dump the application scope&hellip;but it&rsquo;s there.
+Today I wanted to use this variable, everything was working fine until I ran into an error when I re-initialised my application via a URL variable.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/24/use-applicationapplicationname-careful-when-re-initing-your-app/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/22/cfqueryparam-does-not-work-in-order-by-what-are-my-options/">cfqueryparam does not work in ORDER BY, what are my options?</a></h1>
+      
+      <div class="content">
+        For those that don&rsquo;t know, ColdFusion&rsquo;s cfqueryparam won&rsquo;t work on a SQL ORDER BY clause, so the following will not work:
+&lt;cfquery name=&quot;qGetUsers&quot; datasource=&quot;mydsn&quot;&gt; SELECT	FirstName, LastName FROM	Users ORDER BY &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.order#&quot; /&gt; &lt;/cfquery&gt;  This is really nothing new, people have been talking about this for years but with the spate of recent SQL injection attacks (note that I meant to publish this around sept 08 but got sidetracked!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/22/cfqueryparam-does-not-work-in-order-by-what-are-my-options/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 19, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/19/logging-all-mysql-queries-on-mac-osx/">Logging all MySQL queries on Mac OSX</a></h1>
+      
+      <div class="content">
+        We&rsquo;ve been doing some debugging of a 3rd party application recently where we had some possible performance concerns under a certain load and/or size of data in the database. What we wanted to know was exactly which queries (and how many) where hitting the database on a specific page request.
+The simplest method was to turn on logging of all queries on the local MySQL database, this is turned off by default as like most debugging techniques it adds overhead.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/19/logging-all-mysql-queries-on-mac-osx/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 15, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/15/forgot-to-import-your-coldfusion-tag-libraries/">Forgot to import your ColdFusion tag libraries?</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve been bitten by the &ldquo;forgetting to add &rdquo; when importing ColdFusion custom tags before. If you also have then you know what I mean and have shared the frustration&hellip;basically your custom tag does nothing but you get no error from ColdFusion, nada, zip! Depending on the scenario this can lead to some wasted hair pulling time!
+The reason is of course that the syntax to import custom tags is perfectly valid XML which is ignored by ColdFusion server because you forgot to add  tag.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/15/forgot-to-import-your-coldfusion-tag-libraries/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 12, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/12/google-releases-video-chat/">Google releases video chat</a></h1>
+      
+      <div class="content">
+        For those that use gtalk/gmail, google have finally caught up and released voice and video chat.
+They even help you buy a webcam!
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 12, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/12/var-scoping-how-and-where-do-you-set-your-function-variables/">var scoping - how and where do you set your function variables?</a></h1>
+      
+      <div class="content">
+        As everybody knows you should var scope ALL local function variables inside ColdFusion components, and these variables must be declared at the top of your function before any other code. If you place other code above a &ldquo;var&rdquo; scoped variable in your method signature an exception will be thrown.
+Depending on how you define you methods this will probably be fine, but I got to thinking recently on how this works with exception handling within your function, specifically for try/catch blocks.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/12/var-scoping-how-and-where-do-you-set-your-function-variables/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 10, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/10/invalid-serial-number-when-upgrading-to-flex-builder-3-pro/">&#34;Invalid serial number&#34; when upgrading to Flex Builder 3 Pro</a></h1>
+      
+      <div class="content">
+        Ok this was annoying&hellip;I had an older trial version of the standalone Flex Builder 3 on my system (Mac 10.5) and wanted to activate it with a new serial for FB3 Professional.
+Whenever I entered the serial in &ldquo;Help -&gt; Manage Flex Licenses&rdquo; I kept getting a message saying &ldquo;Invalid serial number&rdquo; even though it was a brand new serial. Damn.
+Mark gave me the original hint to remove the license.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/10/invalid-serial-number-when-upgrading-to-flex-builder-3-pro/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/page/8/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/page/10/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+
+

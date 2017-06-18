@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Databases | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Databases - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">February 21, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/02/21/using-mysql-administrator-to-view-real-time-stats/">Using MySQL Administrator to view real time stats</a></h1>
+      
+      <div class="content">
+        I was working on piece of code today which was sending an Ajax request to the server. The result of this request could have been 0 - 5 database UPDATE statements.
+What I needed was a way to test my code to make sure the correct number of database statements were being executed based on the user event which fired the request.
+There are of course a number of ways I could have done this including:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/02/21/using-mysql-administrator-to-view-real-time-stats/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 11, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/04/11/combining-update-and-insert-sql-logic/">Combining insert and update SQL logic</a></h1>
+      
+      <div class="content">
+        *Note that this example is using MSSQL with an Identity set to generate the primary key automatically.
+An all too common process developers go through when building database driven web applications is creating logic to INSERT a record when one doesn&rsquo;t exist, and UPDATE a record when one does exist.
+This often leads to conditional logic within your application (inside a Service layer perhaps) and then running one of 2 SQL statements depending on the existance of a primary key value which may be coming from a form or URL.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/04/11/combining-update-and-insert-sql-logic/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">January 30, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/01/30/coldfusion-uuids-and-mssql-newid/">ColdFusion UUID and MSSQL newID()</a></h1>
+      
+      <div class="content">
+        A lot of web applications these days use a UUID as the primary key instead of the int/identity combination (speaking for MSSQL that is).
+Now there is a (valid) argument that UUID&rsquo;s aren&rsquo;t great for primary keys due to the fact that primary keys are clustered, meaning that integers would work much better if the table had a large amount of data. This may not effect you dramatically as you&rsquo;d would most likely only see performance degradation once the database had a substantial amount of data.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/01/30/coldfusion-uuids-and-mssql-newid/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">January 11, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/01/11/to-delete-or-not-to-delete/">To delete or not to delete</a></h1>
+      
+      <div class="content">
+        As a web developer you are constantly faced with building functionality to remove an object from an application. The object could be anything from a web page in a CMS to a user in a CRM, but generally involves a record(s) stored in a database.
+For a user &lsquo;using&rsquo; the application whenever they access the functionality to remove the object it disappears from view&hellip;but what happens behind the scenes?
+There are a couple of standard options available to developers:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/01/11/to-delete-or-not-to-delete/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 26, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/07/26/truncating-mssql-transaction-log/">Truncating MSSQL transaction log</a></h1>
+      
+      <div class="content">
+        Every wanted to truncate the transaction log of a MS SQL database? We do that all the time when moving a database from one server to the other. Remember that the transaction log can take up a LOT of space in the backup file which you don&rsquo;t need when you are simply moving a database to a new server (and when you don&rsquo;t have the option to simply DTS).
+Open up Query Analyser and run the following, substituting real database, file and log names.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/07/26/truncating-mssql-transaction-log/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/databases/page/2/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

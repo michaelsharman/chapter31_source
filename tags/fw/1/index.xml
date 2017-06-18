@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fw/1 on chapter31</title>
+    <link>http://chapter31.com/tags/fw/1/</link>
+    <description>Recent content in Fw/1 on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Sun, 30 Sep 2012 06:54:59 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/tags/fw/1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Modifying FW/1 variables.framework properties</title>
+      <link>http://chapter31.com/2012/09/30/modifying-fw1-variables-framework-properties/</link>
+      <pubDate>Sun, 30 Sep 2012 06:54:59 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/09/30/modifying-fw1-variables-framework-properties/</guid>
+      <description>FW/1 gives you a nice, clean way to manage framework configuration properties. They&amp;rsquo;re all wrapped up inside Application.cfc in a structure called variables.framework, you can read more about them here under Configuring FW/1 Applications.
+Our applications often have a need to use different values for these properties, depending on which environment the application is running in (development, testing, staging, production etc). An example of this might be reloadApplicationOnEveryRequest, which we want as true in development, but false elsewhere else.</description>
+    </item>
+    
+    <item>
+      <title>Preventing FW/1 from reinitialising an app via the URL</title>
+      <link>http://chapter31.com/2012/09/27/preventing-fw1-from-reinitialising-an-app-via-the-url/</link>
+      <pubDate>Thu, 27 Sep 2012 12:57:23 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2012/09/27/preventing-fw1-from-reinitialising-an-app-via-the-url/</guid>
+      <description>One of the things that FW/1 allows you to do is configure a reload &amp;ldquo;key&amp;rdquo; and &amp;ldquo;password&amp;rdquo; which you can use to reinit your application via URL.
+So inside your Application.cfc you might have:
+variables.framework = { reload = &#39;reinit&#39;, password = &amp;quot;mysecretkey&amp;quot; … }  So you can reinit your application (flush the application scope by re-running onApplicationStart()) by calling something like:
+http://www.example.com/?reinit=mysecretkey  The &amp;ldquo;reload&amp;rdquo; and &amp;ldquo;password&amp;rdquo; properties can be changed to whatever you want for securities sake.</description>
+    </item>
+    
+  </channel>
+</rss>

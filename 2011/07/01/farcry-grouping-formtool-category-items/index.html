@@ -1,0 +1,304 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>FarCry - grouping formtool category items | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="FarCry - grouping formtool category items - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">July 1, 2011</h2>
+    <h1 class="title">FarCry - grouping formtool category items</h1>
+    
+    <div class="content">
+      <p>A new project we&rsquo;re working has the need to categorise each new content object, for this we use the built in FarCry category/keyword formtool.</p>
+
+<p>By default the render type is a multi-select tree, I wanted a single select dropdown. Luckily formtools makes this oh so simple.</p>
+
+<pre><code class="language-javascript">&lt;cfproperty name=&quot;catHTML&quot; type=&quot;nstring&quot; required=&quot;true&quot; default=&quot;&quot; ftSeq=&quot;2&quot; ftwizardStep=&quot;Content&quot;  ftValidation=&quot;required&quot; ftFieldset=&quot;General Details&quot; ftLabel=&quot;Categories&quot; ftType=&quot;Category&quot; ftAlias=&quot;sections&quot; ftRenderType=&quot;dropdown&quot; ftSelectSize=&quot;1&quot; ftSelectMultiple=&quot;false&quot; ftAliasAsOptGroup=&quot;true&quot;&gt;
+</code></pre>
+
+<p>Note that I&rsquo;ve set the dropdown size to 1 and multiple select to false. Basically I have a group of &ldquo;sections&rdquo; that each content object needs to belong to, section 1 through 11. I&rsquo;ve setup the categories already under a parent category called &ldquo;sections&rdquo; (note the ftAlias in the formtool definition). Unfortunately the default rendering was showing &ldquo;sections&rdquo; as a selectable category, however I didn&rsquo;t want this. I only wanted the users to be able to choose the <em>children</em> of this category, not the category itself.</p>
+
+<p>Luckily FarCry makes this kind of thing simple to override. I added my own category.cfc inside my projects <em>packages/formtools</em> directory and made sure to extend category.cfc from <em>farcry.core.packages.formtools.category</em>. In this I only used the edit() function to render an optgroup from a new custom property called ftAliasAsOptGroup (see above snippet). This gave me the following:</p>
+
+<p><img src="/images/uploads/2011/07/optgroup.png" alt="FarCry optgroup" /></p>
+
+<p>The full category.cfc is below if you&rsquo;re interested.</p>
+
+<pre><code class="language-javascript">&lt;cfcomponent extends=&quot;farcry.core.packages.formtools.category&quot;&gt;
+
+
+	&lt;cfproperty name=&quot;ftAliasAsOptGroup&quot; default=&quot;&quot; hint=&quot;If true, renders ftAlias as an optgroup&quot;&gt;
+
+
+	&lt;cffunction name=&quot;edit&quot; access=&quot;public&quot; output=&quot;false&quot; returntype=&quot;string&quot; hint=&quot;his will return a string of formatted HTML text to enable the user to edit the data&quot;&gt;
+		&lt;cfargument name=&quot;typename&quot; required=&quot;true&quot; type=&quot;string&quot; hint=&quot;The name of the type that this field is part of.&quot;&gt;
+		&lt;cfargument name=&quot;stObject&quot; required=&quot;true&quot; type=&quot;struct&quot; hint=&quot;The object of the record that this field is part of.&quot;&gt;
+		&lt;cfargument name=&quot;stMetadata&quot; required=&quot;true&quot; type=&quot;struct&quot; hint=&quot;This is the metadata that is either setup as part of the type.cfc or overridden when calling ft:object by using the stMetadata argument.&quot;&gt;
+		&lt;cfargument name=&quot;fieldname&quot; required=&quot;true&quot; type=&quot;string&quot; hint=&quot;This is the name that will be used for the form field. It includes the prefix that will be used by ft:processform.&quot;&gt;
+
+		&lt;cfset var html = &quot;&quot; /&gt;
+		&lt;cfset var navid = &quot;&quot; /&gt;
+		&lt;cfset var oCategory = createObject(&quot;component&quot;,'farcry.core.packages.farcry.category')&gt;
+		&lt;cfset var lSelectedCategoryID = &quot;&quot; &gt;
+		&lt;cfset var lCategoryBranch = &quot;&quot; /&gt;
+		&lt;cfset var CategoryName = &quot;&quot; /&gt;
+		&lt;cfset var i = &quot;&quot; /&gt;
+		&lt;cfset var rootNodeText = &quot;&quot; /&gt;
+		&lt;cfset var rootID = &quot;&quot; /&gt;
+
+		&lt;cfif structKeyExists(application.catid, arguments.stMetadata.ftAlias)&gt;
+			&lt;cfset rootID = application.catid[arguments.stMetadata.ftAlias] &gt;
+		&lt;cfelse&gt;
+			&lt;cfset rootID = application.catid['root'] &gt;
+		&lt;/cfif&gt;
+
+		&lt;cfset lSelectedCategoryID = oCategory.getCategories(objectid=arguments.stObject.ObjectID,bReturnCategoryIDs=true,alias=arguments.stMetadata.ftAlias) /&gt;
+
+		&lt;cfset rootNodeText = oCategory.getCategoryNamebyID(categoryid=rootID) /&gt;
+
+		&lt;cfswitch expression=&quot;#arguments.stMetadata.ftRenderType#&quot;&gt;
+
+			&lt;cfcase value=&quot;dropdown&quot;&gt;
+				&lt;cfset lCategoryBranch = oCategory.getCategoryBranchAsList(lCategoryIDs=rootID) /&gt;
+
+				&lt;cfsavecontent variable=&quot;html&quot;&gt;
+					&lt;cfoutput&gt;&lt;select id=&quot;#arguments.fieldname#&quot; name=&quot;#arguments.fieldname#&quot;  &lt;cfif arguments.stMetadata.ftSelectMultiple&gt;size=&quot;#arguments.stMetadata.ftSelectSize#&quot; multiple=&quot;true&quot;&lt;/cfif&gt; class=&quot;selectInput #arguments.stMetadata.ftSelectSize# #arguments.stMetadata.ftClass#&quot;&gt;&lt;/cfoutput&gt;
+					&lt;cfloop list=&quot;#lCategoryBranch#&quot; index=&quot;i&quot;&gt;
+						&lt;!--- If the item is the actual alias requested then it is not selectable. ---&gt;
+						&lt;cfif i EQ rootID&gt;
+							&lt;cfif len(arguments.stMetadata.ftDropdownFirstItem)&gt;
+								&lt;cfoutput&gt;&lt;option value=&quot;&quot;&gt;#arguments.stMetadata.ftDropdownFirstItem#&lt;/option&gt;&lt;/cfoutput&gt;
+							&lt;cfelse&gt;
+								&lt;cfset CategoryName = oCategory.getCategoryNamebyID(categoryid=i,typename='dmCategory') /&gt;
+								&lt;cfif arguments.stMetadata.ftAliasAsOptGroup EQ true&gt;
+									&lt;cfoutput&gt;&lt;optgroup label=&quot;#CategoryName#&quot;&gt;&lt;/cfoutput&gt;
+								&lt;cfelse&gt;
+									&lt;cfoutput&gt;&lt;option value=&quot;&quot;&gt;#CategoryName#&lt;/option&gt;&lt;/cfoutput&gt;
+								&lt;/cfif&gt;
+							&lt;/cfif&gt;
+						&lt;cfelse&gt;
+							&lt;cfset CategoryName = oCategory.getCategoryNamebyID(categoryid=i,typename='dmCategory') /&gt;
+							&lt;cfoutput&gt;&lt;option value=&quot;#i#&quot;&lt;cfif listContainsNoCase(lSelectedCategoryID, i)&gt; selected=&quot;selected&quot;&lt;/cfif&gt;&gt;#CategoryName#&lt;/option&gt;&lt;/cfoutput&gt;
+						&lt;/cfif&gt;
+					&lt;/cfloop&gt;
+					&lt;cfif arguments.stMetadata.ftAliasAsOptGroup EQ true&gt;
+						&lt;cfoutput&gt;&lt;/optgroup&gt;&lt;/cfoutput&gt;
+					&lt;/cfif&gt;
+					&lt;cfoutput&gt;&lt;/select&gt;&lt;/cfoutput&gt;
+				&lt;/cfsavecontent&gt;
+			&lt;/cfcase&gt;
+
+			&lt;cfcase value=&quot;prototype&quot;&gt;
+				&lt;cfsavecontent variable=&quot;html&quot;&gt;
+
+					&lt;cfoutput&gt;&lt;fieldset style=&quot;width: 300px;&quot;&gt;
+						&lt;cfif len(arguments.stMetadata.ftLegend)&gt;&lt;legend&gt;#arguments.stMetadata.ftLegend#&lt;/legend&gt;&lt;/cfif&gt;
+
+						&lt;div class=&quot;fieldsection optional full&quot;&gt;
+
+							&lt;div class=&quot;fieldwrap&quot;&gt;
+							&lt;/cfoutput&gt;
+
+								&lt;ft:NTMPrototypeTree id=&quot;#arguments.fieldname#&quot; navid=&quot;#rootID#&quot; depth=&quot;99&quot; bIncludeHome=1 lSelectedItems=&quot;#lSelectedCategoryID#&quot; bSelectMultiple=&quot;#arguments.stMetadata.ftSelectMultiple#&quot;&gt;
+
+							&lt;cfoutput&gt;
+							&lt;/div&gt;
+
+							&lt;br class=&quot;fieldsectionbreak&quot; /&gt;
+						&lt;/div&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;#arguments.fieldname#&quot; name=&quot;#arguments.fieldname#&quot; value=&quot;&quot; /&gt;
+					&lt;/fieldset&gt;&lt;/cfoutput&gt;
+
+				&lt;/cfsavecontent&gt;
+			&lt;/cfcase&gt;
+			&lt;cfcase value=&quot;extjs&quot;&gt;
+				&lt;!--- &lt;skin:htmlHead library=&quot;extjs&quot; /&gt;
+				&lt;skin:htmlHead library=&quot;farcryForm&quot; /&gt; ---&gt;
+
+				&lt;cfsavecontent variable=&quot;html&quot;&gt;
+
+					&lt;cfoutput&gt;&lt;fieldset style=&quot;width: 300px;&quot;&gt;
+						&lt;cfif len(arguments.stMetadata.ftLegend)&gt;&lt;legend&gt;#arguments.stMetadata.ftLegend#&lt;/legend&gt;&lt;/cfif&gt;
+
+						&lt;!--- &lt;div id=&quot;tree-div&quot; style=&quot;border:1px solid #c3daf9;&quot;&gt;&lt;/div&gt; ---&gt;
+						&lt;div class=&quot;fieldsection optional full&quot;&gt;
+
+							&lt;div class=&quot;fieldwrap&quot;&gt;
+
+								&lt;div id=&quot;#arguments.fieldname#-tree-div&quot;&gt;&lt;/div&gt;
+
+							&lt;/div&gt;
+
+							&lt;br class=&quot;fieldsectionbreak&quot; /&gt;
+						&lt;/div&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;#arguments.fieldname#&quot; name=&quot;#arguments.fieldname#&quot; value=&quot;#lSelectedCategoryID#&quot; /&gt;
+						&lt;input type=&quot;hidden&quot; name=&quot;#arguments.fieldname#&quot; value=&quot;&quot; /&gt;
+					&lt;/fieldset&gt;
+					&lt;/cfoutput&gt;
+
+				&lt;/cfsavecontent&gt;
+
+				&lt;skin:onReady&gt;
+				&lt;cfoutput&gt;
+				    createFormtoolTree('#arguments.fieldname#','#rootID#', '#application.url.webtop#/facade/getCategoryNodes.cfm', '#rootNodeText#','#lSelectedCategoryID#', 'categoryIconCls');
+				&lt;/cfoutput&gt;
+				&lt;/skin:onReady&gt;
+			&lt;/cfcase&gt;
+			&lt;cfcase value=&quot;jquery&quot;&gt;
+
+				&lt;skin:onReady&gt;
+				&lt;cfoutput&gt;
+					$j(&quot;###arguments.fieldname#_list&quot;).treeview({
+						url: &quot;#application.url.webtop#/facade/getCategoryNodes.cfm?node=#rootID#&amp;fieldname=#arguments.fieldname#&amp;multiple=#arguments.stMetadata.ftSelectMultiple#&amp;lSelectedItems=#lSelectedCategoryID#&quot;
+					})
+				&lt;/cfoutput&gt;
+				&lt;/skin:onReady&gt;
+
+				&lt;cfsavecontent variable=&quot;html&quot;&gt;
+					&lt;cfoutput&gt;
+					&lt;div class=&quot;multiField&quot;&gt;
+						&lt;ul id=&quot;#arguments.fieldname#_list&quot; class=&quot;treeview&quot;&gt;&lt;/ul&gt;
+					&lt;/div&gt;
+					&lt;input type=&quot;hidden&quot; name=&quot;#arguments.fieldname#&quot; value=&quot;&quot; /&gt;
+					&lt;/cfoutput&gt;
+				&lt;/cfsavecontent&gt;
+			&lt;/cfcase&gt;
+			&lt;cfdefaultcase&gt;
+
+				&lt;skin:loadJS id=&quot;jquery&quot; /&gt;
+				&lt;skin:loadJS id=&quot;jquery-checkboxtree&quot; basehref=&quot;#application.url.webtop#/thirdparty/checkboxtree/js&quot; lFiles=&quot;jquery.checkboxtree.js&quot; /&gt;
+				&lt;skin:loadCSS id=&quot;jquery-checkboxtree&quot; basehref=&quot;#application.url.webtop#/thirdparty/checkboxtree/css&quot; lFiles=&quot;checkboxtree.css&quot; /&gt;
+
+				&lt;skin:onReady&gt;
+				&lt;cfoutput&gt;
+					$j.ajax({
+					   type: &quot;POST&quot;,
+					   url: '#application.fapi.getLink(type=&quot;dmCategory&quot;, objectid=&quot;#rootID#&quot;, view=&quot;displayCheckboxTree&quot;, urlParameters=&quot;ajaxmode=1&quot;)#',
+					   data: {
+					   	fieldname: '#arguments.fieldname#',
+					   	rootNodeID:'#rootID#',
+					   	selectedObjectIDs: '#lSelectedCategoryID#'
+						},
+					   cache: false,
+					   success: function(msg){
+					   		$j(&quot;###arguments.fieldname#-checkboxDiv&quot;).html(msg);
+							$j(&quot;###arguments.fieldname#-checkboxTree&quot;).checkboxTree({
+									collapsedarrow: &quot;#application.url.webtop#/thirdparty/checkboxtree/images/checkboxtree/img-arrow-collapsed.gif&quot;,
+									expandedarrow: &quot;#application.url.webtop#/thirdparty/checkboxtree/images/checkboxtree/img-arrow-expanded.gif&quot;,
+									blankarrow: &quot;#application.url.webtop#/thirdparty/checkboxtree/images/checkboxtree/img-arrow-blank.gif&quot;,
+									checkchildren: false,
+									checkparents: false
+							});
+							$j(&quot;###arguments.fieldname#-checkboxDiv input:checked&quot;).addClass('mjb');
+							$j(&quot;###arguments.fieldname#-checkboxDiv input:checked&quot;).parent().addClass('mjb');
+					   }
+					 });
+
+				&lt;/cfoutput&gt;
+				&lt;/skin:onReady&gt;
+
+				&lt;cfsavecontent variable=&quot;html&quot;&gt;
+
+					&lt;cfoutput&gt;
+					&lt;div class=&quot;multiField&quot;&gt;
+						&lt;div id=&quot;#arguments.fieldname#-checkboxDiv&quot;&gt;loading...&lt;/div&gt;
+						&lt;input type=&quot;hidden&quot; name=&quot;#arguments.fieldname#&quot; value=&quot;&quot; /&gt;
+					&lt;/div&gt;
+					&lt;/cfoutput&gt;
+
+				&lt;/cfsavecontent&gt;
+			&lt;/cfdefaultcase&gt;
+
+		&lt;/cfswitch&gt;
+
+		&lt;cfreturn html&gt;
+	&lt;/cffunction&gt;
+
+&lt;/cfcomponent&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

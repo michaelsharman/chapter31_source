@@ -1,0 +1,136 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>High CPU and memory usage in ColdFusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="High CPU and memory usage in ColdFusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">October 4, 2006</h2>
+    <h1 class="title">High CPU and memory usage in ColdFusion</h1>
+    
+    <div class="content">
+      <p><a href="http://carehart.org/blog/client">Charlie Arehart</a> had an extremely <a href="http://carehart.org/blog/client/index.cfm/2006/10/4/bots_and_spiders_and_poor_CF_performance">interesting article today</a> on JRun performance issues, particularly relating to high CPU cycles and memory usage.</p>
+
+<p>The perpetrators in this example were thought to be search engine spiders (or &lsquo;bots&rsquo;) and/or RSS feeds.</p>
+
+<p>Now bots may visit your website many times throughout the course of a single day, this could be the same bot of different bots (for different search engines). Also you may be in a situation where you have many people syndicating content from your site in the form of a feed (RSS/Atom etc).</p>
+
+<p>The problem starts to appear if you use session and/or client management (sessionmanagement=&ldquo;yes&rdquo; or clientmanagement=&ldquo;yes&rdquo;) because these mechanisms don’t store cookies. So everytime one of these processes calls one of your pages a new session/client variable etc is created. Not so much of a problem, but what happens if you have increased traffic (more feeds, more bots) and suddenly you’re creating a LOT of unwanted variables in memory. Remember though that a new ‘session’ will be create on each page request!</p>
+
+<p>But take that further, what happens if you have an onSessionStart() event which loads an object (or large amount of data) into memory? Or if you are doing database transactions? These are all needless in this example and taking up far too many resources.</p>
+
+<p>So what do you do?</p>
+
+<p><a href="http://www.blogoffusion.com/">Michael Dinowitz</a> has some good ideas which he <a href="http://www.blogoffusion.com/index.cfm/2005/11/28/pseudomemory-leak">posted last year</a>. To quote Michael:</p>
+
+<ol>
+<li>Increase your ram. If you can do this, then ramp up your memory as high as you can. This is not a perfect solution but it saves throwing time at the problem and gives you a ‘buffer’ against problems of this sort.</li>
+<li>Set a robots.txt with a Crawl-delay setting. Mine is set to 1 second but you can set yours to something higher</li>
+<li>set a different cfapplication for the most common bots. I use a simple regular expression to find key words that only exist in bots:
+<code>ruby
+&lt;CFIF REFindNoCase('Slurp|Googlebot|BecomeBot|msnbot|Mediapartners-Google|ZyBorg|RufusBot|EMonitor', cgi.http_user_agent)&gt;
+&lt;CFAPPLICATION name=&quot;FusionA&quot; clientmanagement=&quot;no&quot; sessionmanagement=&quot;no&quot; setclientcookies=&quot;no&quot; setdomaincookies=&quot;no&quot; clientstorage=&quot;Cookie&quot;&gt;
+&lt;CFELSE&gt;
+&lt;CFAPPLICATION name=&quot;FusionA&quot; clientmanagement=&quot;yes&quot; sessionmanagement=&quot;no&quot; setclientcookies=&quot;yes&quot; setdomaincookies=&quot;no&quot; clientstorage=&quot;Cookie&quot;&gt;
+&lt;/CFIF&gt;
+</code></li>
+</ol>
+
+<p>This will make sure that a client structure is NOT created for one of these bots.</p>
+
+<ol>
+<li>Use the same regex to clean out the client structure after the bot finishes the page. Use structclear(client) to remove the data in the onRequestEnd.cfm, the onRequestEnd method of the application.cfc or in the template itself.
+Bottom line is that while bots are great for indexing your content, they can cause havoc on your system when a lot of memory is assigned to what is essentially a ‘dead session’.</li>
+</ol>
+
+<p>All in all a fantastic read and a reminder to developers that a web sites development isn’t finished once it goes live. Post launch performance tuning and monitoring are essential to running an efficient and fast performing site.</p>
+
+<p>It does seem a little ironic that the tools meant to assist us (in search rankings and content syndication) are a possible cause of poor site performance to the point that users might leave!</p>
+
+<p>Note that Charlies article was inspired by <a href="http://www.coldfusionmuse.com/index.cfm/2005/11/28/session.bots">Mark Kruger</a> which I also suggest reading.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

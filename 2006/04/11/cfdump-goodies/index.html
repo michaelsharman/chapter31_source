@@ -1,0 +1,117 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>cfdump goodies | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="cfdump goodies - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 11, 2006</h2>
+    <h1 class="title">cfdump goodies</h1>
+    
+    <div class="content">
+      <p><a href="http://livedocs.macromedia.com/coldfusion/6.1/htmldocs/tags-p21.htm">&lt;cfdump&gt;</a> is a fantastic debugging tool which can be used to display the values/results of simple and complex variables. But there are a couple of little known attributes you can take advantage of to make your life just peachy, namely:</p>
+
+<ul>
+<li>expand</li>
+<li>top</li>
+</ul>
+
+<p>Expand is great when you&rsquo;re working with large data structures which might take a long time to load etc. This attribute can take 2 values, either yes or no (the default being yes). &lsquo;Yes&rsquo; expands all structure(s) both top level and nested, and &lsquo;No&rsquo; collapses them which can be handy if you only want to view top level elements only or if you want to drill down to a certain key only.</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-javascript">&lt;cfdump var=&quot;#myVar#&quot; expand=&quot;no&quot;&gt;&lt;/cfdump&gt;
+</code></pre>
+
+<p>Top is used to display the top &lsquo;x&rsquo; nested levels of the structure. So if you are dumping a complex variable which holds many nested complex types (queries, structures etc) you can choose which level to load up to.</p>
+
+<p><strong>For example:</strong></p>
+
+<pre><code class="language-javascript">&lt;cfdump var=&quot;#myVar#&quot; top=&quot;2&quot;&gt;&lt;/cfdump&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

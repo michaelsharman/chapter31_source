@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Farcry | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Farcry - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">June 9, 2009</h2>
+      <h1 class="title"><a href="http://chapter31.com/2009/06/09/setting-application-variables-in-farcry/">Setting application variables in FarCry</a></h1>
+      
+      <div class="content">
+        I just thought I&rsquo;d write up some quick thoughts on setting application scoped variables in FarCry as it occured to me that it could be a little confusing to non-FarCry developers.
+It doesn&rsquo;t really matter which framework you use, you can theoretically set you application variables anywhere you want, but ideally you want to follow some sort of methodology and consistency both with the rest of your development team and of course the framework you happen to be using.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2009/06/09/setting-application-variables-in-farcry/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 29, 2009</h2>
+      <h1 class="title"><a href="http://chapter31.com/2009/05/29/setting-the-sort-order-for-custom-admin-items/">Setting the sort order for custom admin items in FarCry</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve wanted to be able to control the sort order of menu and menuitems in the customadmin.xml (or equivalent) file for quite a while but hadn&rsquo;t found how to do it. Only today did I find the ability, I believe it&rsquo;s a FarCry 5+ feature which was why I didn&rsquo;t see it before.
+The answer is simple, just add a &ldquo;sequence&rdquo; attribute to your menu or menuitem tag:
+&lt;menu mergeType=&quot;merge&quot; sequence=&quot;1&quot; id=&quot;farcry_studentsonlineadminSubSection&quot; label=&quot;Homepage Content&quot; labelType=&quot;value&quot;&gt; &lt;menuitem id=&quot;boardlinks&quot; sequence=&quot;1&quot; label=&quot;Board Links&quot; link=&quot;/admin/customadmin.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2009/05/29/setting-the-sort-order-for-custom-admin-items/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 28, 2009</h2>
+      <h1 class="title"><a href="http://chapter31.com/2009/05/28/changing-the-sort-order-of-farcry-categorieskeywords/">Changing the sort order of FarCry categories/keywords</a></h1>
+      
+      <div class="content">
+        Categorising content with keywords (or &ldquo;tags&rdquo;) is a well known concept these days and it&rsquo;s good to know that FarCry has had this ability long before it became cool!
+I&rsquo;m using categories to group content for a custom type but I needed to allow the editors to sort these categories and not rely on the alphabetical order of the category etc.
+Luckily in FarCry categories use the nested tree object model (exactly like the navigation tree) so sorting is absolutely possible.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2009/05/28/changing-the-sort-order-of-farcry-categorieskeywords/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 28, 2009</h2>
+      <h1 class="title"><a href="http://chapter31.com/2009/05/28/setting-a-label-property-tip-for-farcry-5/">Setting a &#34;Label&#34; property tip for FarCry 5</a></h1>
+      
+      <div class="content">
+        Quick tip which might fix some problems for people as it did for me today.
+I had a custom object for a calendar where the main title was &ldquo;EventTitle&rdquo;. Now as you may know FarCry uses the &ldquo;label&rdquo; and &ldquo;title&rdquo; property from types.cfc by default.
+As I wasn&rsquo;t using this default property my label value was &ldquo;incomplete&rdquo; in the database. This didn&rsquo;t really bother me as it would never be seen, however it was preventing my content object from being approved.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2009/05/28/setting-a-label-property-tip-for-farcry-5/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 4, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/12/04/how-to-do-a-case-sensitive-test-of-your-codebase/">How to do a case-sensitive test of your codebase</a></h1>
+      
+      <div class="content">
+        Cross platform development and/or hosting makes for interesting times. Making sure that your entire codebase and configuration are compatible and work in different operating environments is obviously paramount to a successful project, particularly if you are &ldquo;releasing&rdquo; a product to the public either open source or commercially.
+At Lynch Consulting all of our production servers are Linux based but the development team spreads across Linux, Mac and the occasional Windows machine.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/12/04/how-to-do-a-case-sensitive-test-of-your-codebase/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 28, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/28/installing-a-new-farcry-5-project-extended-advanced-mode/">Installing a new FarCry 5 project - (Extended) Advanced Mode</a></h1>
+      
+      <div class="content">
+        There are several installation options for the latest version of FarCry (5.0.2) which makes things nice and flexible for the framework to be used by different people in a variety of setups.
+The deployment configurations page has some easy to follow instructions for installing in &ldquo;Standalone&rdquo; mode. This is really the best option if you are in a shared environment where you may not have control over ColdFusion mappings, but also if you are looking to get up and running quickly (maybe you just want to evaluate the product etc).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/28/installing-a-new-farcry-5-project-extended-advanced-mode/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 15, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/15/forgot-to-import-your-coldfusion-tag-libraries/">Forgot to import your ColdFusion tag libraries?</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve been bitten by the &ldquo;forgetting to add &rdquo; when importing ColdFusion custom tags before. If you also have then you know what I mean and have shared the frustration&hellip;basically your custom tag does nothing but you get no error from ColdFusion, nada, zip! Depending on the scenario this can lead to some wasted hair pulling time!
+The reason is of course that the syntax to import custom tags is perfectly valid XML which is ignored by ColdFusion server because you forgot to add  tag.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/15/forgot-to-import-your-coldfusion-tag-libraries/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 16, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/08/16/farcry-5-running-on-railo-3-windows/">FarCry 5 running on Railo 3 (Windows)</a></h1>
+      
+      <div class="content">
+        The CFML market is hotting up with Railo going open source (in version 3.1) and joining forces with JBoss for an end of 2008 release! With that in mind I figured it was time to check out Railo with the latest version of FarCry.
+My environment:
+ Windows XP Railo 3.0.0.003 FarCry 5.0.0 (although 5.0.2 is out, the latest distro from the site offers only 5.0.0) FarCry 5.0.2 MySQL 5  I&rsquo;m using the &ldquo;express&rdquo; version of Railo which bundles with Jetty Application Server, so no need for any apache configurations as everything runs off port 8888.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/08/16/farcry-5-running-on-railo-3-windows/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 30, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/07/30/latest-firefox-breaks-farcry-3-context-menu/">Latest Firefox breaks FarCry 3 context menu</a></h1>
+      
+      <div class="content">
+        If the following describes your environment, this a reminder to upgrade and use the latest Farcry:
+ Using Mac (OS X Leopard) Using FarCry v3 Using Firefox and have recently upgraded to version 3.0 or 3.0.1  The reason? Well the new upgrade of Firefox 3 has broken the webtop context menu. You can see the menu, but none of the options work.
+Although you could use Camino which works well (and Safari isn&rsquo;t fully suported on FarCry 3), you really should be upgrading to the brand spanking new FarCry 5 :)
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/07/30/latest-firefox-breaks-farcry-3-context-menu/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 21, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/07/21/inetaddresslocator-problems-with-farcry-3/">InetAddressLocator problems with FarCry 3</a></h1>
+      
+      <div class="content">
+        Took me a little bit to find the solution for this across several different board posts so I thought I&rsquo;d quickly write it up.
+For those of us still using FarCry 3 (remember that FarCry 5 is out!) you may come across the following error:
+&ldquo;java init failed: net.sf.javainetloca­tor.InetAddressLocat­or&rdquo;
+The docs tell us:
+ Geolocator is a plugin that determines the locale of an inbound request. Its an optional plugin that is turned off by default, and requires a class file InetAddressLocator to be placed in your class path.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/07/21/inetaddresslocator-problems-with-farcry-3/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/farcry/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/farcry/page/3/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

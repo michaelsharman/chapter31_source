@@ -1,0 +1,120 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Don&#39;t forget the ColdFusion site-wide error handler | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Don&#39;t forget the ColdFusion site-wide error handler - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">July 8, 2008</h2>
+    <h1 class="title">Don&#39;t forget the ColdFusion site-wide error handler</h1>
+    
+    <div class="content">
+      <p>Most developers know and use exception handling techniques when building web apps. One of the important reasons to do this is so that the end user isn&rsquo;t presented with an ugly server error message, but instead a nice &ldquo;skinned&rdquo; template advising them that something&rsquo;s gone wrong and an administrator has been notified etc. (Of course another reason for this is not to give away sensitive server configuration information to prying eyes!)</p>
+
+<p><a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=Tags_t_12.html">try</a>/<a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=Tags_c_04.html">catch</a> blocks are great for fine grained control to catch and handle exceptions as they occur at runtime.</p>
+
+<p><a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=AppEvents_06.html">onError()</a> inside Application.cfc is the next place ColdFusion will look to handle thrown exceptions and is often used as a catch-all.</p>
+
+<p>This all works great&hellip;most of the time.</p>
+
+<p>Most of us don&rsquo;t have every conceivable piece of code wrapped around a try/catch block, so what happens when the actual <em>server</em> throws an exception like a template timeout (cfoutput and cfloop can often timeout depending on server settings and what you&rsquo;re doing) etc and we&rsquo;re not catching the exception in our code? In this case users see a nice phat ColdFusion error message. Not happy Jan.</p>
+
+<p><img src="/images/uploads/2008/07/bos-error-300x170.gif" alt="Naughty error" /></p>
+
+<p>Enter the &ldquo;site-wide error handler&rdquo; which you can set in the &ldquo;Settings&rdquo; area of ColdFusion administrator.</p>
+
+<p><img src="/images/uploads/2008/07/error-handlers-300x79.gif" alt="" /></p>
+
+<p>This is the 3rd and final way to &ldquo;catch&rdquo; errors and display a custom template to the end user. Note that this template will look the same across all sites running on that JRun instance.</p>
+
+<p>The cool this is that you get the &ldquo;error&rdquo; struct of detailed exception information (think <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=Tags_d-e_11.html">cferror</a>) so you can log the error as you see fit.</p>
+
+<p>Bottom line is, you should always have a template in the site-wide error handler so the end user (whether malicious or not) never sees the default ColdFusion error message in the event that you aren&rsquo;t handling <em>everything</em> in your code.</p>
+
+<p>Of course you may not (read almost definitely will not) be able to define your own template if you&rsquo;re running in a shared hosting environment. In which case you would assume (and hope) that the hosting provider had a generic template for such situations.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

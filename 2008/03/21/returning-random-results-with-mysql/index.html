@@ -1,0 +1,176 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Returning random results with MySQL | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Returning random results with MySQL - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 21, 2008</h2>
+    <h1 class="title">Returning random results with MySQL</h1>
+    
+    <div class="content">
+      
+
+<p>Selecting random query results is something we often need to do, whether it be a single row or a small record set. You may want to display a random list of &ldquo;tips&rdquo; or &ldquo;facts&rdquo;, a random &ldquo;user&rdquo; or &ldquo;related product&rdquo; etc.</p>
+
+<p>The simplest and most common solution you find uses the MySQL <a href="http://dev.mysql.com/doc/refman/5.0/en/mathematical-functions.html#function_rand">rand()</a> function (which can be used to create an integer from 0 to 1.0)</p>
+
+<h3 id="solution-1">Solution 1</h3>
+
+<pre><code class="language-javascript">SELECT		[...]
+FROM		Users
+ORDER BY	rand()
+LIMIT		1
+</code></pre>
+
+<p>This will return 1 random record from the &lsquo;Users&rsquo; table. Sometimes however simplest is not the best, this can often one of those times depending on the table size.</p>
+
+<p>The reason you won&rsquo;t want to do this is because once the table grows larger the operation will be very slow as MySQL will have to process ALL the records in the table (performing a full table scan), order them randomly and then return the first row of the ordered result. This is of course quite intensive the larger your table size and really not a recommended practise for anything other than small lookup tables.</p>
+
+<p>Another often used solution (where the primary key is an auto-incrementing integer) is to use 2 queries, the first gets the min() and max() &lsquo;ID&rsquo; values and the second returns a recordset using a random number (between the min(Id) and max(Id)) in the WHERE clause.</p>
+
+<h3 id="solution-2">Solution 2</h3>
+
+<pre><code class="language-javascript">SELECT	min(Id) as minId, max(Id) as maxId
+FROM	Users
+
+SELECT 	*
+FROM	Users
+WHERE 	Id &gt;= #randRange(minId, maxId)#
+LIMIT 	0,	1
+</code></pre>
+
+<p>You can increase the LIMIT to return more rows, but why might you not use this one? Well it uses 2 queries for a start (you could actually put this in a sub query but this method won&rsquo;t work if you want more than 1 result returned), but this mightn&rsquo;t be so bad. Another constraint is that it assumes an integer primary key which you <a href="http://www.chapter31.com/2007/01/30/coldfusion-uuids-and-mssql-newid/">may not be using</a>, meaning the randRange() won&rsquo;t work. Also what happens if you don&rsquo;t have sequential &lsquo;Ids&rsquo;? You may have deleted some rows for example which could render this solution invalid.</p>
+
+<p>Yet another way is to use the OFFSET argument to the LIMIT clause to get a random starting point to return your results from. First we query to get a random row number, then we query again using that random number as the OFFSET:</p>
+
+<h3 id="solution-3">Solution 3</h3>
+
+<pre><code class="language-javascript">SELECT	floor(rand() * count(*)) AS theOffset
+FROM	Users
+
+//Then use that random 'seed'
+SELECT 	*
+FROM	Users
+LIMIT 	#theOffset#, 1
+</code></pre>
+
+<p>This one (again although it has 2 queries) works great, but if you want more than 1 row returned (by increasing the second argument in the LIMIT clause) only the <em>starting point</em> will be random, you will then get the next <em>x</em> rows returned <em>in order</em> which might not be what you are after.</p>
+
+<p>Another issue with this option is if the starting row returned (the OFFSET) from the initial query is too high than the amount of records you want returned, i.e. if there are 1000 records and the OFFSET value is 998 and you want 10 records&hellip;you&rsquo;re not going to get 10 records, only 2!</p>
+
+<h2 id="benchmarks">Benchmarks</h2>
+
+<p>I wanted to see just how these solutions performed using 2 different tables, one with 56,000 rows and one with 150 rows (I&rsquo;m only testing with solution 1 and 3):</p>
+
+<p>First with 56,000 rows:</p>
+
+<p>Solution 1 - average 4021ms</p>
+
+<p><img src="/images/uploads/2008/03/solution1.jpg" alt="mysql_solution1" /></p>
+
+<p>Solution 3 - average 32.1ms</p>
+
+<p><img src="/images/uploads/2008/03/solution3.jpg" alt="mysql_solution3" /></p>
+
+<p>Second with only 150 rows:</p>
+
+<p>Solution 1 - average 13.25ms</p>
+
+<p><img src="/images/uploads/2008/03/solution1_1501.jpg" alt="solution1_150_2" /></p>
+
+<p>Solution 3 - average 1.55ms</p>
+
+<p><img src="/images/uploads/2008/03/solution3_150.jpg" alt="solution3_150" /></p>
+
+<p>So when you only want 1 random row returned the best bet by far is solution 3. I ran the same test returning 10 rows and got very similar results for all 4 tests, you just need to watch for the case where the OFFSET is too high (check that #recordCount# - #theOffset# &gt; 10 etc) and that only the &lsquo;seed&rsquo; row is random.</p>
+
+<p>Of course if you want 10 random rows from a small table (around 150) then solution 1 will perform fine.</p>
+
+<p>There are many other ways to achieve this <a href="http://www.chapter31.com/2008/03/21/random-database-results-with-coldfusion/">particularly when using a server side language like ColdFusion</a> but hopefully this sparks some purely MySQL ideas.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

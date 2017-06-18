@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Apache/Iis | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Apache/Iis - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">August 9, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/08/09/setting-font-mime-types-in-apache/">Setting font MIME types in apache</a></h1>
+      
+      <div class="content">
+        If your website is using custom fonts, you may see this line in your Chrome console:
+ Resource interpreted as Font but transferred with MIME type application/octet-stream
+ This is really kinda annoying, if you want to get rid of that warning then add the following directives to your apache conf/.htaccess:
+AddType application/vnd.ms-fontobject eot AddType font/opentype otf AddType font/truetype ttf AddType application/x-font-woff .woff  See here for more information.
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 5, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/06/05/apache-permission-denied-on-mac-osx-lion/">Apache permission denied on Mac OSX Lion</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve just upgraded to OSX Lion and had some trouble getting Apache to load a vhost. I kept getting a 403 permission denied error, but all my vhosts had the correct permission directives set.
+Now by default your webserver document root is located in /Library/WebServer/Documents. I don&rsquo;t really like that for my local machine, I&rsquo;d rather store web files under my user account. Just tends to make things easier.
+However&hellip;if you&rsquo;re getting a 403 error, and something like this in your apache error log (/var/log/apache2/error_log):
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/06/05/apache-permission-denied-on-mac-osx-lion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 13, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/">Development configuration tips for Ubuntu</a></h1>
+      
+      <div class="content">
+        I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc
+Here are some notes which helped me out when configuring some of these development tools.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 20, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/06/20/careful-when-copying-code-sent-from-an-im-client/">Careful when sharing code sent from an IM client</a></h1>
+      
+      <div class="content">
+        Ok this is a warning to all those who get sent commands to use via IM.
+Scenario:
+I was helping someone setup their Apache config today, so I copied part of my VirtualHost block to them in an IM client. Then I went to their machine, grabbed the code and pasted it into their .conf file. Then Apache wouldn&rsquo;t start/restart.
+After spending 10 minutes scratching my head and comparing code and files etc&hellip;I removed all carriage returns/whitespace from the code and woo hoo!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/06/20/careful-when-copying-code-sent-from-an-im-client/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 16, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/07/16/apache-are-you-secure/">Apache, are you secure?</a></h1>
+      
+      <div class="content">
+        Peter Freitag has a great post on &lsquo;20 ways to secure your Apache Configuration&rsquo;
+Seeing as Apache is a rather popular web server, this is invaluable information for any developer particularly those who are involved with configuring production boxes.
+Just how popular is Apache? Have a look at Netcrafts Web Server Survey to September 2006.
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

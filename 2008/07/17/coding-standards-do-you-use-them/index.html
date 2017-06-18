@@ -1,0 +1,144 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coding standards, do you use them? | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coding standards, do you use them? - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">July 17, 2008</h2>
+    <h1 class="title">Coding standards, do you use them?</h1>
+    
+    <div class="content">
+      <p>Reading a <a href="http://www.mkville.com/blog/index.cfm/2008/7/16/Custom-Tag-and-CFC-Case-Issue-Followup-and-Workaround">blog entry</a> this morning got me thinking. Essentially the author had experienced problems (after installing the latest ColdFusion hotfix) with case sensitivity on a Linux server. Two of the issues where based around calling custom tags and createObject(), where the actual filename was in a different &ldquo;case&rdquo; to the code calling the tag or instansiating the object.</p>
+
+<p>Why did this get me thinking? Coding standards.</p>
+
+<p>What standards do you use when developing? The kind of standards which dictate the naming of methods, variables and filenames. Do you name your variables and functions <em>semantically?</em></p>
+
+<p>For instance to return information about a product do you call a method like <em>getProduct()</em> or <em>getProductById()</em> or do you use something like <em>prod()</em> (I&rsquo;m hoping for the former as the latter really isn&rsquo;t that descriptive).</p>
+
+<p>How about variables? ColdFusion can be a funny beast with its scoping, particularly inside component methods where local variables are actually global (in the <em>variables</em> scope) to the cfc unless you <em>var</em> scope them. This being the case a lot of people have <a href="http://www.chapter31.com/2007/06/14/using-variablesinstance-inside-your-components/">global cfc variables inside a struct</a>, often called something like variables.instance. This enables you to easily distinguish calls to global variables (like <em>variables.instance.dsn</em>) and local variables (like using <em>i</em> as a loop counter).</p>
+
+<p>What about the actual variable name? Do you use prefixes depending on the &ldquo;type&rdquo; of variable? Something like:</p>
+
+<ul>
+<li>a for arrays - aEmployees</li>
+<li>i for integers - iEmployeeCount</li>
+<li>o for objects - oEmployee</li>
+<li>q for queries - qEmployees</li>
+<li>st for structs - stEmployees</li>
+</ul>
+
+<p>How about filenames (the original topic which got me thinking)? Do you have a standard for the naming of files? You should. You might develop on Windows but is your production environment on Linux (which is usually case sensitive)? Will it ever be ported to Linux? Are you writing code which may be released as a commercial or open source offering so you really don&rsquo;t know where the code will end up?</p>
+
+<p>An often used standard (at least in my experience) is thus:</p>
+
+<p>ColdFusion components use camel case;</p>
+
+<ul>
+<li>Product.cfc</li>
+<li>ProductService.cfc</li>
+</ul>
+
+<p>All other .cfm templates (including custom tags) use headless (mixed) camel case;</p>
+
+<ul>
+<li>displayProduct.cfm</li>
+<li>inc_Header.cfm</li>
+</ul>
+
+<p>Some people might totally disagree with the examples I&rsquo;ve listed (perhaps their standard is that all filenames are lowercase to prevent any possible mixups with case sensitivity), however the point is that there is really no excuse for not using coding standards, whatever they may be.</p>
+
+<p>The important thing is that your entire development team follow a single agreed upon standard. This will prevent the completely unnecessary headache of your code breaking if/when you test your code in a different environment such as Linux.</p>
+
+<p>It also (imho) makes your codebase infinitely more readable as you already have expectations about naming conventions etc.</p>
+
+<p>There are of course many other topics to be discussed around coding standards, from database table names to commenting (or not!) or code. What standards do you use in your organisation?</p>
+
+<p>Some <a href="http://livedocs.adobe.com/wtg/public/coding_standards/contents.html">further reading</a> which is quite old but still relevant.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

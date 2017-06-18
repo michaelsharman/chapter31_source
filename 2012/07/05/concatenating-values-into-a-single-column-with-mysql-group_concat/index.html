@@ -1,0 +1,153 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Concatenating values into a single column with MySQL group_concat | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Concatenating values into a single column with MySQL group_concat - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">July 5, 2012</h2>
+    <h1 class="title">Concatenating values into a single column with MySQL group_concat</h1>
+    
+    <div class="content">
+      
+
+<p>How many times have you wanted to return a list of grouped values from a database, in a single column, per row of your recordset? Actually I&rsquo;ve wanted to do that a few times! Most of the time I&rsquo;ll let the application layer handle that, but sometimes letting the database do the hard work fits the bill.</p>
+
+<p>My not-so-theoretical example is <em>course subjects</em> (think English, Maths etc) that have 1-<em>n</em> &ldquo;stages&rdquo; (think categories) attached to them. If I want to return a recordset of all courses, with the attached stages, I might write a query like this:</p>
+
+<pre><code class="language-sql">SELECT sy.title as course, st.stage
+FROM syllabus sy INNER JOIN syllabus_stages sy_st
+ON sy.id = sy_st.syllabus_id
+INNER JOIN stages st
+ON sy_st.stage_id = st.id
+GROUP BY sy.title, stage
+ORDER BY sy.title
+</code></pre>
+
+<p>Looks pretty standard, with something like that I&rsquo;d get the following:</p>
+
+<p><img src="/images/uploads/2012/07/Screen-shot-2012-07-06-at-6.50.45-AM.png" alt="" /></p>
+
+<p>But now the application has to handle the grouping, not a huge problem by any means. Also don&rsquo;t get me wrong&hellip;this is where you normally would want to do this (sql is a data retrieval language and in most instances shouldn&rsquo;t be handling presentation aspects). However, if I just wanted to display a list of stages (categories), I can use <a href="http://dev.mysql.com/doc/refman/5.0/en/group-by-functions.html#function_group-concat">group_concat</a> to make life a little easier.</p>
+
+<pre><code class="language-sql">SELECT sy.title as course, group_concat(st.stage ORDER BY st.stage) as stage
+FROM syllabus sy INNER JOIN syllabus_stages sy_st
+ON sy.id = sy_st.syllabus_id
+INNER JOIN stages st
+ON sy_st.stage_id = st.id
+GROUP BY sy.title
+ORDER BY sy.title
+</code></pre>
+
+<p>This gives me:</p>
+
+<p><img src="/images/uploads/2012/07/Screen-shot-2012-07-06-at-6.53.14-AM.png" alt="" /></p>
+
+<p>Pretty cool eh?</p>
+
+<p>The default list separator is a comma, but you can also specify your own.</p>
+
+<pre><code class="language-sql">SELECT sy.title as course, group_concat(st.stage ORDER BY st.stage SEPARATOR ' | ') as stage
+FROM syllabus sy INNER JOIN syllabus_stages sy_st
+ON sy.id = sy_st.syllabus_id
+INNER JOIN stages st
+ON sy_st.stage_id = st.id
+GROUP BY sy.title
+ORDER BY sy.title
+</code></pre>
+
+<p><img src="/images/uploads/2012/07/Screen-shot-2012-07-06-at-7.12.02-AM.png" alt="" /></p>
+
+<p><a href="http://dev.mysql.com/doc/refman/5.0/en/group-by-functions.html#function_group-concat">See the group_concat page</a> for more details.</p>
+
+<h2 id="update-10th-august-2013">Update 10th August 2013</h2>
+
+<p>I just ran into a restriction with this, by default the results are truncated to the maximum length that is given by the <code>group_concat_max_len</code> system variable, which has a default value of 1024.</p>
+
+<p>If you plan to concat a lot of data, I suggest using a different approach.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

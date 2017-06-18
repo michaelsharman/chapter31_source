@@ -1,0 +1,136 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Making your web applications platform independant | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Making your web applications platform independant - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 2, 2007</h2>
+    <h1 class="title">Making your web applications platform independant</h1>
+    
+    <div class="content">
+      <p>I was looking for some information the other day about line separators across Windows/MAC/Linux etc when I stumbled upon 3 great articles from <a href="http://weblogs.macromedia.com/cantrell/">Christian Cantrell</a>.</p>
+
+<p>Although the articles are quite old they were very informative for me so I thought I&rsquo;d share them in case others didn&rsquo;t know this already.</p>
+
+<p><a href="http://weblogs.macromedia.com/cantrell/archives/2003/03/making_your_col.cfm">Making Your ColdFusion Applications More Platform Independent (Part I)</a>
+Basically about case sensitive filenames which is very important on *nix, but also included the following which I&rsquo;ve never heard and to be honest would like to test:</p>
+
+<blockquote>
+<p>Additionally, make sure you use all lowercase when naming your components. ColdFusion MX will automatically lower-case your component names, which you would never notice on Windows, however on Unix, it will become apparent very quickly when you start getting errors that your components do not exist.</p>
+</blockquote>
+
+<p><a href="http://weblogs.macromedia.com/cantrell/archives/2003/03/making_your_col_1.cfm">Making Your ColdFusion Applications More Platform Independent (Part II)</a>
+Shows an automatic way (via Java) to get the current servers file path separator (either a &lsquo;/&rsquo; or &lsquo;\&lsquo;), OS dependant.</p>
+
+<p><a href="http://weblogs.macromedia.com/cantrell/archives/2005/07/making_your_col_2.cfm">Making Your ColdFusion Applications More Platform Independent (Part III)</a>
+I&rsquo;ve been annoyed many times with the whole chr(10)chr(13) on Windows vs chr(10) on a Mac etc, another automated way to get the server OS &lsquo;line separator&rsquo; via Java.</p>
+
+<p>Here are the line and file separators as functions which I&rsquo;ve also added to my <a href="http://www.chapter31.com/utilscfc/">Utils.cfc</a></p>
+
+<pre><code class="language-javascript">	&lt;cffunction name=&quot;getFileSeparator&quot; access=&quot;public&quot; output=&quot;false&quot; returntype=&quot;string&quot; hint=&quot;Returns the system file path separator&quot;&gt;
+
+		&lt;cfscript&gt;
+
+			return createObject(&quot;java&quot;, &quot;java.io.File&quot;).separator;
+
+		&lt;/cfscript&gt;
+
+	&lt;/cffunction&gt;
+
+	&lt;cffunction name=&quot;getLineSeparator&quot; access=&quot;public&quot; output=&quot;false&quot; returntype=&quot;string&quot; hint=&quot;Returns the system line separator&quot;&gt;
+
+		&lt;cfscript&gt;
+
+			return createObject(&quot;java&quot;, &quot;java.lang.System&quot;).getProperty(&quot;line.separator&quot;);
+
+		&lt;/cfscript&gt;
+
+	&lt;/cffunction&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

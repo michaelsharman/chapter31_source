@@ -1,0 +1,128 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Converting boolean values to numeric equivalents | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Converting boolean values to numeric equivalents - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 2, 2008</h2>
+    <h1 class="title">Converting boolean values to numeric equivalents</h1>
+    
+    <div class="content">
+      <p>Today I had a situation where I wanted to convert a boolean value (true or false) to a numeric equivalent (1 or 0) for insertion into a database table field which had a &ldquo;tinyint&rdquo; data type.</p>
+
+<p>The value was coming from a form checkbox, so the actual element may or may not exist in the form struct depending on whether the user &ldquo;checked&rdquo; the box or not.</p>
+
+<p>I found a few ways to do this, some &ldquo;better&rdquo; than others but all using <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=functions_s_27.html">structKeyExists()</a> to look for the form element. The result of which will of course return a boolean &ldquo;true&rdquo; if the key exists within the form struct (meaning the user has checked the checkbox) or &ldquo;false&rdquo; which tells me the checkbox was unchecked (or simply not checked in the first place).</p>
+
+<p>The long way round, arguably less elegant:</p>
+
+<pre><code class="language-javascript">&lt;cfif structKeyExists(form, 'minimised')&gt;
+	1
+&lt;cfelse&gt;
+	0
+&lt;/cfif&gt;
+</code></pre>
+
+<p>Using the ColdFusion <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=functions_h-im_05.html">iif()</a> equivalent of a conditional &ldquo;ternary operator&rdquo;</p>
+
+<pre><code class="language-javascript">#iif((structKeyExists(form, 'minimised')), 1, 0)#
+</code></pre>
+
+<p>Casting the value using <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=functions_in-k_45.html">javaCast()</a>:</p>
+
+<pre><code class="language-javascript">#javaCast('int', structKeyExists(form, 'minimised'))#
+</code></pre>
+
+<p>Doing a <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=functions_m-r_08.html">numberFormat()</a>:</p>
+
+<pre><code class="language-javascript">#numberFormat(structKeyExists(form, 'minimised'))#
+</code></pre>
+
+<p>The last 2 examples seem like the best approach to me as they are more succinct than using an <cfif>/<cfelse> combination, and most people shy away from <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=functions_h-im_05.html">iif()</a> because it will <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=functions_e-g_03.html">evaluate()</a> either of the string expressions (in this case 1 or 0) which is irrelevant for your needs in many cases including this one.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

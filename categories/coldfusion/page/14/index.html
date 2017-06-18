@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coldfusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coldfusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">March 29, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/29/how-do-i-make-sure-a-string-is-safe-to-use-with-javascript/">How do I make sure a string is safe to use with JavaScript?</a></h1>
+      
+      <div class="content">
+        An article from coldfusion cookbook using jSStringFormat():
+&ldquo;If you are dynamically populating a JavaScript variable, you may find that your code breaks with &ldquo;unterminated string constant&rdquo; or similar error messages. This is probably a case of your JavaScript variables containing characters that are considers to be &ldquo;special&rdquo; characters by JavaScript. You will need to &ldquo;escape&rdquo; these special characters so that JavaScript can process them.&rdquo;
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 16, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/16/cfstoredproc-vs-cfquery/">cfstoredproc vs cfquery</a></h1>
+      
+      <div class="content">
+        There are of course pros and cons to using each method to perform CRUD operations on a database.
+cfstoredproc Pros:
+ With stored procedures you can control security in the database as well as the web pages. Transactions are handled at the database level, stored procedures are ideal here. Stored procedures provide greater performance, because the execution plan for the sql doesn&rsquo;t have to be recreated and if a page has multiple calls to the database, you can combine them all in one stored procedure, meaning only one trip to and back from the db.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/03/16/cfstoredproc-vs-cfquery/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 15, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/15/cfstoredproc-in-mx7/">new &#39;result&#39; attribute in MX7 cfstoredproc</a></h1>
+      
+      <div class="content">
+        In CFMX7 Macromedia introduced a new (and optional) attribute to the cfstoredproc tag called &ldquo;result&rdquo; which specifies a name for the structure in which cfstoredproc returns the statusCode and ExecutionTime variables. If set, this value replaces cfstoredproc as the prefix to use when accessing those variables.
+The result attribute provides a way for stored procedures that are called from multiple pages, possibly at the same time, to avoid overwriting the results of one call with another.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/03/15/cfstoredproc-in-mx7/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 14, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/14/double-checked-locking/">Double-checked locking</a></h1>
+      
+      <div class="content">
+        Mark Kruger has a nice article (with mention from Sean Corfield) on APPLICATION variable locking.
+Sean basically added that in the initial example (BAD code) if 2 users hit the  condition at the same time, only one will have a lock on the code while the other will wait. The problem lies in the fact that the 2nd user is waiting for the lock to expire, then they will perform a write operation NOT checking the  condition again!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/03/14/double-checked-locking/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 13, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/13/session-and-client-variable-handling-in-cfmx/">Session and client variable handling in CFMX</a></h1>
+      
+      <div class="content">
+        With CFMX there are a few new features you can take advantage of in relation to session and client variable handling, namely:
+ URLSessionFormat() Using UUID for the CFToken value Using J2EE Session Variables  URLSessionFormat()
+We all know that using session variables primarily relies on the user have enabled cookies in their browser, otherwise you need to pass CFIDE and CFTOKEN along the URL. This can be painful as you need to ensure you pass this client identity along with every request, whether it be an
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/03/13/session-and-client-variable-handling-in-cfmx/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 12, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/12/what-we-need-are-better-programmers/">What we need are better programmers</a></h1>
+      
+      <div class="content">
+        An interesting article by Simon Horwith on Frameworks and OOP for ColdFusion developers.
+I agree that Frameworks could be a &lsquo;crutch&rsquo;, but that doesn&rsquo;t mean you should stay away. I believe all developers should strive to keep their skills at the cutting edge by constant vigilence and study. Frameworks and OO design patterns can assist programmers but the choice is theirs and should be decided by the project specifications.
+Read the article here
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 11, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/11/new-attribute-and-object-variable-in-for-cfmx7/">New attribute and object variable in &lt;cfquery&gt; for CFMX7</a></h1>
+      
+      <div class="content">
+        Ever wanted to output the actual SQL from a dynamic query you are debugging? With CFMX 7 you can do it!
+There is a new attribute in the tag called “result” which specifies a name for the structure in which cfquery returns the result variables.
+Then you can reference #result_name.sql# to output the actual SQL statement to the page.
+Syntax
+&lt;cfquery name = &quot;query_name&quot;&gt; dataSource = &quot;ds_name&quot; dbtype = &quot;query&quot; username = &quot;username&quot; password = &quot;password&quot; maxRows = &quot;number&quot; blockFactor = &quot;blocksize&quot; timeout = &quot;seconds&quot; cachedAfter = &quot;date&quot; cachedWithin = &quot;timespan&quot; Either of the following: debug = &quot;yes&quot; or &quot;no&quot; or: debugresult = &quot;result_name&quot;&gt; &lt;/cfquery&gt;  Variable name Description
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/03/11/new-attribute-and-object-variable-in-for-cfmx7/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/13/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

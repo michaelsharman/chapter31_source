@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.23" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">June 3, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/06/03/php-composer-error-cannot-redeclare-class/">PHP Composer error - cannot redeclare class</a></h1>
+      
+      <div class="content">
+        I rebuilt PHP last night to include APC and all of a sudden composer stopped working in my project. Whenever I ran a simple update, install or dump-autoload I&rsquo;d get:
+$ composer update PHP Fatal error: include(): Cannot redeclare class symfony\component\process\process in phar:///usr/local/bin/composer/vendor/composer/ClassLoader.php on line 183 Fatal error: include(): Cannot redeclare class symfony\component\process\process in phar:///usr/local/bin/composer/vendor/composer/ClassLoader.php on line 183  A quick google told me others also had the same issue.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/06/03/php-composer-error-cannot-redeclare-class/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 2, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/06/02/installing-apc-in-php-5-dot-4-x-on-mac-osx/">Installing APC in PHP 5.4.x on Mac OSX</a></h1>
+      
+      <div class="content">
+        I recently installed PHP 5.4 from source but needed to add APC.
+Most people can install this using PECL, but I got an error doing this:
+$ pecl install apc Warning: lstat(): Lstat failed for /private/tmp/pear/cache/497e483d585c1e3f341260e73a8c6e85rest.cacheid in PEAR/REST.php on line 276 Warning: lstat(): Lstat failed for /private/tmp/pear/cache/497e483d585c1e3f341260e73a8c6e85rest.cacheid in /opt/php-5.4.15/lib/php/PEAR/REST.php on line 276 No releases available for package &quot;pecl.php.net/apc&quot; install failed  So instead I downloaded the APC source from the PECL website and ran the following:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/06/02/installing-apc-in-php-5-dot-4-x-on-mac-osx/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 1, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/06/01/base16-colour-scheme-for-hackers/">base16 - colour scheme for hackers</a></h1>
+      
+      <div class="content">
+        I came across a great set of colour schemes called base16. From the website:
+Base16 provides carefully chosen syntax highlighting and a default set of sixteen colors suitable for a wide range of applications. Base16 is both a color scheme and a template.  There are repos for the following tools:
+ Base 16 Builder Vim Shell iTerm2 TextMate OSX Color Palette Xresources Mou XFCE4 Terminal Gimp Palette Gnome Terminal Emacs Geany  There&rsquo;s even a builder so you can roll your own theme!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/06/01/base16-colour-scheme-for-hackers/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 29, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/05/29/installing-xdebug-on-mac-mountain-lion-10-dot-8-3/">Installing Xdebug on Mac Mountain Lion (10.8.3)</a></h1>
+      
+      <div class="content">
+        Even though I&rsquo;m running Mountain Lion (10.8.3) which comes with Xdebug I couldn&rsquo;t get the PHP (5.4.14) local web server to register that Xdebug was actually installed and enabled.
+My php.ini had the already installed Xdebug extension enabled:
+zend_extension=&quot;/usr/lib/php/extensions/no-debug-non-zts-20090626/xdebug.so&quot;  But whenever I inspected phpinfo() there wasn&rsquo;t any mention of Xdebug.
+Luckily the website has a wizard where you can paste the output of phpinfo(). From there you get detailed instructions on how to download, configure and make the latest version of Xdebug.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/05/29/installing-xdebug-on-mac-mountain-lion-10-dot-8-3/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 22, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/05/22/mysql-thread-stack-overrun-error/">MySQL thread_stack overrun error</a></h1>
+      
+      <div class="content">
+        We added a trigger to MySQL (v5.5.28) recently that was a simple UPDATE on table column, when a target table was UPDATEd. It ran fine (as expected) on our development environment but not when we pushed the changes to staging.
+The error being thrown by MySQL was:
+Thread stack overrun: 8304 bytes used of a 131072 byte stack, and 128000 bytes needed. Use 'mysqld --thread_stack=#' to specify a bigger stack.  Querying the database told me that the current _threadstack setting is 128K:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/05/22/mysql-thread-stack-overrun-error/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 9, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/05/09/ios-6-caching-post-requests/">iOS 6 caching POST requests</a></h1>
+      
+      <div class="content">
+        Apparently I&rsquo;ve been living under a rock, never having been bitten (that I know of) by the pretty massive bug Apple rolled out in iOS 6 (with Safari). The bug has been well documented around the interwebs, basically Safari caches HTTP POST requests. If you haven&rsquo;t heard about this&hellip;stop and read that last bit again.
+Now, replicating this bug is dependent on the payload of the POST not changing between requests, so in many circumstances you may be fine.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/05/09/ios-6-caching-post-requests/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 8, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/05/08/migrating-from-bitbucket-to-github/">Migrating from bitbucket to github</a></h1>
+      
+      <div class="content">
+        Migrating repositories between bitbucket and github couldn&rsquo;t be simpler thanks to the design nature of DVCS like git because the entire history is already located on your machine within your projects .git folder. All you&rsquo;re really doing is changing a remote.
+Open a terminal and navigate to your project directory.
+TLDR; For those who just want the commands with no explanation
+git remote rename origin bitbucket git remote add origin git@github.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/05/08/migrating-from-bitbucket-to-github/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 6, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/05/06/date-timezone-error-when-upgrading-to-php-5-dot-3-plus/">Date timezone error when upgrading to PHP 5.3&#43;</a></h1>
+      
+      <div class="content">
+        I upgraded to 5.4.14 last night on Mac OSX 10.8.3. Things went smoothly except I got an error running my apps:
+ date(): It is not safe to rely on the system&rsquo;s timezone settings. You are required to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone &lsquo;UTC&rsquo; for now, but please set date.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/05/06/date-timezone-error-when-upgrading-to-php-5-dot-3-plus/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 6, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/05/06/installing-php-5-dot-4-plus-from-source-on-mac-mountain-lion/">Installing PHP 5.4&#43; from source on Mac OSX Mountain Lion</a></h1>
+      
+      <div class="content">
+        Download and extract the PHP source from php.net, for me that was 5.4.14. Put it somewhere friendly, the desktop will do.
+Open a terminal and install some dependancies via brew:
+brew install libjpeg brew install pcre brew install libxml2 brew install mcrypt  Download and install ICU from http://site.icu-project.org/download/48#ICU4C-Download
+tar xzvf icu4c-4_8_1-src.tgz cd icu/source ./runConfigureICU MacOSX make sudo make install  Rebuild IMAP, download source from ftp://ftp.cac.washington.edu/imap/
+make osx EXTRACFLAGS=&quot;-arch i386 -arch x86_64 -g -Os -pipe -no-cpp-precomp&quot; sudo cp c-client/*.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/05/06/installing-php-5-dot-4-plus-from-source-on-mac-mountain-lion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 5, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/05/05/stopping-a-remote-process-after-killing-an-ssh-session/">Stopping a remote process after killing an ssh session</a></h1>
+      
+      <div class="content">
+        I often want to tail log files on remote server(s) when running diagnostics for an application. You can either login to the remote server via an SSH session, then execute the tail command. Or you can do it from a local shell (without explicitly logging onto the remote server first). That&rsquo;s pretty simple:
+ssh myRemoteServer tail -f /path/to/logs/myapp.log  The problem here, is when you ctrl-c out of this command to kill the tail, the process is still running on the remote machine.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/05/05/stopping-a-remote-process-after-killing-an-ssh-session/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/page/3/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+
+

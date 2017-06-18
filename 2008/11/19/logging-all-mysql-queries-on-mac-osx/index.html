@@ -1,0 +1,141 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Logging all MySQL queries on Mac OSX | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Logging all MySQL queries on Mac OSX - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 19, 2008</h2>
+    <h1 class="title">Logging all MySQL queries on Mac OSX</h1>
+    
+    <div class="content">
+      <p><a href="http://www.lynchconsulting.com.au/go/blog">We&rsquo;ve</a> been doing some debugging of a 3rd party application recently where we had some possible performance concerns under a certain load and/or size of data in the database. What we wanted to know was exactly which queries (and how many) where hitting the database on a specific page request.</p>
+
+<p>The simplest method was to turn on logging of all queries on the local MySQL database, this is turned off by default as like most debugging techniques it adds overhead. To do this I needed to make a small change in the config file and restart MySQL. However it seems that a Mac installation of MySQL doesn&rsquo;t create this config file by default which is a little confusing.</p>
+
+<p>Here are the steps taken to turn on logging of all queries:</p>
+
+<p><strong>Create a &ldquo;my.cnf&rdquo; file (if it doesn&rsquo;t already exist)</strong></p>
+
+<pre><code>sudo touch /etc/my.cnf
+</code></pre>
+
+<p><strong>Add an entry to my.cnf telling MySQL where to write the log entries</strong></p>
+
+<pre><code>[mysqld]
+log=/var/log/mysqld.log
+</code></pre>
+
+<p><strong>Create the log file</strong></p>
+
+<pre><code>sudo touch /var/log/mysqld.log
+</code></pre>
+
+<p><strong>Restart MySQL</strong></p>
+
+<p>To view the logs simply open mysqld.log in your favourite editor, or you can tail it in the terminal:</p>
+
+<pre><code>tail -f /var/log/mysqld.log
+</code></pre>
+
+<p>This is a really handy way to see all the database traffic from your application. We also use MySQL Adminstrator to <a href="http://www.chapter31.com/2008/02/21/using-mysql-administrator-to-view-real-time-stats/">view some real-time stats</a> in terms of the total number of queries being executed.</p>
+
+<p>Remember once you&rsquo;ve finished your debugging to turn logging off in my.cnf, I just comment it out (with a #) and restart MySQL:</p>
+
+<pre><code class="language-javascript">#[mysqld]
+#log=/var/log/mysqld.log
+</code></pre>
+
+<p><strong>Note:</strong> An easy way to check if you do have a my.cnf file is to open up <a href="http://dev.mysql.com/downloads/gui-tools/5.0.html">MySQL Administrator</a> and click the &ldquo;Options&rdquo; tab. If you get an alert saying &ldquo;Configuration File not Found&rdquo; then you know you need to go and create one!</p>
+
+<p><a href="/images/uploads/2008/11/picture-11.png"><img src="/images/uploads/2008/11/picture-11-300x132.png" alt="" /></a></p>
+
+<p>Once you have a my.cnf file you have access to the wide array of config options all from MySQL Administrator:</p>
+
+<p><a href="/images/uploads/2008/11/picture-3.png"><img src="/images/uploads/2008/11/picture-3-300x204.png" alt="" /></a></p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

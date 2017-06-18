@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coldfusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coldfusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">May 31, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/05/31/mura-overriding-dspcrumblistlinks/">Mura - overriding dspCrumblistLinks</a></h1>
+      
+      <div class="content">
+        Like most CMS solutions out there, Mura CMS gives you some cool hooks to override core functionality. See the developer guides for more information.
+I&rsquo;ve created a repository on github to store any customisations or extensions that could be cherry picked for use in any Mura app.
+First up was a super simple one for breadcrumbs. By default, Mura will put an &ldquo;a href&rdquo; around the last item in the crumb list.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/05/31/mura-overriding-dspcrumblistlinks/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 29, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/05/29/farcry-to-mura-migrating-data-from-farcry-to-mura-cms/">FarCry to Mura - migrating data from FarCry to Mura CMS</a></h1>
+      
+      <div class="content">
+        For years here at Learnosity we&rsquo;ve been using FarCry for most of our CMS requirements (yes, I know that FarCry, or rather farcrycms, is a lot more than just a CMS).
+For one reason or another we decided it was time to look at some of the other options for content management in the ColdFusion sphere, Mura CMS was a likely candidate for evalutation.
+We had a small-ish site that was already running in FarCry 6+ which we wanted to port to Mura so we could really get a feel for how things worked in Mura-land.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/05/29/farcry-to-mura-migrating-data-from-farcry-to-mura-cms/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 17, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/04/17/farcry-twitter-plugin/">FarCry twitter plugin</a></h1>
+      
+      <div class="content">
+        I spent a couple of hours on a FarCry plugin for twitter yesterday based off their official API.
+What? This plugin basically wraps up the options that the offical twitter API gives you including:
+ Twitter username Showing avatars, timestamps, hashtags etc Theme appearance (colours for background and text etc Dimensions of widget  For more, visit the project page, download it and have a play.
+Why? Although the twitter API is super simple to implement, it&rsquo;s always handy to have things wrapped up as a plugin so we can easily create as many widgets as we need and handle caching etc.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/04/17/farcry-twitter-plugin/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">January 12, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/01/12/checking-for-correct-case-sensitive-tables-in-farcry/">Checking for correct case-sensitive tables in FarCry</a></h1>
+      
+      <div class="content">
+        We run several FarCry projects at Learnosity and all of them run on Linux. We have occasionally come across issues where the FarCry codebase will refer to a MySQL table in the wrong &ldquo;case&rdquo;.
+E.g. referring to &ldquo;dmhtml&rdquo; where the actual table name is &ldquo;dmHTML&rdquo;.
+This is course fails in any case sensitive environment. Note that we also run our Macs as case sensitive in development to help find these issues before deploying to a stage/production server.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/01/12/checking-for-correct-case-sensitive-tables-in-farcry/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 8, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/09/08/tip-when-adding-allowmultiqueriestrue-to-your-mysql-dsn-in-coldfusion/">Tip when adding &#34;allowMultiQueries=true&#34; to your MySQL DSN in ColdFusion</a></h1>
+      
+      <div class="content">
+        Scenario&hellip;I&rsquo;m using ColdFusion 9 and MySQL 5. I already had my DSN setup but had a requirement to get the last inserted id from a MySQL INSERT statement (I&rsquo;m using auto-incrementing integer&rsquo;s).
+As most people know, the best way to do this (in MySQL) is using the last_insert_id() function. I wanted to attach this to the end of my INSERT statement for performance reasons, as I&rsquo;d only be sending one query to the server instead of separate ones.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/09/08/tip-when-adding-allowmultiqueriestrue-to-your-mysql-dsn-in-coldfusion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 27, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/05/27/cfml-issue-on-railo-with-the-accelerate-cache-tag/">CFML issue on Railo with the accelerate cache tag</a></h1>
+      
+      <div class="content">
+        We&rsquo;ve been using Brandon Purcell&rsquo;s excellent accelerate custom cache tag for a few projects. I had an issue today while testing a new app which is about to go live. It seemed that whatever I did nothing would be cached.
+Upon investigation it seemed that the caching worked fine on Adobe ColdFusion but not on Railo. A quick look at the codebase brought me to this line:
+&lt;cfif IsDefined(&quot;application.accelerator.#scriptName#.#primarykey#.#secondaryKey#&quot;)  Basically this was always returning false, even when I knew the key was in the application scope.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/05/27/cfml-issue-on-railo-with-the-accelerate-cache-tag/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 13, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/05/13/removing-duplicate-rows-in-open-office-calc/">Removing duplicate rows in Open Office (calc)</a></h1>
+      
+      <div class="content">
+        I needed to de-dupe a spreadsheet the other day and found a great how-to from google. Thought I&rsquo;d post it here for my own future purposes:
+There is no automatic function to remove duplicate rows. Follow these steps to delete all rows that have duplicate values in column A:
+ Select all cells of the current data range.
+On most systems, you can click any cell inside the data range, then press Ctrl+Multiplication key on the numeric keypad.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/05/13/removing-duplicate-rows-in-open-office-calc/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 9, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/05/09/ie-and-underscores-in-domain-names/">IE and underscores in domain names</a></h1>
+      
+      <div class="content">
+        Ok, a short warning to those who use underscores in their domain names. Underscores you say? Aren&rsquo;t they illegal characters in domain names? Why yes they are (but I think they&rsquo;re valid in sub-domains&hellip;not sure), but you may find yourself using them in development environments, particularly if you&rsquo;re doing a re-design. Think something like _http://mysite_v2.local/_ etc
+Now, this works of course and everything is fine and dandy because your using your own hosts file to make it &ldquo;legal&rdquo;&hellip;except that Internet Explorer has this little quirk where it doesn&rsquo;t persist your session (cookie) information.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/05/09/ie-and-underscores-in-domain-names/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 3, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/03/03/detecting-https-across-railo-and-coldfusion-server/">Detecting https across Railo and ColdFusion Server</a></h1>
+      
+      <div class="content">
+        Previously I had a way of detecting whether page requests were being made via ssl but today I came across a scenario where this doesn&rsquo;t work. Let me explain&hellip;
+Right now we&rsquo;re looking at developing across different ColdFusion engines, &ldquo;ColdFusion&rdquo; of course but also &ldquo;Railo&rdquo;. One of the applications we had detected whether a request was being made securely (https) and if it wasn&rsquo;t we turned off session management for security reasons.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/03/03/detecting-https-across-railo-and-coldfusion-server/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">January 19, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/01/19/cfhttp-issues-using-local-on-max-osx/">cfhttp issues using &#34;.local&#34; on Max OSX</a></h1>
+      
+      <div class="content">
+        Ran into an interesting problem today doing something quite simple. Basically all I was doing was posting xml data to a URL, but I kept getting a 408 request timeout and I didn&rsquo;t know why.
+We happen to use the &ldquo;.local&rdquo; domain name structure for local development. I was posting data from one local site to another e.g.
+http://mysite1.local -&gt; http://mysite2.local
+When I dumped cfhttp on the posting page I got the following error:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/01/19/cfhttp-issues-using-local-on-max-osx/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/3/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

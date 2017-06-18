@@ -1,0 +1,124 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Forgot to import your ColdFusion tag libraries? | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Forgot to import your ColdFusion tag libraries? - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 15, 2008</h2>
+    <h1 class="title">Forgot to import your ColdFusion tag libraries?</h1>
+    
+    <div class="content">
+      <p>I&rsquo;ve been bitten by the &ldquo;forgetting to add <cfimport>&rdquo; when importing ColdFusion custom tags before. If you also have then you know what I mean and have shared the frustration&hellip;basically your custom tag does nothing but you get no error from ColdFusion, nada, zip! Depending on the scenario this can lead to some wasted hair pulling time!</p>
+
+<p>The reason is of course that the syntax to import custom tags is perfectly valid XML which is ignored by ColdFusion server because you forgot to add <cfimport> tag. As such the output goes straight to the browser which treats it as markup&hellip;markup which it knows nothing about therefore it ignores it and you have no idea why your server side script isn&rsquo;t doing anything :(</p>
+
+<p>Well today I saw a brilliantly simple solution by the newest <a href="http://www.daemon.com.au/">Daemonite</a> <a href="http://robrohan.com/">Rob Rohan</a>.</p>
+
+<p>From <a href="http://groups.google.com/group/farcry-dev/browse_thread/thread/e6ada060cd04c91b?hl=en">Rob&rsquo;s post</a> on the farcry-dev mailing list:</p>
+
+<blockquote>
+<p>however, since the <a href="skin:build">skin:build</a> type tags will make it all the way to the browser, we can style the tag in the browser to alert the problem.</p>
+
+<p>I threw together a quick CSS file that you can include into your  project style sheet that will draw attention to the error. Just add this to your site style sheet:</p>
+
+<p>@import url(&lsquo;<a href="http://robrohan.com/farcrystuff/missingTag.css'">http://robrohan.com/farcrystuff/missingTag.css'</a>);</p>
+
+<p>Or download the css file and put it where you want. That will style any FarCry taglib with block, red so you can spot the mistake right off.</p>
+</blockquote>
+
+<p>While this tip is fantastic and easily flexible for use in any ColdFusion project, keep in mind that in its current state it will only be of use for FarCry developers.</p>
+
+<p><strong>Also note</strong> that the custom tag syntax (e.g. <a href="skin:buildlink">skin:buildlink</a>) will only make its way to the browser (as part of the html source to be parsed by the css) if it&rsquo;s inside <cfoutput> tags. If not then you&rsquo;ll have the same problem as before where you&rsquo;re tags are doing nothing, you&rsquo;re not getting an error from ColdFusion AND the css won&rsquo;t style anything because the xml tags aren&rsquo;t in the source code :(</p>
+
+<p>Here is a screen shot of the css in action, as you can see it&rsquo;s hard to miss your mistake!</p>
+
+<p><a href="/images/uploads/2008/11/cfimport_css.jpg"><img src="/images/uploads/2008/11/cfimport_css-300x92.jpg" alt="" /></a></p>
+
+<p>Many thanks to Rob for the tip, here is the <a href="http://robrohan.com/farcrystuff/missingTag.css">link to his css</a>.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

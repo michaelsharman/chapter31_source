@@ -1,0 +1,131 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>SWFObject | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="SWFObject - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">August 1, 2006</h2>
+    <h1 class="title">SWFObject</h1>
+    
+    <div class="content">
+      <p>I&rsquo;ve been using <a href="http://blog.deconcept.com/swfobject/">SWFObject</a> for quite a while now and it amazes me that developers out there <em>still</em> don&rsquo;t know about it, especially with all the news around Microsoft&rsquo;s EOLAS case late last year.</p>
+
+<p>SWFObject is a tasty method for embedding Macromedia Flash content into your web pages and has (among others) the following functionality which alone are reason to be using it!</p>
+
+<ul>
+<li>Flash detection</li>
+<li>Search engine friendly</li>
+<li>Validates to HTML and XHTML (as long as pages sent as text/html, not application/xhtml+xml.)</li>
+<li>Degrades beautifully!</li>
+</ul>
+
+<p>All you need to do is add your .js file in the <head>:</p>
+
+<pre><code class="language-javascript">&lt;script src=&quot;swfobject.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Then use the following code:</p>
+
+<pre><code class="language-javascript">&lt;div id=&quot;flashcontent&quot;&gt;
+  This text is replaced by the Flash movie.
+&lt;/div&gt;
+</code></pre>
+
+<pre><code class="language-javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+   var so = new SWFObject(&quot;movie.swf&quot;, &quot;mymovie&quot;, &quot;200&quot;, &quot;100&quot;, &quot;7&quot;, &quot;#336699&quot;);
+   so.write(&quot;flashcontent&quot;);
+&lt;/script&gt;
+</code></pre>
+
+<p>Note the &lt;div id=&ldquo;flashcontent&rdquo;&gt;? Inside this div is where you&rsquo;ll store any HTML to be displayed if the user doesn&rsquo;t have flash. So you can have a link to Adobe to get the latest flash player, an alternate image or simply display HTML!</p>
+
+<p>One problem I had is with users on low bandwidth seeing this HTML (non-flash) content before the Flash has a chance to load. To get around this I had the content within the non-flash div hidden (using CSS) then onload() make it visible.</p>
+
+<p><a href="http://blog.deconcept.com/swfobject/swfobject1-4.zip">Download SWFObject here</a></p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

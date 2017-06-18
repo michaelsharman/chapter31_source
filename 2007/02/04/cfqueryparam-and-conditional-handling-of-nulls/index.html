@@ -1,0 +1,161 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>cfqueryparam and conditional handling of NULL&#39;s | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="cfqueryparam and conditional handling of NULL&#39;s - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">February 4, 2007</h2>
+    <h1 class="title">cfqueryparam and conditional handling of NULL&#39;s</h1>
+    
+    <div class="content">
+      <p>Most people know that you should always use <a href="http://livedocs.macromedia.com/coldfusion/6.1/htmldocs/tags-b20.htm">cfqueryparam</a> on your query parameters when querying a database to (among other things):</p>
+
+<ul>
+<li>secure your database from unauthorised/malicious users</li>
+<li>perform data validation</li>
+<li>take advantage of SQL bind parameters</li>
+</ul>
+
+<p>The cfqueryparam tag can and should be used whether the query be a SELECT, UPDATE, DELETE or INSERT.</p>
+
+<p>One of the problems I&rsquo;ve had in the past is when I want to either INSERT or UPDATE a column which has an INT datatype (MSSQL), but that column is not mandatory and therefore allows NULL values. Traditionally (if not using a stored procedure) I would have an approach as follows:</p>
+
+<pre><code class="language-ruby">&lt;cfquery name=&quot;qAddUser&quot; datasource=&quot;#application.dsn#&quot;&gt;
+	INSERT INTO MyUsers
+	(
+	Age,
+	FirstName,
+	LastName
+	)
+	VALUES
+	(
+	&lt;cfqueryparam cfsqltype=&quot;cf_sql_integer&quot; value=&quot;#trim(form.iAge)#&quot; maxlength=&quot;3&quot; /&gt;,
+	&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#trim(form.sFirstName)#&quot; maxlength=&quot;50&quot; /&gt;,
+	&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#trim(form.sLastName)#&quot; maxlength=&quot;50&quot; /&gt;
+	)
+&lt;/cfquery&gt;
+</code></pre>
+
+<p>This works nicely except remember that &lsquo;Age&rsquo; isn&rsquo;t a mandatory column in the database, so if the user leaves that form field blank I&rsquo;ll be passing through an empty string (form.iAge) to the cfqueryparam. Because the database is expecting an INT value it really won&rsquo;t like my empty string so I&rsquo;ll get a nice big error. Now to get around this I have a couple of immediate options.</p>
+
+<ul>
+<li>use a database default (e.g. 0)</li>
+<li>Use conditional logic to set the empty string to an INT, like 0</li>
+<li>Use conditional logic to use the NULL attribute of cfqueryparam</li>
+</ul>
+
+<p>Number 3 is my preferred option, I don&rsquo;t want the value &lsquo;0&rsquo; in the database when I don&rsquo;t know if it&rsquo;s really a valid value. Did the user type in &lsquo;0&rsquo; or is it my default database value? Sure I could use something like &lsquo;-1&rsquo; instead or code my application to know that if a &lsquo;0&rsquo; (or &lsquo;-1&rsquo;) was found then I know that it&rsquo;s actually a NULL value. But that just seems messy to me.</p>
+
+<p>The NULL attribute of cfqueryparam can take a value of &lsquo;yes|true&rsquo; or &lsquo;no|false&rsquo; and if set to &lsquo;yes|true&rsquo; then anything in the &lsquo;value&rsquo; attribute is ignored and a NULL is passed to the database. This is what we want! Unfortunately though if I do use null=&ldquo;yes&rdquo; and I also have a &lsquo;value&rsquo;, then that value will be ignored and NULL will be used instead. To get around this I need to do something like:</p>
+
+<pre><code class="language-ruby">&lt;cfif NOT len(trim(form.iAge))&gt;
+	&lt;cfqueryparam cfsqltype=&quot;cf_sql_integer&quot; value=&quot;#trim(form.iAge)#&quot; maxlength=&quot;3&quot; null=&quot;yes&quot; /&gt;
+&lt;cfelse&gt;
+	&lt;cfqueryparam cfsqltype=&quot;cf_sql_integer&quot; value=&quot;#trim(form.iAge)#&quot; maxlength=&quot;3&quot; /&gt;
+&lt;/cfif&gt;
+</code></pre>
+
+<p>That would work but it&rsquo;s not really that neat or optimal (in terms of coding and reading).</p>
+
+<p>As usual it&rsquo;s always the simple solutions which are right in front of you that work the best! Today I saw a nice solution to this all too common problem from Ian Skinner over on <a href="http://groups.google.com/group/macromedia.coldfusion.cfml_general_discussion/topics">Google groups</a> where Ian used the yesNoFormat() and len() functions to conditionally pass in null or a value like:</p>
+
+<pre><code class="language-ruby">&lt;cfqueryparam cfsqltype=&quot;cf_sql_integer&quot; value=&quot;#trim(form.iAge)#&quot; maxlength=&quot;3&quot; null=&quot;#yesNoFormat(NOT len(trim(form.iAge)))#&quot; /&gt;
+</code></pre>
+
+<p>This is nice an simple, the len() function will return the length of the string (0 or more) and the yesNoFormat() will translate that into the boolean value we need for the NULL attribute.</p>
+
+<p>However because we want to use the NULL attribute if the string DOESN&rsquo;T have a length&hellip;we use the NOT boolean operator to reverse the results.</p>
+
+<p>Note that because we are using NOT, our result will be the desired boolean therefore negating the need to use yesNoFormat(). That leaves us with:</p>
+
+<pre><code class="language-ruby">&lt;cfqueryparam cfsqltype=&quot;cf_sql_integer&quot; value=&quot;#trim(form.iAge)#&quot; maxlength=&quot;3&quot; null=&quot;#NOT len(trim(form.iAge))#&quot; /&gt;
+</code></pre>
+
+<p>Nice and clean :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

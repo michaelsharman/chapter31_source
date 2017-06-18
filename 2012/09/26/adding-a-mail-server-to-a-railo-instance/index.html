@@ -1,0 +1,132 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Adding a mail server to a Railo instance | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Adding a mail server to a Railo instance - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 26, 2012</h2>
+    <h1 class="title">Adding a mail server to a Railo instance</h1>
+    
+    <div class="content">
+      
+
+<p>We turn off all GUI based administration consoles in our production environments, this includes Railo&rsquo;s admin area.</p>
+
+<p>If you need to configure your Railo instance to include an SMTP server, you can add a line in WEB-INF/railo/railo-web.xml.cfm</p>
+
+<p>Open up that file (probably as sudo), look for the <mail> tag (which is empty by default) and insert the following:</p>
+
+<pre><code>&lt;server port=&quot;25&quot; smtp=&quot;127.0.0.1&quot; /&gt;
+</code></pre>
+
+<p>The &ldquo;smtp&rdquo; attribute should be the IP address of your SMTP server. Also, if your SMTP server requires a username and password, you can add them like so:</p>
+
+<pre><code>&lt;server port=&quot;25&quot; smtp=&quot;127.0.0.1&quot; username=&quot;myusername&quot; password=&quot;mypassword&quot; /&gt;
+</code></pre>
+
+<p>At the end of the day your config entry should look something like:</p>
+
+<pre><code>&lt;mail log=&quot;{railo-web}/logs/mail.log&quot;&gt;
+  &lt;server port=&quot;25&quot; smtp=&quot;127.0.0.1&quot;/&gt;
+&lt;/mail&gt;
+</code></pre>
+
+<h2 id="update-january-2013">Update - January 2013</h2>
+
+<p>I was googling something else when I came across a post on the Railo groups indicating that by default only <em>error</em> logging is enabled for mail. This means that in the event of an error (where Railo is unable to send the mail) you can check the WEB-INF/railo/logs/mail.log for information.</p>
+
+<p>However, you can turn on <em>info</em> logging as well to presumably track whenever mail is actually sent. This can be done in either railo-server.xml or railo-web.xml. Eg:</p>
+
+<pre><code>&lt;mail log-level=&quot;info&quot; log=&quot;{railo-web}/logs/mail.log&quot;&gt;
+  &lt;server port=&quot;25&quot; smtp=&quot;127.0.0.1&quot;/&gt;
+&lt;/mail&gt;
+</code></pre>
+
+<p>This is really handy for us as we disallow access to the Railo admin GUI.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

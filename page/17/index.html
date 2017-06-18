@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.23" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">November 1, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/11/01/cfml-reference-docs-for-the-ipod/">CFML reference docs for the iPod</a></h1>
+      
+      <div class="content">
+        That&rsquo;s right, the ColdFusion 8 quick docs for Apple&rsquo;s iPod!
+I found this one a while ago and quickly tried it out and it&rsquo;s really cool :)
+I get public transport to and from work everyday so I find it easy and convenient to read up on the new functions and tags for CF8. Beats just standing there right?
+Read more and give it a try here.
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 31, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/31/coldfusion-8-can-now-use-cacheaftercachewithin-when-using-cfqueryparams/">ColdFusion 8 can now use cacheAfter/cacheWithin when using cfqueryparam&#39;s</a></h1>
+      
+      <div class="content">
+        I just noticed this in the Adobe docs for cfqueryparam in ColdFusion 8:
+ Revised 8/21/2007: Removed limitation on using the cfquery cachedAfter or cachedWithin attributes with cfqueryparam.This limit no longer applies.
+ This is great news because before (MX7 and below):
+ You cannot use the cfquery cachedAfter or cachedWithin attributes with cfqueryparam.
+ I know many people didn&rsquo;t like this limitation as it meant you needed to go to extra lengths to perform query caching (such as Application scope etc).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/31/coldfusion-8-can-now-use-cacheaftercachewithin-when-using-cfqueryparams/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 18, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/18/styling-issues-when-generating-an-xls-from-html/">Styling issues when generating an xls from HTML</a></h1>
+      
+      <div class="content">
+        A few notes to self on generating .xls files from HTML tables, particularly with CSS.
+It appears that excel only has a particular &lsquo;range&rsquo; of hex numbers you can use (at least for background colours). I was trying to use #eeeeee; for a while (which is obviously fine for HTML and for creating a PDF), but I couldn&rsquo;t use that as a value in excel as the colours just weren&rsquo;t displaying.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/18/styling-issues-when-generating-an-xls-from-html/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 12, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/12/coldfusion-round-docs-inaccurate/">ColdFusion &#39;Round()&#39; docs inaccurate?</a></h1>
+      
+      <div class="content">
+        Today I needed a function which would return me a whole number, rounding either up or down depending on whether the value passed to the function was less than or greater than .5
+Looking at round() ColdFusion 8 docs they say:
+ Rounds a number to the closest integer that is larger than the input parameter.
+ Hmm, that doesn&rsquo;t sound right.
+In actual fact the round() function does exactly what it should, rounds numbers down OR up.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/12/coldfusion-round-docs-inaccurate/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 8, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/08/cant-set-a-scheduled-task-end-date/">Can&#39;t set a scheduled task &#39;End Date&#39; </a></h1>
+      
+      <div class="content">
+        I&rsquo;ve just created some functionality which will be executed by a ColdFusion (8 standard on Win 2003) scheduled task daily, but only for 1 month.
+When I add my new task in ColdFusion administrator I can set the &lsquo;Start Date&rsquo; ok, but not the &lsquo;End Date&rsquo;. The reason? Well I&rsquo;m not sure, but it looks like a conflict in US/European date formats (I&rsquo;m located in Australia and the server region settings are English/Australia).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/08/cant-set-a-scheduled-task-end-date/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 5, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/05/createodbcdate-returns-time-as-well/">createODBCDate() returns &#39;time&#39; as well?</a></h1>
+      
+      <div class="content">
+        Recently I was just comparing 2 dates (one from a query and the other was now()) using the createODBCDate() and dateCompare() functions.
+I was using the createODBCDate() function because I only wanted the &lsquo;date&rsquo; part of a date object, not the &lsquo;time&rsquo;. More than likely I should have been using dateFormat(), but that&rsquo;s another story :)
+I had the following:
+&lt;cfif dateCompare(createODBCDate(q.DateTimeCreated), createODBCDate(now())) EQ 0&gt;  The problem was I kept getting -1 returned, meaning that &lsquo;q.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/05/createodbcdate-returns-time-as-well/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 28, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/09/28/caveat-when-calling-components-from-onsessionend/">Caveat when calling components from onSessionEnd()</a></h1>
+      
+      <div class="content">
+        As most ColdFusion developers know, you cannot reference &lsquo;application&rsquo; scoped variables directly in Application.cfc&rsquo;s onSessionEnd() method. Instead you need to use the ApplicationScope parameter. Notes from the docs:
+ You must use the ApplicationScope parameter to access the Application scope. You cannot reference the Application scope directly; for example, use Arguments.ApplicationScope.myVariable, not Application.myVariable. Use a named lock when you reference variables in the Application scope, as shown in the example.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/09/28/caveat-when-calling-components-from-onsessionend/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 28, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/09/28/jquery-and-swfobject-conflict/">jQuery and SWFObject conflict</a></h1>
+      
+      <div class="content">
+        I experienced some strange behaviour today when building a site which was using jQuery and SWFObject. Our Flash files were loading ok and 99% of the javascript (using jQuery) was working fine.
+The problem was found only in IE (sound familiar?) with the following code:
+$(document).ready(function(){ $('#submitButton').click(function(){  When the &lsquo;submitButton&rsquo; was clicked, this function was not firing in IE. After some googling I found that there is a slight conflict with jQuery and SWFObject.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/09/28/jquery-and-swfobject-conflict/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 27, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/09/27/creating-a-custom-farcry-login-page/">Creating a custom FarCry login page</a></h1>
+      
+      <div class="content">
+        The FarCry security model is really very cool. You can of course setup users within the &lsquo;admin&rsquo; area and assign those users to groups (and those groups can have different permissions), but you can also authenticate via Active Directory or LDAP etc.
+One thing you can also do with ease is secure particular navigation &lsquo;nodes&rsquo; of the website, thus quickly and easily creating password protected &lsquo;member&rsquo; areas.
+Whenever you secure a navigation branch the user is presented with the default FarCry login screen as seen below:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/09/27/creating-a-custom-farcry-login-page/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 27, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/09/27/coldfire-10-released/">ColdFire 1.0 released</a></h1>
+      
+      <div class="content">
+        Yesterday there was some news from Ray and Nathan Mische regarding the 1.0 release of ColdFire, Nathan has a great write up here.
+From RIAForge:
+ ColdFire is an extension to FireBug. It provides debug information in a FireBug tab as opposed to the bottom of the page. This lets you debug and keep your site layout intact, since ColdFusion&rsquo;s built-in debug information can sometimes mess with your site layout.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/09/27/coldfire-10-released/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/page/16/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/page/18/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+
+

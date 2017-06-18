@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.23" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">April 28, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/04/28/dumping-and-aborting-with/">Dumping and aborting with &lt;cfscript&gt;</a></h1>
+      
+      <div class="content">
+        One of the annoying things about cfscript is it&rsquo;s lack of support for a lot of CFML tags.
+ and  are 2 tags I always use in development, especially for debugging. A way to use this functionality is to create a UDF to do these types of functions.
+For example
+&lt;cffunction name=&quot;dump&quot; access=&quot;public&quot; output=&quot;true&quot; returntype=&quot;struct&quot;&gt; &lt;cfargument name=&quot;arg&quot; /&gt; &lt;cfdump var=&quot;#arg#&quot; /&gt; &lt;/cffunction&gt; &lt;cffunction name=&quot;abort&quot; access=&quot;public&quot; output=&quot;false&quot; returntype=&quot;void&quot;&gt; &lt;cfabort /&gt; &lt;/cffunction&gt;  This function can be stored in a simple utilities component and stored in application scope, that way you can call it from anywhere.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/04/28/dumping-and-aborting-with/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 20, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/04/20/isvalid/">isValid()</a></h1>
+      
+      <div class="content">
+        New to ColdFusion MX7 the isValid() function tests whether a value meets a validation or data type rule and returns True if the value conforms to the rule; False, otherwise.
+Function syntax
+isValid(type, value) isValid(&quot;range&quot;, value, min, max) isValid(&quot;regex&quot; or &quot;regular_expression&quot;, value, pattern)  Example:
+&lt;cfif IsValid(&quot;integer&quot;, url.value)&gt; Valid integer! &lt;cfelse&gt; Invalid Integer! &lt;/cfif&gt; &lt;cfif IsValid(&quot;range&quot;, url.value, 1, 100)&gt; Value is between 1 and 100 &lt;cfelse&gt; Value is not between 1 and 100 &lt;/cfif&gt; &lt;cfif IsValid(&quot;regex&quot;, url.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/04/20/isvalid/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 11, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/04/11/cfdump-goodies/">cfdump goodies</a></h1>
+      
+      <div class="content">
+        &lt;cfdump&gt; is a fantastic debugging tool which can be used to display the values/results of simple and complex variables. But there are a couple of little known attributes you can take advantage of to make your life just peachy, namely:
+ expand top  Expand is great when you&rsquo;re working with large data structures which might take a long time to load etc. This attribute can take 2 values, either yes or no (the default being yes).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/04/11/cfdump-goodies/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 1, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/04/01/how-do-i-trim-the-contents-of-a-form/">How do I trim the contents of a form?</a></h1>
+      
+      <div class="content">
+        From ColdFusion Cookbook:
+Trimming is an essential part of dealing with an data coming from form textfields or textareas etc. You can of couse trim as and when you need (before validation or database inserts etc) but if you can trim all fields quickly and easily!
+&lt;cfloop collection=&quot;#form#&quot; item=&quot;formfield&quot;&gt; &lt;cfset form[formfield] = trim(form[formfield]) /&gt; &lt;/cfloop&gt;  This basically loops over a form structure and trims each element. You can use this loop in a function before handing it to your validation or database methods.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/04/01/how-do-i-trim-the-contents-of-a-form/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 31, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/31/how-to-find-the-size-of-a-directory/">How to find the size of a directory?</a></h1>
+      
+      <div class="content">
+        Here is an article from coldfusion cookbook.
+&lt;cfdirectory directory=&quot;c:\cfusionmx&quot; action=&quot;list&quot; recurse=&quot;true&quot; name=&quot;cfDir&quot;&gt; &lt;cfquery dbtype=&quot;query&quot; name=&quot;dirSize&quot;&gt; select sum(size) as size from cfDir &lt;/cfquery&gt; &lt;cfset sizemb=&quot;dirSize.size/1000000&quot;&gt; &lt;cfoutput&gt;#numberFormat(sizeMB,&quot;,.99&quot;)#&lt;/cfoutput&gt;  Note the &lsquo;recurse&rsquo; option, this will get the size of the current and all sub-directories. If you only need the size of the current directory, change recurse to false.
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 29, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/29/how-do-i-make-sure-a-string-is-safe-to-use-with-javascript/">How do I make sure a string is safe to use with JavaScript?</a></h1>
+      
+      <div class="content">
+        An article from coldfusion cookbook using jSStringFormat():
+&ldquo;If you are dynamically populating a JavaScript variable, you may find that your code breaks with &ldquo;unterminated string constant&rdquo; or similar error messages. This is probably a case of your JavaScript variables containing characters that are considers to be &ldquo;special&rdquo; characters by JavaScript. You will need to &ldquo;escape&rdquo; these special characters so that JavaScript can process them.&rdquo;
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 16, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/16/cfstoredproc-vs-cfquery/">cfstoredproc vs cfquery</a></h1>
+      
+      <div class="content">
+        There are of course pros and cons to using each method to perform CRUD operations on a database.
+cfstoredproc Pros:
+ With stored procedures you can control security in the database as well as the web pages. Transactions are handled at the database level, stored procedures are ideal here. Stored procedures provide greater performance, because the execution plan for the sql doesn&rsquo;t have to be recreated and if a page has multiple calls to the database, you can combine them all in one stored procedure, meaning only one trip to and back from the db.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/03/16/cfstoredproc-vs-cfquery/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 15, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/15/cfstoredproc-in-mx7/">new &#39;result&#39; attribute in MX7 cfstoredproc</a></h1>
+      
+      <div class="content">
+        In CFMX7 Macromedia introduced a new (and optional) attribute to the cfstoredproc tag called &ldquo;result&rdquo; which specifies a name for the structure in which cfstoredproc returns the statusCode and ExecutionTime variables. If set, this value replaces cfstoredproc as the prefix to use when accessing those variables.
+The result attribute provides a way for stored procedures that are called from multiple pages, possibly at the same time, to avoid overwriting the results of one call with another.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/03/15/cfstoredproc-in-mx7/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 14, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/14/double-checked-locking/">Double-checked locking</a></h1>
+      
+      <div class="content">
+        Mark Kruger has a nice article (with mention from Sean Corfield) on APPLICATION variable locking.
+Sean basically added that in the initial example (BAD code) if 2 users hit the  condition at the same time, only one will have a lock on the code while the other will wait. The problem lies in the fact that the 2nd user is waiting for the lock to expire, then they will perform a write operation NOT checking the  condition again!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/03/14/double-checked-locking/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 13, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/13/session-and-client-variable-handling-in-cfmx/">Session and client variable handling in CFMX</a></h1>
+      
+      <div class="content">
+        With CFMX there are a few new features you can take advantage of in relation to session and client variable handling, namely:
+ URLSessionFormat() Using UUID for the CFToken value Using J2EE Session Variables  URLSessionFormat()
+We all know that using session variables primarily relies on the user have enabled cookies in their browser, otherwise you need to pass CFIDE and CFTOKEN along the URL. This can be painful as you need to ensure you pass this client identity along with every request, whether it be an
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/03/13/session-and-client-variable-handling-in-cfmx/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/page/25/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/page/27/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+
+

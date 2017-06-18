@@ -1,0 +1,167 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Search and replace using reg exp | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Search and replace using reg exp - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">December 8, 2007</h2>
+    <h1 class="title">Search and replace using reg exp</h1>
+    
+    <div class="content">
+      <p>The other day <a href="http://www.dopefly.com/">Nathan Strutz</a> wrote a great <a href="http://www.dopefly.com/techblog/entry.cfm?entry=222">post</a> on finding and replacing text in your IDE (in my case I&rsquo;m using Aptana/cfeclipse) using regular expressions.</p>
+
+<p>This is more a reminder to me so that I try to use it (with the idea that it&rsquo;ll become 2nd nature!), but I also had a play to see how I could use it in day to day coding. I&rsquo;m sure others have more interesting uses, but here is where I can use it immediately:</p>
+
+<p><strong>Setting variables (using cfml rather than cfscript)</strong></p>
+
+<p>Often you have the need to set a large number of variables, I would actually use a <cfscript> block for this, but if I wanted to use <cfset> with the end result being something like:</p>
+
+<pre><code class="language-javascript">&lt;cfset count = 0 /&gt;
+&lt;cfset i = 1 /&gt;
+&lt;cfset j = 1 /&gt;
+</code></pre>
+
+<p>I&rsquo;ll need a reg exp, text to replace my matched content and initial code to search.</p>
+
+<p>The reg exp</p>
+
+<pre><code>^(.+) (.+)$
+</code></pre>
+
+<p>Note that I&rsquo;m using 2 &lsquo;groups&rsquo; separated by a space, this will be important when looking at the actual text to search on.</p>
+
+<p>The &lsquo;replace&rsquo; text to use</p>
+
+<pre><code class="language-javascript">&lt;cfset $1 = $2 /&gt;
+</code></pre>
+
+<p>The initial source code which I&rsquo;ll search on</p>
+
+<pre><code class="language-javascript">count 0
+i 1
+j i
+</code></pre>
+
+<p>Note that as  have 2 &lsquo;groups&rsquo; separated by a space, the end result would be</p>
+
+<pre><code class="language-javascript">&lt;cfset count = 0 /&gt;
+&lt;cfset i = 1 /&gt;
+&lt;cfset j = 1 /&gt;
+</code></pre>
+
+<p>Nice :) You can use (I believe) as many &lsquo;groups&rsquo; as you want, here is an example which uses 3 for &lt;cfparam&gt;</p>
+
+<p>The reg exp</p>
+
+<pre><code class="language-javascript">^(.+) (.+) (.+)$
+</code></pre>
+
+<p>The &lsquo;replace&rsquo; text to use</p>
+
+<pre><code class="language-javascript">&lt;cfparam name=&quot;$1&quot; default=$2 type=&quot;$3&quot; /&gt;
+</code></pre>
+
+<p>The initial source code</p>
+
+<pre><code class="language-javascript">form.firstName &quot;&quot; string
+form.lastName &quot;&quot; string
+form.email &quot;&quot; email
+form.postalcode &quot;90210&quot; numeric
+</code></pre>
+
+<p>The end result</p>
+
+<pre><code class="language-javascript">&lt;cfparam name=&quot;form.firstName&quot; default=&quot;&quot; type=&quot;string&quot; /&gt;
+&lt;cfparam name=&quot;form.lastName&quot; default=&quot;&quot; type=&quot;string&quot; /&gt;
+&lt;cfparam name=&quot;form.email&quot; default=&quot;&quot; type=&quot;email&quot; /&gt;
+&lt;cfparam name=&quot;form.postalcode&quot; default=&quot;90210&quot; type=&quot;numeric&quot; /&gt;
+</code></pre>
+
+<p>As I said, I&rsquo;m sure there are much better ways to achieve this as I suck at regular expressions. Anyone have any more uses?</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

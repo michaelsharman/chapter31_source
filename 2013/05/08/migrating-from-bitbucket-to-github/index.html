@@ -1,0 +1,162 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Migrating from bitbucket to github | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Migrating from bitbucket to github - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 8, 2013</h2>
+    <h1 class="title">Migrating from bitbucket to github</h1>
+    
+    <div class="content">
+      
+
+<p>Migrating repositories between <a href="https://bitbucket.org/">bitbucket</a> and <a href="http://github.com">github</a> couldn&rsquo;t be simpler thanks to the design nature of <acronym title="Distrubuted Version Control System">DVCS</acronym> like git because the entire history is already located on your machine within your projects <em>.git</em> folder. All you&rsquo;re really doing is changing a <em>remote</em>.</p>
+
+<p>Open a terminal and navigate to your project directory.</p>
+
+<h2 id="tldr">TLDR;</h2>
+
+<p>For those who just want the commands with no explanation</p>
+
+<pre><code class="language-bash">git remote rename origin bitbucket
+git remote add origin git@github.com:[username]/[repo_name].git
+git push -u origin master
+git remote rm bitbucket
+</code></pre>
+
+<h2 id="explanation-of-steps">Explanation of steps</h2>
+
+<p>Check which remote(s) you have now:</p>
+
+<pre><code class="language-bash">$ git remote -v show
+origin	git@bitbucket.org:[username]/[repo_name].git (fetch)
+origin	git@bitbucket.org:[username]/[repo_name].git (push)
+</code></pre>
+
+<p>Now rename your existing <em>origin</em> to <em>bitbucket</em> (or whatever you want to call it):</p>
+
+<pre><code class="language-bash">git remote rename origin bitbucket
+</code></pre>
+
+<p>Double check your change:</p>
+
+<pre><code class="language-bash">$ git remote -v show
+bitbucket	git@bitbucket.org:[username]/[repo_name].git (fetch)
+bitbucket	git@bitbucket.org:[username]/[repo_name].git (push)
+</code></pre>
+
+<p>Now add github as your <em>origin</em> and push the repository:</p>
+
+<pre><code class="language-bash">git remote add origin git@github.com:[username]/[repo_name].git
+git push -u origin master
+</code></pre>
+
+<p>Check what remotes you have:</p>
+
+<pre><code class="language-bash">$ git remote -v show
+bitbucket	git@bitbucket.org:[username]/[repo_name].git (fetch)
+bitbucket	git@bitbucket.org:[username]/[repo_name].git (push)
+origin	git@github.com:[username]/[repo_name].git (fetch)
+origin	git@github.com:[username]/[repo_name].git (push)
+</code></pre>
+
+<p>Removed the old remote (<em>bitbucket</em>):</p>
+
+<pre><code class="language-bash">git remote rm bitbucket
+</code></pre>
+
+<p>Finally, check your remotes:</p>
+
+<pre><code class="language-bash">$ git remote -v show
+origin	git@github.com:[username]/[repo_name].git (fetch)
+origin	git@github.com:[username]/[repo_name].git (push)
+</code></pre>
+
+<p>Note that at the end of this, you still have your code on bitbucket, you&rsquo;ve just pushed your repository to github and pointed your <em>origin</em> remote to there. To fully <em>clean up</em> you need to delete your repo from bitbucket.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

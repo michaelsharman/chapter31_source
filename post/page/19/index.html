@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Posts | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Posts - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">June 14, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/06/14/using-variablesinstance-inside-your-components/">Using variables.instance inside your components</a></h1>
+      
+      <div class="content">
+        Often when creating ColdFusion components developers will create a structure to hold component instance data. This data is stored in the components &lsquo;variables&rsquo; scope and is therefore available to all methods.
+Here is an example from the rooibos component generator:
+&lt;cfcomponent displayname=&quot;sample&quot; output=&quot;false&quot; hint=&quot;A bean which models the form.&quot;&gt; &lt;!--- PROPERTIES ---&gt; &lt;cfset variables.instance = StructNew() /&gt;  Now some of you may be wondering why you would use the extra struct level of &lsquo;instance&rsquo; when we already know everything in that struct is in the components instance (variables) scope.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/06/14/using-variablesinstance-inside-your-components/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 13, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/06/13/reading-blogs-on-a-mac-using-firefox/">Reading blogs on a mac using Firefox</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve been on a Mac (OSX) for a little while now and generally I&rsquo;m having a nice time, except when it comes to reading some (but only some) blogs!
+We all know that font sizes are different across browser and platform, but Firefox on a mac occasionally makes life a little difficult particularly when it comes to reading comments and code snippets.
+Here is a screen grab of an example, certainly not to pick on this particular blog but just one of the few examples I come across on my daily travels thru fullasagoog.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/06/13/reading-blogs-on-a-mac-using-firefox/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 25, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/04/25/image-manipulation-with-imagecfc-v214/">Image manipulation with imageCFC v2.14</a></h1>
+      
+      <div class="content">
+        Update: as of May 30th 2007 version 2.17 has been released! See the site for more information
+Ok so I&rsquo;m a little late on this one, but the new version of imageCFC (v2.14) was released on March 7th 2007. The big feature add is exact size thumbnails using the &ldquo;cropToExact&rdquo; argument of the &ldquo;resize()&rdquo; method:
+ This argument, when combined with a specified width, specified height, and the preserveAspect argument being set to true will cause a image to be resized then cropped to fit exactly within the specified dimensions.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/04/25/image-manipulation-with-imagecfc-v214/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 24, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/04/24/unwanted-coldfusion-form-validation/">Unwanted ColdFusion form validation</a></h1>
+      
+      <div class="content">
+        I came across something strange today when developing a web form.
+Basically I had a form field with a name/id of &ldquo;restoration_required&rdquo; but when I submitted the form I got the following error:
+Now Geoff Bowers happened to be standing nearby and was kind enough to point out that this looked like a  validation error, only I wasn&rsquo;t using cfform!
+A quick test (on WinXP, CFMX 7.0.2) showed everything working as expected when I renamed the field as &ldquo;restoration_isRequired&rdquo;.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/04/24/unwanted-coldfusion-form-validation/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 23, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/04/23/farcry-40-filename-standards/">Farcry 4.0 filename standards</a></h1>
+      
+      <div class="content">
+        Here at Daemon we are looking at standardising the FarCry core codebase in an effort to reduce any case-sensitivity issues that may be found when running FarCry on different platforms.
+These problems usually arise when dealing with filenames of any type (.cfc, .cfm etc), indeed I ran into an issue today with an external developer who had created their own templates which weren&rsquo;t showing up in the FarCry webtop. Filename case-sensitivity was the culprit :)
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/04/23/farcry-40-filename-standards/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 11, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/04/11/combining-update-and-insert-sql-logic/">Combining insert and update SQL logic</a></h1>
+      
+      <div class="content">
+        *Note that this example is using MSSQL with an Identity set to generate the primary key automatically.
+An all too common process developers go through when building database driven web applications is creating logic to INSERT a record when one doesn&rsquo;t exist, and UPDATE a record when one does exist.
+This often leads to conditional logic within your application (inside a Service layer perhaps) and then running one of 2 SQL statements depending on the existance of a primary key value which may be coming from a form or URL.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/04/11/combining-update-and-insert-sql-logic/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 10, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/04/10/cfquery-result-attribute-caveat/">cfquery &#39;result&#39; attribute caveat</a></h1>
+      
+      <div class="content">
+        A great feature of  which was introduced in CFMX7 is the addition of the &lsquo;result&rsquo; attribute. When used, a developer can access a Structure of query result variables including the following keys:
+ Cache ColumnList ExecutionTime RecordCount SQL SQLParameters  You can read more about the &lsquo;result&rsquo; attribute in a previous post or at Live docs.
+One thing I&rsquo;ve come across is that the structure returned (by using the result attribute) is created where the query is executed and the value of &lsquo;result&rsquo; references this struct in the local variable scope.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/04/10/cfquery-result-attribute-caveat/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 25, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/03/25/the-coolest-dhtml-calendar/">The &#39;coolest&#39; DHTML calendar</a></h1>
+      
+      <div class="content">
+        As web developers we are often some of the first people to see the newer techniques and tools available for use in web applications. This can be great as we can then hurry off and implement these things into our new projects.
+But of course there are still millions of older sites (which will no doubt still be around for years to come!) using old techniques and tools. Ugh!
+One of the more common things you find is the age old popup calendar window which is SLOW and could be blocked by the numerous popup blockers out there today.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/03/25/the-coolest-dhtml-calendar/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">February 4, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/02/04/adobe-feature-requestbug-report-form/">Adobe Feature Request/Bug Report Form</a></h1>
+      
+      <div class="content">
+        There was a lot of talk flying around the blogosphere over the last few months regarding the much anticipated ColdFusion 8 with a lot of people blogging their &lsquo;wishlist&rsquo; for the new version (codenamed Scorpio).
+But one thing you might not have known (I certainly didn&rsquo;t) is that there is an official form on the Adobe site where you can post a &lsquo;bug&rsquo; or request a new &lsquo;feature&rsquo;. Another &ldquo;can&rsquo;t believe I didn&rsquo;t know that&rdquo; :)
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/02/04/adobe-feature-requestbug-report-form/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">February 4, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/02/04/cfqueryparam-and-conditional-handling-of-nulls/">cfqueryparam and conditional handling of NULL&#39;s</a></h1>
+      
+      <div class="content">
+        Most people know that you should always use cfqueryparam on your query parameters when querying a database to (among other things):
+ secure your database from unauthorised/malicious users perform data validation take advantage of SQL bind parameters  The cfqueryparam tag can and should be used whether the query be a SELECT, UPDATE, DELETE or INSERT.
+One of the problems I&rsquo;ve had in the past is when I want to either INSERT or UPDATE a column which has an INT datatype (MSSQL), but that column is not mandatory and therefore allows NULL values.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/02/04/cfqueryparam-and-conditional-handling-of-nulls/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/post/page/18/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/post/page/20/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

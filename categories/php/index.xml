@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Php on chapter31</title>
+    <link>http://chapter31.com/categories/php/</link>
+    <description>Recent content in Php on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Sat, 22 Jun 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Careful using PHP array_merge</title>
+      <link>http://chapter31.com/2013/06/22/careful-using-php-array-merge/</link>
+      <pubDate>Sat, 22 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/06/22/careful-using-php-array-merge/</guid>
+      <description>Using array_merge bit me today when I merged an array (which happened to be empty) with a numerically indexed array.
+Because the array I was merging was empty, I expected my other (numerically indexed) array to remain untouched. However that wasn&amp;rsquo;t the case, from the docs:
+Values in the input array with numeric keys will be renumbered with incrementing keys starting from zero in the result array.  This meant that the following array keys went from being their constant numeric values, to 0, 1, 2, 3:</description>
+    </item>
+    
+    <item>
+      <title>PHP [&#39;SCRIPT_NAME&#39;] returning empty string</title>
+      <link>http://chapter31.com/2013/06/21/php-script-name-returning-empty-string/</link>
+      <pubDate>Fri, 21 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/06/21/php-script-name-returning-empty-string/</guid>
+      <description>I was working with Slim (v2.2.x) the other day and saw that a PHP warning was being thrown in one of the interal Slim files:
+Warning: strpos(): Empty needle in /vendor/slim/slim/Slim/Environment.php on line 143  The code throwing the warning was the following if statement:
+if (strpos($_SERVER[&#39;REQUEST_URI&#39;], $_SERVER[&#39;SCRIPT_NAME&#39;]) === 0) {  The actual issue was that $_SERVER[&#39;SCRIPT_NAME&#39;] was an empty string, so strpos was complaining as that is invalid syntax.</description>
+    </item>
+    
+    <item>
+      <title>PHP Composer error - cannot redeclare class</title>
+      <link>http://chapter31.com/2013/06/03/php-composer-error-cannot-redeclare-class/</link>
+      <pubDate>Mon, 03 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/06/03/php-composer-error-cannot-redeclare-class/</guid>
+      <description>I rebuilt PHP last night to include APC and all of a sudden composer stopped working in my project. Whenever I ran a simple update, install or dump-autoload I&amp;rsquo;d get:
+$ composer update PHP Fatal error: include(): Cannot redeclare class symfony\component\process\process in phar:///usr/local/bin/composer/vendor/composer/ClassLoader.php on line 183 Fatal error: include(): Cannot redeclare class symfony\component\process\process in phar:///usr/local/bin/composer/vendor/composer/ClassLoader.php on line 183  A quick google told me others also had the same issue.</description>
+    </item>
+    
+    <item>
+      <title>Installing APC in PHP 5.4.x on Mac OSX</title>
+      <link>http://chapter31.com/2013/06/02/installing-apc-in-php-5-dot-4-x-on-mac-osx/</link>
+      <pubDate>Sun, 02 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/06/02/installing-apc-in-php-5-dot-4-x-on-mac-osx/</guid>
+      <description>I recently installed PHP 5.4 from source but needed to add APC.
+Most people can install this using PECL, but I got an error doing this:
+$ pecl install apc Warning: lstat(): Lstat failed for /private/tmp/pear/cache/497e483d585c1e3f341260e73a8c6e85rest.cacheid in PEAR/REST.php on line 276 Warning: lstat(): Lstat failed for /private/tmp/pear/cache/497e483d585c1e3f341260e73a8c6e85rest.cacheid in /opt/php-5.4.15/lib/php/PEAR/REST.php on line 276 No releases available for package &amp;quot;pecl.php.net/apc&amp;quot; install failed  So instead I downloaded the APC source from the PECL website and ran the following:</description>
+    </item>
+    
+    <item>
+      <title>Installing Xdebug on Mac Mountain Lion (10.8.3)</title>
+      <link>http://chapter31.com/2013/05/29/installing-xdebug-on-mac-mountain-lion-10-dot-8-3/</link>
+      <pubDate>Wed, 29 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/05/29/installing-xdebug-on-mac-mountain-lion-10-dot-8-3/</guid>
+      <description>Even though I&amp;rsquo;m running Mountain Lion (10.8.3) which comes with Xdebug I couldn&amp;rsquo;t get the PHP (5.4.14) local web server to register that Xdebug was actually installed and enabled.
+My php.ini had the already installed Xdebug extension enabled:
+zend_extension=&amp;quot;/usr/lib/php/extensions/no-debug-non-zts-20090626/xdebug.so&amp;quot;  But whenever I inspected phpinfo() there wasn&amp;rsquo;t any mention of Xdebug.
+Luckily the website has a wizard where you can paste the output of phpinfo(). From there you get detailed instructions on how to download, configure and make the latest version of Xdebug.</description>
+    </item>
+    
+    <item>
+      <title>Date timezone error when upgrading to PHP 5.3&#43;</title>
+      <link>http://chapter31.com/2013/05/06/date-timezone-error-when-upgrading-to-php-5-dot-3-plus/</link>
+      <pubDate>Mon, 06 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/05/06/date-timezone-error-when-upgrading-to-php-5-dot-3-plus/</guid>
+      <description>I upgraded to 5.4.14 last night on Mac OSX 10.8.3. Things went smoothly except I got an error running my apps:
+ date(): It is not safe to rely on the system&amp;rsquo;s timezone settings. You are required to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone &amp;lsquo;UTC&amp;rsquo; for now, but please set date.</description>
+    </item>
+    
+    <item>
+      <title>Installing PHP 5.4&#43; from source on Mac OSX Mountain Lion</title>
+      <link>http://chapter31.com/2013/05/06/installing-php-5-dot-4-plus-from-source-on-mac-mountain-lion/</link>
+      <pubDate>Mon, 06 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/05/06/installing-php-5-dot-4-plus-from-source-on-mac-mountain-lion/</guid>
+      <description>Download and extract the PHP source from php.net, for me that was 5.4.14. Put it somewhere friendly, the desktop will do.
+Open a terminal and install some dependancies via brew:
+brew install libjpeg brew install pcre brew install libxml2 brew install mcrypt  Download and install ICU from http://site.icu-project.org/download/48#ICU4C-Download
+tar xzvf icu4c-4_8_1-src.tgz cd icu/source ./runConfigureICU MacOSX make sudo make install  Rebuild IMAP, download source from ftp://ftp.cac.washington.edu/imap/
+make osx EXTRACFLAGS=&amp;quot;-arch i386 -arch x86_64 -g -Os -pipe -no-cpp-precomp&amp;quot; sudo cp c-client/*.</description>
+    </item>
+    
+    <item>
+      <title>Wordpress - detecting the categories of a post</title>
+      <link>http://chapter31.com/2011/05/11/wordpress-detecting-the-categories-of-a-post/</link>
+      <pubDate>Wed, 11 May 2011 13:48:49 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2011/05/11/wordpress-detecting-the-categories-of-a-post/</guid>
+      <description>I was creating a Wordpress child theme (the best way to modify/override your themes) tonight and had the need to have different display options depending on which categories the blog article had. So for example if I had a post categorised with &amp;ldquo;portfolio&amp;rdquo;, I wanted to hide the comments form which usually sits at the bottom of a post.
+The following snippet will loop over all post categories, if it finds that &amp;ldquo;portfolio&amp;rdquo; is one of the categories assigned to the current post then a local variable (boolean) is set which you can use to hide Wordpress functions anywhere in the current template.</description>
+    </item>
+    
+    <item>
+      <title>FancyBox for Wordpress plugin not working</title>
+      <link>http://chapter31.com/2011/05/11/fancybox-for-wordpress-plugin-not-working/</link>
+      <pubDate>Wed, 11 May 2011 13:42:10 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2011/05/11/fancybox-for-wordpress-plugin-not-working/</guid>
+      <description>I just spent some time figuring out why fancybox wasn&amp;rsquo;t working tonight (image thumbnails were just linking to the large image&amp;hellip;not loading the overlay as they should). It now seems obvious after the fact but as far as I can see it&amp;rsquo;s NOT in the fancybox docs.
+When you insert your gallery from the media section of a page in wp-admin, you HAVE to choose &amp;ldquo;Image File&amp;rdquo;, not &amp;ldquo;Attachment Page&amp;rdquo;. That&amp;rsquo;s it!</description>
+    </item>
+    
+    <item>
+      <title>Development configuration tips for Ubuntu</title>
+      <link>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</link>
+      <pubDate>Sat, 13 Dec 2008 02:28:20 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</guid>
+      <description>I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&amp;rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc
+Here are some notes which helped me out when configuring some of these development tools.</description>
+    </item>
+    
+    <item>
+      <title>Adding subscriptions to comments for your Wordpress theme</title>
+      <link>http://chapter31.com/2008/08/09/adding-subscriptions-to-comments-for-your-wordpress-theme/</link>
+      <pubDate>Sat, 09 Aug 2008 03:13:26 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/08/09/adding-subscriptions-to-comments-for-your-wordpress-theme/</guid>
+      <description>If you are using a Wordpress theme which doesn&amp;rsquo;t support users subscribing to comments (crazy I know) you can add the plugin Subscribe to comments which is currently at version 2.1
+A summary of the features this plugin provides:
+ Rudimentary security Recognition of subscription status Themeable subscription manager Ability to let users change notification e-mail address Easy integration into comments form Subscription without leaving a comment Customization Internationalization  Installation is as easy as you&amp;rsquo;d expect from a Wordpress plugin.</description>
+    </item>
+    
+    <item>
+      <title>Wordpress for mobile devices</title>
+      <link>http://chapter31.com/2008/07/25/wordpress-for-mobile-devices/</link>
+      <pubDate>Fri, 25 Jul 2008 00:55:59 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/07/25/wordpress-for-mobile-devices/</guid>
+      <description>Wordpress is one of the most used blogging platforms around. One of the great things about it is the community support including the countless plugins you can use to enhance your blog/site.
+Particularly with the iPhone and other smart devices, mobile web seems to be experiencing a surge in traffic and importance to businesses. Although a lot of these &amp;ldquo;smart&amp;rdquo; devices now have full-featured browsers which can certainly handle your site without resorting to an entirely different version for mobile, there are still millions of handsets which access the web without a sophisticated browser so you often need to have a separate version of your site or at least a different stylesheet to handle these devices.</description>
+    </item>
+    
+    <item>
+      <title>Installing PHP5 with MySQL extensions</title>
+      <link>http://chapter31.com/2008/03/24/installing-php5-with-mysql-extensions/</link>
+      <pubDate>Mon, 24 Mar 2008 04:59:51 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/03/24/installing-php5-with-mysql-extensions/</guid>
+      <description>I&amp;rsquo;m generally a ColdFusion programmer but occasionally I need to install PHP for one reason or another, the last couple of times has been to use Wordpress.
+I remember the last time I did this (maybe 6 months ago) I had problems with connecting to MySQL because PHP 5 no longer bundles MySQL client libraries for the following reasons:
+ Most systems these days already have the client library installed. Given the above, having multiple versions of the library can get messy.</description>
+    </item>
+    
+    <item>
+      <title>Don&#39;t ever user www.templatesbrowser.com for wordpress themes</title>
+      <link>http://chapter31.com/2008/01/24/dont-ever-user-wwwtemplatesbrowsercom-for-wordpress-themes/</link>
+      <pubDate>Thu, 24 Jan 2008 04:43:02 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/01/24/dont-ever-user-wwwtemplatesbrowsercom-for-wordpress-themes/</guid>
+      <description>Today I noticed a JavaScript error on my site, on investigation I saw the following JavaScript code in the page source:
+var CCounter=2151068; var CCsite=www.chapter31.com; CCinvisible=0; &amp;lt;nosc/ript&amp;gt;&amp;lt;a hreflang=&amp;quot;de&amp;quot; lang=&amp;quot;de&amp;quot; href=&amp;quot;http://www.portalux.com/&amp;quot;&amp;gt;online casino&amp;lt;/a&amp;gt;&amp;lt;/nosc/ript&amp;gt; var CCounter=2151068; var CCsite=www.chapter31.com; CCinvisible=0;  My investigations found that where I downloaded the template from was a nice (NOT) little site called http://www.templatesbrowser.com/. Now what they do is add a &amp;ldquo;functions.php&amp;rdquo; file in the original code base, then call a method from the footer &amp;ldquo;credits();&amp;rdquo; which is in the functions.</description>
+    </item>
+    
+    <item>
+      <title>Wordpress RSS feed validation</title>
+      <link>http://chapter31.com/2006/11/14/wordpress-rss-feed-validation/</link>
+      <pubDate>Tue, 14 Nov 2006 22:15:29 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/11/14/wordpress-rss-feed-validation/</guid>
+      <description>I&amp;rsquo;ve been using Wordpress for a while now and I&amp;rsquo;m really happy with it. Only recently have I tried to validate my RSS feed using feedvalidator.
+Unfortunately even though the feed validated I received the following warning:
+ wfw:commentRSS should be wfw:commentRss
+ The explanation given on the site was:
+ Due to a clerical error, the element Chris Sells originally spec&amp;rsquo;ed as wfw:commentRss appeared as wfw:commentRSS (note the difference in case) on Joe Gregorio&amp;rsquo;s site.</description>
+    </item>
+    
+    <item>
+      <title>Blogging problems with my (PHP) host</title>
+      <link>http://chapter31.com/2006/11/03/blogging-problems-my-php-host/</link>
+      <pubDate>Fri, 03 Nov 2006 06:39:14 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2006/11/03/blogging-problems-my-php-host/</guid>
+      <description>Last week my blog software decided to stop working. I couldn&amp;rsquo;t create or edit any posts, bugger.
+It wasn&amp;rsquo;t the fault of the blog software however, it seems the host added some new &amp;lsquo;forbidden&amp;rsquo; words to their list and of course I wasn&amp;rsquo;t notified.
+Basically every time I wanted to create or edit a post I was redirected to the host&amp;rsquo;s home page! Specifically it looks like the line in question which was causing me headaches was:</description>
+    </item>
+    
+  </channel>
+</rss>

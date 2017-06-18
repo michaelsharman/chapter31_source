@@ -1,0 +1,180 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>FarCry - Finding a page by &#39;typename&#39; somewhere above the current page | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="FarCry - Finding a page by &#39;typename&#39; somewhere above the current page - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">June 19, 2008</h2>
+    <h1 class="title">FarCry - Finding a page by &#39;typename&#39; somewhere above the current page</h1>
+    
+    <div class="content">
+      <p><strong>Note:</strong> This is for FarCry v3 which is a bit old now but should work for v5 :)</p>
+
+<p>Sometimes when using FarCry I have a need to find an occurance of a page &ldquo;type&rdquo; which sits somewhere above where I currently am in the the navigation hierachy.</p>
+
+<p>Say I want to find the &ldquo;VehicleType&rdquo; page (which could be Car or Bike etc) above where I am in the navigation hierachy as listed below (when I&rsquo;m on the &ldquo;Models&rdquo; page):</p>
+
+<ul>
+<li>Home
+
+<ul>
+<li>Vehicles
+
+<ul>
+<li>Bike</li>
+<li>Car</li>
+<li>Sedans
+
+<ul>
+<li><strong><em>Models</em></strong></li>
+</ul></li>
+<li>Wagons
+<br /></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>I want to know whether I&rsquo;m in the &ldquo;Car&rdquo; or &ldquo;Bike&rdquo; part of the navigation tree and I want the content object of that page.</p>
+
+<p>There are a couple of ways to do this, using categories (tags) would be one way. Another is to simply look for an occurance of my type (VehicleType) in the tree <em>above</em> the current page you&rsquo;re on.</p>
+
+<p>The following function will do just that, just pass in the <strong>request.navId</strong> of the page you&rsquo;re on (Models), the <strong>typename</strong> and <strong>displayMethod</strong> you&rsquo;re looking for (VehicleType).</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;getParentPageByTypename&quot; access=&quot;public&quot; output=&quot;false&quot; returnType=&quot;struct&quot; hint=&quot;Returns the first tree occurance of a page 'typename' based on an ancestor search.&quot;&gt;
+	&lt;cfargument name=&quot;objectId&quot; type=&quot;string&quot; required=&quot;true&quot; hint=&quot;Current nav id of the page we want to search above in the tree&quot; /&gt;
+	&lt;cfargument name=&quot;typename&quot; type=&quot;string&quot; required=&quot;true&quot; hint=&quot;Which page typename are we looking for&quot; /&gt;
+	&lt;cfargument name=&quot;displayMethod&quot; type=&quot;string&quot; required=&quot;true&quot; hint=&quot;Which page display method are we looking for&quot; /&gt;
+	&lt;cfargument name=&quot;nLevel&quot; type=&quot;numeric&quot; required=&quot;false&quot; default=&quot;1&quot; hint=&quot;Which nLevel to start looking in the ancestor query. Usually we can start at 3 or higher (1 being 'Root' and 2 being 'Home')&quot; /&gt;
+	&lt;cfargument name=&quot;oTree&quot; type=&quot;any&quot; required=&quot;false&quot; default=&quot;#application.factory.oTree#&quot; /&gt;
+	
+	&lt;cfscript&gt;
+	
+		var qAncestors = &quot;&quot;;
+		var lAncestorIds = &quot;&quot;;
+		var aLeafNodes = &quot;&quot;;
+		var iArrayLength = 0;
+		var i = 0;
+		var stCurrentSubject = structNew();	//Default here in case we don't find anything, an empty struct will be returned
+	
+	&lt;/cfscript&gt;
+
+	&lt;!--- Get the ancestor nav nodes for the object argument ---&gt;
+	&lt;cfset qAncestors = arguments.oTree.getAncestors(arguments.objectId) /&gt;
+
+	&lt;!--- Put the objectIds of the parent nav nodes into a list so we can retrieve their 'leaf' values. Using nLevel we can skip nodes we know we're not interested in ---&gt;
+	&lt;cfloop query=&quot;qAncestors&quot; startrow=&quot;#arguments.nLevel#&quot;&gt;
+		&lt;cfset lAncestorIds = listAppend(lAncestorIds, qAncestors.objectId) /&gt;
+	&lt;/cfloop&gt;
+	
+	&lt;!--- Retrieve an array of leaf node information from a list of ancestor nav Id's ---&gt;
+	&lt;cfset aLeafNodes = arguments.oTree.getLeaves(lAncestorIds)&gt;		
+	&lt;cfset iArrayLength = arrayLen(aLeafNodes) /&gt;
+	
+	&lt;!--- Loop over the leaf nodes returned and look for the typename we're after ---&gt;
+	&lt;cfloop from=&quot;1&quot; to=&quot;#iArrayLength#&quot; index=&quot;i&quot;&gt;
+		&lt;cfif aLeafNodes[i][&quot;typename&quot;] EQ arguments.typename AND aLeafNodes[i][&quot;displayMethod&quot;] EQ arguments.displayMethod&gt;
+			&lt;cfset stCurrentSubject = aLeafNodes[i] /&gt;
+			&lt;cfbreak /&gt;
+		&lt;/cfif&gt;
+	&lt;/cfloop&gt;
+
+	&lt;cfreturn stCurrentSubject /&gt;
+
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code class="language-javascript">stVehicleType = getParentPageByTypename(objectId=request.navId, typeName=&quot;vehicleType&quot;, displayMethod=&quot;displayPageStandard&quot;, nLevel=3);
+</code></pre>
+
+<p>Note that the &ldquo;nLevel&rdquo; argument in the function allows you to skip the ancestor nodes you know you&rsquo;re not interested in such as &ldquo;Root&rdquo; and &ldquo;Home&rdquo;.</p>
+
+<p>Hope this helps some people.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,110 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Setting the sort order for custom admin items in FarCry | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Setting the sort order for custom admin items in FarCry - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 29, 2009</h2>
+    <h1 class="title">Setting the sort order for custom admin items in FarCry</h1>
+    
+    <div class="content">
+      <p>I&rsquo;ve wanted to be able to control the sort order of <em>menu</em> and <em>menuitems</em> in the customadmin.xml (or equivalent) file for quite a while but hadn&rsquo;t found how to do it. Only today did I find the ability, I believe it&rsquo;s a <a href="http://farcrycms.org/">FarCry</a> 5+ feature which was why I didn&rsquo;t see it before.</p>
+
+<p>The answer is simple, just add a &ldquo;sequence&rdquo; attribute to your menu or menuitem tag:</p>
+
+<pre><code class="language-javascript">&lt;menu mergeType=&quot;merge&quot; sequence=&quot;1&quot; id=&quot;farcry_studentsonlineadminSubSection&quot; label=&quot;Homepage Content&quot; labelType=&quot;value&quot;&gt;
+	&lt;menuitem id=&quot;boardlinks&quot; sequence=&quot;1&quot; label=&quot;Board Links&quot; link=&quot;/admin/customadmin.cfm?module=customlists/boardlinks_data.cfm&quot; /&gt;
+	&lt;menuitem id=&quot;boardlinks_sort&quot; sequence=&quot;2&quot; label=&quot;Board Links Sort Order&quot; link=&quot;/admin/customadmin.cfm?module=customlists/boardlinks_sort.cfm&quot; /&gt;
+	&lt;menuitem id=&quot;calendar&quot; sequence=&quot;3&quot; label=&quot;Calendar&quot; link=&quot;/admin/customadmin.cfm?module=customlists/lu_calendar.cfm&quot; /&gt;
+	&lt;menuitem id=&quot;faq&quot; sequence=&quot;4&quot; label=&quot;FAQ's&quot; link=&quot;/admin/customadmin.cfm?module=customlists/lu_faq.cfm&quot; /&gt;
+&lt;/menu&gt;
+</code></pre>
+
+<p>You can <a href="http://docs.farcrycms.org/display/FCDEV50/Inline+Webtop+Documentation">read more</a> cool things you can do with your custom objectadmin on the <a href="http://docs.farcrycms.org/">FarCry docs site</a>.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

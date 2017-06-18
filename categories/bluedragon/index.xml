@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bluedragon on chapter31</title>
+    <link>http://chapter31.com/categories/bluedragon/</link>
+    <description>Recent content in Bluedragon on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Sun, 16 Mar 2008 04:47:42 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/bluedragon/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vince Bonfanti and the differences between BlueDragon versions?</title>
+      <link>http://chapter31.com/2008/03/16/vince-bonfanti-and-the-differences-between-bluedragon-versions/</link>
+      <pubDate>Sun, 16 Mar 2008 04:47:42 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/03/16/vince-bonfanti-and-the-differences-between-bluedragon-versions/</guid>
+      <description>More news on the differences between the commercial and open source offerings for Blue Dragon on Vince Bonfanti&amp;rsquo;s blog as well as the New Atlanta forums;
+&amp;ldquo;The free open source edition of BlueDragon/J2EE will be fully featured, with only minor differences to remove dependencies on commercial libraries.&amp;rdquo;
+Vince elaborated more on the NA Product forums:
+ There will be three differences between the commericial and open source editions of BlueDragon/J2EE:</description>
+    </item>
+    
+  </channel>
+</rss>

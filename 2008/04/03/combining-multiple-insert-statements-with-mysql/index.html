@@ -1,0 +1,163 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Combining multiple INSERT statements with MySQL | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Combining multiple INSERT statements with MySQL - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 3, 2008</h2>
+    <h1 class="title">Combining multiple INSERT statements with MySQL</h1>
+    
+    <div class="content">
+      <p>As all developers know, one of the most common bottlenecks in a web application is the database. Database optimisation is therefore a huge part of building a streamlined application capable of handling more concurrent users.</p>
+
+<p>Often you might have the need to perform multiple INSERT&rsquo;s against a database from a single user form submission.</p>
+
+<p>Let&rsquo;s say you had a form allowing a user to add their own web bookmarks (think a simple <a href="http://del.icio.us/">del.icio.us</a>). To make things easier for the user they can add multiple &lsquo;bookmarks&rsquo; at a time.</p>
+
+<p><a href="/images/uploads/2008/04/multiple_entry_form.jpg"><img src="/images/uploads/2008/04/multiple_entry_form-300x101.jpg" alt="multiple_entry_form" /></a></p>
+
+<p>For the sake of our argument when a user submits this form we transform the data into an array of structures (but it can really be anything you can loop over) so that each bookmark <em>row</em> from the form is an element of the array.</p>
+
+<p><a href="/images/uploads/2008/04/multi_insert_struct.gif"><img src="/images/uploads/2008/04/multi_insert_struct.gif" alt="Structure" /></a></p>
+
+<p>Normally you might INSERT the data with something like the following:</p>
+
+<pre><code class="language-javascript">&lt;cfloop from=&quot;1&quot; to=&quot;#arrayLen(aBookmarks)#&quot; index=&quot;i&quot;&gt;
+	&lt;cfquery name=&quot;qAddBookmarks&quot; datasource=&quot;#getDSN()#&quot;&gt;
+		INSERT INTO	Bookmarks
+			(
+				BookmarkId
+				, URL
+				, Title
+				, Description
+			)
+		VALUES
+			(
+				&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#createUUID()#&quot; /&gt;
+				, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#aBookmarks[i]['URL']#&quot; /&gt;
+				, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#aBookmarks[i]['Title']#&quot; /&gt;
+				, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#aBookmarks[i]['Description']#&quot; /&gt;
+			)
+	&lt;/cfquery&gt;
+&lt;/cfloop&gt;
+</code></pre>
+
+<p>While this works fine it certainly isn&rsquo;t the best option because it sends multiple requests (INSERT&rsquo;s) to the database. So if the array count is 4, MySQL will process 4 separate INSERT statements which really isn&rsquo;t optimal.</p>
+
+<p>Fortunately MySQL gives you a super cool way of handling these types of <a href="http://dev.mysql.com/doc/refman/5.0/en/insert.html">INSERT</a> situations:</p>
+
+<pre><code class="language-javascript">&lt;cfquery name=&quot;qAddBookmarks&quot; datasource=&quot;#getDSN()#&quot;&gt;
+	INSERT INTO	Bookmarks
+		(
+			BookmarkId
+			, URL
+			, Title
+			, Description
+		)
+	VALUES
+		&lt;cfloop from=&quot;1&quot; to=&quot;#arrayLen(aBookmarks)#&quot; index=&quot;i&quot;&gt;
+			(
+				&lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#createUUID()#&quot; /&gt;
+				, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#aBookmarks[i]['URL']#&quot; /&gt;
+				, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#aBookmarks[i]['Title']#&quot; /&gt;
+				, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#aBookmarks[i]['Description']#&quot; /&gt;
+			)&lt;cfif i LT arrayLen(aBookmarks)&gt;,&lt;/cfif&gt;
+		&lt;/cfloop&gt;
+&lt;/cfquery&gt;
+</code></pre>
+
+<p>It&rsquo;s quite simple, we have 1 <cfquery> tag, but we loop over the <em>VALUES</em> part of the DML statement. The best thing about this is that MySQL only processes 1 INSERT statement! That&rsquo;s a huge performance increase particularly in a high traffic environment.</p>
+
+<p>The only real thing to note is that each VALUES block must be in parenthesis (as normal) and must be comma separated (except the last block). To handle this we just look to see if we are at the final array index. If not then add a comma.</p>
+
+<pre><code class="language-javascript">&lt;cfif i LT arrayLen(aBookmarks)&gt;,&lt;/cfif&gt;
+</code></pre>
+
+<p>The more I use MySQL the more I&rsquo;m impressed with it. I&rsquo;m not sure if you can do this in other database engines though.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

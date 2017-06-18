@@ -1,0 +1,151 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>FarCry 5 running on Railo 3 (Windows) | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="FarCry 5 running on Railo 3 (Windows) - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">August 16, 2008</h2>
+    <h1 class="title">FarCry 5 running on Railo 3 (Windows)</h1>
+    
+    <div class="content">
+      <p>The CFML market is hotting up with <a href="http://www.railo-technologies.com/">Railo</a> going open source (in version 3.1) and joining forces with <a href="http://www.jboss.org/railo/">JBoss</a> for an end of 2008 release! With that in mind I figured it was time to check out Railo with the latest version of FarCry.</p>
+
+<p>My environment:</p>
+
+<ul>
+<li>Windows XP</li>
+<li>Railo 3.0.0.003</li>
+<li><del>FarCry 5.0.0 (although 5.0.2 is out, the latest distro from the site offers only 5.0.0)</del></li>
+<li>FarCry 5.0.2</li>
+<li>MySQL 5</li>
+</ul>
+
+<p>I&rsquo;m using the &ldquo;express&rdquo; version of Railo which bundles with Jetty Application Server, so no need for any apache configurations as everything runs off port 8888. This is not how you would have things running in a production environment of course, but is great for evaluation purposes as you can just put the Railo files anywhere you want with no actual installation required.</p>
+
+<p>I already had MySQL installed, so I got a <a href="http://www.farcrycore.org/go/code-branch/5-0-2">fresh zip of FarCry 5.0.2</a> and the latest <a href="http://www.railo-technologies.com/en/index.cfm?treeID=361">release candidate for Railo</a>.</p>
+
+<p>I unpacked Railo into D:/ (this could be anywhere on your system) then unpacked FarCry into the &ldquo;webroot&rdquo; folder of Railo following the <a href="http://docs.farcrycms.org/display/FCDEV50/FarCry+Installation">standard FarCry 5 installation instructions</a>.</p>
+
+<p>Next was starting Railo, on Windows open a command prompt (cmd) and run the start.bat file which is in the Railo root directory:</p>
+
+<pre><code class="language-javascript">start.bat
+</code></pre>
+
+<p>Now that Railo is running I needed to create a datasource to point to a fresh database created for my new FarCry app. To do this visit the admin area of Railo at <a href="http://localhost:8888/railo-context/">http://localhost:8888/railo-context/</a>.</p>
+
+<p>The first time you do this you&rsquo;ll be asked to enter a password which will be used in the future to access the admin area.</p>
+
+<p><a href="/images/uploads/2008/08/newpassword2.png"><img src="/images/uploads/2008/08/newpassword2-300x173.png" alt="" /></a></p>
+
+<p>Create and verify a datasource just as you would in ColdFusion Administrator and you&rsquo;re ready for the FarCry install.</p>
+
+<p>To install FarCry visit <a href="http://localhost:8888/farcry/">http://localhost:8888/farcry/</a> and follow the instructions. As mentioned above you first have to create an empty database for your FarCry site.</p>
+
+<p><a href="/images/uploads/2008/08/installingfarcry2.png"><img src="/images/uploads/2008/08/installingfarcry2-300x267.png" alt="" /></a></p>
+
+<p>After FarCry installed (without a hitch!) it was time to look around my new site to see if everything is working as normal (well, as it would normally under ColdFusion). Upon initial inspection everything is working fine with just a few exceptions (pun intended!).</p>
+
+<p>Firstly it seems there is a reserved word conflict with the FarCry core codebase and Railo which prevented me from viewing one of the pages (support) in the mollio skeleton site FarCry installs by default (and also some pages from the webtop).</p>
+
+<p>Railo threw the following error:</p>
+
+<p><em>invalid argument for function query, only array as value are allowed</em></p>
+
+<p>The code in question was calling a FarCry method called <em>query()</em>. I renamed the method to <em>execQuery()</em> and updated the calls to it and everything started working as expected.</p>
+
+<p>I also added this as a <a href="http://bugs.farcrycms.org/browse/FC-1459">FarCry bug</a> so hopefully it will be resolved by the <a href="http://www.daemon.com.au/">Daemon</a> guys in the next FarCry release.</p>
+
+<p>There were a couple of other small issues (with containers/publishing rules and a permission problem in the webtop) which I&rsquo;ve contacted Daemon about. Hopefully they will be resolved quickly.</p>
+
+<p>All in all it looks as though FarCry is a success on Railo which great news!</p>
+
+<p>Although I was only looking at the express version of Railo, I was extremely impressed with just how simple everything was. Comparing CF8 and Railo (browsing the FarCry admin console), Railo looks a lot faster to me. Of course I did no actual load/performance testing. But it was interesting that I noticed the speed difference by simply browsing.</p>
+
+<p>I&rsquo;m looking forward to playing with it further, particularly when 3.1 comes out :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

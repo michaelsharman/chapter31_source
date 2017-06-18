@@ -1,0 +1,125 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>PHP [&#39;SCRIPT_NAME&#39;] returning empty string | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="PHP [&#39;SCRIPT_NAME&#39;] returning empty string - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">June 21, 2013</h2>
+    <h1 class="title">PHP [&#39;SCRIPT_NAME&#39;] returning empty string</h1>
+    
+    <div class="content">
+      <p>I was working with <a href="http://slimframework.com/">Slim</a> (v2.2.x) the other day and saw that a PHP warning was being thrown in one of the interal Slim files:</p>
+
+<pre><code class="language-bash">Warning: strpos(): Empty needle in /vendor/slim/slim/Slim/Environment.php on line 143
+</code></pre>
+
+<p>The code throwing the warning was the following <em>if</em> statement:</p>
+
+<pre><code class="language-php">if (strpos($_SERVER['REQUEST_URI'], $_SERVER['SCRIPT_NAME']) === 0) {
+</code></pre>
+
+<p>The actual issue was that <code>$_SERVER['SCRIPT_NAME']</code> was an empty string, so <em>strpos</em> was complaining as that is invalid syntax. Strangely, this was all working fine when we had the apache rewrite rules in an .htaccess file:</p>
+
+<pre><code class="language-bash">RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+RewriteRule ^(.*)$ /index.php/$1 [QSA,L]
+</code></pre>
+
+<p>However once we moved the rules to the <em>VirtualHost</em> we got the warning. Some <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=40102">googling</a> <a href="https://bugs.php.net/bug.php?id=38141">told me</a> that this is a 6 year old problem with either apache, php, mod_php or the boogey man&hellip;depending on who you believe. It seems that various rewrite settings working differently if you have them in .htaccess vs the VirtualHost block.</p>
+
+<p>I considered sending a pull request to Slim to handle the scenario where SCRIPT_NAME is empty:</p>
+
+<pre><code class="language-php">if (strlen($_SERVER['SCRIPT_NAME']) &amp;&amp; strpos($_SERVER['REQUEST_URI'], $_SERVER['SCRIPT_NAME']) === 0) {
+</code></pre>
+
+<p>But instead we added the PT (passthrough) rewrite flag. This works fine for what we&rsquo;re doing and <code>$_SERVER['SCRIPT_NAME']</code> now returns <em>/index.php</em> as it should.</p>
+
+<pre><code class="language-bash">RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+RewriteRule ^(.*)$ /index.php/$1 [QSA,PT,L]
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

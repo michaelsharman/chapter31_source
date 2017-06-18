@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cfeclipse on chapter31</title>
+    <link>http://chapter31.com/categories/cfeclipse/</link>
+    <description>Recent content in Cfeclipse on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Sat, 13 Dec 2008 02:28:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/cfeclipse/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Development configuration tips for Ubuntu</title>
+      <link>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</link>
+      <pubDate>Sat, 13 Dec 2008 02:28:20 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</guid>
+      <description>I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&amp;rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc
+Here are some notes which helped me out when configuring some of these development tools.</description>
+    </item>
+    
+    <item>
+      <title>Changing the cfeclipse &#39;tag insight&#39; delay time</title>
+      <link>http://chapter31.com/2008/02/28/changing-the-cfeclipse-tag-insight-delay-time/</link>
+      <pubDate>Thu, 28 Feb 2008 00:56:02 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/02/28/changing-the-cfeclipse-tag-insight-delay-time/</guid>
+      <description>Having &amp;lsquo;tag insight&amp;rsquo; is a great part of any IDE, one which almost every developer takes advantage of irrespective of which editor they use. Tag insight of course being when your IDE provides information (attribute or return information etc) about the tag or function you are currently typing.
+Normally when writing a function or tag like , when you hit the space bar and wait a second a little popup appears detailing exactly what you can do with this tag.</description>
+    </item>
+    
+    <item>
+      <title>My Aptana IDE is busted</title>
+      <link>http://chapter31.com/2007/08/14/my-aptana-ide-is-busted/</link>
+      <pubDate>Tue, 14 Aug 2007 05:45:39 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2007/08/14/my-aptana-ide-is-busted/</guid>
+      <description>Hmm, running with my past history of having that &amp;lsquo;special&amp;rsquo; touch with computers&amp;hellip;my version of Aptana (Aptana IDE (build 0.2.8.15637)) has busted.
+Kaput.
+Not happy Jan.
+I was running an Aptana update yesterday when the network went down. Everything seemed fine until I went to restart Apatana and got the following:
+Damn
+Damn
+Damn
+No fix as yet and roughly 500 lines in the .log file everytime I try to start up telling me I have a hell of a lot of missing bundles :(</description>
+    </item>
+    
+  </channel>
+</rss>

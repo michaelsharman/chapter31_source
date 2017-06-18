@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Turning off sessions for non-https traffic | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Turning off sessions for non-https traffic - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">August 6, 2012</h2>
+    <h1 class="title">Turning off sessions for non-https traffic</h1>
+    
+    <div class="content">
+      <p>Today I wanted to configure an application to only set <em>secure</em> cookies. Those are cookies that are only sent back to the server if over a secure (https) connection.</p>
+
+<p>The main reason for this is to prevent session hijacking, where a bad guy might sniff the cookie values which links a user to the session &ldquo;state&rdquo; on the server. If they managed to do that, (which they could if the session was started on an <em>http://</em> connection, then if/when the user logged on and was transferred to <em>https://</em>) the bad guy would still have their cookie values and thus would be able to visit the website as the logged in user. No good. You can read more on <a href="http://www.12robots.com/index.cfm/2009/1/5/mmmmMMmmmmmmm-Cookies--Security-Series-12">Jason Dean&rsquo;s great series on security</a></p>
+
+<p>Another thing to consider when it comes to securing your sessions/cookies is using <em>httpOnly</em> cookies. These are ones that reside in the browser memory, so that when you close down your browser (not just a tab, the whole browser) the cookie expires. So if somebody comes along after you and opens up a browser…they won&rsquo;t access any previous logged in sessions you may have left open. Another cool thing about <em>httpOnly</em> cookies is that they can&rsquo;t be read from JavaScript which helps to mitigate CSRF attacks :)</p>
+
+<p>As ColdFusion sets a new session by default upon every first visit (if you have <em>sessionManagement</em> turned on), you have a couple of options to mitigate session hijacking. One of these is <em>secure</em> cookies, ColdFusion has a few options for this (as well as <em>httpOnly</em>). <a href="http://www.12robots.com/index.cfm/2009/5/6/Making-the-JSESSIONID-Session-Token-Cookie-SECURE-and-HTTPOnly-and-settings-its-PATH">12Robots has a great page</a> with code sample on how to set these up, however I wanted to take things one step further and that was to simply turn off <em>sessionManagement</em> if NOT over SSL. This also has the benefit of not allowing bots to clog up your server RAM with sessions that your site/application just doesn&rsquo;t need.</p>
+
+<p>Here is the code I used to only have session management turned on over SSL and not for traffic over port 80. Also included is the code from 12Robots to set <em>secure</em> and <em>httpOnly</em> cookies.</p>
+
+<pre><code class="language-javascript">component
+{
+	this.name = &quot;myappname&quot;;
+	this.applicationTimeout = createTimeSpan(0,2,0,0);
+
+	//Get the page context to test HTTPS, if on http then DON'T set sessions/cookies (for bots and security), otherwise set sessions
+	currRequest = getPageContext().getRequest();
+	if (currRequest.isSecure())
+	{
+		this.sessionManagement = true;
+		this.sessionTimeout = createTimeSpan(0,1,0,0);
+	}
+	else
+	{
+		this.sessionManagement = false;
+	}
+
+	this.setClientCookies = false;
+	this.clientManagement = false;
+
+	// This method only fires if this.sessionManagement = true
+	public void function onSessionStart()
+	{
+		var response = getPageContext().getResponse();
+		var path = &quot;/&quot;;
+		var domain = application.config.httpsURL;
+		var secure = &quot;Secure&quot;;
+		var HTTPOnly = &quot;HTTPOnly&quot;;
+		var header = &quot;jsessionid=#session.sessionid#;domain=#domain#;path=#path#;#secure#;#HTTPOnly#&quot;;
+		response.addHeader(&quot;Set-Cookie&quot;, header);
+	}
+
+	// the rest of your Application.cfc
+}
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

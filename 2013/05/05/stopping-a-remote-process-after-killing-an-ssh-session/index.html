@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Stopping a remote process after killing an ssh session | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Stopping a remote process after killing an ssh session - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 5, 2013</h2>
+    <h1 class="title">Stopping a remote process after killing an ssh session</h1>
+    
+    <div class="content">
+      <p>I often want to tail log files on remote server(s) when running diagnostics for an application. You can either login to the remote server via an SSH session, then execute the <em>tail</em> command. Or you can do it from a local shell (without explicitly logging onto the remote server first). That&rsquo;s pretty simple:</p>
+
+<pre><code class="language-bash">ssh myRemoteServer tail -f /path/to/logs/myapp.log
+</code></pre>
+
+<p>The problem here, is when you ctrl-c out of this command to kill the <em>tail</em>, the process is still running on the remote machine. Some googling told me that this is because of the lack of a controlling terminal for the running process.</p>
+
+<p>From <a href="http://superuser.com/a/20708">superuser.com</a>:</p>
+
+<blockquote>
+<p>This behaviour stems from the lack of a controlling terminal for the running process. When the remote process does not have a controlling terminal, the remote ssh process handling your session is unable to kill the command, which is left hanging in a zombie state to be eventually cleaned up by init.</p>
+</blockquote>
+
+<p>So although the process on the remote server(s) will eventually be cleaned up, it&rsquo;s not great to leave a lot of zombie processes lying around. And you certainly don&rsquo;t want to logon to every server and <em>ps ax</em> to kill them. Crazy.</p>
+
+<p>The answer, as described on superuser, is that you simply add the <em>-t</em> flag when you connect via SSH from a local terminal. Essentially that makes the remote process terminate when you ctrl+c your tail locally.</p>
+
+<p>So for the initial example at the top:</p>
+
+<pre><code class="language-bash">ssh -t myRemoteServer tail -f /path/to/logs/myapp.log
+</code></pre>
+
+<p>I often use <a href="http://www.vanheusden.com/multitail/">multitail</a> a lot because it facilitates tailing log files on a remote servers from one command, a sample multi-tail script is now (with <em>-t</em>):</p>
+
+<pre><code class="language-bash">#!/bin/bash
+
+multitail -l &quot;ssh -t myRemote1 tail -f /path/to/logs/myapp.log&quot; \
+        -l &quot;ssh -t myRemote2 tail -f /path/to/logs/myapp.log&quot;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

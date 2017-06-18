@@ -1,0 +1,121 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Checking for correct case-sensitive tables in FarCry | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Checking for correct case-sensitive tables in FarCry - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">January 12, 2011</h2>
+    <h1 class="title">Checking for correct case-sensitive tables in FarCry</h1>
+    
+    <div class="content">
+      <p>We run several FarCry projects at Learnosity and all of them run on Linux. We have occasionally come across issues where the FarCry codebase will refer to a MySQL table in the wrong &ldquo;case&rdquo;.</p>
+
+<p>E.g. referring to &ldquo;dmhtml&rdquo; where the actual table name is &ldquo;dmHTML&rdquo;.</p>
+
+<p>This is course fails in any case sensitive environment. Note that we also run our <a href="http://www.chapter31.com/2010/10/04/case-sensitive-development-on-mac-os-x/">Macs as case sensitive in development</a> to help find these issues before deploying to a stage/production server.</p>
+
+<p>Anyway, I wrote a small test script to introspect the FarCry codebase for types and rules etc to compare that with a local MySQL database to attempt to find (and fix) any case sensitive issues that might occur.</p>
+
+<p>We already have a custom area under the &ldquo;Admin&rdquo; tab in the webtop, I added the file there.</p>
+
+<p><img src="/images/uploads/2011/01/webtop.png" alt="webtop" /></p>
+
+<p>If you&rsquo;re interesting in having a look, <a href="/images/uploads/2011/01/diff.cfm">download diff.cfm</a> and put inside your projects &ldquo;customAdmin&rdquo; folder and link to it from customadmin.xml e.g.</p>
+
+<pre><code class="language-javascript">	&lt;section mergeType=&quot;merge&quot; id=&quot;admin&quot; sequence=&quot;4100&quot; permission=&quot;MainNavAdminTab&quot; label=&quot;Admin&quot; icon=&quot;config&quot; description=&quot;administration/utility tasks&quot;&gt;
+		&lt;subsection id=&quot;learnosity&quot; sequence=&quot;10000&quot; label=&quot;Table Name Check&quot; permission=&quot;AdminGeneralTab&quot;&gt;
+			&lt;menu sequence=&quot;10&quot; id=&quot;intranetmenu&quot; label=&quot;Utility Tasks&quot; labelType=&quot;value&quot;&gt;
+				&lt;menuitem id=&quot;diff&quot; sequence=&quot;1&quot; label=&quot;FarCry/MySQL Diff&quot; link=&quot;/admin/customadmin.cfm?module=diff.cfm&quot; /&gt;
+			&lt;/menu&gt;
+		&lt;/subsection&gt;
+	&lt;/section&gt;
+</code></pre>
+
+<p>Hope it helps!</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

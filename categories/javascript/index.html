@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Javascript | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Javascript - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">December 16, 2013</h2>
+      <h1 class="title"><a href="http://chapter31.com/2013/12/16/simple-json-prettify/">Simple JSON prettify</a></h1>
+      
+      <div class="content">
+        I went looking for a quick and easy way to style JSON content for display in the browser and quickly came across this answer at stack overflow with a corresponding jsfiddle entry.
+However the problem is that this is kinda broken, the output isn&rsquo;t valid JSON because the keys aren&rsquo;t quoted. It&rsquo;s just outputting a JavaScript object intead. A quick fix (and slight refactor) to the JavaScript gave me what I needed, I couldn&rsquo;t post on SO as I don&rsquo;t have the reputation (yeah that&rsquo;s annoying) so I&rsquo;m posting here for reference and I forked the original JSFiddle.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2013/12/16/simple-json-prettify/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 21, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/11/21/json-undefined-issues-on-ie8-and-ie9/">JSON undefined issues on IE8 and IE9</a></h1>
+      
+      <div class="content">
+        I had some issues today while testing in IE, where &ldquo;JSON&rdquo; was undefined. This was happening in IE8 and IE9, which is strange because the JSON functions are in those IE versions. The problem was IE&rsquo;s compatibility view, which triggers rendering in sort-of-IE7 mode. Classy. This was making JSON undefined ;(
+The usual fix for this is to add a meta tag to force IE to use &ldquo;edge&rdquo; (or a specific version if you like):
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/11/21/json-undefined-issues-on-ie8-and-ie9/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 14, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/09/14/jquery-ui-dialog-focus-on-first-tabable-element/">jQuery UI dialog focus on first tabable element</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve been using the jQuery UI dialog for a project recently, one thing that bugged me though, was that upon opening a dialog the first tabable element always gets focussed. This can be:
+ hyperlinks input boxes select boxes buttons textareas etc  An example of this is:
+A quick way around this is to fire a blur() method, targeting the first tabable element type of your dialog. So if I open up a dialog window with an id of dialog, I can do:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/09/14/jquery-ui-dialog-focus-on-first-tabable-element/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 13, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/08/13/timing-synchronous-javascript-operations/">Timing synchronous JavaScript operations</a></h1>
+      
+      <div class="content">
+        There&rsquo;s a cool little method on the console object that allows you to track how long an operation took to run. It&rsquo;s called console.time.
+Basically you just start a timer at the top of the code you want to time, like so:
+console.time('timer-name'); // your javascript goes here console.timeEnd('timer-name');  Each timer block should have a unique name (in the example above I called my timer &lsquo;timer-name&rsquo;), and you can have up to 10,000 timers running on a single page.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/08/13/timing-synchronous-javascript-operations/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 4, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/07/04/jquery-tinymce-issue-with-attr/">jQuery tinyMCE issue with $.attr();</a></h1>
+      
+      <div class="content">
+        I had some strange behaviour with the jQuery verion of tinyMCE (3.4.6). Basically I was integrating the chosen library (which is build as a jQuery plugin), but it seems the $.attr(&lsquo;id&rsquo;) from within chosen.js was returning a JavaScript element reference instead of the value of the &ldquo;id&rdquo; field.
+
+Some basic tracing showed the strange error:
+
+The solution for me was moving to tinyMCE 3.5.4.1 (and jQuery 1.7.2, previously I was on 1.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/07/04/jquery-tinymce-issue-with-attr/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 7, 2010</h2>
+      <h1 class="title"><a href="http://chapter31.com/2010/12/07/adding-prototype-methods-to-jquery/">Adding Prototype methods to jQuery</a></h1>
+      
+      <div class="content">
+        We recently upgraded a project which was using the Prototype JavaScript framework to use jQuery and ran into a few methods which didn&rsquo;t exist in jQuery at all.
+A quick search gave us an easy solution; by adding a prototype property (not related to the Prototype framework) to String.prototype we can give every string in our codebase access to these methods as if they were part of the JavaScript spec (or the jQuery library).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2010/12/07/adding-prototype-methods-to-jquery/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 28, 2009</h2>
+      <h1 class="title"><a href="http://chapter31.com/2009/10/28/extracting-url-variables-using-javascript/">Extracting URL variables using JavaScript</a></h1>
+      
+      <div class="content">
+        Server side languages are cool in that they give you a nice associative array to access URL variables. ColdFusion has the URL scope, PHP has $_GET[] etc, but how do you get these values easily with JavaScript?
+I came across a post over at Jake Munson&rsquo;s blog which had just what I needed. Actually although Jakes solution was perfectly valid, I preferred a slight modification from one of the commenters which wrapped the entire URL string into an associative array so you can access the entire URL scope, as well as extracting a specific value via a key.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2009/10/28/extracting-url-variables-using-javascript/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 15, 2009</h2>
+      <h1 class="title"><a href="http://chapter31.com/2009/06/15/prototypescriptaculous-issue-with-sortablecreate/">Prototype/scriptaculous issue with Sortable.create()</a></h1>
+      
+      <div class="content">
+        I&rsquo;ve been doing some custom sorting within FarCry using the prototype/scriptaculous libraries as they already exist in the FarCry framework by default.
+I was having trouble getting the Sortable.create() to work properly and the main docs site for scriptaculous seems severely lacking in examples. Basically the &ldquo;sorting&rdquo; action was happening fine but no event was being fired &ldquo;onUpdate&rdquo;. No exception was being thrown, just that nothing was happening after the drag/drop.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2009/06/15/prototypescriptaculous-issue-with-sortablecreate/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 11, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/11/passing-extra-parameters-to-prototype-observer-handlers/">Passing extra parameters to Prototype observer handlers</a></h1>
+      
+      <div class="content">
+        Another tip from my Prototype travels&hellip;
+&lsquo;Observers&rsquo; let you create a listener for a user event, for example on a form submission you may want to run some client side validation before actually submitting the form.
+Of course you can add &lsquo;onsubmit()&rsquo; in your  tag, but isn&rsquo;t it much nicer to keep your markup clean of this type of thing?
+In your dom:loaded observer you can &lsquo;listen&rsquo; for a form submission as follows:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/11/passing-extra-parameters-to-prototype-observer-handlers/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 10, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/03/10/showing-and-hiding-elements-with-css-and-javascript/">Showing and hiding elements with CSS and JavaScript</a></h1>
+      
+      <div class="content">
+        *** Note:** These examples reference the Prototype JavaScript framework.
+Often I find that I want to load content onto a page but have its default view state as hidden until a user defined event makes it appear.
+The problem is if I hide an element using a linked CSS file (with a class or Id style of {display:none;}) it seems I cannot show that element using either of the following JavaScript options:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/03/10/showing-and-hiding-elements-with-css-and-javascript/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/javascript/page/2/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,133 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Installing PHP5 with MySQL extensions | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Installing PHP5 with MySQL extensions - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 24, 2008</h2>
+    <h1 class="title">Installing PHP5 with MySQL extensions</h1>
+    
+    <div class="content">
+      <p>I&rsquo;m generally a ColdFusion programmer but occasionally I need to install PHP for one reason or another, the last couple of times has been to use <a href="http://wordpress.org/">Wordpress</a>.</p>
+
+<p>I remember the last time I did this (maybe 6 months ago) I had problems with connecting to MySQL because <a href="http://www.php.net/manual/en/faq.databases.php#faq.databases.mysql.php5">PHP 5 no longer bundles MySQL client libraries</a> for the following reasons:</p>
+
+<ul>
+<li>Most systems these days already have the client library installed.</li>
+<li>Given the above, having multiple versions of the library can get messy. For example, if you link mod_auth_mysql against one version and PHP against another, and then enable both in Apache, you get a nice fat crash. Also, the bundled library didn&rsquo;t always play well with the installed server version. The most obvious symptom of this being disagreement over where to find the mysql.socket Unix domain socket file.</li>
+<li>Maintenance was somewhat lax and it was falling further and further behind the released version.</li>
+<li>Future versions of the library are under the GPL and thus we don&rsquo;t have an upgrade path since we cannot bundle a GPL&rsquo;ed library in a BSD/Apache-style licensed project. A clean break in PHP 5 seemed like the best option.</li>
+</ul>
+
+<p>Ok fine, no problems. There are even some fairly easy to find instructions for Windows users (which I am at home):</p>
+
+<ul>
+<li>Windows users may enable the extension php_mysql.dll inside php.ini</li>
+<li>Also, be sure libmysql.dll is available to the systems PATH.</li>
+</ul>
+
+<p>No prob, you can even put libmysql.dll in the C:/windows/ directory which isn&rsquo;t a best practice, but is easy!</p>
+
+<p>So I fire up my Wordpress site and get the following error:</p>
+
+<p><em>&ldquo;Your PHP installation appears to be missing the MySQL which is required for WordPress.&rdquo;</em></p>
+
+<p>A few rounds in Google told me I needed to uncomment some files in php.ini:</p>
+
+<ul>
+<li>extension=php_mysql.dll</li>
+<li>extension=php_mysqli.dll</li>
+</ul>
+
+<p>Hmmm&hellip;.I don&rsquo;t have those files nor do I have those lines in my php.ini file, that&rsquo;s strange.</p>
+
+<p>Ok&hellip;so what was my problem? When installing I didn&rsquo;t select any extra &lsquo;extensions&rsquo; for MySQL. The installer actually makes it nice and simple, so this is just a note for next time I need to do this to be careful and choose the extensions I need when installing.</p>
+
+<p>Luckily you can just run the installer again to change the configuration of your installation, including adding necessary extensions :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Double-checked locking | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Double-checked locking - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 14, 2006</h2>
+    <h1 class="title">Double-checked locking</h1>
+    
+    <div class="content">
+      <p>Mark Kruger has a nice article (with mention from <a href="http://corfield.org">Sean Corfield</a>) on APPLICATION variable locking.</p>
+
+<p>Sean basically added that in the initial example (BAD code) if 2 users hit the <cfif> condition at the same time, only one will have a lock on the code while the other will wait.
+The problem lies in the fact that the 2nd user is waiting for the lock to expire, then they will perform a write operation NOT checking the <cfif> condition again!</p>
+
+<p>The article is <a href="http://mkruger.cfwebtools.com/index.cfm?mode=entry&amp;entry=DEAF10EF-C648-7C00-3F815AEB5E49E4E5">here</a>.</p>
+
+<p>BAD code snippet:</p>
+
+<pre><code class="language-javascript">&lt;cfif NOT isDefined('Application.curIps')OR IsDefined('url.forceAp')&gt;  
+  &lt;cflock scope=&quot;APPLICATION&quot; timeout=&quot;1&quot;&gt;  
+    &lt;cfscript&gt;  
+      curIps = queryNew(&quot;IP&quot;);  
+      queryAddRow(curIps);  
+      querySetCell(curIps,&quot;IP&quot;,cgi.remote_addr);  
+      Application.curIps = curIps;  
+    &lt;/cfscript&gt;
+  &lt;/cflock&gt;  
+</code></pre>
+
+<p>GOOD code snippet:</p>
+
+<pre><code class="language-javascript">&lt;!--- check condition ---&gt;
+&lt;cfif NOT isDefined('Application.curIps') OR IsDefined('url.forceAp')&gt;  
+&gt;!--- Use a named lock ---&gt;  
+&lt;cflock name=&quot;ipInitialize&quot; timeout=&quot;1&quot; type=&quot;exclusive&quot;&gt;  
+  &lt;!--- check to make sure condition is still true ---&gt;  
+  &lt;cfif NOT IsDefined('Application.curIps') OR IsDefined('url.forceAp')&gt;  
+    &lt;cfscript&gt;  
+         curIps = queryNew(&quot;IP&quot;);  
+        queryAddRow(curIps);  
+        querySetCell(curIps,&quot;IP&quot;,cgi.remote_addr);  
+        Application.curIps = curIps;  
+   &lt;/cfscript&gt;  
+&lt;/cfif&gt;  
+&lt;/cflock&gt;  
+&lt;/cfif&gt;
+</code></pre>
+
+<p>Another useful mention is that this seems redundant when using CFMX7 due to applicationOnStart in application.cfc unless you want to restart the application manually</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,125 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MySQL aliases (just like table names) are case sensitive on *nix | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="MySQL aliases (just like table names) are case sensitive on *nix - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">August 22, 2008</h2>
+    <h1 class="title">MySQL aliases (just like table names) are case sensitive on *nix</h1>
+    
+    <div class="content">
+      <p>As you might know when using MySQL on a case-sensitive OS (like Linux) you must reference your table names in a case sensitive manner. So if you have a table called <em>products</em> the following sample query will NOT work:</p>
+
+<pre><code class="language-javascript">SELECT	productId
+FROM	Products
+</code></pre>
+
+<p>It won&rsquo;t work because MySQL stores the table information in directories on the file system, therefore these directories are case sensitive. So your query must be as follows (note the lower case <em>products</em>):</p>
+
+<pre><code class="language-javascript">SELECT	productId
+FROM	products
+</code></pre>
+
+<p>That&rsquo;s all good and well, but did you know that using table aliases are also case sensitive? I found this out the other day when debugging an issue with some existing code and confirmed on the MySQL site that &ldquo;<em>By default, table aliases are case sensitive on Unix, but not so on Windows or Mac OSX</em>&rdquo;.</p>
+
+<p>So the following query will fail because the alias used in the WHERE clause is different from the one used in the FROM definition:</p>
+
+<pre><code class="language-javascript">SELECT	productId
+FROM	products AS p
+WHERE	P.productId &gt; 1000
+</code></pre>
+
+<blockquote>
+<p>Although database and table names are not case sensitive on some platforms, you should not refer to a given database or table using different cases within the same statement. The following statement would not work because it refers to a table both as my_table and as MY_TABLE:</p>
+
+<p>mysql&gt; SELECT * FROM my_table WHERE MY_TABLE.col=1;</p>
+</blockquote>
+
+<p>If your interested you can read more on MySQL <a href="http://dev.mysql.com/doc/refman/5.0/en/identifier-case-sensitivity.html">identifier case sensitivity here</a>.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

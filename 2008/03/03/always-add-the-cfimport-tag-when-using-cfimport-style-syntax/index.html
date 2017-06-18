@@ -1,0 +1,113 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Always add the &lt;cfimport&gt; tag when using cfimport style syntax | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Always add the &lt;cfimport&gt; tag when using cfimport style syntax - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 3, 2008</h2>
+    <h1 class="title">Always add the &lt;cfimport&gt; tag when using cfimport style syntax</h1>
+    
+    <div class="content">
+      <p>Using <a href="http://livedocs.adobe.com/coldfusion/8/htmldocs/help.html?content=Tags_i_04.html">cfimport</a> is a great way to add custom tag functionality to your applications.</p>
+
+<p>One thing you need to do of course is add a <cfimport> tag to <em>every template</em> where you want to use the cfimport syntax. However, a couple of times when I&rsquo;ve been creating new templates I&rsquo;ve forgotten this rule and <strong>not</strong> added <cfimport> and subsequently gotten confused when my results aren&rsquo;t as expected.</p>
+
+<p>I think the annoying thing is that ColdFusion does not throw an error in these situations, it just does nothing. So I can go to any template and add the following (without a <cfimport> on my template):</p>
+
+<pre><code class="language-javascript">&lt;tags:myNonExistentTag /&gt;
+</code></pre>
+
+<p>And the template runs without an error being thrown :(</p>
+
+<p>So my reminder to myself before looking everywhere else is:</p>
+
+<p><em>&ldquo;Michael&hellip;for the love of <a href="http://www.benji.com/">Benji</a> please check that you&rsquo;ve added <cfimport> before doing any other debugging!&rdquo;</em></p>
+
+<p>Now my question (which I&rsquo;m sure someone out there knows) is why does this not throw an  error (missing template/include/tag etc)?</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

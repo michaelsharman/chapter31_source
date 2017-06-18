@@ -1,0 +1,201 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Simple JSON prettify | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Simple JSON prettify - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">December 16, 2013</h2>
+    <h1 class="title">Simple JSON prettify</h1>
+    
+    <div class="content">
+      
+
+<p>I went looking for a quick and easy way to style JSON content for display in the browser and quickly came across this <a href="http://stackoverflow.com/questions/4810841/json-pretty-print-using-javascript/7220510#7220510">answer at stack overflow</a> with a <a href="http://jsfiddle.net/unLSJ/">corresponding jsfiddle entry</a>.</p>
+
+<p>However the problem is that this is kinda broken, the output isn&rsquo;t valid JSON because the keys aren&rsquo;t quoted. It&rsquo;s just outputting a JavaScript object intead. A quick fix (and slight refactor) to the JavaScript gave me what I needed, I couldn&rsquo;t post on SO as I don&rsquo;t have the reputation (yeah that&rsquo;s annoying) so I&rsquo;m posting here for reference and I <a href="http://jsfiddle.net/michaelsharman/HLzxw/3/">forked the original JSFiddle</a>.</p>
+
+<pre><code class="language-javascript">var prettyPrint = (function () {
+    'use strict';
+
+   function replacer (match, pIndent, pKey, pVal, pEnd) {
+        var key = '&lt;span class=json-key&gt;';
+        var val = '&lt;span class=json-value&gt;';
+        var str = '&lt;span class=json-string&gt;';
+        var r = pIndent || '';
+        if (pKey) {
+            r = r + key + pKey.replace(/[: ]/g, '') + '&lt;/span&gt;: ';
+        }
+        if (pVal) {
+            r = r + (pVal[0] == '&quot;' ? str : val) + pVal + '&lt;/span&gt;';
+        }
+        return r + (pEnd || '');
+    }
+
+    function render (obj) {
+        var jsonLine = /^( *)(&quot;[\w]+&quot;: )?(&quot;[^&quot;]*&quot;|[\w.+-]*)?([,[{])?$/mg;
+        return JSON.stringify(obj, null, 3)
+            .replace(/&amp;/g, '&amp;amp;').replace(/\\&quot;/g, '\\&amp;quot;')
+            .replace(/&lt;/g, '&amp;lt;').replace(/&gt;/g, '&amp;gt;')
+            .replace(jsonLine, replacer);
+    }
+
+    return {
+        render: render
+    };
+}());
+</code></pre>
+
+<p>And the CSS that goes with it:</p>
+
+<pre><code class="language-css">pre {
+   background-color: ghostwhite;
+   border: 1px solid silver;
+   padding: 10px 20px;
+   margin: 20px;
+}
+
+.json-key {
+   color: brown;
+}
+
+.json-value {
+   color: navy;
+}
+
+.json-string {
+   color: olive;
+}
+</code></pre>
+
+<h2 id="the-end-result">The end result</h2>
+
+<p>The original:</p>
+
+<pre><code class="language-javascript">[
+   {
+      name: &quot;Earth&quot;,
+      order: 3,
+      stats: {
+         life: true,
+         mass: 5.973600000000001e+24
+      }
+   },
+   {
+      name: &quot;Saturn&quot;,
+      order: 6,
+      stats: {
+         life: null,
+         mass: 5.6846e+26
+      }
+   }
+]
+</code></pre>
+
+<p>The result after a minor change:</p>
+
+<pre><code class="language-javascript">[
+   {
+      &quot;name&quot;: &quot;Earth&quot;,
+      &quot;order&quot;: 3,
+      &quot;stats&quot;: {
+         &quot;life&quot;: true,
+         &quot;mass&quot;: 5.973600000000001e+24
+      }
+   },
+   {
+      &quot;name&quot;: &quot;Saturn&quot;,
+      &quot;order&quot;: 6,
+      &quot;stats&quot;: {
+         &quot;life&quot;: null,
+         &quot;mass&quot;: 5.6846e+26
+      }
+   }
+]
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

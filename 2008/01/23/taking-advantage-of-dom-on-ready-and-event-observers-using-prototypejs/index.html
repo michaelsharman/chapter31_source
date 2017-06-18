@@ -1,0 +1,205 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Taking advantage of DOM on ready and Event observers using Prototype.js | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Taking advantage of DOM on ready and Event observers using Prototype.js - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">January 23, 2008</h2>
+    <h1 class="title">Taking advantage of DOM on ready and Event observers using Prototype.js</h1>
+    
+    <div class="content">
+      
+
+<p>I&rsquo;ve been doing some JavaScript development with <a href="http://www.prototypejs.org/">Prototype</a> over the last few days and it&rsquo;s been interesting trying to do things that I know how to do in <a href="http://www.jquery.com/">jQuery</a>, but in Prototype.</p>
+
+<p>One of the cool things I like with all these JavaScript frameworks is the easy way they allow you to execute code on &lsquo;DOM Ready&rsquo; (once the page markup has completed but before all the images etc have loaded). I like this as it lets you get a lot of the grunt work and page initialisation out of the way before the user would notice the result of your code, such as hiding page elements etc</p>
+
+<p>Anyway, here is how you can set this up using Prototype. Add this to your &lt;script&gt; tag or hopefully better still in an external .js file:</p>
+
+<pre><code class="language-javascript">document.observe('dom:loaded', function(){
+
+	//any code here will be read once the DOM is ready, nice and early!
+
+});
+</code></pre>
+
+<p>Another way to do this is using the Event model to call a separate function to handle your initialisation code:</p>
+
+<pre><code class="language-javascript">Event.observe(document, 'dom:loaded', init); 
+
+function init()
+{
+	//initialise code
+}
+</code></pre>
+
+<p>Now another cool thing about these frameworks is they give you the ability to register &ldquo;listeners&rdquo; for user events. This way I can have my HTML markup completely free of <em>event code</em> like &ldquo;onclick&rdquo; or &ldquo;onsubmit&rdquo; etc which is great for users with JavaScript turned off as it clearly degrades nice and cleanly, but I can setup listeners in my external .js files to handle these events.</p>
+
+<p>So to handle a form submission I might have the following HTML form:</p>
+
+<pre><code class="language-javascript">&lt;form name=&quot;frmAddLink&quot; id=&quot;frmAddLink&quot; method=&quot;post&quot; action=&quot;/?event=links/create&quot;&gt;
+
+	&lt;!-- form controls here --&gt;
+
+&lt;/form&gt;
+</code></pre>
+
+<p>And my JavaScript will be:</p>
+
+<pre><code class="language-javascript">document.observe('dom:loaded', function(){
+	
+	Event.observe('frmAddLink', 'submit', submitForm);
+
+});
+</code></pre>
+
+<p>This basically says whenever the form with an ID of &ldquo;frmAddLink&rdquo; is submitted&hellip;execute the function called &ldquo;submitForm&rdquo; (which can of course be any function you like).</p>
+
+<p>An &ldquo;event&rdquo; container is automatically made available to the &ldquo;submitForm&rdquo; as an argument where I can serialize my form data, setup form &ldquo;action&rdquo; URL&rsquo;s etc and submit asynchronously. Again, no JavaScript in your markup is good and degrades easily :)</p>
+
+<pre><code class="language-javascript">function submitForm(event) 
+{
+
+	Event.stop(event);	//Stops the eventâ€™s propagation and prevents its default action from being triggered eventually.
+
+	var element = event.element();
+	var sAction = element.action
+	var stForm = $(element.id).serialize(true);	//serialise the form for posting
+
+	new Ajax.Request(sAction,{
+		parameters: stForm,
+		method:'get',
+	    	onSuccess: function(transport){
+			var response = transport.responseText || &quot;no response text&quot;;
+			$('myEl').update(response);
+	    },
+	    onFailure: function(){ alert('Something went wrong...') }
+	});
+
+}
+</code></pre>
+
+<p>One problem though is if you load a page on your site where the form in question doesn&rsquo;t exist, you will get an error where your Observer is being registered because it can&rsquo;t find the element in the DOM and Prototype isn&rsquo;t a &ldquo;fail silently&rdquo; framework.</p>
+
+<p>To get around this I do the following:</p>
+
+<pre><code class="language-javascript">document.observe('dom:loaded', function(){
+	
+	$('frmAddLink') === null ? &quot;&quot; : Event.observe('frmAddLink', 'submit', submitForm);
+
+});
+</code></pre>
+
+<p>This simply says if the element &ldquo;frmAddLink&rdquo; exists register an observer; else do nothing.</p>
+
+<h3 id="update-24th-jan">UPDATE 24th Jan</h3>
+
+<p>After asking a question on the Prototype mailing list, the following is &ldquo;best practise&rdquo; when looking for elements which might not be on every page:</p>
+
+<pre><code class="language-javascript">var el = $('frmAddLink');
+if (el)
+{		
+	el.observe('submit', showElement);
+	//etc
+}
+</code></pre>
+
+<p>The first line will have a value of NULL if the element &ldquo;frmAddLink&rdquo; isn&rsquo;t defined in the markup. This is also a better way as you can have multiple statements instead of just one observe, handy if you want to do more things on &lsquo;submit&rsquo;.</p>
+
+<h3 id="update-2nd-feb">UPDATE 2nd Feb</h3>
+
+<p>Thanks to Dr J in the comments of this post where he advised that I actually was using the wrong syntax for dom:loaded. I had the equivalent of window.onLoad() by using the following:</p>
+
+<pre><code class="language-javascript">Event.observe(window, 'load', function() {
+
+});
+</code></pre>
+
+<p>This of course not the best as you need to wait for the entire page to load before your JavaScripts are run. The updated way (dom:loaded) is much nicer :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

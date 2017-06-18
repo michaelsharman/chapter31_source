@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coldfusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coldfusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">February 26, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/02/26/code-tip-how-to-structure-your-queryparams/">Code Tip: How to structure your queryparams</a></h1>
+      
+      <div class="content">
+        If I were a betting man I&rsquo;d bet a LOT of money (and perhaps even the house!) that you&rsquo;ve done this before.
+Try to spot the error in the query below:
+&lt;cfquery name=&quot;qCreate&quot; datasource=&quot;#getDSN()#&quot;&gt; INSERT INTO	myTable ( ObjectId, Country, DateOfBirth, Email, FirstName, Gender, LastName, MainSchoolId, PhoneHome, PhoneMobile, PostCode, State, Street, StudentId, StudentPassword, StudentPodId, Suburb ) VALUES ( &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#createUUID()#&quot; /&gt;, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.oUser.get('country')#&quot; /&gt;, &lt;cfqueryparam cfsqltype=&quot;cf_sql_date&quot; value=&quot;#createODBCDate(arguments.oUser.get('dateOfBirth'))#&quot; /&gt;, &lt;cfqueryparam cfsqltype=&quot;cf_sql_varchar&quot; value=&quot;#arguments.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/02/26/code-tip-how-to-structure-your-queryparams/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">February 21, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/02/21/cfdocs-on-air-livedocs-for-cf8/">cfdocs on air (livedocs for CF8)</a></h1>
+      
+      <div class="content">
+        Brian Love recently released an AIR application he wrote which wraps up the ColdFusion 8 &lsquo;livedocs&rsquo;.
+This is a great idea and a fantastic tool to add to your list. I&rsquo;m sure most developers use livedocs as a reference (I do all the time) but historically the are SO slow (not to mention that I think Adobe needs to invest in a little SEO as I often get CF6 livedocs at the top of Google results!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/02/21/cfdocs-on-air-livedocs-for-cf8/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 8, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/12/08/enforcing-your-service-as-an-api/">Enforcing your Service as an API</a></h1>
+      
+      <div class="content">
+        A lot ColdFusion developers are moving (or already there) towards a more OOP style of development. They have an understanding of and use several techniques and design patterns when building applications, particularly when it relates to things such as MVC and n-tiered development.
+A small part of this is grouping related files withing separate directories in you application. Take &lsquo;User&rsquo; related files as an example where you&rsquo;ll probably need some kind of a business object (User.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/12/08/enforcing-your-service-as-an-api/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">December 8, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/12/08/search-and-replace-using-reg-exp/">Search and replace using reg exp</a></h1>
+      
+      <div class="content">
+        The other day Nathan Strutz wrote a great post on finding and replacing text in your IDE (in my case I&rsquo;m using Aptana/cfeclipse) using regular expressions.
+This is more a reminder to me so that I try to use it (with the idea that it&rsquo;ll become 2nd nature!), but I also had a play to see how I could use it in day to day coding. I&rsquo;m sure others have more interesting uses, but here is where I can use it immediately:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/12/08/search-and-replace-using-reg-exp/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 13, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/11/13/using-google-mail-as-your-local-smtp-server/">Using Google Mail as your local SMTP server</a></h1>
+      
+      <div class="content">
+        As a server-side developer you are often sending emails from your web application, whether those emails be for debugging/exception handling or actual application functionality (such as a contact form etc).
+Although some developers decide to turn off mail debugging locally (and instead view the errors inline), you pretty much always have the need to send emails from your development environment.
+In the past I have either connected to a staging mail server or used a free SMTP server (installed locally on my workstation) like MailEnable.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/11/13/using-google-mail-as-your-local-smtp-server/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 2, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/11/02/making-your-web-applications-platform-independant/">Making your web applications platform independant</a></h1>
+      
+      <div class="content">
+        I was looking for some information the other day about line separators across Windows/MAC/Linux etc when I stumbled upon 3 great articles from Christian Cantrell.
+Although the articles are quite old they were very informative for me so I thought I&rsquo;d share them in case others didn&rsquo;t know this already.
+Making Your ColdFusion Applications More Platform Independent (Part I) Basically about case sensitive filenames which is very important on *nix, but also included the following which I&rsquo;ve never heard and to be honest would like to test:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/11/02/making-your-web-applications-platform-independant/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">November 1, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/11/01/cfml-reference-docs-for-the-ipod/">CFML reference docs for the iPod</a></h1>
+      
+      <div class="content">
+        That&rsquo;s right, the ColdFusion 8 quick docs for Apple&rsquo;s iPod!
+I found this one a while ago and quickly tried it out and it&rsquo;s really cool :)
+I get public transport to and from work everyday so I find it easy and convenient to read up on the new functions and tags for CF8. Beats just standing there right?
+Read more and give it a try here.
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 31, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/31/coldfusion-8-can-now-use-cacheaftercachewithin-when-using-cfqueryparams/">ColdFusion 8 can now use cacheAfter/cacheWithin when using cfqueryparam&#39;s</a></h1>
+      
+      <div class="content">
+        I just noticed this in the Adobe docs for cfqueryparam in ColdFusion 8:
+ Revised 8/21/2007: Removed limitation on using the cfquery cachedAfter or cachedWithin attributes with cfqueryparam.This limit no longer applies.
+ This is great news because before (MX7 and below):
+ You cannot use the cfquery cachedAfter or cachedWithin attributes with cfqueryparam.
+ I know many people didn&rsquo;t like this limitation as it meant you needed to go to extra lengths to perform query caching (such as Application scope etc).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/31/coldfusion-8-can-now-use-cacheaftercachewithin-when-using-cfqueryparams/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 18, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/18/styling-issues-when-generating-an-xls-from-html/">Styling issues when generating an xls from HTML</a></h1>
+      
+      <div class="content">
+        A few notes to self on generating .xls files from HTML tables, particularly with CSS.
+It appears that excel only has a particular &lsquo;range&rsquo; of hex numbers you can use (at least for background colours). I was trying to use #eeeeee; for a while (which is obviously fine for HTML and for creating a PDF), but I couldn&rsquo;t use that as a value in excel as the colours just weren&rsquo;t displaying.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/18/styling-issues-when-generating-an-xls-from-html/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 12, 2007</h2>
+      <h1 class="title"><a href="http://chapter31.com/2007/10/12/coldfusion-round-docs-inaccurate/">ColdFusion &#39;Round()&#39; docs inaccurate?</a></h1>
+      
+      <div class="content">
+        Today I needed a function which would return me a whole number, rounding either up or down depending on whether the value passed to the function was less than or greater than .5
+Looking at round() ColdFusion 8 docs they say:
+ Rounds a number to the closest integer that is larger than the input parameter.
+ Hmm, that doesn&rsquo;t sound right.
+In actual fact the round() function does exactly what it should, rounds numbers down OR up.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2007/10/12/coldfusion-round-docs-inaccurate/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/6/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/8/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>generateRandomKey() UDF with several handy options | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="generateRandomKey() UDF with several handy options - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">October 13, 2008</h2>
+    <h1 class="title">generateRandomKey() UDF with several handy options</h1>
+    
+    <div class="content">
+      <p>Working on a ColdFusion project recently I had the need to generate a random key; the format of which was based on a specific set of business rules. I actually ended up writing a basic UDF to handle this but after the fact I went looking to see if I could find something which provided some of the features I was after.</p>
+
+<p>Although I found several through google and <a href="http://cflib.org/">cflib</a> they weren&rsquo;t completely what I was after. Not finding exactly what I needed inspired me to write my own one based on the following requirements:</p>
+
+<ul>
+<li>Users can set the length of the returned key</li>
+<li>Key can be UPPER, lower or MixEd case</li>
+<li>Format can include numeric, string, alphanumeric (a-zA-Z0-9) and special characters</li>
+<li>Potentially confusing characters (e.g. o, i, l, s, O, I, L, S etc) are ignored by default and users can pass in their own list of special characters (overriding the default list) to be ignored from the returned key</li>
+<li>Users can pass a fixed prefix or suffix, handy if your business needs to generate order numbers which all start with &ldquo;CF-&rdquo; etc</li>
+<li>Users can specify that the first (or last) &lsquo;x&rsquo; characters in the key are numeric, the rest of the key follows the &ldquo;format&rdquo; argument</li>
+</ul>
+
+<p>Some examples:</p>
+
+<pre><code class="language-javascript">	generateRandomKey();
+	//DCE8YDEK
+
+	generateRandomKey(case=&quot;mixed&quot;);
+	//wYu3Kbaj
+
+	generateRandomKey(case=&quot;mixed&quot;, format=&quot;alphanumeric&quot;, length=&quot;10&quot;);
+	//7hE3hv4Yzr
+
+	generateRandomKey(format=&quot;special&quot;, fixedPrefix=&quot;MPS&quot;);
+	//MPS&gt;M_!{
+
+	generateRandomKey(case=&quot;upper&quot;, format=&quot;string&quot;, numericPrefix=&quot;3&quot;, length=&quot;12&quot;);
+	//193TYTVDYJFZ
+
+	generateRandomKey(format=&quot;numeric&quot;, length=&quot;12&quot;);
+	//692490463609
+
+	generateRandomKey(case=&quot;lower&quot;, format=&quot;special&quot;, specialChars=&quot;*,&amp;&quot;, length=&quot;12&quot;);
+	//fqr74mhb*cq&amp;
+</code></pre>
+
+<p>If anyone is interested you can <a href="/images/uploads/2008/10/generaterandomkey1.txt">download the UDF here</a>.</p>
+
+<p>As usual comments and critiques are always welcome :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

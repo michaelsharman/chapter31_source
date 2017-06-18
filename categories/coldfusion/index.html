@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coldfusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coldfusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">October 4, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/10/04/generating-a-powerset-in-coldfusion/">Generating a powerset in ColdFusion</a></h1>
+      
+      <div class="content">
+        I recently needed to generate a powerset (a set of all subsets) of 3 HTML select boxes. The idea was that a user could choose 1-many options from each box, and they had to choose a value from all 3 boxes (none could be empty).
+Select #1 had 4 values
+Select #2 had 7 values
+Select #3 had 13 values
+Now, I needed to generate every possible permutation for these 3 select boxes based on the rules I defined above.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/10/04/generating-a-powerset-in-coldfusion/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 30, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/09/30/modifying-fw1-variables-framework-properties/">Modifying FW/1 variables.framework properties</a></h1>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/fw/1">FW/1</a>
+    
+</div>
+
+      
+      <div class="content">
+        FW/1 gives you a nice, clean way to manage framework configuration properties. They&rsquo;re all wrapped up inside Application.cfc in a structure called variables.framework, you can read more about them here under Configuring FW/1 Applications.
+Our applications often have a need to use different values for these properties, depending on which environment the application is running in (development, testing, staging, production etc). An example of this might be reloadApplicationOnEveryRequest, which we want as true in development, but false elsewhere else.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/09/30/modifying-fw1-variables-framework-properties/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 27, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/09/27/preventing-fw1-from-reinitialising-an-app-via-the-url/">Preventing FW/1 from reinitialising an app via the URL</a></h1>
+      
+        <div class="tags">
+    
+        <a class="button is-link" href="/tags/fw/1">FW/1</a>
+    
+</div>
+
+      
+      <div class="content">
+        One of the things that FW/1 allows you to do is configure a reload &ldquo;key&rdquo; and &ldquo;password&rdquo; which you can use to reinit your application via URL.
+So inside your Application.cfc you might have:
+variables.framework = { reload = 'reinit', password = &quot;mysecretkey&quot; … }  So you can reinit your application (flush the application scope by re-running onApplicationStart()) by calling something like:
+http://www.example.com/?reinit=mysecretkey  The &ldquo;reload&rdquo; and &ldquo;password&rdquo; properties can be changed to whatever you want for securities sake.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/09/27/preventing-fw1-from-reinitialising-an-app-via-the-url/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 26, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/09/26/adding-a-mail-server-to-a-railo-instance/">Adding a mail server to a Railo instance</a></h1>
+      
+      <div class="content">
+        We turn off all GUI based administration consoles in our production environments, this includes Railo&rsquo;s admin area.
+If you need to configure your Railo instance to include an SMTP server, you can add a line in WEB-INF/railo/railo-web.xml.cfm
+Open up that file (probably as sudo), look for the  tag (which is empty by default) and insert the following:
+&lt;server port=&quot;25&quot; smtp=&quot;127.0.0.1&quot; /&gt;  The &ldquo;smtp&rdquo; attribute should be the IP address of your SMTP server.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/09/26/adding-a-mail-server-to-a-railo-instance/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 20, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/09/20/whitespace-issues-in-cfscript-based-functions/">Whitespace issues in cfscript based functions</a></h1>
+      
+      <div class="content">
+        Ok now we all know that ColdFusion is kind of lame when it comes to whitespace management, unless you specifically have &ldquo;whitespace management&rdquo; turned on for your server.
+I have a function that is used to build the href value of a hyperlink. Nothing special there. However when I viewed the source of the page I was a little surprised to see a mountain of whitespace coming back from the function.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/09/20/whitespace-issues-in-cfscript-based-functions/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 6, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/08/06/turning-off-sessions-for-non-https-traffic/">Turning off sessions for non-https traffic</a></h1>
+      
+      <div class="content">
+        Today I wanted to configure an application to only set secure cookies. Those are cookies that are only sent back to the server if over a secure (https) connection.
+The main reason for this is to prevent session hijacking, where a bad guy might sniff the cookie values which links a user to the session &ldquo;state&rdquo; on the server. If they managed to do that, (which they could if the session was started on an http:// connection, then if/when the user logged on and was transferred to https://) the bad guy would still have their cookie values and thus would be able to visit the website as the logged in user.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/08/06/turning-off-sessions-for-non-https-traffic/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 17, 2012</h2>
+      <h1 class="title"><a href="http://chapter31.com/2012/03/17/find-and-replace-with-line-breaks-in-eclipse/">Find and Replace with line breaks in Eclipse</a></h1>
+      
+      <div class="content">
+        Often with doing a find and replace you want to use line breaks in the find (or replace) criteria. Sometimes I&rsquo;ll have a column of data from a csv that I want to modify&hellip;whatever.
+You can now check the &ldquo;regular expressions&rdquo; checkbox while doing a file search in Eclipse and specify &ldquo;\R&rdquo; to find or replace line breaks (platform independent).
+Eg replace line breaks with commas:
+Other interesting and useful options are:
+        
+        ...<a class="button is-link" href="http://chapter31.com/2012/03/17/find-and-replace-with-line-breaks-in-eclipse/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 17, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/08/17/customising-search-results-from-google-cse/">Customising search results from google cse</a></h1>
+      
+      <div class="content">
+        Google custom search engine (cse) is pretty cool, in fact it&rsquo;s very cool. Within minutes you can have the ability to search your entire site all with a snippet of code! And for a nominal fee you can deliver these results without ads :)
+We use google cse for most of our sites but the other day we ran into a slight problem. The site in question has both public and private access, the public site is delivered over http and has plenty of indexable content.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/08/17/customising-search-results-from-google-cse/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">July 1, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/07/01/farcry-grouping-formtool-category-items/">FarCry - grouping formtool category items</a></h1>
+      
+      <div class="content">
+        A new project we&rsquo;re working has the need to categorise each new content object, for this we use the built in FarCry category/keyword formtool.
+By default the render type is a multi-select tree, I wanted a single select dropdown. Luckily formtools makes this oh so simple.
+&lt;cfproperty name=&quot;catHTML&quot; type=&quot;nstring&quot; required=&quot;true&quot; default=&quot;&quot; ftSeq=&quot;2&quot; ftwizardStep=&quot;Content&quot; ftValidation=&quot;required&quot; ftFieldset=&quot;General Details&quot; ftLabel=&quot;Categories&quot; ftType=&quot;Category&quot; ftAlias=&quot;sections&quot; ftRenderType=&quot;dropdown&quot; ftSelectSize=&quot;1&quot; ftSelectMultiple=&quot;false&quot; ftAliasAsOptGroup=&quot;true&quot;&gt;  Note that I&rsquo;ve set the dropdown size to 1 and multiple select to false.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2011/07/01/farcry-grouping-formtool-category-items/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">June 30, 2011</h2>
+      <h1 class="title"><a href="http://chapter31.com/2011/06/30/farcry-tip-remove-install-directory/">FarCry Tip - remove install directory</a></h1>
+      
+      <div class="content">
+        After you install FarCry you must make sure to delete the &ldquo;install&rdquo; folder(s) that FarCry leaves behind. Otherwise it&rsquo;s possible for anyone to access the installer wizard again from your production website, and as it&rsquo;s the installer they don&rsquo;t even need to be logged in to cause real havoc. Not good.
+By default, as of FarCry 6.1.x, there are 2 install folders to delete:
+ farcry.core.webtop.install farcry.plugins.farcrycms.install  
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button is-disabled">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/2/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

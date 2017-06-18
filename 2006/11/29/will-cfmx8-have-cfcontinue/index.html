@@ -1,0 +1,115 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Will CFMX8 have cfcontinue? | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Will CFMX8 have cfcontinue? - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 29, 2006</h2>
+    <h1 class="title">Will CFMX8 have cfcontinue?</h1>
+    
+    <div class="content">
+      <p>There are a <a href="http://livedocs.macromedia.com/coldfusion/7/htmldocs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=ColdFusion_Documentation&amp;file=00000977.htm">couple of nice statements</a> you can use to control processing within loops, namely</p>
+
+<ul>
+<li>break</li>
+<li>continue</li>
+</ul>
+
+<p>Break is of course used to exit the current loop entirely and resume page processing from the first CF statement after the end loop tag. Lovely!</p>
+
+<p>Continue has a subtle but handy difference, it ends the current loop iteration and &lsquo;continues&rsquo; from the beginning of the next loop iteration. Very lovely :)</p>
+
+<p>Now the problem is that there is no ColdFusion tag equivalent for continue, it&rsquo;s only accessible when in a &lt;cfscript&gt; block. As far as I know this is the only statement in the CFML language which is available in &lt;cfscript&gt; but not tags :(</p>
+
+<p>For some scenarios this will be ok, especially for the cfscripters out there. But for people who don&rsquo;t like (for several reasons) &lt;cfscript&gt; then this is a limitation which I hope Adobe will address (among others!) in Scorpio.</p>
+
+<p>And don&rsquo;t forget that the inherent limitations of &lt;cfscript&gt; (limited cftag support) means that sometimes you won&rsquo;t be able to do your logic in cfscript. For example you may want to use a &lt;cfsavecontent&gt; etc which you can&rsquo;t do in &lt;cfscript&gt;.</p>
+
+<p>I know&hellip;I know that you can create your own functions <a href="http://www.chapter31.com/2006/11/15/getting-tag-functionality-in-cfscript/">simulating tag functionality in cfscript</a> but all gets a little messy doesn&rsquo;t it?</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

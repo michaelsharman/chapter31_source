@@ -1,0 +1,149 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Generating a powerset in ColdFusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Generating a powerset in ColdFusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">October 4, 2012</h2>
+    <h1 class="title">Generating a powerset in ColdFusion</h1>
+    
+    <div class="content">
+      <p>I recently needed to generate a <a href="http://en.wikipedia.org/wiki/Power_set">powerset</a> (a set of all subsets) of 3 HTML select boxes. The idea was that a user could choose 1-many options from each box, and they had to choose a value from all 3 boxes (none could be empty).</p>
+
+<p>Select #1 had 4 values<br />
+Select #2 had 7 values<br />
+Select #3 had 13 values</p>
+
+<p>Now, I needed to generate every possible permutation for these 3 select boxes based on the rules I defined above. That meant the possible number of combinations for each box was:</p>
+
+<p>Select #1 had 16* possible combinations<br />
+Select #2 had 128* possible combinations<br />
+Select #3 had 8192* possible combinations</p>
+
+<p>* It was actually 1 less than that, because a powerset take into consideration an empty selection, so in reality the numbers would have been 15, 127 and 8191.</p>
+
+<p>This was calculated using 2n, where <em>n</em> is an number (integer) of options in a set, so 24, 27 and 213</p>
+
+<p>Now, how did I go about calculating these powersets? I cheated :smile:</p>
+
+<p>I grabbed a JavaScript function from <a href="http://rosettacode.org/wiki/Power_set#JavaScript">Rosetta Code</a> and ported it to ColdFusion.</p>
+
+<p>Here is the function to generate a powerset from a set (array) of data:</p>
+
+<pre><code class="language-javascript">public array function calculate(required array data)
+{
+  var ps = [&quot;&quot;];
+  var d = arguments.data;
+  var lenData = arrayLen(d);
+  var lenPS = 0;
+  for (var i=1; i LTE lenData; i++)
+  {
+    lenPS = arrayLen(ps);
+    for (var j = 1; j LTE lenPS; j++)
+    {
+      arrayAppend(ps, listAppend(ps[j], d[i]));
+    }
+  }
+  return ps;
+}
+</code></pre>
+
+<p>A sample powerset of 4 values (in this case 1,2,3,4) would be:</p>
+
+<pre><code class="language-javascript">var Powerset = new Powerset();
+var res = Powerset.calculate([1,2,3,4]);
+
+Outputs:
+[&quot;&quot;,&quot;1&quot;,&quot;2&quot;,&quot;1,2&quot;,&quot;3&quot;,&quot;1,3&quot;,&quot;2,3&quot;,&quot;1,2,3&quot;,&quot;4&quot;,&quot;1,4&quot;,&quot;2,4&quot;,&quot;1,2,4&quot;,&quot;3,4&quot;,&quot;1,3,4&quot;,&quot;2,3,4&quot;,&quot;1,2,3,4&quot;]
+</code></pre>
+
+<p>By the way, my total combination across all 3 sets was a mere 16,777,216.</p>
+
+<p><a href="https://github.com/michaelsharman/Powerset">Grab from github</a> if you prefer the CFC</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

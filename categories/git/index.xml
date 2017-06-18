@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on chapter31</title>
+    <link>http://chapter31.com/categories/git/</link>
+    <description>Recent content in Git on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Sat, 08 Jun 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Error writing git commit messages with vi</title>
+      <link>http://chapter31.com/2013/06/08/error-writing-git-commit-messages-with-vi/</link>
+      <pubDate>Sat, 08 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/06/08/error-writing-git-commit-messages-with-vi/</guid>
+      <description>I typically write my git commit messages in the terminal, but today I wanted to write a multi-line comment so I left out the -m argument to git commit so it would open up my default editor, which is vi:
+git commit  I wrote my comment, saved and exit but got an error:
+$ git commit error: There was a problem with the editor &#39;vi&#39;. Please supply the message using either -m or -F option.</description>
+    </item>
+    
+    <item>
+      <title>Migrating from bitbucket to github</title>
+      <link>http://chapter31.com/2013/05/08/migrating-from-bitbucket-to-github/</link>
+      <pubDate>Wed, 08 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/05/08/migrating-from-bitbucket-to-github/</guid>
+      <description>Migrating repositories between bitbucket and github couldn&amp;rsquo;t be simpler thanks to the design nature of DVCS like git because the entire history is already located on your machine within your projects .git folder. All you&amp;rsquo;re really doing is changing a remote.
+Open a terminal and navigate to your project directory.
+TLDR; For those who just want the commands with no explanation
+git remote rename origin bitbucket git remote add origin git@github.</description>
+    </item>
+    
+    <item>
+      <title>Adding a global ignore file for git</title>
+      <link>http://chapter31.com/2013/01/21/adding-a-global-ignore-file-for-git/</link>
+      <pubDate>Mon, 21 Jan 2013 12:02:46 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/01/21/adding-a-global-ignore-file-for-git/</guid>
+      <description>Quick setup of ignore files for Git. You can of course set these up per repo, but that gets a little old. Instead you can setup a single ignore file and link to it so that every repo refers to it.
+For example, create a git ignore file in your home directory:
+~/.gitignore_global  Fill it with regular files that you want to ignore:
+#.gitignore # Railo files # ###################### WEB-INF/ # Sublime files # ###################### *.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,147 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Storing Flash, ColdFusion and SQL in subversion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Storing Flash, ColdFusion and SQL in subversion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">August 13, 2007</h2>
+    <h1 class="title">Storing Flash, ColdFusion and SQL in subversion</h1>
+    
+    <div class="content">
+      <p>Most developers who use Source Code Management are familiar with the fact that while you can have any directory you want in your &lsquo;repositories&rsquo;, it is recommended that you use the following directories as a base layout:</p>
+
+<ul>
+<li><p>branches</p></li>
+
+<li><p>tags</p></li>
+
+<li><p>trunk</p></li>
+</ul>
+
+<p>The trunk directory will hold the &ldquo;main line&rdquo; of development, a branches directory will have &ldquo;branch-ing&rdquo; development (perhaps a maintenance release?), and a tags directory holds a &ldquo;snapshot&rdquo; in time (essentially a read-only area) often used when deploying to a production server.</p>
+
+<p>For example:</p>
+
+<pre><code class="language-javascript">/myrepository/myproject
+	/branches
+	/tags
+	/trunk
+</code></pre>
+
+<p>In the past when working in pure ColdFusion/HTML applications I&rsquo;ve had my entire project sitting in the root of the &ldquo;trunk&rdquo; folder which makes it nice and easy as I can point my repository to &ldquo;trunk&rdquo; when updating or commiting.</p>
+
+<p>But how does this work when you have Flash in your project? Essentially as a ColdFusion (or front end) developer I&rsquo;m not interested in having ActionScript files or any .fla&rsquo;s/Flash assets in my project directory let alone on a production or staging server!</p>
+
+<p>Some people like to have totally separate project repositories to hold all Flash elements, but I like to keep everything located in the same svn location. This seems more logical to me.</p>
+
+<p>To this end I&rsquo;ve included 3 sub-directories into my &ldquo;trunk&rdquo; directory:</p>
+
+<ul>
+<li><p>flash</p></li>
+
+<li><p>sql</p></li>
+
+<li><p>www</p></li>
+</ul>
+
+<p>Which gives me:</p>
+
+<pre><code class="language-javascript">/myrepository/myproject
+	/branches
+	/tags
+	/trunk
+		/flash
+		/sql
+		/www
+</code></pre>
+
+<p>That way any Flash developers working on the project can commit their Flash assets to the &ldquo;flash&rdquo; directory, any database scripts can be stored in the &ldquo;sql&rdquo; directory and the entire <em>deployable</em> project (including the exported .swf&rsquo;s) needed by the web server can live in the &ldquo;www&rdquo; directory.</p>
+
+<p>With this setup each developer only has the files which they directly need on their workstation/development environment. It&rsquo;s also just as easy to &ldquo;tag&rdquo; the &ldquo;www&rdquo; directory for production deployments.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

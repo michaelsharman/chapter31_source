@@ -1,0 +1,141 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Development configuration tips for Ubuntu | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Development configuration tips for Ubuntu - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">December 13, 2008</h2>
+    <h1 class="title">Development configuration tips for Ubuntu</h1>
+    
+    <div class="content">
+      <p>I just setup my machine at home with Ubuntu 8.10 (desktop) which was so easy think I saved hours off the time it would normally take with Windows. So much is already installed and ready to go and with apt (or the Synaptic package manager) it&rsquo;s super quick to download and install extra things things like MySQL, PHP, Apache, Java etc</p>
+
+<p>Here are some notes which helped me out when configuring some of these development tools.</p>
+
+<p>This assumes you&rsquo;ve already installed Apache and MySQL, for notes on installing these I <a href="http://ubuntuexperiment.wordpress.com/2008/11/10/installing-apache-php-mysql/">found this article</a> to be a great resource.</p>
+
+<p>If you get this message when you restart Apache, &ldquo;<em>Could not reliably determine the server’s fully qualified domain name, using 127.0.1.1 for ServerName</em>&rdquo;, edit /etc/apache2/conf.d/fqdn and add &ldquo;ServerName localhost&rdquo;:</p>
+
+<pre><code>sudo nano /etc/apache2/conf.d/fqdn
+</code></pre>
+
+<p><strong>Load the mod_rewrite module for Apache</strong></p>
+
+<pre><code>sudo a2enmod rewrite
+</code></pre>
+
+<p><strong>Enable your Apache vhosts</strong></p>
+
+<p>I already had all my vhosts defined in separate <em>.conf</em> files on my windows box, so I copied them all into /etc/apache2/sites-available and setup symbolic links from my /etc/apache2/sites-enabled:</p>
+
+<pre><code>sudo ln -s /etc/apache2/sites-available/mysite.conf /etc/apache2/sites-enabled/mysite.conf
+</code></pre>
+
+<p><strong>Download and install PHP</strong></p>
+
+<pre><code>sudo apt-get install php5 libapache2-mod-php5
+</code></pre>
+
+<p><strong>PHP connector to MySQL</strong></p>
+
+<pre><code>sudo apt-get install libapache2-mod-auth-mysql php5-mysql
+</code></pre>
+
+<p><strong>Install MySQL Administrator</strong></p>
+
+<pre><code>sudo apt-get install mysql-admin
+</code></pre>
+
+<p><strong>Install subversion</strong></p>
+
+<pre><code>sudo apt-get install subversion
+</code></pre>
+
+<p>I am also using <a href="http://www.poweredbypulse.com/">Pulse</a> to manage my <a href="http://www.eclipse.org/">eclipse</a> development environment so I needed Java which I got from the Synaptic Package Manager (<em>sun-java6-bin</em>). Pulse is super cool, I used the standard cfeclipse profile with the addition of the PHP PDT (for developing in PHP).</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

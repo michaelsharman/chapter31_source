@@ -1,0 +1,152 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Installing VirtualBox Guest Additions | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Installing VirtualBox Guest Additions - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 17, 2015</h2>
+    <h1 class="title">Installing VirtualBox Guest Additions</h1>
+    
+    <div class="content">
+      <p>Currently I have VirtualBox 4.3.18 installed on Mac OS X Mavericks. I recently downloaded several Windows 7/8/8.1 images from either <a href="http://modern.ie">modern.ie</a> or MSDN, and I wanted to install guest additions as well so I could do things like:</p>
+
+<ul>
+<li>change the size of the guest window</li>
+<li>turn on bidirectional shared clipboard</li>
+<li>add shared folder(s)</li>
+<li>etc</li>
+</ul>
+
+<p>There is a handy menu option to do this from the <em>VirtualBox VM</em> menu:</p>
+
+<pre><code>Devices / Insert Guest Additions CD image... (Host+D)
+</code></pre>
+
+<p>My problem was that every time I clicked that (for every Windows image I tried) nothing happened. For some reason that menu option was not finding or not opening the guest additions installer.</p>
+
+<p>Luckily it&rsquo;s pretty straight forward to do this manually from within the guest virtual machine. Follow the screenshots below:</p>
+
+<p><strong>Open <em>Computer</em></strong></p>
+
+<p><img src="/images/guestadditions/1.png" alt="Installing guest additions - 1" /></p>
+
+<p><strong>Double click the <em>VirtualBox Guest Additions</em></strong></p>
+
+<p><img src="/images/guestadditions/2.png" alt="Installing guest additions - 2" /></p>
+
+<p><strong>Double click <em>VBoxWindowsAdditions</em></strong></p>
+
+<p><img src="/images/guestadditions/3.png" alt="Installing guest additions - 3" /></p>
+
+<p><strong>Click <em>Yes</em></strong></p>
+
+<p><img src="/images/guestadditions/4.png" alt="Installing guest additions - 4" /></p>
+
+<p><strong>Click <em>Next</em></strong></p>
+
+<p><img src="/images/guestadditions/5.png" alt="Installing guest additions - 5" /></p>
+
+<p><strong>Click <em>Next</em></strong></p>
+
+<p><img src="/images/guestadditions/6.png" alt="Installing guest additions - 6" /></p>
+
+<p><strong>Click <em>Install</em> (I didn&rsquo;t add Direct3D Support)</strong></p>
+
+<p><img src="/images/guestadditions/7.png" alt="Installing guest additions - 7" /></p>
+
+<p><strong>Click <em>Install</em></strong></p>
+
+<p><img src="/images/guestadditions/8.png" alt="Installing guest additions - 8" /></p>
+
+<p><img src="/images/guestadditions/9.png" alt="Installing guest additions - 9" /></p>
+
+<p><strong>Click <em>Finish</em></strong></p>
+
+<p><img src="/images/guestadditions/10.png" alt="Installing guest additions - 10" /></p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

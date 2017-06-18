@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mura on chapter31</title>
+    <link>http://chapter31.com/categories/mura/</link>
+    <description>Recent content in Mura on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Tue, 31 May 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/mura/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mura - overriding dspCrumblistLinks</title>
+      <link>http://chapter31.com/2011/05/31/mura-overriding-dspcrumblistlinks/</link>
+      <pubDate>Tue, 31 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2011/05/31/mura-overriding-dspcrumblistlinks/</guid>
+      <description>Like most CMS solutions out there, Mura CMS gives you some cool hooks to override core functionality. See the developer guides for more information.
+I&amp;rsquo;ve created a repository on github to store any customisations or extensions that could be cherry picked for use in any Mura app.
+First up was a super simple one for breadcrumbs. By default, Mura will put an &amp;ldquo;a href&amp;rdquo; around the last item in the crumb list.</description>
+    </item>
+    
+    <item>
+      <title>FarCry to Mura - migrating data from FarCry to Mura CMS</title>
+      <link>http://chapter31.com/2011/05/29/farcry-to-mura-migrating-data-from-farcry-to-mura-cms/</link>
+      <pubDate>Sun, 29 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2011/05/29/farcry-to-mura-migrating-data-from-farcry-to-mura-cms/</guid>
+      <description>For years here at Learnosity we&amp;rsquo;ve been using FarCry for most of our CMS requirements (yes, I know that FarCry, or rather farcrycms, is a lot more than just a CMS).
+For one reason or another we decided it was time to look at some of the other options for content management in the ColdFusion sphere, Mura CMS was a likely candidate for evalutation.
+We had a small-ish site that was already running in FarCry 6+ which we wanted to port to Mura so we could really get a feel for how things worked in Mura-land.</description>
+    </item>
+    
+  </channel>
+</rss>

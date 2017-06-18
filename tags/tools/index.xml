@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on chapter31</title>
+    <link>http://chapter31.com/tags/tools/</link>
+    <description>Recent content in Tools on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Mon, 09 Jun 2008 05:37:08 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Looking for the source code of open source software? Use koders</title>
+      <link>http://chapter31.com/2008/06/09/looking-for-the-source-code-of-open-source-software-use-koders/</link>
+      <pubDate>Mon, 09 Jun 2008 05:37:08 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/06/09/looking-for-the-source-code-of-open-source-software-use-koders/</guid>
+      <description>I came across a cool search engine the other day called Koders which is &amp;ldquo;a free on-line search engine for open source software and other web-downloadable code.&amp;rdquo;
+The cool thing about this is you can search for just about any and every language you can think of, and quickly browse the source code of open source projects. This can be a nice way to view the API docs or just to see if the project is what you&amp;rsquo;re looking for.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,152 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Preventing FW/1 from reinitialising an app via the URL | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Preventing FW/1 from reinitialising an app via the URL - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 27, 2012</h2>
+    <h1 class="title">Preventing FW/1 from reinitialising an app via the URL</h1>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/fw/1">FW/1</a>
+    
+</div>
+
+    
+    <div class="content">
+      <p>One of the things that <a href="https://github.com/seancorfield/fw1">FW/1</a> allows you to do is configure a reload &ldquo;key&rdquo; and &ldquo;password&rdquo; which you can use to reinit your application via URL.</p>
+
+<p>So inside your Application.cfc you might have:</p>
+
+<pre><code>variables.framework = {
+  reload = 'reinit',
+  password = &quot;mysecretkey&quot;
+  …
+}
+</code></pre>
+
+<p>So you can reinit your application (flush the application scope by re-running onApplicationStart()) by calling something like:</p>
+
+<pre><code>http://www.example.com/?reinit=mysecretkey
+</code></pre>
+
+<p>The &ldquo;reload&rdquo; and &ldquo;password&rdquo; properties can be changed to whatever you want for securities sake.</p>
+
+<p>We wanted a little extra security, that being the option to never allow an application to be reinitialised via a URL. Typically we want this in a production environment only. What you lose in flexibility, being able to reinit the application quickly and easily after a release/deployment, you (arguably) gain in security. Perhaps this is being a little over-cautious, but we like to be better safe than sorry, especially when reducing possible DOS vectors. Also it makes life easier when dealing with system administrators and/or security audits :)</p>
+
+<p>To achieve this we simply added a new property to the <em>variables.framework</em> structure inside Application.cfc, called &ldquo;disableReloadApplication&rdquo;, which accepts true|false. If <em>true</em>, then even if you know the &ldquo;reload&rdquo; and &ldquo;password&rdquo; values…the application cannot be reinitialised via the URL. So the following would NOT reinit the app:</p>
+
+<pre><code>http://www.example.com/?reinit=mysecretkey
+</code></pre>
+
+<p>A few extra lines were needed inside framework.cfc to make this happen:</p>
+
+<p>setupFrameworkDefaults()</p>
+
+<pre><code>…
+if ( !structKeyExists(variables.framework, 'disableReloadApplication') ) {
+  variables.framework.disableReloadApplication = false;
+}
+…
+</code></pre>
+
+<p>and isFrameworkReloadRequest()</p>
+
+<pre><code>return ( !variables.framework.disableReloadApplication &amp;&amp;
+  ((isDefined( 'URL' ) &amp;&amp;
+  structKeyExists( URL, variables.framework.reload ) &amp;&amp;
+  URL[ variables.framework.reload ] == variables.framework.password ) ||
+  variables.framework.reloadApplicationOnEveryRequest));
+</code></pre>
+
+<p>Although we could have extended framework.cfc with our own file (and just defined these 2 methods), we just altered the original framework.cfc as we store a local copy in source control that all our projects can draw from.</p>
+
+<p><a href="https://github.com/michaelsharman/fw1">Here is the fork of FW/1</a> (really just a change to framework.cfc), version 2.0.1.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

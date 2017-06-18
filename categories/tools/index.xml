@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on chapter31</title>
+    <link>http://chapter31.com/categories/tools/</link>
+    <description>Recent content in Tools on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Thu, 22 Apr 2010 06:52:47 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Support Details - tech support management</title>
+      <link>http://chapter31.com/2010/04/22/support-details-tech-support-management/</link>
+      <pubDate>Thu, 22 Apr 2010 06:52:47 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2010/04/22/support-details-tech-support-management/</guid>
+      <description>Ever dealt with a client where you wanted to know their operating environment? Thinks like what operating system they are running (and version), which browser type and version, whether they have JavaScript enabled etc? Sounds easy but for some clients this is like being asked to provide a detailed analysis of early 7th century rock formations around Stone Henge&amp;hellip;in Latin. :(
+Here&amp;rsquo;s a super simple solution that anyone could use :)</description>
+    </item>
+    
+    <item>
+      <title>BrowserLab live on adobe.com</title>
+      <link>http://chapter31.com/2009/10/30/browserlab-live-on-adobe-com/</link>
+      <pubDate>Fri, 30 Oct 2009 01:02:27 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2009/10/30/browserlab-live-on-adobe-com/</guid>
+      <description>I&amp;rsquo;m probably a bit behind the times with this one, but Adobe have added &amp;ldquo;BrowserLab&amp;rdquo; functionality to &amp;ldquo;preview and test your web pages on leading browsers and operating systems - on demand&amp;rdquo;.
+Seems to work like other paid services, but is free :)
+https://browserlab.adobe.com/
+Available browser options (across mac and windows) include:
+ IE 6/7/8 Firefox 2&amp;frasl;3 Safari 3&amp;frasl;4</description>
+    </item>
+    
+    <item>
+      <title>Google releases video chat</title>
+      <link>http://chapter31.com/2008/11/12/google-releases-video-chat/</link>
+      <pubDate>Wed, 12 Nov 2008 03:04:21 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/11/12/google-releases-video-chat/</guid>
+      <description>For those that use gtalk/gmail, google have finally caught up and released voice and video chat.
+They even help you buy a webcam!</description>
+    </item>
+    
+    <item>
+      <title>Aqua Data Studio 7 includes an ER modeler</title>
+      <link>http://chapter31.com/2008/10/22/aqua-data-studio-7-includes-an-er-modeler/</link>
+      <pubDate>Wed, 22 Oct 2008 03:23:49 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/10/22/aqua-data-studio-7-includes-an-er-modeler/</guid>
+      <description>Those of you who miss diagramming support when using MySQL tools will be pleased to know that the latest version of Aqua Data Studio has support for ER Modeling :)
+ The Entity-Relationship (ER) Modeler we’ve built into Aqua Data Studio 7 is as powerful as even the best standalone database diagramming tools. Use it to design a new database from scratch, understand and clean up a database nightmare in your office, or visually understand entity relationships in existing databases to write more effective SQL queries.</description>
+    </item>
+    
+    <item>
+      <title>mooFlair on Adobe&#39;s top 10 list</title>
+      <link>http://chapter31.com/2008/09/03/mooflair-on-adobes-top-10-list/</link>
+      <pubDate>Wed, 03 Sep 2008 22:33:59 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/09/03/mooflair-on-adobes-top-10-list/</guid>
+      <description>Areez Gangji has just posted on Adobe devnet an article listing the &amp;ldquo;Top 10 Adobe Flex and AIR applications for students&amp;rdquo;.
+I&amp;rsquo;m very proud to say that a good friend (and fellow Daemon alumni) Patrick Tai has an app on their called mooFlair which he originally built for the AIR derby.
+What is mooFlair?
+ A desktop application that helps you to manage and watch both online and offline FLVs videos.</description>
+    </item>
+    
+    <item>
+      <title>Getting Inkscape (0.46) to run on Mac Leopard</title>
+      <link>http://chapter31.com/2008/08/06/getting-inkscape-046-to-run-on-mac-leopard/</link>
+      <pubDate>Wed, 06 Aug 2008 01:09:03 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/08/06/getting-inkscape-046-to-run-on-mac-leopard/</guid>
+      <description>Inscape is a fantastic open source vector graphics tool which can be a nice alternative to Adobe&amp;rsquo;s Illustrator.
+Getting it to run on the Mac took a couple of extra steps though.
+Firstly the download page advises that you upgrade X11.app to at least XQuartz v2.1.4. This is a large-ish download which forces you to quit all applications as it needs to restart your system after installing.
+The next problem was that after a restart, Inkscape displays a message saying that the first time it runs it may take a while to load as it needs to caches fonts.</description>
+    </item>
+    
+    <item>
+      <title>Server Monitoring your ColdFusion sites using an alias</title>
+      <link>http://chapter31.com/2008/08/02/server-monitoring-your-coldfusion-sites-using-an-alias/</link>
+      <pubDate>Sat, 02 Aug 2008 03:19:54 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/08/02/server-monitoring-your-coldfusion-sites-using-an-alias/</guid>
+      <description>I just read about a nice feature of the ColdFusion server monitor tool (available in ColdFusion 8) over on sandeepp&amp;rsquo;s blog.
+Essentially within the server monitors settings screen you can setup an &amp;ldquo;alias&amp;rdquo; for any site which uses a front controller which a lot of sites do particularly if you are using any of the popular frameworks like FarCry, Mach-II, Fusebox and Model-Glue etc
+This makes your projects much easier to trouble shoot and test.</description>
+    </item>
+    
+    <item>
+      <title>Wordpress for mobile devices</title>
+      <link>http://chapter31.com/2008/07/25/wordpress-for-mobile-devices/</link>
+      <pubDate>Fri, 25 Jul 2008 00:55:59 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/07/25/wordpress-for-mobile-devices/</guid>
+      <description>Wordpress is one of the most used blogging platforms around. One of the great things about it is the community support including the countless plugins you can use to enhance your blog/site.
+Particularly with the iPhone and other smart devices, mobile web seems to be experiencing a surge in traffic and importance to businesses. Although a lot of these &amp;ldquo;smart&amp;rdquo; devices now have full-featured browsers which can certainly handle your site without resorting to an entirely different version for mobile, there are still millions of handsets which access the web without a sophisticated browser so you often need to have a separate version of your site or at least a different stylesheet to handle these devices.</description>
+    </item>
+    
+    <item>
+      <title>How do you lock your screen on a Mac?</title>
+      <link>http://chapter31.com/2008/07/22/how-do-you-lock-your-screen-on-a-mac/</link>
+      <pubDate>Tue, 22 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/07/22/how-do-you-lock-your-screen-on-a-mac/</guid>
+      <description>Call me crazy, but it doesn&amp;rsquo;t seem like you can &amp;ldquo;natively&amp;rdquo; lock your screen on a Mac like you can on Windows. Very odd and annoying as it&amp;rsquo;s something I do everytime I leave my workstation, I&amp;rsquo;ve even had to agree to a policy that I will never leave my workstation open as I have secure access to production servers (via ssh).
+I found some craziness on google where users setup &amp;ldquo;hot corners&amp;rdquo; with mouse gestures with the idea that when you &amp;ldquo;drag your cursor&amp;rdquo; into that corner the screensaver will be activated requiring a password to get back to the desktop.</description>
+    </item>
+    
+    <item>
+      <title>Kotatsu - a simple html table generator</title>
+      <link>http://chapter31.com/2008/07/08/kotatsu-a-simple-html-table-generator/</link>
+      <pubDate>Tue, 08 Jul 2008 09:53:23 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/07/08/kotatsu-a-simple-html-table-generator/</guid>
+      <description>Sometimes you want to create an HTML table by hand and don&amp;rsquo;t have the luxury (if you consider it a luxury!) of having Dreamweaver around. Of course, creating HTML tables really isn&amp;rsquo;t all that difficult or time consuming, but considering we use snippets for just about everything else why not have a tool to generate these tables for us?
+Kotatsu is an online tool to do just that, sure it is very simple (doesn&amp;rsquo;t support col/rowspans or accessibility attributes etc) but when you want to churn out a basic custom table it just might save you some time.</description>
+    </item>
+    
+    <item>
+      <title>Pastebin - perfect for code collaboration</title>
+      <link>http://chapter31.com/2008/06/28/pastebin-perfect-for-code-collaboration/</link>
+      <pubDate>Sat, 28 Jun 2008 02:43:29 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2008/06/28/pastebin-perfect-for-code-collaboration/</guid>
+      <description>Have you ever pasted code you are working on to a colleague over IM or even email for some help or an opinion? Then you would benefit from using pastebin (free service) particularly if you experienced problems with code over IM in the past :(
+&amp;ldquo;Pastebin is a tool for collaborative debugging or editing&amp;rdquo;
+What that means is you can paste any code into a nice big textarea on the pastebin homepage, choose your syntax highlighting (ColdFusion is available!</description>
+    </item>
+    
+  </channel>
+</rss>

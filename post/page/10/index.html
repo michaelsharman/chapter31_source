@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Posts | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Posts - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">November 3, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/11/03/caveat-using-datediff-to-compare-difference-in-days/">Caveat using dateDiff() to compare difference in days</a></h1>
+      
+      <div class="content">
+        I had some problems a little while ago using dateCompare() and the same thing bit me recently with dateDiff(). Well really I had a problem with createODBCDate(), but let me explain.
+I wanted to compare the &ldquo;day&rdquo; value between 2 dates like;
+&lt;cfscript&gt; date1 = now(); date2 = myQuery.dateCreated; dateDifference = dateDiff(&quot;d&quot;, date1, date2);	&lt;/cfscript&gt;  The initial problem was that &ldquo;myQuery.dateCreated&rdquo; has a time value associated with it, as does the value of now().
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/11/03/caveat-using-datediff-to-compare-difference-in-days/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 27, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/10/27/fun-with-reserved-words-in-mysql-5/">Fun with reserved words in MySQL 5</a></h1>
+      
+      <div class="content">
+        Most tools or languages you work with have words which are &ldquo;reserved&rdquo;, meaning you cannot use them in a variable declaration or schema definition etc as they have special treatment in the underlying system. If you try to do this you&rsquo;ll usually get an immediate error.
+Today I needed to change an existing SQL query from a &ldquo;SELECT *&rdquo; to explicitly defining each column because I wanted to add some date formating at the SQL level.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/10/27/fun-with-reserved-words-in-mysql-5/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/10/22/aqua-data-studio-7-includes-an-er-modeler/">Aqua Data Studio 7 includes an ER modeler</a></h1>
+      
+      <div class="content">
+        Those of you who miss diagramming support when using MySQL tools will be pleased to know that the latest version of Aqua Data Studio has support for ER Modeling :)
+ The Entity-Relationship (ER) Modeler we’ve built into Aqua Data Studio 7 is as powerful as even the best standalone database diagramming tools. Use it to design a new database from scratch, understand and clean up a database nightmare in your office, or visually understand entity relationships in existing databases to write more effective SQL queries.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/10/22/aqua-data-studio-7-includes-an-er-modeler/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/10/22/problems-submitting-a-form-via-enter-in-ie/">Problems submitting a form via &#39;enter&#39; in IE</a></h1>
+      
+      <div class="content">
+        Like many things, handling form submissions with ColdFusion can be done many many ways. A preferred method which I&rsquo;ve been using for years now is looking for a specific element in the form struct. Something like:
+&lt;cfif structKeyExists(form, &quot;myelement&quot;)&gt; &lt;!--- handle form submission here ---&gt; &lt;/cfif&gt;  Most times I use a hidden field as the form element to look for (in my structKeyExists()), but I came across something funny today where I happened to be looking for the name of a submit button.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/10/22/problems-submitting-a-form-via-enter-in-ie/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">October 13, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/10/13/generaterandomkey-udf-with-several-handy-options/">generateRandomKey() UDF with several handy options</a></h1>
+      
+      <div class="content">
+        Working on a ColdFusion project recently I had the need to generate a random key; the format of which was based on a specific set of business rules. I actually ended up writing a basic UDF to handle this but after the fact I went looking to see if I could find something which provided some of the features I was after.
+Although I found several through google and cflib they weren&rsquo;t completely what I was after.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/10/13/generaterandomkey-udf-with-several-handy-options/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 3, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/09/03/mooflair-on-adobes-top-10-list/">mooFlair on Adobe&#39;s top 10 list</a></h1>
+      
+      <div class="content">
+        Areez Gangji has just posted on Adobe devnet an article listing the &ldquo;Top 10 Adobe Flex and AIR applications for students&rdquo;.
+I&rsquo;m very proud to say that a good friend (and fellow Daemon alumni) Patrick Tai has an app on their called mooFlair which he originally built for the AIR derby.
+What is mooFlair?
+ A desktop application that helps you to manage and watch both online and offline FLVs videos.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/09/03/mooflair-on-adobes-top-10-list/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 2, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/09/02/google-chrome-google-entering-the-browser-market/">Google Chrome - Google entering the browser market</a></h1>
+      
+      <div class="content">
+        Yep, Google have entered the browser market with Google Chrome.
+Although the press release was sent a little early, you can read an interesting comic book (PDF) here with some quite technical details on the ins and outs of Google&rsquo;s newest plan for world domination philanthropic effort.
+Webkit is the rendering engine, and the V8 team have created an entirely new JavaScript Virtual Machine to help make this browser super quick and stable.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/09/02/google-chrome-google-entering-the-browser-market/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 25, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/08/25/gmail-hacking-tool-do-you-access-your-email-securely/">Gmail hacking tool - do you access your email securely?</a></h1>
+      
+      <div class="content">
+        Stumbled upon this article today detailing a Gmail hacking tool presented at the Defcon hackers&rsquo; conference in Las Vegas which will be released in a week or so.
+While news about the insecurity of accessing personal information without using encryption is really nothing new it serves as a timely reminder to secure ALL information you access online including email (not just your bank account!). So much detail of our personal and professional lives are held in our (primary) email account, so much so that if it was compromised the fallout could be quite devastating.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/08/25/gmail-hacking-tool-do-you-access-your-email-securely/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 22, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/08/22/mysql-alias-just-like-table-names-are-case-sensitive-on-nix/">MySQL aliases (just like table names) are case sensitive on *nix</a></h1>
+      
+      <div class="content">
+        As you might know when using MySQL on a case-sensitive OS (like Linux) you must reference your table names in a case sensitive manner. So if you have a table called products the following sample query will NOT work:
+SELECT	productId FROM	Products  It won&rsquo;t work because MySQL stores the table information in directories on the file system, therefore these directories are case sensitive. So your query must be as follows (note the lower case products):
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/08/22/mysql-alias-just-like-table-names-are-case-sensitive-on-nix/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">August 16, 2008</h2>
+      <h1 class="title"><a href="http://chapter31.com/2008/08/16/2-cool-things-about-railo/">2 cool things about Railo</a></h1>
+      
+      <div class="content">
+        Session management: If an application/session scope is defined with the tag or the application.cfc, in Railo it will not automatically exist. Only when the scope is used for the first time it will be created. If the scope is not used, it won&rsquo;t be created either.
+This is really good news. Many people have blogged in the past about issues with &ldquo;bots&rdquo; hitting ColdFusion sites and spawning a multitude of sessions which (depending on the application of course) can cause memory and/or performance problems.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2008/08/16/2-cool-things-about-railo/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/post/page/9/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/post/page/11/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

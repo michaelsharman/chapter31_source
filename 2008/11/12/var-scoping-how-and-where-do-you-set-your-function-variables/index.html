@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>var scoping - how and where do you set your function variables? | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="var scoping - how and where do you set your function variables? - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">November 12, 2008</h2>
+    <h1 class="title">var scoping - how and where do you set your function variables?</h1>
+    
+    <div class="content">
+      <p>As everybody knows you should var scope ALL local function variables inside ColdFusion components, and these variables must be declared at the top of your function before any other code. If you place other code above a &ldquo;var&rdquo; scoped variable in your method signature an exception will be thrown.</p>
+
+<p>Depending on how you define you methods this will probably be fine, but I got to thinking recently on how this works with exception handling within your function, specifically for try/catch blocks.</p>
+
+<p>As you can&rsquo;t add code above your var scoped variables there is no way to wrap your var scope block in a try/catch block. With this being the case you <em>may</em> have problems if an exception is thrown when you var scope a local variable.</p>
+
+<p>An example of what I&rsquo;m talking about:</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;getWorkSchedule&quot; access=&quot;public&quot; returntype=&quot;query&quot;&gt;	
+	&lt;cfset var oUser = getUserService().getUser() /&gt;
+
+	&lt;cftry&gt;
+		...
+		&lt;cfcatch&gt;
+		&lt;/cfcatch&gt;
+	&lt;/cftry&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>In the fictional example shown above we have a method which returns a users work schedule, the first thing done is retrieving an instance of <em>User</em> from the <em>UserService</em>. As this has been set at the same time we var scope our variable (oUser), what happens if the call to <em>getUserService().getUser()</em> throws an exception? The exception would bubble up to the calling template (the template that called getWorkSchedule()) which might be fine but might also be unexpected.</p>
+
+<p>This is just food for thought, it may be that instead you want to define your method like:</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;getWorkSchedule&quot; access=&quot;public&quot; returntype=&quot;query&quot;&gt;	
+	&lt;cfset var oUser = &quot;&quot; /&gt;
+
+	&lt;cftry&gt;
+		&lt;cfset oUser = getUserService().getUser() /&gt;
+		...
+		&lt;cfcatch&gt;
+		&lt;/cfcatch&gt;
+	&lt;/cftry&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>Here we take the approach of always declaring our local variables as empty strings or integers etc (simple values) <strong>before</strong> setting explicit values into them. This means all your variables are cleanly defined and you can catch any possible exceptions if you need to inside the try/catch.</p>
+
+<p>The only is that is feels like a bit of double handling because I need to <cfset> my variables twice&hellip;</p>
+
+<p>How do other people handle this? Lend me your thoughts :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

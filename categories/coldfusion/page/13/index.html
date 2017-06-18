@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Coldfusion | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Coldfusion - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <article>
+      <h2 class="subtitle is-6">September 9, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/09/html-strip/">HTML strip</a></h1>
+      
+      <div class="content">
+        Let&rsquo;s say you have a form or mechanism in a web application which allows users to enter content which may be displayed on a web page, a comment area for example.
+In these scenarios you need to be carefull of what my be entered by a malicious user, think cross site scripting. There are various reg exp’s available to assist you in cleaning the data but good folks a Adobe have given us a nice little function in htmlEditFormat().
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/09/html-strip/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 7, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/07/cfc-bean-generators/">CFC Bean generators</a></h1>
+      
+      <div class="content">
+        There are a few Bean generators around for ColdFusion which can save you a lot if time and effort when you need to create your CFC Beans, here are a few making the rounds.
+Jonathan Block
+A more advanced generator which creates init() and validate() functions for you. For the picky developers out there you might want to tidy things up a bit. Example the ‘set’ in the init() misses a space at the end of the
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/07/cfc-bean-generators/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 7, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/07/server-settings-with-java/">Server settings with Java</a></h1>
+      
+      <div class="content">
+        Here are a couple of ways which you can determine the name of the JRun instance you are running as well as the server name of the Application server. Here at Daemon we use these quite a bit in our more complex project environments.
+&lt;!--- get the machine (server) name ---&gt; &lt;cfset variables.serverName = createObject(&quot;java&quot;, &quot;java.net.InetAddress&quot;).localhost.getHostName() /&gt; &lt;!--- get the JRun instance name ---&gt; &lt;cfset variables.instanceName = createObject(&quot;java&quot;, &quot;jrunx.kernel.JRun&quot;).getServerName() /&gt; &lt;cfoutput&gt; Server: #variables.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/07/server-settings-with-java/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">September 5, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/09/05/multi-step-forms/">Multi-step forms</a></h1>
+      
+      <div class="content">
+        Rahul Narula has a great post on Multi-step forms. As web developers forms are a part of our everyday lives, sometimes those forms exist over several pages instead of 1 looong page. That being said we need a way to hold the data entered by the user at each step (page) thoughout the process.
+We can of course use either of the following:
+ Database Session scope Structures URL  There are probably more but that would be all I would consider (at this stage!
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/09/05/multi-step-forms/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">May 6, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/05/06/determining-machine-name-using-java/">Determining machine name using java</a></h1>
+      
+      <div class="content">
+        Often when you are developing in a team environment you will be using the same code base checked in and out of a source control repository (SVN, CVS etc). Sometimes you may have problems with developers having a different machine configuration than you do when these settings are stored as variables in a project config file.
+One way we do things at Daemon is:
+&lt;cfset machineName=createObject(&quot;java&quot;, &quot;java.net.InetAddress&quot;).localhost.getHostName() /&gt; &lt;cfswitch expression=&quot;#machinename#&quot;&gt; &lt;cfcase value=&quot;sharmo&quot;&gt; &lt;cfset myVar = &quot;test&quot; /&gt; &lt;/cfcase&gt; &lt;/cfswitch&gt;  This way each developer can script his or her own machine specific configuration in a case statement and not have a problem when checking into source control because everyone’s config is in the same file.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/05/06/determining-machine-name-using-java/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 28, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/04/28/dumping-and-aborting-with/">Dumping and aborting with &lt;cfscript&gt;</a></h1>
+      
+      <div class="content">
+        One of the annoying things about cfscript is it&rsquo;s lack of support for a lot of CFML tags.
+ and  are 2 tags I always use in development, especially for debugging. A way to use this functionality is to create a UDF to do these types of functions.
+For example
+&lt;cffunction name=&quot;dump&quot; access=&quot;public&quot; output=&quot;true&quot; returntype=&quot;struct&quot;&gt; &lt;cfargument name=&quot;arg&quot; /&gt; &lt;cfdump var=&quot;#arg#&quot; /&gt; &lt;/cffunction&gt; &lt;cffunction name=&quot;abort&quot; access=&quot;public&quot; output=&quot;false&quot; returntype=&quot;void&quot;&gt; &lt;cfabort /&gt; &lt;/cffunction&gt;  This function can be stored in a simple utilities component and stored in application scope, that way you can call it from anywhere.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/04/28/dumping-and-aborting-with/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 20, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/04/20/isvalid/">isValid()</a></h1>
+      
+      <div class="content">
+        New to ColdFusion MX7 the isValid() function tests whether a value meets a validation or data type rule and returns True if the value conforms to the rule; False, otherwise.
+Function syntax
+isValid(type, value) isValid(&quot;range&quot;, value, min, max) isValid(&quot;regex&quot; or &quot;regular_expression&quot;, value, pattern)  Example:
+&lt;cfif IsValid(&quot;integer&quot;, url.value)&gt; Valid integer! &lt;cfelse&gt; Invalid Integer! &lt;/cfif&gt; &lt;cfif IsValid(&quot;range&quot;, url.value, 1, 100)&gt; Value is between 1 and 100 &lt;cfelse&gt; Value is not between 1 and 100 &lt;/cfif&gt; &lt;cfif IsValid(&quot;regex&quot;, url.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/04/20/isvalid/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 11, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/04/11/cfdump-goodies/">cfdump goodies</a></h1>
+      
+      <div class="content">
+        &lt;cfdump&gt; is a fantastic debugging tool which can be used to display the values/results of simple and complex variables. But there are a couple of little known attributes you can take advantage of to make your life just peachy, namely:
+ expand top  Expand is great when you&rsquo;re working with large data structures which might take a long time to load etc. This attribute can take 2 values, either yes or no (the default being yes).
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/04/11/cfdump-goodies/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">April 1, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/04/01/how-do-i-trim-the-contents-of-a-form/">How do I trim the contents of a form?</a></h1>
+      
+      <div class="content">
+        From ColdFusion Cookbook:
+Trimming is an essential part of dealing with an data coming from form textfields or textareas etc. You can of couse trim as and when you need (before validation or database inserts etc) but if you can trim all fields quickly and easily!
+&lt;cfloop collection=&quot;#form#&quot; item=&quot;formfield&quot;&gt; &lt;cfset form[formfield] = trim(form[formfield]) /&gt; &lt;/cfloop&gt;  This basically loops over a form structure and trims each element. You can use this loop in a function before handing it to your validation or database methods.
+        
+        ...<a class="button is-link" href="http://chapter31.com/2006/04/01/how-do-i-trim-the-contents-of-a-form/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <h2 class="subtitle is-6">March 31, 2006</h2>
+      <h1 class="title"><a href="http://chapter31.com/2006/03/31/how-to-find-the-size-of-a-directory/">How to find the size of a directory?</a></h1>
+      
+      <div class="content">
+        Here is an article from coldfusion cookbook.
+&lt;cfdirectory directory=&quot;c:\cfusionmx&quot; action=&quot;list&quot; recurse=&quot;true&quot; name=&quot;cfDir&quot;&gt; &lt;cfquery dbtype=&quot;query&quot; name=&quot;dirSize&quot;&gt; select sum(size) as size from cfDir &lt;/cfquery&gt; &lt;cfset sizemb=&quot;dirSize.size/1000000&quot;&gt; &lt;cfoutput&gt;#numberFormat(sizeMB,&quot;,.99&quot;)#&lt;/cfoutput&gt;  Note the &lsquo;recurse&rsquo; option, this will get the size of the current and all sub-directories. If you only need the size of the current directory, change recurse to false.
+        
+      </div>
+    </article>
+    
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/12/">
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-left"></i>
+            </span>
+            Newer
+          </a>
+          
+        </div>
+      </div>
+      <div class="level-right is-marginless">
+        <div class="level-item">
+          
+          <a class="button" href="/categories/coldfusion/page/14/">
+            Older
+            <span class="icon is-small is-marginless">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

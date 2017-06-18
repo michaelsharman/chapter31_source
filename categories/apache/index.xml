@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apache on chapter31</title>
+    <link>http://chapter31.com/categories/apache/</link>
+    <description>Recent content in Apache on chapter31</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;http://michaelsharman.com&#34;&gt;Michael Sharman&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Fri, 21 Jun 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://chapter31.com/categories/apache/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PHP [&#39;SCRIPT_NAME&#39;] returning empty string</title>
+      <link>http://chapter31.com/2013/06/21/php-script-name-returning-empty-string/</link>
+      <pubDate>Fri, 21 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/06/21/php-script-name-returning-empty-string/</guid>
+      <description>I was working with Slim (v2.2.x) the other day and saw that a PHP warning was being thrown in one of the interal Slim files:
+Warning: strpos(): Empty needle in /vendor/slim/slim/Slim/Environment.php on line 143  The code throwing the warning was the following if statement:
+if (strpos($_SERVER[&#39;REQUEST_URI&#39;], $_SERVER[&#39;SCRIPT_NAME&#39;]) === 0) {  The actual issue was that $_SERVER[&#39;SCRIPT_NAME&#39;] was an empty string, so strpos was complaining as that is invalid syntax.</description>
+    </item>
+    
+    <item>
+      <title>iOS 6 caching POST requests</title>
+      <link>http://chapter31.com/2013/05/09/ios-6-caching-post-requests/</link>
+      <pubDate>Thu, 09 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://chapter31.com/2013/05/09/ios-6-caching-post-requests/</guid>
+      <description>Apparently I&amp;rsquo;ve been living under a rock, never having been bitten (that I know of) by the pretty massive bug Apple rolled out in iOS 6 (with Safari). The bug has been well documented around the interwebs, basically Safari caches HTTP POST requests. If you haven&amp;rsquo;t heard about this&amp;hellip;stop and read that last bit again.
+Now, replicating this bug is dependent on the payload of the POST not changing between requests, so in many circumstances you may be fine.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1531 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://chapter31.com/2015/06/30/installing-sonar-source-on-mac-osx-part-2/</loc>
+    <lastmod>2015-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2015/05/29/disabling-the-flash-plugin-for-testing/</loc>
+    <lastmod>2015-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2015/05/17/installing-virtualbox-guest-additions/</loc>
+    <lastmod>2015-05-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2015/05/06/opening-eml-files/</loc>
+    <lastmod>2015-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/12/16/simple-json-prettify/</loc>
+    <lastmod>2013-12-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/06/22/careful-using-php-array-merge/</loc>
+    <lastmod>2013-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/06/21/php-script-name-returning-empty-string/</loc>
+    <lastmod>2013-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/06/19/problem-dumping-mysql-database-unknown-system-variable-gtid-mode/</loc>
+    <lastmod>2013-06-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/06/13/ini-syntax-highlighting-in-sublime-text/</loc>
+    <lastmod>2013-06-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/06/08/error-writing-git-commit-messages-with-vi/</loc>
+    <lastmod>2013-06-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/06/03/php-composer-error-cannot-redeclare-class/</loc>
+    <lastmod>2013-06-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/06/02/installing-apc-in-php-5-dot-4-x-on-mac-osx/</loc>
+    <lastmod>2013-06-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/06/01/base16-colour-scheme-for-hackers/</loc>
+    <lastmod>2013-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/05/29/installing-xdebug-on-mac-mountain-lion-10-dot-8-3/</loc>
+    <lastmod>2013-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/05/22/mysql-thread-stack-overrun-error/</loc>
+    <lastmod>2013-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/05/09/ios-6-caching-post-requests/</loc>
+    <lastmod>2013-05-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/05/08/migrating-from-bitbucket-to-github/</loc>
+    <lastmod>2013-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/05/06/date-timezone-error-when-upgrading-to-php-5-dot-3-plus/</loc>
+    <lastmod>2013-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/05/06/installing-php-5-dot-4-plus-from-source-on-mac-mountain-lion/</loc>
+    <lastmod>2013-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/05/05/stopping-a-remote-process-after-killing-an-ssh-session/</loc>
+    <lastmod>2013-05-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/05/02/installing-sonar-source-on-mac-osx/</loc>
+    <lastmod>2013-05-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/01/21/adding-a-global-ignore-file-for-git/</loc>
+    <lastmod>2013-01-21T12:02:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/01/21/showing-hidden-files-in-finder-on-mac-osx/</loc>
+    <lastmod>2013-01-21T11:37:37+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2013/01/01/downloading-youtube-videos/</loc>
+    <lastmod>2013-01-01T02:48:27+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/11/21/json-undefined-issues-on-ie8-and-ie9/</loc>
+    <lastmod>2012-11-21T05:48:57+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/10/04/generating-a-powerset-in-coldfusion/</loc>
+    <lastmod>2012-10-04T11:20:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/09/30/modifying-fw1-variables-framework-properties/</loc>
+    <lastmod>2012-09-30T06:54:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/09/27/preventing-fw1-from-reinitialising-an-app-via-the-url/</loc>
+    <lastmod>2012-09-27T12:57:23+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/09/26/adding-a-mail-server-to-a-railo-instance/</loc>
+    <lastmod>2012-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/09/24/installing-new-fonts-on-ubuntu-server/</loc>
+    <lastmod>2012-09-24T03:41:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/09/20/whitespace-issues-in-cfscript-based-functions/</loc>
+    <lastmod>2012-09-20T07:28:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/09/14/jquery-ui-dialog-focus-on-first-tabable-element/</loc>
+    <lastmod>2012-09-14T06:27:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/08/13/timing-synchronous-javascript-operations/</loc>
+    <lastmod>2012-08-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/08/09/setting-font-mime-types-in-apache/</loc>
+    <lastmod>2012-08-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/08/06/turning-off-sessions-for-non-https-traffic/</loc>
+    <lastmod>2012-08-06T07:05:22+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/07/10/editing-svnignore-on-the-terminal/</loc>
+    <lastmod>2012-07-10T12:49:19+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/07/05/concatenating-values-into-a-single-column-with-mysql-group_concat/</loc>
+    <lastmod>2012-07-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/07/04/jquery-tinymce-issue-with-attr/</loc>
+    <lastmod>2012-07-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/06/05/apache-permission-denied-on-mac-osx-lion/</loc>
+    <lastmod>2012-06-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/05/24/strange-linefeed-characters-appearing-on-mac/</loc>
+    <lastmod>2012-05-24T04:14:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/03/17/find-and-replace-with-line-breaks-in-eclipse/</loc>
+    <lastmod>2012-03-17T02:56:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/03/15/error-restoring-mysql-database-when-using-btree-on-indexes/</loc>
+    <lastmod>2012-03-15T04:42:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2012/03/14/turning-voice-over-off-permanently-on-max-osx/</loc>
+    <lastmod>2012-03-14T05:41:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/10/27/twitter-bootstrap-modal-not-working-in-firefox/</loc>
+    <lastmod>2011-10-27T07:00:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/08/17/farcry-plugin-webtop-tools/</loc>
+    <lastmod>2011-08-17T00:38:33+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/08/17/customising-search-results-from-google-cse/</loc>
+    <lastmod>2011-08-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/07/31/label-vs-title-in-farcry/</loc>
+    <lastmod>2011-07-31T23:16:01+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/07/01/farcry-tip-enable-cfcs-in-your-railo-proxypassmatch/</loc>
+    <lastmod>2011-07-01T04:04:20+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/07/01/farcry-grouping-formtool-category-items/</loc>
+    <lastmod>2011-07-01T00:51:52+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/06/30/farcry-tip-remove-install-directory/</loc>
+    <lastmod>2011-06-30T00:39:14+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/05/31/mura-overriding-dspcrumblistlinks/</loc>
+    <lastmod>2011-05-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/05/29/farcry-to-mura-migrating-data-from-farcry-to-mura-cms/</loc>
+    <lastmod>2011-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/05/11/wordpress-detecting-the-categories-of-a-post/</loc>
+    <lastmod>2011-05-11T13:48:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/05/11/fancybox-for-wordpress-plugin-not-working/</loc>
+    <lastmod>2011-05-11T13:42:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/04/17/farcry-twitter-plugin/</loc>
+    <lastmod>2011-04-17T12:04:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/03/03/mysql-alternative-to-mssqls-isnull/</loc>
+    <lastmod>2011-03-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/02/08/sql-for-finding-duplicate-values/</loc>
+    <lastmod>2011-02-08T06:47:18+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2011/01/12/checking-for-correct-case-sensitive-tables-in-farcry/</loc>
+    <lastmod>2011-01-12T22:47:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/12/07/adding-prototype-methods-to-jquery/</loc>
+    <lastmod>2010-12-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/11/14/importing-a-csv-into-mysql-using-the-command-line/</loc>
+    <lastmod>2010-11-14T23:38:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/10/04/case-sensitive-development-on-mac-os-x/</loc>
+    <lastmod>2010-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/09/08/tip-when-adding-allowmultiqueriestrue-to-your-mysql-dsn-in-coldfusion/</loc>
+    <lastmod>2010-09-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/05/27/cfml-issue-on-railo-with-the-accelerate-cache-tag/</loc>
+    <lastmod>2010-05-27T06:30:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/05/13/removing-duplicate-rows-in-open-office-calc/</loc>
+    <lastmod>2010-05-13T05:05:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/05/09/ie-and-underscores-in-domain-names/</loc>
+    <lastmod>2010-05-09T23:09:27+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/04/22/support-details-tech-support-management/</loc>
+    <lastmod>2010-04-22T06:52:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/03/03/detecting-https-across-railo-and-coldfusion-server/</loc>
+    <lastmod>2010-03-03T03:14:56+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2010/01/19/cfhttp-issues-using-local-on-max-osx/</loc>
+    <lastmod>2010-01-19T23:28:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/10/30/browserlab-live-on-adobe-com/</loc>
+    <lastmod>2009-10-30T01:02:27+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/10/28/extracting-url-variables-using-javascript/</loc>
+    <lastmod>2009-10-28T00:40:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/08/15/firefox-changing-default-download-location/</loc>
+    <lastmod>2009-08-15T08:04:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/08/15/new-location-for-farcry-subversion-repositories/</loc>
+    <lastmod>2009-08-15T07:21:01+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/07/14/hiding-the-farcry-tray-on-the-front-end/</loc>
+    <lastmod>2009-07-14T04:42:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/06/15/prototypescriptaculous-issue-with-sortablecreate/</loc>
+    <lastmod>2009-06-15T05:33:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/06/09/setting-application-variables-in-farcry/</loc>
+    <lastmod>2009-06-09T01:59:01+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/05/29/setting-the-sort-order-for-custom-admin-items/</loc>
+    <lastmod>2009-05-29T00:56:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/05/28/changing-the-sort-order-of-farcry-categorieskeywords/</loc>
+    <lastmod>2009-05-28T23:23:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2009/05/28/setting-a-label-property-tip-for-farcry-5/</loc>
+    <lastmod>2009-05-28T02:26:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/12/13/development-configuration-tips-for-ubuntu/</loc>
+    <lastmod>2008-12-13T02:28:20+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/12/04/how-to-do-a-case-sensitive-test-of-your-codebase/</loc>
+    <lastmod>2008-12-04T23:26:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/12/03/querying-multiple-databases-within-one-cfquery/</loc>
+    <lastmod>2008-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/28/installing-a-new-farcry-5-project-extended-advanced-mode/</loc>
+    <lastmod>2008-11-28T04:07:07+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/25/security-reminder-are-you-using-scriptprotect/</loc>
+    <lastmod>2008-11-25T01:30:06+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/24/use-applicationapplicationname-careful-when-re-initing-your-app/</loc>
+    <lastmod>2008-11-24T10:54:14+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/22/cfqueryparam-does-not-work-in-order-by-what-are-my-options/</loc>
+    <lastmod>2008-11-22T02:15:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/19/logging-all-mysql-queries-on-mac-osx/</loc>
+    <lastmod>2008-11-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/15/forgot-to-import-your-coldfusion-tag-libraries/</loc>
+    <lastmod>2008-11-15T09:55:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/12/google-releases-video-chat/</loc>
+    <lastmod>2008-11-12T03:04:21+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/12/var-scoping-how-and-where-do-you-set-your-function-variables/</loc>
+    <lastmod>2008-11-12T00:40:34+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/10/invalid-serial-number-when-upgrading-to-flex-builder-3-pro/</loc>
+    <lastmod>2008-11-10T03:16:54+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/11/03/caveat-using-datediff-to-compare-difference-in-days/</loc>
+    <lastmod>2008-11-03T06:34:48+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/10/27/fun-with-reserved-words-in-mysql-5/</loc>
+    <lastmod>2008-10-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/10/22/aqua-data-studio-7-includes-an-er-modeler/</loc>
+    <lastmod>2008-10-22T03:23:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/10/22/problems-submitting-a-form-via-enter-in-ie/</loc>
+    <lastmod>2008-10-22T02:35:25+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/10/13/generaterandomkey-udf-with-several-handy-options/</loc>
+    <lastmod>2008-10-13T13:29:14+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/09/03/mooflair-on-adobes-top-10-list/</loc>
+    <lastmod>2008-09-03T22:33:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/09/02/google-chrome-google-entering-the-browser-market/</loc>
+    <lastmod>2008-09-02T02:36:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/08/25/gmail-hacking-tool-do-you-access-your-email-securely/</loc>
+    <lastmod>2008-08-25T04:15:31+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/08/22/mysql-alias-just-like-table-names-are-case-sensitive-on-nix/</loc>
+    <lastmod>2008-08-22T03:00:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/08/16/2-cool-things-about-railo/</loc>
+    <lastmod>2008-08-16T09:04:07+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/08/16/farcry-5-running-on-railo-3-windows/</loc>
+    <lastmod>2008-08-16T08:15:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/08/13/getmooh-automated-callback-service/</loc>
+    <lastmod>2008-08-13T23:33:23+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/08/09/adding-subscriptions-to-comments-for-your-wordpress-theme/</loc>
+    <lastmod>2008-08-09T03:13:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/08/06/getting-inkscape-046-to-run-on-mac-leopard/</loc>
+    <lastmod>2008-08-06T01:09:03+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/08/02/server-monitoring-your-coldfusion-sites-using-an-alias/</loc>
+    <lastmod>2008-08-02T03:19:54+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/07/30/latest-firefox-breaks-farcry-3-context-menu/</loc>
+    <lastmod>2008-07-30T04:38:13+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/07/25/wordpress-for-mobile-devices/</loc>
+    <lastmod>2008-07-25T00:55:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/07/22/how-do-you-lock-your-screen-on-a-mac/</loc>
+    <lastmod>2008-07-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/07/21/inetaddresslocator-problems-with-farcry-3/</loc>
+    <lastmod>2008-07-21T02:56:27+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/07/19/another-reminder-of-the-importance-of-preventing-sql-injection/</loc>
+    <lastmod>2008-07-19T01:59:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/07/17/coding-standards-do-you-use-them/</loc>
+    <lastmod>2008-07-17T22:52:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/07/08/kotatsu-a-simple-html-table-generator/</loc>
+    <lastmod>2008-07-08T09:53:23+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/07/08/dont-forget-the-coldfusion-site-wide-error-handler/</loc>
+    <lastmod>2008-07-08T02:55:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/07/01/12-breeds-of-client-and-how-to-work-with-them/</loc>
+    <lastmod>2008-07-01T22:49:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/06/28/pastebin-perfect-for-code-collaboration/</loc>
+    <lastmod>2008-06-28T02:43:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/06/23/new-farcry-core-site/</loc>
+    <lastmod>2008-06-23T23:56:06+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/06/20/careful-when-copying-code-sent-from-an-im-client/</loc>
+    <lastmod>2008-06-20T07:28:11+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/06/19/farcry-finding-a-page-by-typename-somewhere-above-the-current-page/</loc>
+    <lastmod>2008-06-19T00:47:06+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/06/14/does-your-bank-do-online-statements/</loc>
+    <lastmod>2008-06-14T05:17:37+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/06/13/webdu-over-for-another-year/</loc>
+    <lastmod>2008-06-13T10:23:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/06/11/webdu-starts-tomorrow/</loc>
+    <lastmod>2008-06-11T12:57:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/06/11/preservesinglequotes-still-breaks-on-array-style-parameters/</loc>
+    <lastmod>2008-06-11T04:49:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/06/09/looking-for-the-source-code-of-open-source-software-use-koders/</loc>
+    <lastmod>2008-06-09T05:37:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/05/30/password-strength-checker/</loc>
+    <lastmod>2008-05-30T12:41:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/05/22/setting-up-svnexternals-with-subclipse/</loc>
+    <lastmod>2008-05-22T07:30:43+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/05/22/insert-delayed-with-mysql/</loc>
+    <lastmod>2008-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/04/24/insert-or-update-in-one-statement-with-mysql-performance-test/</loc>
+    <lastmod>2008-04-24T01:59:11+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/04/23/insert-or-update-in-one-statement-with-mysql/</loc>
+    <lastmod>2008-04-23T02:09:18+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/04/16/i-hate-spam-spambot-cracks-live-hotmail-captcha/</loc>
+    <lastmod>2008-04-16T23:04:01+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/04/08/workaround-for-cfscript-bug-in-varscoper/</loc>
+    <lastmod>2008-04-08T02:32:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/04/07/flushing-a-cached-web-service/</loc>
+    <lastmod>2008-04-07T06:07:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/04/03/combining-multiple-insert-statements-with-mysql/</loc>
+    <lastmod>2008-04-03T12:24:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/28/evaluating-coldfusion-unscoped-query-variables/</loc>
+    <lastmod>2008-03-28T01:29:24+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/24/installing-php5-with-mysql-extensions/</loc>
+    <lastmod>2008-03-24T04:59:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/22/update-for-java-6/</loc>
+    <lastmod>2008-03-22T04:20:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/21/random-database-results-with-coldfusion/</loc>
+    <lastmod>2008-03-21T03:58:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/21/returning-random-results-with-mysql/</loc>
+    <lastmod>2008-03-21T03:20:13+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/16/options-for-accessing-the-coldfusion-8-documentation/</loc>
+    <lastmod>2008-03-16T22:46:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/16/vince-bonfanti-and-the-differences-between-bluedragon-versions/</loc>
+    <lastmod>2008-03-16T04:47:42+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/11/passing-extra-parameters-to-prototype-observer-handlers/</loc>
+    <lastmod>2008-03-11T02:26:12+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/10/showing-and-hiding-elements-with-css-and-javascript/</loc>
+    <lastmod>2008-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/06/better-youtube-firefox-extension/</loc>
+    <lastmod>2008-03-06T03:21:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/03/always-add-the-cfimport-tag-when-using-cfimport-style-syntax/</loc>
+    <lastmod>2008-03-03T00:32:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/03/02/converting-boolean-values-to-numeric-equivalents/</loc>
+    <lastmod>2008-03-02T23:32:32+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/02/28/cant-access-shared-music-with-rhythmbox-ubuntu/</loc>
+    <lastmod>2008-02-28T06:21:14+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/02/28/changing-the-cfeclipse-tag-insight-delay-time/</loc>
+    <lastmod>2008-02-28T00:56:02+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/02/26/code-tip-how-to-structure-your-queryparams/</loc>
+    <lastmod>2008-02-26T04:16:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/02/21/cfdocs-on-air-livedocs-for-cf8/</loc>
+    <lastmod>2008-02-21T22:33:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/02/21/using-mysql-administrator-to-view-real-time-stats/</loc>
+    <lastmod>2008-02-21T06:49:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/02/18/a-couple-more-cool-firefox-tips/</loc>
+    <lastmod>2008-02-18T20:50:05+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/02/07/the-only-valid-measurement-of-code-quality/</loc>
+    <lastmod>2008-02-07T00:05:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/01/24/dont-ever-user-wwwtemplatesbrowsercom-for-wordpress-themes/</loc>
+    <lastmod>2008-01-24T04:43:02+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/01/24/when-to-use-form-post-vs-get/</loc>
+    <lastmod>2008-01-24T03:01:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2008/01/23/taking-advantage-of-dom-on-ready-and-event-observers-using-prototypejs/</loc>
+    <lastmod>2008-01-23T10:44:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/12/18/mylyn-plugin-for-aptana/</loc>
+    <lastmod>2007-12-18T04:27:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/12/08/enforcing-your-service-as-an-api/</loc>
+    <lastmod>2007-12-08T06:36:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/12/08/search-and-replace-using-reg-exp/</loc>
+    <lastmod>2007-12-08T05:26:11+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/11/14/flex-not-working-on-ubuntu-using-the-gnash-player/</loc>
+    <lastmod>2007-11-14T00:38:27+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/11/13/using-google-mail-as-your-local-smtp-server/</loc>
+    <lastmod>2007-11-13T04:27:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/11/02/making-your-web-applications-platform-independant/</loc>
+    <lastmod>2007-11-02T05:27:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/11/01/cfml-reference-docs-for-the-ipod/</loc>
+    <lastmod>2007-11-01T02:30:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/10/31/coldfusion-8-can-now-use-cacheaftercachewithin-when-using-cfqueryparams/</loc>
+    <lastmod>2007-10-31T22:19:48+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/10/18/styling-issues-when-generating-an-xls-from-html/</loc>
+    <lastmod>2007-10-18T01:31:16+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/10/12/coldfusion-round-docs-inaccurate/</loc>
+    <lastmod>2007-10-12T05:26:01+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/10/08/cant-set-a-scheduled-task-end-date/</loc>
+    <lastmod>2007-10-08T05:06:12+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/10/05/createodbcdate-returns-time-as-well/</loc>
+    <lastmod>2007-10-05T05:30:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/09/28/caveat-when-calling-components-from-onsessionend/</loc>
+    <lastmod>2007-09-28T03:19:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/09/28/jquery-and-swfobject-conflict/</loc>
+    <lastmod>2007-09-28T01:27:24+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/09/27/creating-a-custom-farcry-login-page/</loc>
+    <lastmod>2007-09-27T01:08:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/09/27/coldfire-10-released/</loc>
+    <lastmod>2007-09-27T00:13:37+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/09/25/google-analytics-air-app/</loc>
+    <lastmod>2007-09-25T02:26:32+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/08/22/hostmysite-not-quite-as-stable-as-id-like/</loc>
+    <lastmod>2007-08-22T00:45:12+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/08/16/localurl-attribute-added-to-cfdocument-in-coldfusion-8/</loc>
+    <lastmod>2007-08-16T09:00:12+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/08/14/my-aptana-ide-is-busted/</loc>
+    <lastmod>2007-08-14T05:45:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/08/13/storing-flash-coldfusion-and-sql-in-subversion/</loc>
+    <lastmod>2007-08-13T23:28:38+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/08/12/facebook-homepage-source-code-found/</loc>
+    <lastmod>2007-08-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/08/03/cfmail-failto-only-accepts-a-single-address/</loc>
+    <lastmod>2007-08-03T01:50:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/07/21/detecting-and-redirecting-http-to-https/</loc>
+    <lastmod>2007-07-21T05:43:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/06/22/ot-i-hate-ads-on-cfdj/</loc>
+    <lastmod>2007-06-22T01:20:02+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/06/17/inspirational-posts-from-the-community/</loc>
+    <lastmod>2007-06-17T23:50:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/06/14/using-variablesinstance-inside-your-components/</loc>
+    <lastmod>2007-06-14T08:36:02+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/06/13/reading-blogs-on-a-mac-using-firefox/</loc>
+    <lastmod>2007-06-13T23:54:27+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/04/25/image-manipulation-with-imagecfc-v214/</loc>
+    <lastmod>2007-04-25T23:20:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/04/24/unwanted-coldfusion-form-validation/</loc>
+    <lastmod>2007-04-24T08:06:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/04/23/farcry-40-filename-standards/</loc>
+    <lastmod>2007-04-23T13:21:53+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/04/11/combining-update-and-insert-sql-logic/</loc>
+    <lastmod>2007-04-11T06:40:48+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/04/10/cfquery-result-attribute-caveat/</loc>
+    <lastmod>2007-04-10T03:40:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/03/25/the-coolest-dhtml-calendar/</loc>
+    <lastmod>2007-03-25T07:25:13+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/02/04/adobe-feature-requestbug-report-form/</loc>
+    <lastmod>2007-02-04T07:50:08+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/02/04/cfqueryparam-and-conditional-handling-of-nulls/</loc>
+    <lastmod>2007-02-04T06:45:38+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/01/30/coldfusion-uuids-and-mssql-newid/</loc>
+    <lastmod>2007-01-30T00:25:38+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2007/01/11/to-delete-or-not-to-delete/</loc>
+    <lastmod>2007-01-11T12:19:57+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/12/21/scriptprotect-in-cfmx7/</loc>
+    <lastmod>2006-12-21T04:43:11+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/12/20/eclipsecfeclipse-gives-me-a-headache/</loc>
+    <lastmod>2006-12-20T04:39:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/12/19/determining-which-httpproxy-ports-your-jrun-instance-is-running-on/</loc>
+    <lastmod>2006-12-19T05:00:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/12/15/reseting-a-lost-coldfusion-administrator-password/</loc>
+    <lastmod>2006-12-15T02:00:24+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/12/13/no-error-handler-for-mxna/</loc>
+    <lastmod>2006-12-13T02:53:22+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/12/12/outputting-content-from-within-a-method/</loc>
+    <lastmod>2006-12-12T22:47:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/12/07/including-js-files-from-within-js-files/</loc>
+    <lastmod>2006-12-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/12/05/snapa-google-competitor-and-cool-site-preview-tool/</loc>
+    <lastmod>2006-12-05T06:20:57+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/12/04/viewing-ajax-generated-source-code/</loc>
+    <lastmod>2006-12-04T12:13:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/29/will-cfmx8-have-cfcontinue/</loc>
+    <lastmod>2006-11-29T04:13:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/16/commenting-templates-with-author-data/</loc>
+    <lastmod>2006-11-16T02:55:20+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/15/getting-tag-functionality-in-cfscript/</loc>
+    <lastmod>2006-11-15T08:56:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/14/wordpress-rss-feed-validation/</loc>
+    <lastmod>2006-11-14T22:15:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/13/lightweight-notepad-replacements/</loc>
+    <lastmod>2006-11-13T23:26:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/09/reserved-characters-in-html-id-attribute/</loc>
+    <lastmod>2006-11-09T06:22:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/09/cheap-coldfusion-hosting/</loc>
+    <lastmod>2006-11-09T02:29:21+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/08/browser-testing-your-site-design/</loc>
+    <lastmod>2006-11-08T01:59:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/08/caching-stored-procedures/</loc>
+    <lastmod>2006-11-08T01:29:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/06/do-you-know-about-alexa-internet/</loc>
+    <lastmod>2006-11-06T01:17:25+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/06/adobe-alternatives-to-coldfusion-server/</loc>
+    <lastmod>2006-11-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/11/03/blogging-problems-my-php-host/</loc>
+    <lastmod>2006-11-03T06:39:14+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/22/cfeclipse-snippets/</loc>
+    <lastmod>2006-10-22T01:13:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/20/building-accessible-tables/</loc>
+    <lastmod>2006-10-20T04:37:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/18/varscoper-10-has-been-released/</loc>
+    <lastmod>2006-10-18T22:31:53+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/17/making-coldfusion-sleep/</loc>
+    <lastmod>2006-10-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/14/validating-a-user-defined-password-with-reg-exp/</loc>
+    <lastmod>2006-10-14T23:17:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/12/when-not-to-use-thisformsubmit/</loc>
+    <lastmod>2006-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/10/paginating-with-sql-server-2005/</loc>
+    <lastmod>2006-10-10T23:02:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/06/regular-expressions-in-javascript/</loc>
+    <lastmod>2006-10-06T12:31:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/06/google-code-search/</loc>
+    <lastmod>2006-10-06T12:29:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/05/double-checked-locking-2/</loc>
+    <lastmod>2006-10-05T23:09:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/05/broken-image-on-google-search-results-page/</loc>
+    <lastmod>2006-10-05T02:01:19+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/04/finding-cpu-andor-memory-leak-issues-with-coldfusion/</loc>
+    <lastmod>2006-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/03/mach-ii-111-public-beta2/</loc>
+    <lastmod>2006-10-03T23:20:22+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/02/web-standards-rooting-for-the-underdog/</loc>
+    <lastmod>2006-10-02T23:20:23+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/10/01/javascript-function-properties/</loc>
+    <lastmod>2006-10-01T00:43:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/29/firefox-web-developer-toolbar/</loc>
+    <lastmod>2006-09-29T01:11:11+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/28/javascript-parseint-quirk/</loc>
+    <lastmod>2006-09-28T07:45:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/25/cfhtmlhead/</loc>
+    <lastmod>2006-09-25T00:44:04+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/19/trimming-strings-with-javascript/</loc>
+    <lastmod>2006-09-19T23:23:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/12/robots-meta-tag/</loc>
+    <lastmod>2006-09-12T23:35:52+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/11/hostmysitecom-and-coldfusion-mappings/</loc>
+    <lastmod>2006-09-11T00:31:12+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/10/cfcomponent-should-you-use-the-name-attribute/</loc>
+    <lastmod>2006-09-10T23:29:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/09/html-strip/</loc>
+    <lastmod>2006-09-09T03:19:54+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/07/cfc-bean-generators/</loc>
+    <lastmod>2006-09-07T00:55:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/07/server-settings-with-java/</loc>
+    <lastmod>2006-09-07T00:39:11+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/06/dashboard-confessional/</loc>
+    <lastmod>2006-09-06T14:11:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/05/multi-step-forms/</loc>
+    <lastmod>2006-09-05T23:23:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/02/busy-at-the-moment/</loc>
+    <lastmod>2006-09-02T03:45:14+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/09/01/memory-lane/</loc>
+    <lastmod>2006-09-01T13:34:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/08/25/html-pre-launch-flight-check/</loc>
+    <lastmod>2006-08-25T02:49:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/08/12/a-londonn-gift/</loc>
+    <lastmod>2006-08-12T13:38:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/08/01/swfobject/</loc>
+    <lastmod>2006-08-01T03:27:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/07/26/truncating-mssql-transaction-log/</loc>
+    <lastmod>2006-07-26T05:32:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/07/17/33/</loc>
+    <lastmod>2006-07-17T08:22:23+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/07/16/apache-are-you-secure/</loc>
+    <lastmod>2006-07-16T05:15:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/06/20/flash-of-unstyled-content/</loc>
+    <lastmod>2006-06-20T08:41:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/05/06/determining-machine-name-using-java/</loc>
+    <lastmod>2006-05-06T07:33:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/04/28/dumping-and-aborting-with/</loc>
+    <lastmod>2006-04-28T05:01:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/04/20/isvalid/</loc>
+    <lastmod>2006-04-20T03:28:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/04/11/cfdump-goodies/</loc>
+    <lastmod>2006-04-11T05:56:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/04/01/how-do-i-trim-the-contents-of-a-form/</loc>
+    <lastmod>2006-04-01T05:27:37+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/03/31/how-to-find-the-size-of-a-directory/</loc>
+    <lastmod>2006-03-31T01:36:43+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/03/29/how-do-i-make-sure-a-string-is-safe-to-use-with-javascript/</loc>
+    <lastmod>2006-03-29T01:45:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/03/16/cfstoredproc-vs-cfquery/</loc>
+    <lastmod>2006-03-16T00:30:18+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/03/15/cfstoredproc-in-mx7/</loc>
+    <lastmod>2006-03-15T23:51:57+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/03/14/double-checked-locking/</loc>
+    <lastmod>2006-03-14T23:19:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/03/13/session-and-client-variable-handling-in-cfmx/</loc>
+    <lastmod>2006-03-13T04:45:02+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/03/12/what-we-need-are-better-programmers/</loc>
+    <lastmod>2006-03-12T23:49:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/2006/03/11/new-attribute-and-object-variable-in-for-cfmx7/</loc>
+    <lastmod>2006-03-11T06:49:03+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/air/</loc>
+    <lastmod>2008-09-03T22:33:59+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/apache/</loc>
+    <lastmod>2013-06-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/apache/iis/</loc>
+    <lastmod>2012-08-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/apple/</loc>
+    <lastmod>2013-05-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/bluedragon/</loc>
+    <lastmod>2008-03-16T04:47:42+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/tags/bootstrap/</loc>
+    <lastmod>2011-10-27T07:00:45+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/</loc>
+    <lastmod>2008-09-03T22:33:59+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/cfeclipse/</loc>
+    <lastmod>2008-12-13T02:28:20+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/coldfusion/</loc>
+    <lastmod>2012-10-04T11:20:46+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/css/</loc>
+    <lastmod>2007-06-13T23:54:27+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/databases/</loc>
+    <lastmod>2012-07-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/farcry/</loc>
+    <lastmod>2011-08-17T00:38:33+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/flex/</loc>
+    <lastmod>2008-11-10T03:16:54+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/tags/fw/1/</loc>
+    <lastmod>2012-09-30T06:54:59+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/git/</loc>
+    <lastmod>2013-06-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/javascript/</loc>
+    <lastmod>2013-12-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/life/</loc>
+    <lastmod>2006-09-06T14:11:35+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/mac/</loc>
+    <lastmod>2012-06-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/misc/</loc>
+    <lastmod>2012-09-24T03:41:55+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/mura/</loc>
+    <lastmod>2011-05-31T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/mysql/</loc>
+    <lastmod>2013-06-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/php/</loc>
+    <lastmod>2013-06-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/post/</loc>
+    <lastmod>2015-06-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/railo/</loc>
+    <lastmod>2012-09-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/shell/</loc>
+    <lastmod>2013-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/ssh/</loc>
+    <lastmod>2013-05-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/sublime/</loc>
+    <lastmod>2013-06-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/svn/</loc>
+    <lastmod>2012-07-10T12:49:19+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/tags/</loc>
+    <lastmod>2011-10-27T07:00:45+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/tools/</loc>
+    <lastmod>2010-04-22T06:52:47+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/tags/tools/</loc>
+    <lastmod>2008-06-09T05:37:08+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/ubuntu/</loc>
+    <lastmod>2012-09-24T03:41:55+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/uncategorised/</loc>
+    <lastmod>2006-11-14T22:15:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/wordpress/</loc>
+    <lastmod>2011-05-11T13:48:49+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/categories/xhtml/</loc>
+    <lastmod>2008-10-22T02:35:25+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://chapter31.com/</loc>
+    <lastmod>2015-06-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

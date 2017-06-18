@@ -1,0 +1,160 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Trimming strings with Javascript | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Trimming strings with Javascript - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">September 19, 2006</h2>
+    <h1 class="title">Trimming strings with Javascript</h1>
+    
+    <div class="content">
+      <p><a href="http://bennadel.com/">Ben Nadel</a> has a nice post on <a href="http://bennadel.com/resources/uploads/string_trimming1.htm">trimming strings with javascript</a> using regular expressions.</p>
+
+<p>Note that the reg exp white space character &lsquo;\s&rsquo; is used to match:</p>
+
+<ul>
+<li>space</li>
+<li>tab</li>
+<li>horizontal tab</li>
+<li>vertical tab</li>
+<li>line break</li>
+</ul>
+
+<p>Sample code below:</p>
+
+<pre><code class="language-javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+
+	// Trims the beginning and trailing white space from a string.
+	function trim( strText ){
+		return( strText.replace(new RegExp(&quot;^([s]+)|([s]+)$&quot;, &quot;gm&quot;), &quot;&quot;) );
+	}
+
+	// Trims the beinning white space from a string.
+	function leftTrim( strText ){
+		return( strText.replace(new RegExp(&quot;^[s]+&quot;, &quot;gm&quot;), &quot;&quot;) );
+	}
+
+	// Trims the trailing white space from a string.
+	function rightTrim( strText ){
+		return( strText.replace(new RegExp(&quot;[s]+$&quot;, &quot;gm&quot;), &quot;&quot;) );
+	}
+
+&lt;/script&gt;
+</code></pre>
+
+<p><a href="/images/uploads/2006/09/trimstring.js">Javascript: trimString.js</a></p>
+
+<p>Update 25th March 2007:</p>
+
+<pre><code>    myString.replace(/^\s*|\s*$/g, &quot;&quot;);
+</code></pre>
+
+<p>A basic breakdown:</p>
+
+<pre><code class="language-javascript">/.../
+    Regular expressions in javascript are delimited with forward slashes
+
+^
+    Outside the usual square brackets, the **caret** means look only at the beginning of the target string
+
+|
+    **Alternatation**, meaning finding the left hand OR right have values
+
+\s*
+    Denotes 0 to many white space characters
+
+$
+    Means look only at the end of the target string
+
+g
+    Makes the search **global**; finding all matches, not just the first match
+</code></pre>
+
+<p>Of course all we&rsquo;re doing is replacing left and right white space with an empty string (&ldquo;&rdquo;).</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

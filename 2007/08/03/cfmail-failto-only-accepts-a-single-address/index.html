@@ -1,0 +1,126 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>&lt;cfmail&gt; failto only accepts a single address? | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="&lt;cfmail&gt; failto only accepts a single address? - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">August 3, 2007</h2>
+    <h1 class="title">&lt;cfmail&gt; failto only accepts a single address?</h1>
+    
+    <div class="content">
+      <p>I&rsquo;m getting some new production servers setup at the moment and I have a single ColdFusion application ready to go on one of them.</p>
+
+<p>Part of the setup was of course getting an SMTP server going, to test this I used a simple ColdFusion script with a cfmail tag. I was receiving the email successfully so all was good&hellip;until I tested sending emails as part of my application flow, no email :(</p>
+
+<p>Basically I had something in my project which I didn&rsquo;t have in my test script, that being <em>multiple failto</em> recipients.</p>
+
+<pre><code class="language-javascript">&lt;cfmail to=&quot;#to#&quot; from=&quot;#from#&quot; subject=&quot;my subject&quot; server=&quot;#server#&quot; failto=&quot;sample1@sample.com,sample2@sample.com&quot;&gt;
+message body
+&lt;/cfmail&gt;
+</code></pre>
+
+<p>Note the multiple &lsquo;failto&rsquo; recipients: failto=&ldquo;sample1@sample.com,sample2@sample.com&rdquo;</p>
+
+<p>No emails were being sent with the above code and it wasn&rsquo;t until I removed the 2nd failto address that I started getting emails.</p>
+
+<pre><code class="language-javascript">failto=&quot;sample1@sample.com&quot;
+</code></pre>
+
+<p>This seems strange as I can have many to or from recipients, just not failto! The <a href="http://livedocs.adobe.com/coldfusion/7/htmldocs/wwhelp/wwhimpl/common/html/wwhelp.htm?context=ColdFusion_Documentation&amp;file=00000297.htm">docs</a> say:</p>
+
+<blockquote>
+<p>&ldquo;Address to which mailing systems should send delivery failure notifications. Sets the mail envelope reverse-path value.&rdquo;</p>
+</blockquote>
+
+<p>This doesn&rsquo;t seem to say either way to me whether you can only have 1 or multiple addresses here.</p>
+
+<p>I tested this on both ColdFusion 7.0.2 and ColdFusion 8 Standard versions running on Windows Server SMTP.</p>
+
+<p>Has anyone successfully sent email with <cfmail> with multiple failto&rsquo;s?</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

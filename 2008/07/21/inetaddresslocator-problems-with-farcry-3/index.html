@@ -1,0 +1,141 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>InetAddressLocator problems with FarCry 3 | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="InetAddressLocator problems with FarCry 3 - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">July 21, 2008</h2>
+    <h1 class="title">InetAddressLocator problems with FarCry 3</h1>
+    
+    <div class="content">
+      <p>Took me a little bit to find the solution for this across several different board posts so I thought I&rsquo;d quickly write it up.</p>
+
+<p>For those of us still using FarCry 3 (remember that <a href="http://farcrycms.org/">FarCry 5</a> is out!) you may come across the following error:</p>
+
+<p>&ldquo;java init failed: net.sf.javainetloca­tor.InetAddressLocat­or&rdquo;</p>
+
+<p>The docs tell us:</p>
+
+<blockquote>
+<p>Geolocator is a plugin that determines the locale of an inbound request. Its an optional plugin that is turned off by default, and requires a class file InetAddressLocator to be placed in your class path.</p>
+
+<p>You may be getting this error because you have migrated or copied an application to a server environment that is not correctly configured for the plugin.</p>
+
+<p>You can either turn it off by getting into the ADMIN&gt;&gt;CONFIG&gt;&gt;PLUGINS – or drop the InetAddressLocator class into your JAVA class path.</p>
+</blockquote>
+
+<p>Remember however that if you have this problem, you can&rsquo;t login to FarCry to make the config change :(</p>
+
+<p>In which case you can open your database and make the change manually. Open up the &ldquo;config&rdquo; table and edit the &ldquo;plugins&rdquo; row (row 9) in which there is a small wddx packet. You want to change the value of the &ldquo;GEOLOCATOR&rdquo; value, it should be &ldquo;no&rdquo; as follows:</p>
+
+<pre><code>&lt;var name='GEOLOCATOR'&gt;&lt;string&gt;No&lt;/string&gt;&lt;/var&gt;
+</code></pre>
+
+<p>After this run an update app (/index.cfm?updateapp=1) and you should be fine. If your site is up and running now then read no further, otherwise:</p>
+
+<p>But wait&hellip;there&rsquo;s more!</p>
+
+<p>Let&rsquo;s say that your GEOLOCATOR setting is now (or already was) set to &ldquo;no&rdquo; but you are still getting the error. Could it be that the &ldquo;farcry_core&rdquo; directory is not sitting at the same level as your project directory?</p>
+
+<p>If this is the case then this could help you:</p>
+
+<p>Open up /config/_serverSpecificVars.cfm in your project and change the value of <em>application.path.core</em> to be an absolute path to the farcry_core directory on your server (or use expandPath()).</p>
+
+<p>Something like:</p>
+
+<pre><code class="language-javascript">application.path.core = expandPath('/farcry/farcry_core/');
+</code></pre>
+
+<p>or:</p>
+
+<pre><code class="language-javascript">application.path.core = '/vhosts/farcry/farcry_core';
+</code></pre>
+
+<p>Run an updateapp and now you should be fine :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

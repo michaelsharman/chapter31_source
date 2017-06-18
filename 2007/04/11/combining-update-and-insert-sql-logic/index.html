@@ -1,0 +1,204 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Combining insert and update SQL logic | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Combining insert and update SQL logic - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">April 11, 2007</h2>
+    <h1 class="title">Combining insert and update SQL logic</h1>
+    
+    <div class="content">
+      <p>*<strong>Note</strong> that this example is using MSSQL with an Identity set to generate the primary key automatically.</p>
+
+<p>An all too common process developers go through when building database driven web applications is creating logic to INSERT a record when one doesn&rsquo;t exist, and UPDATE a record when one does exist.</p>
+
+<p>This often leads to conditional logic within your application (inside a Service layer perhaps) and then running one of 2 SQL statements depending on the existance of a primary key value which may be coming from a form or URL.</p>
+
+<p>You would more than likely have separate methods for INSERTING and UPDATING, but for the sake of simplicity these will be together:</p>
+
+<pre><code class="language-javascript">&lt;cfif len(form.myPrimaryKey)&gt;
+
+	&lt;!--- there is a primary key meaning a record exists, UPDATE ---&gt;
+	&lt;cfquery name=&quot;qSetData&quot; datasource=&quot;dsn&quot;&gt;
+		UPDATE	myTable
+		SET		field1 = '#trim(form.field1)#'
+				, field2 = '#trim(form.field1)#'
+		WHERE	myPrimaryKey = #form.myPrimaryKey#
+	&lt;/cfquery&gt;
+
+&lt;cfelse&gt;
+	
+&lt;!--- there is no primary key meaning a record doesn't exists, INSERT a new row ---&gt;
+	&lt;cfquery name=&quot;qCreateData&quot; datasource=&quot;dsn&quot;&gt;
+		INSERT INTO	myTable	(field1, field2)
+		VALUES				('#trim(form.field1)#', '#trim(form.field1)#')
+	&lt;/cfquery&gt;
+
+&lt;/cfif&gt;
+</code></pre>
+
+<p>That&rsquo;s it, this approach is a nice way to start examining you DAO&rsquo;s.</p>
+
+<p>Another way to achieve this is by using a stored procedure (there are many, many positive reasons for using a stored procedure. See <a href="http://www.chapter31.com/2006/03/16/cfstoredproc-vs-cfquery/">here</a> and <a href="http://www.chapter31.com/2007/02/04/cfqueryparam-and-conditional-handling-of-nulls/">here</a> for more information).</p>
+
+<p>Using a stored procedure can be cleaner as you just need the one piece of code in your application leaving the rest of the logic to be handled in the database.</p>
+
+<p>The following example is for scenarios where you <strong>don&rsquo;t</strong> pass a primary key value, the <cfprocparam> will pass null=&ldquo;true&rdquo; to the stored procedure. This is how the SQL will know to run an INSERT statement.</p>
+
+<pre><code class="language-javascript">&lt;cfscript&gt;
+	//as there is no value here an INSERT statement will be run
+	myPrimaryKey = &quot;&quot;;
+	firstName = &quot;Michael&quot;;
+	lastName = &quot;Sharman&quot;;
+	email = &quot;michael@wherever.com&quot;;
+	age = &quot;31&quot;;
+&lt;/cfscript&gt;
+
+&lt;cfstoredproc datasource=&quot;dsn&quot; procedure=&quot;setUser&quot;&gt;
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_INTEGER&quot; null=&quot;#NOT len(trim(myPrimaryKey))#&quot; value=&quot;#myPrimaryKey#&quot; /&gt;
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_VARCHAR&quot; null=&quot;false&quot; value=&quot;#firstName#&quot; /&gt;
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_VARCHAR&quot; null=&quot;false&quot; value=&quot;#lastName#&quot; /&gt;
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_VARCHAR&quot; null=&quot;false&quot; value=&quot;#email#&quot; /&gt;		
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_INTEGER&quot; null=&quot;#age#&quot; value=&quot;#age#&quot; /&gt;
+&lt;/cfstoredproc&gt;
+</code></pre>
+
+<p>On the other hand if I have a primary key value, the <cfprocparam> will pass the value (with null=&ldquo;false&rdquo;) and my stored procedure will run an UPDATE.</p>
+
+<pre><code class="language-javascript">&lt;cfscript&gt;
+	//as there is a value here an UPDATE statement will be run
+	myPrimaryKey = &quot;13&quot;;
+	firstName = &quot;Michael&quot;;
+	lastName = &quot;Sharman&quot;;
+	email = &quot;michael@wherever.com&quot;;
+	age = &quot;31&quot;;
+&lt;/cfscript&gt;
+
+&lt;cfstoredproc datasource=&quot;dsn&quot; procedure=&quot;setUser&quot;&gt;
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_INTEGER&quot; null=&quot;#NOT len(trim(myPrimaryKey))#&quot; value=&quot;#myPrimaryKey#&quot; /&gt;
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_VARCHAR&quot; null=&quot;false&quot; value=&quot;#firstName#&quot; /&gt;
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_VARCHAR&quot; null=&quot;false&quot; value=&quot;#lastName#&quot; /&gt;
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_VARCHAR&quot; null=&quot;false&quot; value=&quot;#email#&quot; /&gt;		
+	&lt;cfprocparam cfsqltype=&quot;CF_SQL_INTEGER&quot; null=&quot;#age#&quot; value=&quot;#age#&quot; /&gt;
+&lt;/cfstoredproc&gt;
+</code></pre>
+
+<p>You can see that the only change was that in the second example <em>myPrimaryKey</em> actually had a value.</p>
+
+<p>And now for the simple stored procedure. Note I&rsquo;m setting a default value of <strong>null</strong> for the @myPrimaryKey parameter, this is how the stored procedure can handle both scenarios. You can of course set default values for all of your parameters.</p>
+
+<pre><code class="language-javascript">CREATE PROCEDURE setUser
+(
+@myPrimaryKey int = null
+,@firstName varchar(50)
+,@lastName varchar(50)
+,@email varchar(50)
+, @age int
+)
+AS
+
+IF (@myPrimaryKey Is Null)
+BEGIN
+	--no record exists so run an INSERT statement
+	INSERT INTO	myTable(FirstName, LastName, Email, Age)
+	VALUES		(@firstName, @lastName, @email, @age)
+END
+ELSE
+BEGIN
+	--we have a record, run an UPDATE
+	UPDATE	myTable
+	SET		firstName = @firstName
+			, lastName = @lastName
+			, email = @email
+			, age = @age
+	WHERE	myPrimaryKey = @myPrimaryKey
+END
+GO
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

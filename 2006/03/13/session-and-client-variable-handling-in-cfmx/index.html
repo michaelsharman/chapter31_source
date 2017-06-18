@@ -1,0 +1,144 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Session and client variable handling in CFMX | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Session and client variable handling in CFMX - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 13, 2006</h2>
+    <h1 class="title">Session and client variable handling in CFMX</h1>
+    
+    <div class="content">
+      <p>With CFMX there are a few new features you can take advantage of in relation to session and client variable handling, namely:</p>
+
+<ul>
+<li>URLSessionFormat()</li>
+<li>Using UUID for the CFToken value</li>
+<li>Using J2EE Session Variables</li>
+</ul>
+
+<p><strong>URLSessionFormat()</strong></p>
+
+<p>We all know that using session variables <em>primarily</em> relies on the user have enabled cookies in their browser, otherwise you need to pass CFIDE and CFTOKEN along the URL. This can be painful as you need to ensure you pass this client identity along with every request, whether it be an</p>
+
+<pre><code>&lt;a href&gt;
+</code></pre>
+
+<p>or</p>
+
+<pre><code>&lt;cflocation&gt;
+</code></pre>
+
+<p>etc.</p>
+
+<p>With URLSessionFormat() ColdFusion automatically detects whether templates are passing the required cookie, if it isn&rsquo;t then it will pass the values along the URL for you!</p>
+
+<p>So with the following:</p>
+
+<pre><code>&lt;a href=&quot;#URLSessionFormat(&quot;order.cfm?orderID=123&quot;)#&quot;&gt;Order Page&lt;/a&gt;
+</code></pre>
+
+<p>You get:</p>
+
+<pre><code>&lt;a href=&quot;order.cfm?orderID=123&amp;cfid;=xxxx&amp;cftoken;=xxxxxxxx&quot;&gt;Order Page&lt;/a&gt;
+</code></pre>
+
+<p>:)</p>
+
+<p>If cookies are being accepted then CFIDE and CFTOKEN won&rsquo;t be passed.</p>
+
+<p><strong>UUID for CFTOKEN value</strong></p>
+
+<p>In ColdFusion Administrator on the &lsquo;Server settings/Settings&rsquo; page you can choose to &ldquo;Use UUID for cftoken&rdquo;. This guarantees a unique identifier for the token, instead of a normal 8 digit number which could be guessed by a malicious user.</p>
+
+<p><img src="http://www.chapter31.com/images/cfadmin.jpg" alt="ColdFusion Administrator" /></p>
+
+<p><strong>J2EE Session Variables</strong></p>
+
+<p>Work the same way as CFIDE and CFTOKEN but use a JSessionID instead. One of the coolest things about jsessionid&rsquo;s is that when a user closes his or her browser the session terminates because the cookie set is non-persistant, held only in the browsers memory!</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Using variables.instance inside your components | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Using variables.instance inside your components - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">June 14, 2007</h2>
+    <h1 class="title">Using variables.instance inside your components</h1>
+    
+    <div class="content">
+      <p>Often when creating ColdFusion components developers will create a structure to hold component instance data. This data is stored in the components &lsquo;variables&rsquo; scope and is therefore available to all methods.</p>
+
+<p>Here is an example from the <a href="http://rooibos.maestropublishing.com/">rooibos component generator</a>:</p>
+
+<pre><code class="language-javascript">&lt;cfcomponent
+	displayname=&quot;sample&quot;
+	output=&quot;false&quot;
+	hint=&quot;A bean which models the form.&quot;&gt;
+
+	&lt;!---
+	PROPERTIES
+	---&gt;
+	&lt;cfset variables.instance = StructNew() /&gt;
+</code></pre>
+
+<p>Now some of you may be wondering why you would use the extra struct level of &lsquo;instance&rsquo; when we already know everything in that struct is in the components instance (variables) scope.</p>
+
+<p>A quick question to <a href="http://www.daemon.com.au/">Geoff Bowers</a> gave me a few answers.</p>
+
+<ul>
+<li><p>It&rsquo;s obvious everywhere you reference this that it is instance data in the variables scope</p></li>
+
+<li><p>You can dump all the components instance data by using <cfdump var="#variables.instance#" />. The benefit of this is that only dumping the <em>variables</em> scope will give you a lot more than just your instance data! Think method signatures etc</p></li>
+
+<li><p>You can (if you want) separate &lsquo;types&rsquo; of instance data. e.g. you might pass in a DAO or Gateway component and assign it to the variables scope (variables.UserDAO)</p></li>
+</ul>
+
+<p>Another great example of dumping variables.instance quickly and easily (from the Rooibos generator):</p>
+
+<pre><code class="language-javascript">&lt;!---
+DUMP
+---&gt;
+&lt;cffunction name=&quot;dump&quot; access=&quot;public&quot; output=&quot;true&quot; return=&quot;void&quot;&gt;
+	&lt;cfargument name=&quot;abort&quot; type=&quot;boolean&quot; default=&quot;FALSE&quot; /&gt;
+	&lt;cfdump var=&quot;#variables.instance#&quot; /&gt;
+	&lt;cfif arguments.abort&gt;
+		&lt;cfabort /&gt;
+	&lt;/cfif&gt;
+&lt;/cffunction&gt;
+</code></pre>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

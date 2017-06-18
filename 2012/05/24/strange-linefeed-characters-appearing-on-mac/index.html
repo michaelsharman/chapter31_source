@@ -1,0 +1,140 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Strange linefeed characters appearing on Mac | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Strange linefeed characters appearing on Mac - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 24, 2012</h2>
+    <h1 class="title">Strange linefeed characters appearing on Mac</h1>
+    
+    <div class="content">
+      <p>Had a funny situation today where I was emailed a bash program file, but simply downloading the attachment from gmail (in Chrome) added a linefeed (\r) to the file.</p>
+
+<p>This is strange because I never actually opened the file to edit, so I&rsquo;m not sure what was writing those chars to the file. I&rsquo;m on a Mac (OSX 10.6.8), so I get the line feed character in general, but just not in this case as the file was never opened.</p>
+
+<p>The following command shows (among other things) the non-printing characters:</p>
+
+<p><code>od -c filename | sed 4q</code></p>
+
+<p><img src="/images/uploads/2012/05/dos2unix_before1.png" alt="" /></p>
+
+<p>You can see the offending <em>\r</em> which was breaking the bash program. The unix tool <em>dos2unix</em> was suggested to clean up the file. Unfortunately this wasn&rsquo;t available on Mac by default. MacPorts to the rescue (I assume homebrew would be a good option as well):</p>
+
+<pre><code class="language-bash">sudo port install dos2unix
+Password:
+---&gt;  Fetching dos2unix
+---&gt;  Attempting to fetch dos2unix-3.1.tar.gz from http://fresh.t-systems-sfr.com/linux/src/
+---&gt;  Verifying checksum(s) for dos2unix
+---&gt;  Extracting dos2unix
+---&gt;  Configuring dos2unix
+---&gt;  Building dos2unix with target all
+---&gt;  Staging dos2unix into destroot
+---&gt;  Installing dos2unix 3.1_0
+---&gt;  Activating dos2unix 3.1_0
+---&gt;  Cleaning dos2unix
+</code></pre>
+
+<p>Then run the program to clean up the invalid line feed (on 2 files).</p>
+
+<pre><code class="language-bash">dos2unix -n dirwatcher2 dirwatcher2_2
+dos2unix: converting file dirwatcher2 to file dirwatcher2_2 in UNIX format ...
+dos2unix -n processPDF processPDF_2
+dos2unix: converting file processPDF to file processPDF_2 in UNIX format ...
+</code></pre>
+
+<p>Nice! The changes are:</p>
+
+<p><img src="/images/uploads/2012/05/dos2unix_after.png" alt="" /></p>
+
+<dl>
+<dt>No \r</dt>
+</dl>
+
+<p>:)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Label vs Title in FarCry | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Label vs Title in FarCry - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">July 31, 2011</h2>
+    <h1 class="title">Label vs Title in FarCry</h1>
+    
+    <div class="content">
+      
+
+<p>All system content objects (and those custom types which extend &ldquo;types&rdquo; or &ldquo;versions&rdquo; etc) in FarCry have the &ldquo;label&rdquo; and &ldquo;title&rdquo; properties. Most of the time the value of these are identical, I find myself typically using the &ldquo;title&rdquo; property in formtools as well as any display methods. The question of course is why have both these if they&rsquo;re always exactly the same?</p>
+
+<p>A note on the FarCry forums suggested that this was a handy way split what you might want to use in a display method vs an admin screen or any other scenario etc. Well today I had need to do exactly this, and combined with some of the custom metadata for your <em>type components</em> I&rsquo;ve found that this is yet another simple but powerful feature of FarCry core.</p>
+
+<h2 id="scenario">Scenario</h2>
+
+<p>I have a custom type, a &ldquo;topic&rdquo;. Now these topics have titles but also &ldquo;codes&rdquo; associated with them. Sometimes I&rsquo;ll want to output just the title, but sometimes I&rsquo;ll want to output the code + title together. Sure <em>stObj</em> gives me the simple ability to access these singularly, but having the ability to store this composite value in the label field (as well as the single title in the &ldquo;title&rdquo; field) gives me freedom to display this in places like the object admin screen, generic nav, breadcrumbs etc. Very very nice.</p>
+
+<h2 id="how">How</h2>
+
+<p>Ok first you need to enable auto labels for your type:</p>
+
+<pre><code>&lt;cfcomponent extends=&quot;farcry.core.packages.types.versions&quot; displayname=&quot;ACE Topic&quot; bUseInTree=&quot;0&quot; bFriendly=&quot;1&quot; fuAlias=&quot;acetopic&quot; bObjectBroker=&quot;0&quot; bAutoSetLabel=&quot;true&quot;&gt;
+</code></pre>
+
+<p>Then for each property you&rsquo;d like combined for your label, set a <em>bLabel</em> attribute to true.</p>
+
+<pre><code>&lt;cfproperty name=&quot;Code&quot; type=&quot;string&quot; required=&quot;no&quot; default=&quot;&quot; ftSeq=&quot;1&quot; ftwizardStep=&quot;Content&quot; ftValidation=&quot;required&quot; ftFieldset=&quot;General Details&quot; bLabel=&quot;true&quot;&gt;
+
+&lt;cfproperty name=&quot;Title&quot; type=&quot;string&quot; hint=&quot;Title of content item.&quot; required=&quot;no&quot; default=&quot;&quot; ftSeq=&quot;2&quot; ftwizardStep=&quot;Content&quot; ftFieldset=&quot;General Details&quot; ftValidation=&quot;required&quot; bLabel=&quot;true&quot;&gt;
+</code></pre>
+
+<p>What this now does (after you edit a content object) is save the &ldquo;code + title&rdquo; in the label field. Cool :)</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

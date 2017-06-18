@@ -1,0 +1,155 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Enforcing your Service as an API | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="Enforcing your Service as an API - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">December 8, 2007</h2>
+    <h1 class="title">Enforcing your Service as an API</h1>
+    
+    <div class="content">
+      <p>A lot ColdFusion developers are moving (or already there) towards a more OOP style of development. They have an understanding of and use several techniques and design patterns when building applications, particularly when it relates to things such as MVC and n-tiered development.</p>
+
+<p>A small part of this is grouping related files withing separate directories in you application. Take &lsquo;User&rsquo; related files as an example where you&rsquo;ll probably need some kind of a business object (User.cfc), something to store business/application logic (service or manager) and typically some files to handle database access.</p>
+
+<p>With that in mind most will recognise the following CFC types (as they pertain at least to the ColdFusion community):</p>
+
+<ul>
+<li><p>Bean</p></li>
+
+<li><p>Service (or manager)</p></li>
+
+<li><p>Gateway</p></li>
+
+<li><p>DAO</p></li>
+</ul>
+
+<p>This is not to get into whether you should use 5:1 components for every different &lsquo;thing&rsquo; in your application (the 5th might be a controller), or whether you should have a &lsquo;Gateway&rsquo; AND a &lsquo;DAO&rsquo; for data access. Instead I&rsquo;m talking about how you might layout your files and control access to the methods contained within them.</p>
+
+<p>A typical structure people use is the reverse domain naming (which can prevent naming conflicts with other similarly named files), so for me I might have the following:</p>
+
+<p>/com/chapter31/myApp/user</p>
+
+<p>The &lsquo;user&rsquo; directory could hold the following cfc&rsquo;s:</p>
+
+<ul>
+<li><p>User.cfc</p></li>
+
+<li><p>UserService.cfc</p></li>
+
+<li><p>UserGateway.cfc</p></li>
+
+<li><p>UserDAO.cfc</p></li>
+</ul>
+
+<p>How do I manage access to methods contained within the Gateway or DAO? Often you may not want developers being able to access the getUsers() method inside UserGateway.cfc directly. This might be for different reasons, typically there may be some business logic required or a bean which is to be returned instead of a query etc. Either way, developers shouldn&rsquo;t access these data access files directly.</p>
+
+<p>A nice easy way to get around this is to make all &lsquo;public&rsquo; methods inside the components you want to restrict access to, &lsquo;package&rsquo;, which means that they are only accessible from files which reside within the same directory (/user).</p>
+
+<p>An example method within UserGateway.cfc might look like this:</p>
+
+<pre><code class="language-javascript">&lt;cffunction name=&quot;getUsers&quot; output=&quot;false&quot; access=&quot;package&quot; returntype=&quot;query&quot;&gt;
+	
+	//query the users table in your database below
+	
+&lt;/cffunction&gt;
+</code></pre>
+
+<p>If you tried to access this method from outside the &lsquo;user&rsquo; directory (say index.cfm within the webroot) you will get an error saying something like</p>
+
+<p><em>&ldquo;The package method &lsquo;getUsers&rsquo; in component /user/UserGateway.cfc cannot be accessed from /index.cfm.&rdquo;</em></p>
+
+<p>This is because index.cfm does not reside within the &lsquo;user&rsquo; directory and because the method&rsquo;s access modifier is set to &lsquo;package&rsquo;, access is restricted.</p>
+
+<p>So how do we now get access to this method?</p>
+
+<p>A common approach is to have your Service act as an API to the other cfc&rsquo;s within the &lsquo;user&rsquo; directory by setting the access modifier to &lsquo;public&rsquo; inside your UserService.cfc. Now whenever you need to call Gateway or DAO methods, you need to go through UserService.cfc which will hold your business logic and application rules etc.</p>
+
+<p>This is a nice way to store related files and control access to them to ensure your application rules are kept intact.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,131 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MySQL thread_stack overrun error | chapter31</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="keywords">
+    <meta content="MySQL thread_stack overrun error - chapter31" property="og:title">
+    <link rel="stylesheet" href="http://chapter31.com/css/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    
+</head>
+
+<body>
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="http://chapter31.com"><h1 class="title is-2">chapter31</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="http://michaelsharman.com">
+            <span class="icon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/michaelsharman">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">May 22, 2013</h2>
+    <h1 class="title">MySQL thread_stack overrun error</h1>
+    
+    <div class="content">
+      <p>We added a trigger to MySQL (v5.5.28) recently that was a simple UPDATE on table column, when a target table was UPDATEd. It ran fine (as expected) on our development environment but not when we pushed the changes to staging.</p>
+
+<p>The error being thrown by MySQL was:</p>
+
+<pre><code class="language-bash">Thread stack overrun:  8304 bytes used of a 131072 byte stack, and 128000 bytes needed.  Use 'mysqld --thread_stack=#' to specify a bigger stack.
+</code></pre>
+
+<p>Querying the database told me that the current _thread<em>stack</em> setting is 128K:</p>
+
+<pre><code class="language-bash">mysql&gt; show variables where `Variable_name` = 'thread_stack';
++---------------+--------+
+| Variable_name | Value  |
++---------------+--------+
+| thread_stack  | 131072 |
++---------------+--------+
+1 row in set (0.00 sec)
+</code></pre>
+
+<p>This was confirmed by looking at the _thread<em>stack</em> variable in /etc/mysql/my.cnf</p>
+
+<pre><code class="language-bash">thread_stack = 128K
+</code></pre>
+
+<p>The <a href="http://dev.mysql.com/doc/refman/5.5/en/server-system-variables.html#sysvar_thread_stack">docs for MySQL 5.5</a> suggest that it should be 192K for 32-bit systems and 256K for 64-bit systems. We&rsquo;re running a 64-bit platform, you can tell by running:</p>
+
+<pre><code class="language-bash">[me@mydbserver ~]$ uname -m
+x86_64
+</code></pre>
+
+<p>If the response is <em>i686</em>, you have a 32-bit version of Linux and if the response is _x86<em>64</em> then you have a 64-bit version of Linux.</p>
+
+<p>The fix is a simple case of increasing the value to 256K (if you&rsquo;re on 64-bit) or 192K if you&rsquo;re on 32-bit, as per the documentation. Don&rsquo;t forget that the thread_stack is an allocation of memory per connection, so don&rsquo;t set it too high or you might run into memory issues on your database server.</p>
+
+<p>In case it wasn&rsquo;t clear, you can make this change in your <em>my.cnf</em> file.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="http://michaelsharman.com">Michael Sharman</a> 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-306772-2', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
+
